@@ -4,8 +4,8 @@
 #include <cmath>
 
 /**
- * Return the number of seconds later that a time
- * in seconds time_2 is than a time in seconds time_1.
+	Return the number of seconds later that a time
+	in seconds time_2 is than a time in seconds time_1.
  */
 double seconds_difference(double time_1, double time_2)
 {
@@ -22,10 +22,10 @@ double hours_difference(double time_1, double time_2)
 }
 
 /**
- * Return the total number of hours in the specified 
- * number of hours, minutes, and seconds.
- *
- * Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
+	Return the total number of hours in the specified 
+	number of hours, minutes, and seconds.
+
+	Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
  */
 double to_float_hours(int hours, int minutes, int seconds)
 {
@@ -100,18 +100,21 @@ unsigned testCounter = 0;
  * Checks, whether two double variables are equal.
  * Raise assertion error if not. 
  */
-void assertEquals(double expected, double actual) {
+void assertEquals(double expected, double actual) 
+{
 	bool correct = expected - actual < DBL_EPSILON;
 	testCounter++;
 
 	if (!correct) {
-		printf("Test #%d failed! Expected: %f, Actual: %f\n", testCounter, expected, actual);
+		const char * format = "Test #%d failed! Expected: %f, Actual: %f\n\0";
+		printf(format, testCounter, expected, actual);
 		assert(0);
 	}
 }
 
 
-void main() {
+void main() 
+{
 	// test seconds_difference()
 	assertEquals(1800.0, seconds_difference(1800.0, 3600.0));
 	assertEquals(-1800.0, seconds_difference(3600.0, 1800.0));
