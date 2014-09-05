@@ -18,7 +18,7 @@ double seconds_difference(double time_1, double time_2)
  */
 double hours_difference(double time_1, double time_2)
 {
-	return (time_2 - time_1) / 3600;
+	return (time_2 - time_1) / 3600.0;
 }
 
 /**
@@ -29,11 +29,11 @@ double hours_difference(double time_1, double time_2)
  */
 double to_float_hours(int hours, int minutes, int seconds)
 {
-	assert(hours > 0);
-	assert(0 <= minutes && minutes < 60);
-	assert(0 <= seconds && seconds < 60);
+	assert(hours >= 0);
+	assert(0 <= minutes && minutes < 60.0);
+	assert(0 <= seconds && seconds < 60.0);
 
-	return hours + minutes / 60 + seconds / 3600;
+	return hours + minutes / 60.0 + seconds / 3600.0;
 }
 
 /**
@@ -51,28 +51,34 @@ double to_24_hour_clock(double hours)
 /**
 	Return the hours part of a time in seconds.
 */
-double get_hours(double seconds) {
-	return trunc(seconds / 3600);
+double get_hours(double seconds) 
+{
+	return trunc(seconds / 3600.0);
 }
 
 /**
 	Return the minutes part of a time in seconds.
 */
-double get_minutes(double seconds) {
-	seconds = fmod(seconds, 3600);
-	return trunc(seconds * 60);
+double get_minutes(double seconds) 
+{
+	double sign = seconds >= 0 ? 1 : -1;
+	seconds = fmod(abs(seconds), 3600.0);
+	return sign * trunc(seconds / 60);
 }
 
 /**
 	Return the seconds part of a time in seconds.
 */
-double get_seconds(double seconds) {
-	seconds = fmod(seconds, 60);
-	return trunc(seconds * 60);
+double get_seconds(double seconds) 
+{
+	double sign = seconds >= 0 ? 1 : -1;
+	seconds = fmod(abs(seconds), 60.0);
+	return sign * trunc(seconds);
 }
 
 double time_to_utc(int utc_offset, double time)
 {
+	return 0;
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -101,6 +107,7 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
+	return 0;
     /*
         Return UTC time in time zone utc_offset.
 
@@ -130,12 +137,19 @@ double time_from_utc(int utc_offset, double time)
     */
 }
 
+unsigned testCounter = 0;
 /*
  * Checks, whether two double variables are equal.
  * Raise assertion error if not. 
  */
 void assertEquals(double expected, double actual) {
-	assert(expected - actual < DBL_EPSILON);
+	bool correct = expected - actual < DBL_EPSILON;
+	testCounter++;
+
+	if (!correct) {
+		printf("Test #%d failed! Expected: %f, Actual: %f\n", testCounter, expected, actual);
+		assert(0);
+	}
 }
 
 
@@ -169,5 +183,9 @@ void main() {
 	assertEquals(3, get_minutes(3800));
 	assertEquals(20, get_seconds(3800));
 
-	system("pause");
+	assertEquals(-1, get_hours(-3800));
+	assertEquals(-3, get_minutes(-3800));
+	assertEquals(-20, get_seconds(-3800));
+
+	//system("pause");
 }
