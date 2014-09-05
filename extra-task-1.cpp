@@ -1,26 +1,10 @@
 #include <assert.h>
 #include <float.h>
+#include <iostream>
 
 double seconds_difference(double time_1, double time_2)
 {
-    // your implementation goes here...
-    
-    /*    
-        Return the number of seconds later that a time in seconds
-        time_2 is than a time in seconds time_1.
-            
-        >>> seconds_difference(1800.0, 3600.0)
-        1800.0
-
-        >>> seconds_difference(3600.0, 1800.0)
-        -1800.0
-
-        >>> seconds_difference(1800.0, 2160.0)
-        360.0
-
-        >>> seconds_difference(1800.0, 1800.0)
-        0.0
-    */
+	return time_2 - time_1;
 }
 
 double hours_difference(double time_1, double time_2)
@@ -177,4 +161,15 @@ double time_from_utc(int utc_offset, double time)
  */
 void assertEquals(double expected, double actual) {
 	assert(expected - actual < DBL_EPSILON);
+}
+
+
+void main() {
+	// test seconds_difference()
+	assertEquals(1800.0, seconds_difference(1800.0, 3600.0));
+	assertEquals(-1800.0, seconds_difference(3600.0, 1800.0));
+	assertEquals(360.0, seconds_difference(1800.0, 2160.0));
+	assertEquals(0.0, seconds_difference(1800.0, 1800.0));
+
+	system("pause");
 }
