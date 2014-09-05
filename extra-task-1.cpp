@@ -1,3 +1,6 @@
+#include <assert.h>
+#include <float.h>
+
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
@@ -166,4 +169,12 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+}
+
+/*
+ * Checks, whether two double variables are equal.
+ * Raise assertion error if not. 
+ */
+void assertEquals(double expected, double actual) {
+	assert(expected - actual < DBL_EPSILON);
 }
