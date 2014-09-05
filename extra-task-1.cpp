@@ -1,6 +1,7 @@
 #include <assert.h>
 #include <float.h>
 #include <iostream>
+#include <cmath>
 
 /**
  * Return the number of seconds later that a time
@@ -35,33 +36,16 @@ double to_float_hours(int hours, int minutes, int seconds)
 	return hours + minutes / 60 + seconds / 3600;
 }
 
+/**
+	Return the hour as seen on a 24-hour clock.
+	Hours is a number of hours since midnight. 
+
+	Precondition: hours >= 0
+*/
 double to_24_hour_clock(double hours)
 {
-    /*
-        hours is a number of hours since midnight. Return the
-        hour as seen on a 24-hour clock.
-
-        Precondition: hours >= 0
-
-        >>> to_24_hour_clock(24)
-        0
-        
-        >>> to_24_hour_clock(48)
-        0
-        
-        >>> to_24_hour_clock(25)
-        1
-        
-        >>> to_24_hour_clock(4)
-        4
-        
-        >>> to_24_hour_clock(28.5)
-        4.5
-        
-        You may wish to inspect various function in <cmath> to work
-        with integer and fractional part of a hours separately.
-        
-    */
+	assert(hours >= 0);
+	return fmod(hours, 24.0);
 }
 
 /*
@@ -170,6 +154,13 @@ void main() {
 	assertEquals(0.25, to_float_hours(0, 15, 0));
 	assertEquals(2.7525, to_float_hours(2, 45, 9));
 	assertEquals(1.01, to_float_hours(1, 0, 36));
+
+	// test to_24_hour_clock()
+	assertEquals(0, to_24_hour_clock(24));
+	assertEquals(0, to_24_hour_clock(48));
+	assertEquals(1, to_24_hour_clock(25));
+	assertEquals(4, to_24_hour_clock(4));
+	assertEquals(4.5, to_24_hour_clock(28.5));
 
 	system("pause");
 }
