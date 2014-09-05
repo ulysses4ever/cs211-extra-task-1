@@ -122,6 +122,21 @@ double to_24_hour_clock(double hours)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
+int get_hours(double time_in_seconds)
+{
+    return int(time_in_seconds / 3600.0);
+}
+
+int get_minutes(double time_in_seconds)
+{
+    return int(time_in_seconds / 60.0);
+}
+
+int get_seconds(double time_in_seconds)
+{
+    return int(time_in_seconds);
+}
+
 double time_to_utc(int utc_offset, double time)
 {
     /*
@@ -215,6 +230,21 @@ int main()
     assert_compare(to_24_hour_clock(25), 1);
     assert_compare(to_24_hour_clock(4), 4);
     assert_compare(to_24_hour_clock(28.5), 4.5);
+
+    //get_hours
+    assert(get_hours(3600.0) == 1);
+    assert(get_hours(60.0) == 0);
+    assert(get_hours(8888.0) == 2);
+
+    //get_minutes
+    assert(get_minutes(3600.0) == 60);
+    assert(get_minutes(60.0) == 1);
+    assert(get_minutes(7260.0) == 121);
+
+    //get_seconds
+    assert(get_seconds(3600.0) == 3600);
+    assert(get_seconds(60.0) == 60);
+    assert(get_seconds(8888.0) == 8888);
 
 
     return 0;
