@@ -1,7 +1,23 @@
+/*
+Kvachev Vsevolod, 2 course, 9th group
+*/
+
+#include <iostream>
+#include <math.h>
+#include <ctime>
+#include <cassert>
+
+using namespace std;
+
+
+bool is_equal(double first, double second)
+{
+    return fabs(first - second) < DBL_EPSILON;
+}
+
 double seconds_difference(double time_1, double time_2)
 {
-    // your implementation goes here...
-    
+    return time_2 - time_1;
     /*    
         Return the number of seconds later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -166,4 +182,26 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+}
+
+void assert_compare(double first, double second)
+{
+    assert(is_equal(first, second));
+}
+
+int main()
+{
+    //is_equal
+    assert(is_equal(1.00001, 1.00001) == true);
+    assert(is_equal(12.00000000000000000001, 12.0) == true);
+    assert(is_equal(-3.045, -3.045001) == false);
+    
+    //seconds_difference
+    assert_compare(seconds_difference(1800.0, 3600.0), 1800.0);
+    assert_compare(seconds_difference(3600.0, 1800.0), -1800.0);
+    assert_compare(seconds_difference(1800.0, 2160.0), 360.0);
+    assert_compare(seconds_difference(1800.0, 1800.0), 0.0);
+
+
+    return 0;
 }
