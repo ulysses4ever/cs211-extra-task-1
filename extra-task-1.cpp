@@ -20,23 +20,19 @@ double hours_difference(double time_1, double time_2)
 	return (time_2 - time_1) / 2;
 }
 
+/**
+ * Return the total number of hours in the specified 
+ * number of hours, minutes, and seconds.
+ *
+ * Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
+ */
 double to_float_hours(int hours, int minutes, int seconds)
 {
-    /*
-        Return the total number of hours in the specified number
-        of hours, minutes, and seconds.
+	assert(hours > 0);
+	assert(0 <= minutes && minutes < 60);
+	assert(0 <= seconds && seconds < 60);
 
-        Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
-
-        >>> to_float_hours(0, 15, 0)
-        0.25
-
-        >>> to_float_hours(2, 45, 9)
-        2.7525
-
-        >>> to_float_hours(1, 0, 36)
-        1.01
-    */
+	return hours + minutes / 60 + seconds / 3600;
 }
 
 double to_24_hour_clock(double hours)
@@ -164,12 +160,16 @@ void main() {
 	assertEquals(360.0, seconds_difference(1800.0, 2160.0));
 	assertEquals(0.0, seconds_difference(1800.0, 1800.0));
 
-
 	// test hours_difference()
 	assertEquals(0.5, hours_difference(1800.0, 3600.0));
 	assertEquals(-0.5, hours_difference(3600.0, 1800.0));
 	assertEquals(0.1, hours_difference(1800.0, 2160.0));
 	assertEquals(0.0, hours_difference(1800.0, 1800.0));
+
+	// test to_float_hours()
+	assertEquals(0.25, to_float_hours(0, 15, 0));
+	assertEquals(2.7525, to_float_hours(2, 45, 9));
+	assertEquals(1.01, to_float_hours(1, 0, 36));
 
 	system("pause");
 }
