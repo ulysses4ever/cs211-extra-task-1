@@ -76,33 +76,13 @@ double get_seconds(double seconds)
 	return sign * trunc(seconds);
 }
 
+/**
+	Return time at UTC+0, where utc_offset 
+	is the number of hours away from UTC+0.
+*/
 double time_to_utc(int utc_offset, double time)
 {
-	return 0;
-    /*
-        Return time at UTC+0, where utc_offset is the number of hours away from
-        UTC+0.
-        You may be interested in:
-        https://en.wikipedia.org/wiki/Coordinated_Universal_Time
-
-        >>> time_to_utc(+0, 12.0)
-        12.0
- 
-        >>> time_to_utc(+1, 12.0)
-        11.0
- 
-        >>> time_to_utc(-1, 12.0)
-        13.0
- 
-        >>> time_to_utc(-11, 18.0)
-        5.0
- 
-        >>> time_to_utc(-1, 0.0)
-        1.0
- 
-        >>> time_to_utc(-1, 23.0)
-        0.0
-    */
+	return to_24_hour_clock(time - utc_offset);
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -138,6 +118,7 @@ double time_from_utc(int utc_offset, double time)
 }
 
 unsigned testCounter = 0;
+
 /*
  * Checks, whether two double variables are equal.
  * Raise assertion error if not. 
@@ -186,6 +167,15 @@ void main() {
 	assertEquals(-1, get_hours(-3800));
 	assertEquals(-3, get_minutes(-3800));
 	assertEquals(-20, get_seconds(-3800));
+
+	// test time_to_utc()
+	assertEquals(12.0, time_to_utc(+0, 12.0));
+	assertEquals(11.0, time_to_utc(+1, 12.0));
+	assertEquals(13.0, time_to_utc(-1, 12.0));
+
+	assertEquals(5.0, time_to_utc(-11, 18.0));
+	assertEquals(1.0, time_to_utc(-1, 0.0));
+	assertEquals(0.0, time_to_utc(-1, 23.0));
 
 	//system("pause");
 }
