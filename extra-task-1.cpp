@@ -1,5 +1,5 @@
 /*
-Kvachev Vsevolod, 2 course, 9th group
+Kvachev Vsevolod Dmitrievich, 2 course, 9th group
 */
 
 #include <iostream>
@@ -38,21 +38,18 @@ double seconds_difference(double time_1, double time_2)
 
 double hours_difference(double time_1, double time_2)
 {
+    return seconds_difference(time_1, time_2) / 3600.0;
     /*
-        Return the number of hours later that a time in seconds
-        time_2 is than a time in seconds time_1.
-            
-        >>> hours_difference(1800.0, 3600.0)
-        0.5
-
-        >>> hours_difference(3600.0, 1800.0)
-        -0.5
-
-        >>> hours_difference(1800.0, 2160.0)
-        0.1
-
-        >>> hours_difference(1800.0, 1800.0)
-        0.0
+    Return the number of hours later that a time in seconds
+    time_2 is than a time in seconds time_1.
+    >>> hours_difference(1800.0, 3600.0)
+    0.5
+    >>> hours_difference(3600.0, 1800.0)
+    -0.5
+    >>> hours_difference(1800.0, 2160.0)
+    0.1
+    >>> hours_difference(1800.0, 1800.0)
+    0.0
     */
 }
 
@@ -201,6 +198,13 @@ int main()
     assert_compare(seconds_difference(3600.0, 1800.0), -1800.0);
     assert_compare(seconds_difference(1800.0, 2160.0), 360.0);
     assert_compare(seconds_difference(1800.0, 1800.0), 0.0);
+    
+    //hours_difference
+    assert_compare(hours_difference(1800.0, 3600.0), 0.5);
+    assert_compare(hours_difference(3600.0, 1800.0), -0.5);
+    assert_compare(hours_difference(1800.0, 2160.0), 0.1);
+    assert_compare(hours_difference(1800.0, 1800.0), 0.0);
+    
 
 
     return 0;
