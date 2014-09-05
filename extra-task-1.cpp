@@ -55,20 +55,25 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
+    assert(minutes >= 0 && minutes < 60 && seconds >= 0 && seconds < 60);
+
+    double ret = hours;
+    //Add minutes, converted to hours
+    ret += minutes / 60.0;
+    //Seconds
+    ret += seconds / 3600.0;
+
+    return ret;
     /*
-        Return the total number of hours in the specified number
-        of hours, minutes, and seconds.
-
-        Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
-
-        >>> to_float_hours(0, 15, 0)
-        0.25
-
-        >>> to_float_hours(2, 45, 9)
-        2.7525
-
-        >>> to_float_hours(1, 0, 36)
-        1.01
+    Return the total number of hours in the specified number
+    of hours, minutes, and seconds.
+    Precondition: 0 <= minutes < 60 and 0 <= seconds < 60
+    >>> to_float_hours(0, 15, 0)
+    0.25
+    >>> to_float_hours(2, 45, 9)
+    2.7525
+    >>> to_float_hours(1, 0, 36)
+    1.01
     */
 }
 
@@ -198,12 +203,17 @@ int main()
     assert_compare(seconds_difference(3600.0, 1800.0), -1800.0);
     assert_compare(seconds_difference(1800.0, 2160.0), 360.0);
     assert_compare(seconds_difference(1800.0, 1800.0), 0.0);
-    
+
     //hours_difference
     assert_compare(hours_difference(1800.0, 3600.0), 0.5);
     assert_compare(hours_difference(3600.0, 1800.0), -0.5);
     assert_compare(hours_difference(1800.0, 2160.0), 0.1);
     assert_compare(hours_difference(1800.0, 1800.0), 0.0);
+    
+    //to_float_hours
+    assert_compare(to_float_hours(0, 15, 0), 0.25);
+    assert_compare(to_float_hours(2, 45, 9), 2.7525);
+    assert_compare(to_float_hours(1, 0, 36), 1.01);
     
 
 
