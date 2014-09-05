@@ -1,7 +1,11 @@
+#include <iostream>
 #include <assert.h>
+
+using namespace std;
 
 double seconds_difference(double time_1, double time_2);
 double hours_difference(double time_1, double time_2);
+double to_float_hours(int hours, int minutes, int seconds);
 
 int main(){
   
@@ -15,7 +19,7 @@ int main(){
   assert(hours_difference(3600.0, 1800.0) == -0.5);
   assert(hours_difference(1800.0, 2160.0) == 0.1);
   assert(hours_difference(1800.0, 1800.0) == 0.0);
-  /*
+  
   assert(to_float_hours(0, 15, 0) == 0.25);
   assert(to_float_hours(2, 45, 9) == 2.7525);
   assert(to_float_hours(1, 0, 36) == 1.01);
@@ -55,28 +59,17 @@ double seconds_difference(double time_1, double time_2){
     return time_2 - time_1;
 }
 
-double hours_difference(double time_1, double time_2)
-{
+double hours_difference(double time_1, double time_2){
+  
     return (time_2 - time_1) / 3600.0;
 }
 
-double to_float_hours(int hours, int minutes, int seconds)
-{
-    /*
-        Return the total number of hours in the specified number
-        of hours, minutes, and seconds.
-
-        Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
-
-        >>> to_float_hours(0, 15, 0)
-        0.25
-
-        >>> to_float_hours(2, 45, 9)
-        2.7525
-
-        >>> to_float_hours(1, 0, 36)
-        1.01
-    */
+double to_float_hours(int hours, int minutes, int seconds){
+  
+  if(minutes < 0 || minutes >= 60) {cerr << "incorect minutes\n"; return -1;}
+  if(seconds < 0 || seconds >= 60) {cerr << "incorect seconds\n"; return -1;}
+  
+  return (3600 * hours + 60 * minutes + seconds) / 3600.0;
 }
 
 double to_24_hour_clock(double hours)
