@@ -105,7 +105,8 @@ void assertEquals(double expected, double actual) {
 	testCounter++;
 
 	if (!correct) {
-		printf("Test #%d failed! Expected: %f, Actual: %f\n", testCounter, expected, actual);
+		const char * format = "Test #%d failed! Expected: %f, Actual: %f\n\0";
+		printf(format, testCounter, expected, actual);
 		assert(0);
 	}
 }
