@@ -115,7 +115,7 @@ void assertEquals(double expected, double actual)
 }
 
 
-void main() 
+int main() 
 {
     // test seconds_difference()
     assertEquals(1800.0, seconds_difference(1800.0, 3600.0));
