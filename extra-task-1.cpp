@@ -2,6 +2,8 @@
 #include <float.h>
 #include <iostream>
 #include <cmath>
+#include <cstdlib>
+#include <cstdio>
 
 /**
     Return the number of seconds later that a time
