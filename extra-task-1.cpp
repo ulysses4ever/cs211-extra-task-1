@@ -102,7 +102,7 @@ unsigned testCounter = 0;
  */
 void assertEquals(double expected, double actual) 
 {
-    bool correct = expected - actual < DBL_EPSILON;
+    bool correct = fabs(expected - actual) < DBL_EPSILON;
     testCounter++;
 
     if (!correct) {
