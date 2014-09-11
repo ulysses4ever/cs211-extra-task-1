@@ -105,7 +105,7 @@ unsigned testCounter = 0;
 void assertEquals(double expected, double actual) 
 {
     bool correct = fabs(expected - actual) < DBL_EPSILON;
-    testCounter++;
+    testCounter += 1;
 
     if (!correct) {
         const char * format = "Test #%d failed! Expected: %f, Actual: %f\n\0";
@@ -123,18 +123,18 @@ int main()
     assertEquals(360.0, seconds_difference(1800.0, 2160.0));
     assertEquals(0.0, seconds_difference(1800.0, 1800.0));
 
-    // test hours_difference()
+    // 5, test hours_difference()
     assertEquals(0.5, hours_difference(1800.0, 3600.0));
     assertEquals(-0.5, hours_difference(3600.0, 1800.0));
     assertEquals(0.1, hours_difference(1800.0, 2160.0));
     assertEquals(0.0, hours_difference(1800.0, 1800.0));
 
-    // test to_float_hours()
+    // 9, test to_float_hours()
     assertEquals(0.25, to_float_hours(0, 15, 0));
     assertEquals(2.7525, to_float_hours(2, 45, 9));
     assertEquals(1.01, to_float_hours(1, 0, 36));
 
-    // test to_24_hour_clock()
+    // 12, test to_24_hour_clock()
     assertEquals(0, to_24_hour_clock(24));
     assertEquals(0, to_24_hour_clock(48));
     assertEquals(1, to_24_hour_clock(25));
@@ -143,7 +143,7 @@ int main()
     assertEquals(4.5, to_24_hour_clock(28.5));
     assertEquals(-1, to_24_hour_clock(-25));
 
-    // test get_hours(), get_minutes(), get_seconds()
+    // 18, test get_hours(), get_minutes(), get_seconds()
     assertEquals(1, get_hours(3800));
     assertEquals(3, get_minutes(3800));
     assertEquals(20, get_seconds(3800));
@@ -152,7 +152,7 @@ int main()
     assertEquals(-3, get_minutes(-3800));
     assertEquals(-20, get_seconds(-3800));
 
-    // test time_to_utc()
+    // 25, test time_to_utc()
     assertEquals(12.0, time_to_utc(+0, 12.0));
     assertEquals(11.0, time_to_utc(+1, 12.0));
     assertEquals(13.0, time_to_utc(-1, 12.0));
@@ -162,7 +162,7 @@ int main()
     assertEquals(0.0, time_to_utc(-1, 23.0));
     assertEquals(0.0, time_to_utc(24 * 5 + 1, 1.0));
 
-    // test time_from_utc()
+    // 32, test time_from_utc()
     assertEquals(12.0, time_from_utc(+0, 12.0));
     assertEquals(13.0, time_from_utc(+1, 12.0));
     assertEquals(11.0, time_from_utc(-1, 12.0));
