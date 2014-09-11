@@ -107,10 +107,10 @@ void assertEquals(double expected, double actual)
 {
     testsCounter += 1;
 
-	if (fabs(expected - actual) < DBL_EPSILON) {
-		testsPassed += 1;
-	} else {
-		const char * format = "Test #%d failed! Expected: %f, Actual: %f\n\n\0";
+    if (fabs(expected - actual) < DBL_EPSILON) {
+        testsPassed += 1;
+    } else {
+        const char * format = "Test #%d failed! Expected: %f, Actual: %f\n\n\0";
         printf(format, testsCounter, expected, actual);
         // assert(0);
     }
@@ -176,6 +176,6 @@ int main()
     assertEquals(0.0, time_from_utc(+1, 23.0));
 
 
-	printf("Tests passed: %d of %d\n", testsPassed, testsCounter);
-	system("pause");
+    printf("Tests passed: %d of %d\n", testsPassed, testsCounter);
+    system("pause");
 }
