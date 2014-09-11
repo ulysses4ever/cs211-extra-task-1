@@ -96,7 +96,8 @@ double time_from_utc(int utc_offset, double time)
     return time_to_utc(-utc_offset, time);
 }
 
-unsigned testCounter = 0;
+unsigned testsCounter = 0;
+unsigned testsPassed = 0;
 
 /**
     Checks, whether two double variables are equal.
@@ -104,13 +105,14 @@ unsigned testCounter = 0;
  */
 void assertEquals(double expected, double actual) 
 {
-    bool correct = fabs(expected - actual) < DBL_EPSILON;
-    testCounter += 1;
+    testsCounter += 1;
 
-    if (!correct) {
-        const char * format = "Test #%d failed! Expected: %f, Actual: %f\n\0";
-        printf(format, testCounter, expected, actual);
-        assert(0);
+	if (fabs(expected - actual) < DBL_EPSILON) {
+		testsPassed += 1;
+	} else {
+		const char * format = "Test #%d failed! Expected: %f, Actual: %f\n\n\0";
+        printf(format, testsCounter, expected, actual);
+        // assert(0);
     }
 }
 
@@ -172,4 +174,8 @@ int main()
     assertEquals(23.0, time_from_utc(-1, 0.0));
     assertEquals(22.0, time_from_utc(-1, 23.0));
     assertEquals(0.0, time_from_utc(+1, 23.0));
+
+
+	printf("Tests passed: %d of %d\n", testsPassed, testsCounter);
+	system("pause");
 }
