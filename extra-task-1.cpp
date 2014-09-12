@@ -62,41 +62,17 @@ UTC+0.
 */
 double time_to_utc(int utc_offset, double time)
 {
-	return fmod(time - utc_offset, 24.0);
-	
+	double res = time - utc_offset;
+	return fmod(res < 0 ? res += 24 : res, 24.0);
 }
 
 /*
 Return UTC time in time zone utc_offset.
-
->>> time_from_utc(+0, 12.0)
-12.0
-
->>> time_from_utc(+1, 12.0)
-13.0
-
->>> time_from_utc(-1, 12.0)
-11.0
-
->>> time_from_utc(+6, 6.0)
-12.0
-
->>> time_from_utc(-7, 6.0)
-23.0
-
->>> time_from_utc(-1, 0.0)
-23.0
-
->>> time_from_utc(-1, 23.0)
-22.0
-
->>> time_from_utc(+1, 23.0)
-0.0
 */
 double time_from_utc(int utc_offset, double time)
 {
-	return 0;
-	
+	double res = time + utc_offset;
+	return fmod(res < 0 ? res += 24 : res, 24.0);	
 }
 
 int main(){
@@ -155,7 +131,16 @@ int main(){
 	cout << "Testing is complete\n";
 
 	cout << endl;
-	
 
+	cout << "Start testing time_from_utc...\n";
+	assert(abs(time_from_utc(+0, 12.0) - 12.0) < DBL_EPSILON);
+	assert(abs(time_from_utc(+1, 12.0) - 13.0) < DBL_EPSILON);
+	assert(abs(time_from_utc(-1, 12.0) - 11.0) < DBL_EPSILON);
+	assert(abs(time_from_utc(+6, 6.0) - 12.0) < DBL_EPSILON);
+	assert(abs(time_from_utc(-7, 6.0) - 23.0) < DBL_EPSILON);
+	assert(abs(time_from_utc(-1, 0.0) - 23.0) < DBL_EPSILON);
+	assert(abs(time_from_utc(-1, 23.0) - 22.0) < DBL_EPSILON);
+	assert(abs(time_from_utc(+1, 23.0) - 0.0) < DBL_EPSILON);
+	cout << "Testing is complete\n";
 	return 0;
 }
