@@ -104,6 +104,23 @@ double to_24_hour_clock(double hours)
     */
 }
 
+double get_hours(double seconds)
+{
+	assert(0 <= seconds);
+	return (int)seconds / 3600;
+}
+
+double get_minutes(double seconds)
+{
+	assert(0 <= seconds);
+	return (int)(seconds - get_hours(seconds) * 3600) / 60;
+}
+
+double get_seconds(double seconds)
+{
+	assert(0 <= seconds);
+	return seconds - get_hours(seconds) * 3600 - get_minutes(seconds) * 60;
+}
 /*
     Implement three functions
         * get_hours
@@ -204,5 +221,9 @@ int main()
 		assert(are_equal(to_24_hour_clock(48), 0));
 		assert(are_equal(to_24_hour_clock(25), 1));
 		assert(are_equal(to_24_hour_clock(4), 4));
-		assert(are_equal(to_24_hour_clock(28.5), 4.5));	
+		assert(are_equal(to_24_hour_clock(28.5), 4.5));
+
+		assert(are_equal(get_hours(3800), 1));
+		assert(are_equal(get_minutes(3800), 3));
+		assert(are_equal(get_seconds(3800), 20));	
 }
