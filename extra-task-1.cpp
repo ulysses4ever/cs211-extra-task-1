@@ -144,6 +144,11 @@ double get_seconds(double seconds)
 
 double time_to_utc(int utc_offset, double time)
 {
+	double CurrentTime = time - utc_offset;
+	if (CurrentTime < 0)
+		return 24 + CurrentTime + ((int)(-CurrentTime) / 24) * 24;
+	else
+		return CurrentTime - ((int)CurrentTime / 24) * 24;
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -225,5 +230,12 @@ int main()
 
 		assert(are_equal(get_hours(3800), 1));
 		assert(are_equal(get_minutes(3800), 3));
-		assert(are_equal(get_seconds(3800), 20));	
+		assert(are_equal(get_seconds(3800), 20));
+
+		assert(are_equal(time_to_utc(+0, 12.0), 12.0));
+		assert(are_equal(time_to_utc(+1, 12.0), 11.0));
+		assert(are_equal(time_to_utc(-1, 12.0), 13.0));
+		assert(are_equal(time_to_utc(-11, 18.0), 5.0));
+		assert(are_equal(time_to_utc(-1, 0.0), 1.0));
+		assert(are_equal(time_to_utc(-1, 23.0), 0.0));
 }
