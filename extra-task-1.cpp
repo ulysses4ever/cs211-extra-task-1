@@ -75,6 +75,8 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
+	assert(hours >= 0);
+	return hours - ((int)hours / 24) * 24;
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -197,4 +199,10 @@ int main()
 		assert(are_equal(to_float_hours(0, 15, 0), 0.25));
 		assert(are_equal(to_float_hours(2, 45, 9), 2.7525));
 		assert(are_equal(to_float_hours(1, 0, 36), 1.01));
+
+		assert(are_equal(to_24_hour_clock(24), 0));
+		assert(are_equal(to_24_hour_clock(48), 0));
+		assert(are_equal(to_24_hour_clock(25), 1));
+		assert(are_equal(to_24_hour_clock(4), 4));
+		assert(are_equal(to_24_hour_clock(28.5), 4.5));	
 }
