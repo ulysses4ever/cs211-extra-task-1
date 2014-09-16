@@ -5,6 +5,11 @@
 #include <cstdlib>
 #include <cstdio>
 
+const double MINUTES_IN_HOUR = 60.0;
+const double SECONDS_IN_MINUTE = 60.0;
+const double SECONDS_IN_HOUR = 3600.0;
+const double HOURS_IN_DAY = 24.0;
+
 /**
     Return the number of seconds later that a time
     in seconds time_2 is than a time in seconds time_1.
@@ -20,7 +25,7 @@ double seconds_difference(double time_1, double time_2)
  */
 double hours_difference(double time_1, double time_2)
 {
-    return (time_2 - time_1) / 3600.0;
+    return (time_2 - time_1) / SECONDS_IN_HOUR;
 }
 
 /**
@@ -32,10 +37,10 @@ double hours_difference(double time_1, double time_2)
 double to_float_hours(int hours, int minutes, int seconds)
 {
     assert(hours >= 0);
-    assert(0 <= minutes && minutes < 60.0);
-    assert(0 <= seconds && seconds < 60.0);
+    assert(0 <= minutes && minutes < MINUTES_IN_HOUR);
+    assert(0 <= seconds && seconds < MINUTES_IN_HOUR);
 
-    return hours + minutes / 60.0 + seconds / 3600.0;
+    return hours + minutes / MINUTES_IN_HOUR + seconds / SECONDS_IN_HOUR;
 }
 
 /**
@@ -47,7 +52,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 double to_24_hour_clock(double hours)
 {
     //assert(hours >= 0);
-    return fmod(hours, 24.0);
+    return fmod(hours, HOURS_IN_DAY);
 }
 
 /**
@@ -55,7 +60,7 @@ double to_24_hour_clock(double hours)
 */
 double get_hours(double seconds) 
 {
-    return trunc(seconds / 3600.0);
+    return trunc(seconds / SECONDS_IN_HOUR);
 }
 
 /**
@@ -64,8 +69,8 @@ double get_hours(double seconds)
 double get_minutes(double seconds) 
 {
     double sign = seconds >= 0 ? 1 : -1;
-    seconds = fmod(abs(seconds), 3600.0);
-    return sign * trunc(seconds / 60);
+    double left_time = fmod(abs(seconds), SECONDS_IN_HOUR);
+    return sign * trunc(left_time / MINUTES_IN_HOUR);
 }
 
 /**
@@ -74,8 +79,8 @@ double get_minutes(double seconds)
 double get_seconds(double seconds) 
 {
     double sign = seconds >= 0 ? 1 : -1;
-    seconds = fmod(abs(seconds), 60.0);
-    return sign * trunc(seconds);
+    double left_time = fmod(abs(seconds), SECONDS_IN_MINUTE);
+    return sign * trunc(left_time);
 }
 
 /**
@@ -85,7 +90,7 @@ double get_seconds(double seconds)
 double time_to_utc(int utc_offset, double time)
 {
     time = to_24_hour_clock(time - utc_offset); // in (-24, 24)
-    return time >= 0 ? time : time + 24;
+    return time >= 0 ? time : time + HOURS_IN_DAY;
 }
 
 /**
@@ -100,8 +105,7 @@ unsigned testsCounter = 0;
 unsigned testsPassed = 0;
 
 /**
-    Checks, whether two double variables are equal.
-    Raise assertion error if not. 
+    Asserts that two doubles are equal.
  */
 void assertEquals(double expected, double actual) 
 {
@@ -112,6 +116,22 @@ void assertEquals(double expected, double actual)
     } else {
         const char * format = "Test #%d failed! Expected: %f, Actual: %f\n\n\0";
         printf(format, testsCounter, expected, actual);
+        // assert(0);
+    }
+}
+
+/**
+    Asserts that two doubles are not equals.
+ */
+void assertNotEquals(double first, double second)
+{
+    testsCounter += 1;
+
+    if (!fabs(first - second) < DBL_EPSILON) {
+        testsPassed += 1;
+    } else {
+        const char * format = "Test #%d failed! First equals to Second: %f\n\n\0";
+        printf(format, testsCounter, first);
         // assert(0);
     }
 }
