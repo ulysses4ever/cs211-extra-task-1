@@ -46,6 +46,10 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
+    assert(hours >= 0 && minutes >= 0 && seconds >= 0);
+    
+    return hours + minutes/60 + seconds/3600;
+    
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
