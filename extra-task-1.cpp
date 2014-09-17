@@ -1,3 +1,10 @@
+#include <cmath>
+#include <iostream>
+#include <assert.h>
+
+using namespace std;
+
+
 double seconds_difference(double time_1, double time_2)
 {
     assert(time_1 >= 0 && time_2 >= 0);
@@ -71,7 +78,7 @@ double to_24_hour_clock(double hours)
 {
     assert(hours >= 0);
     
-    return integer(hours) % 24;
+    return int(hours) % 24;
     
     /*
         hours is a number of hours since midnight. Return the
@@ -100,6 +107,27 @@ double to_24_hour_clock(double hours)
     */
 }
 
+int get_hours(int seconds)
+{
+    assert(seconds >= 0);
+    
+    return to_24_hour_clock(seconds / 3600);
+}
+
+int get_minutes(int seconds)
+{
+    assert(seconds >= 0);
+    
+    return seconds % 3600 / 60;
+}
+
+int get_seconds(int seconds)
+{
+    assert(seconds >= 0);
+    
+    return seconds % 3600 / 60 % 60;
+}
+
 /*
     Implement three functions
         * get_hours
@@ -123,6 +151,8 @@ double to_24_hour_clock(double hours)
 
 double time_to_utc(int utc_offset, double time)
 {
+    
+    return 0;
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -151,6 +181,7 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
+    return 0;
     /*
         Return UTC time in time zone utc_offset.
 
@@ -178,4 +209,10 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+}
+
+int main(int argc, const char * argv[]) {
+    // insert code here...
+    std::cout << "Hello, World!\n";
+    return 0;
 }
