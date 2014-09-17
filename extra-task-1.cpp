@@ -65,8 +65,7 @@ double time_to_utc(int utc_offset, double time){
 //Return UTC time in time zone utc_offset.
 double time_from_utc(int utc_offset, double time){
     
-    double t = to_24_hour_clock(time + utc_offset);
-    return (t < 0.0) ? t + 24 : t;
+    return time_to_utc(-utc_offset, time);
 }
 
 //Returns True if the numbers x, y do not differ by more than eps
