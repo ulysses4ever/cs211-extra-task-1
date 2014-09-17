@@ -1,6 +1,8 @@
 double seconds_difference(double time_1, double time_2)
 {
-    // your implementation goes here...
+    assert(time_1 >= 0 && time_2 >= 0);
+    
+    return time_2 - time_1;
     
     /*    
         Return the number of seconds later that a time in seconds
