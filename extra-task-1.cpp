@@ -6,55 +6,67 @@
 
 using namespace std;
 
+//Return the number of seconds later that a time in seconds
+//        time_2 is than a time in seconds time_1.
 double seconds_difference(double time_1, double time_2){
     
     return time_2 - time_1;
-    
 }
 
+//Return the number of hours later that a time in seconds
+//        time_2 is than a time in seconds time_1.
 double hours_difference(double time_1, double time_2){
     
     return seconds_difference(time_1, time_2) / 3600;
 }
 
+//Return the total number of hours in the specified number
+//        of hours, minutes, and seconds.
 double to_float_hours(int hours, int minutes, int seconds){
     
     return hours + minutes * 1.0 / 60 + seconds * 1.0 / 3600;
 }
 
+//hours is a number of hours since midnight. Return the
+//        hour as seen on a 24-hour clock.
 double to_24_hour_clock(double hours){
     
     return hours - 24 * floor(hours / 24);
 }
 
+//Return number of integer hours in the seconds
 int get_hours(int seconds){
 
     return floor(seconds / 3600);
 }
 
-
+//Return number of integer minutes in the seconds (without hours)
 int get_minutes(int seconds){
     
     return float((seconds - get_hours(seconds) * 3600) / 60);
 }
 
+////Return number of integer seconds (without hours and minutes)
 int get_seconds(int seconds){
     
     return seconds - get_hours(seconds) * 3600 - get_minutes(seconds) * 60;
 }
 
-
+//Return time at UTC+0, where utc_offset is the number of hours away from
+//        UTC+0.
 double time_to_utc(int utc_offset, double time){
     
     return  to_24_hour_clock(time - utc_offset);
 }
 
+//Return UTC time in time zone utc_offset.
 double time_from_utc(int utc_offset, double time){
     
     return  to_24_hour_clock(time + utc_offset);
 
 }
 
+//Returns True if the numbers x, y do not differ by more than eps
 bool are_equal(double x, double y, double eps){
     
     assert(eps > 0);
