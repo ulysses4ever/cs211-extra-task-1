@@ -1,4 +1,6 @@
 #include <iostream>
+#include <assert.h>
+#include <cfloat> // for using DBL_EPSILON
 
 using namespace std;
 
@@ -70,47 +72,86 @@ int get_seconds(int seconds)
 	return seconds % 60;
 }
 
+double to_abs_24_hour_clock(double hours) //вспомогательная функция для двух последующих
+{
+	while (hours < 0)
+	{
+		hours = hours + 24;
+	}
+
+	int int_hours = floor(hours) / 24;
+	return hours - int_hours * 24;
+}
+
 double time_to_utc(int utc_offset, double time)
 {
 	/*
 	Return time at UTC+0, where utc_offset is the number of hours away from
 	UTC+0.
 	*/
-	return to_24_hour_clock(time - utc_offset);
+	return to_abs_24_hour_clock(time - utc_offset);
 }
 
 double time_from_utc(int utc_offset, double time)
 {
-    /*
-        Return UTC time in time zone utc_offset.
+	//Return UTC time in time zone utc_offset.
 
-        >>> time_from_utc(+0, 12.0)
-        12.0
- 
-        >>> time_from_utc(+1, 12.0)
-        13.0
- 
-        >>> time_from_utc(-1, 12.0)
-        11.0
- 
-        >>> time_from_utc(+6, 6.0)
-        12.0
- 
-        >>> time_from_utc(-7, 6.0)
-        23.0
- 
-        >>> time_from_utc(-1, 0.0)
-        23.0
- 
-        >>> time_from_utc(-1, 23.0)
-        22.0
- 
-        >>> time_from_utc(+1, 23.0)
-        0.0
-    */
+	return to_abs_24_hour_clock(time + utc_offset);
+}
+
+bool compare_double(double x, double y)
+{
+	return fabs(x - y) < DBL_EPSILON;
 }
 
 int main()
-{	
+{   
+	//tests for seconds_difference
+	assert(compare_double(seconds_difference(1800.0, 3600.0), 1800.0) && "test 1");
+	assert(compare_double(seconds_difference(3600.0, 1800.0), -1800.0) && "test 2");
+	assert(compare_double(seconds_difference(1800.0, 2160.0), 360.0) && "test 3");
+	assert(compare_double(seconds_difference(1800.0, 1800.0), 0.0) && "test 4");
+	
+	//tests for hours_difference
+	assert(compare_double(hours_difference(1800.0, 3600.0), 0.5) && "test 5");
+	assert(compare_double(hours_difference(3600.0, 1800.0), -0.5) && "test 6");
+	assert(compare_double(hours_difference(1800.0, 2160.0), 0.1) && "test 7");
+	assert(compare_double(hours_difference(1800.0, 1800.0), 0.0) && "test 8");
+
+	//tests for to_float_hours
+	assert(compare_double(to_float_hours(0, 15, 0), 0.25) && "test 9");
+	assert(compare_double(to_float_hours(2, 45, 9), 2.7525) && "test 10");
+	assert(compare_double(to_float_hours(1, 0, 36), 1.01) && "test 11");
+
+	//tests for to_24_hour_clock
+	assert(compare_double(to_24_hour_clock(24), 0) && "test 12");
+	assert(compare_double(to_24_hour_clock(48), 0) && "test 13");
+	assert(compare_double(to_24_hour_clock(25), 1) && "test 14");
+	assert(compare_double(to_24_hour_clock(4), 4) && "test 15");
+	assert(compare_double(to_24_hour_clock(28.5), 4.5) && "test 16");
+
+	//tests for "three functions"
+	assert((get_hours(3800) == 1) && "test 17");
+	assert((get_minutes(3800) == 3) && "test 18");
+	assert((get_seconds(3800) == 20) && "test 19");
+
+	//tests for time_to_utc
+	assert(compare_double(time_to_utc(+0, 12.0), 12.0) && "test 20");
+	assert(compare_double(time_to_utc(+1, 12.0), 11.0) && "test 21");
+	assert(compare_double(time_to_utc(-1, 12.0), 13.0) && "test 22");
+	assert(compare_double(time_to_utc(-11, 18.0), 5.0) && "test 23");
+	assert(compare_double(time_to_utc(-1, 0.0), 1.0) && "test 24");
+	assert(compare_double(time_to_utc(-1, 23.0), 0.0) && "test 25");
+
+	//tests for time_from_utc
+	assert(compare_double(time_from_utc(+0, 12.0), 12.0) && "test 26");
+	assert(compare_double(time_from_utc(+1, 12.0), 13.0) && "test 27");
+	assert(compare_double(time_from_utc(-1, 12.0), 11.0) && "test 28");
+	assert(compare_double(time_from_utc(+6, 6.0), 12.0) && "test 29");
+	assert(compare_double(time_from_utc(-7, 6.0), 23.0) && "test 30");
+	assert(compare_double(time_from_utc(-1, 0.0), 23.0) && "test 31");
+	assert(compare_double(time_from_utc(-1, 23.0), 22.0) && "test 32");
+	assert(compare_double(time_from_utc(+1, 23.0), 0.0) && "test 33");
+
 	system("pause");
 }
