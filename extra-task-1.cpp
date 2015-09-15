@@ -98,6 +98,21 @@ double to_24_hour_clock(double hours)
     */
 }
 
+int get_hours(int time)
+{
+	return time / 3600;
+}
+
+int get_minutes(int time)
+{
+	return time / 60 - 60 * get_hours(time);
+}
+
+int get_seconds(int time)
+{
+	return time - (3600 * get_hours(time) + 60 * get_minutes(time));
+}
+
 /*
     Implement three functions
         * get_hours
