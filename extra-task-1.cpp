@@ -3,6 +3,7 @@
 
 double seconds_difference(double time_1, double time_2)
 {
+	assert(time_1 >= 0 & time_2 >= 0);
 	return time_2 - time_1;
     
     /*    
@@ -25,6 +26,7 @@ double seconds_difference(double time_1, double time_2)
 
 double hours_difference(double time_1, double time_2)
 {
+	assert(time_1 >= 0 & time_2 >= 0);
 	return (time_2 - time_1) / 3600.0;
 
     /*
@@ -47,6 +49,7 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
+	assert(hours >= 0 & minutes >= 0 & seconds >= 0);
 	return hours + minutes / 60.0 + seconds / 3600.0;
 
     /*
@@ -100,16 +103,19 @@ double to_24_hour_clock(double hours)
 
 int get_hours(int time)
 {
+	assert(time >= 0);
 	return time / 3600;
 }
 
 int get_minutes(int time)
 {
+	assert(time >= 0);
 	return time / 60 - 60 * get_hours(time);
 }
 
 int get_seconds(int time)
 {
+	assert(time >= 0);
 	return time - (3600 * get_hours(time) + 60 * get_minutes(time));
 }
 
