@@ -51,7 +51,7 @@ Implement three functions
 * get_minutes
 * get_seconds
 They are used to determine the hours part, minutes part and seconds part
-of a time in seconds. E.g.:
+of a time in seconds.
 
 In other words, if 3800 seconds have elapsed since midnight,
 it is currently 01:03:20 (hh:mm:ss).
@@ -72,7 +72,7 @@ int get_seconds(int seconds)
 	return seconds % 60;
 }
 
-double to_abs_24_hour_clock(double hours) //вспомогательная функция для двух последующих
+double to_abs_24_hour_clock(double hours) //function to_24_hour_clock with negative
 {
 	while (hours < 0)
 	{
