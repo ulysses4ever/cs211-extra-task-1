@@ -116,24 +116,24 @@ int main() {
 	assert((get_seconds(3800) - 20.0) < DBL_EPSILON && "test-19");
 	cout << "get_seconds passed" << endl;
 
-	assert((time_to_utc(+0, 12) - 12.0) < DBL_EPSILON);
-	assert((time_to_utc(+1, 12) - 11.0) < DBL_EPSILON);
-	assert((time_to_utc(+1, 9.3) - 8.3) < DBL_EPSILON);
-	assert((time_to_utc(+12, 12)) < DBL_EPSILON);
-	assert((time_to_utc(-1, 12) - 13.0) < DBL_EPSILON);
-	assert((time_to_utc(-11, 18) - 5.0) < DBL_EPSILON);
-	assert((time_to_utc(-1, 0.0) - 1.0) < DBL_EPSILON);
-	assert((time_to_utc(-1, 23.0)) < DBL_EPSILON);
+	assert((time_to_utc(+0, 12) - 12.0) < DBL_EPSILON && "test-20");
+	assert((time_to_utc(+1, 12) - 11.0) < DBL_EPSILON && "test-21");
+	assert((time_to_utc(+1, 9.3) - 8.3) < DBL_EPSILON && "test-22");
+	assert((time_to_utc(+12, 12)) < DBL_EPSILON && "test-23");
+	assert((time_to_utc(-1, 12) - 13.0) < DBL_EPSILON && "test-24");
+	assert((time_to_utc(-11, 18) - 5.0) < DBL_EPSILON && "test-25");
+	assert((time_to_utc(-1, 0.0) - 1.0) < DBL_EPSILON && "test-26");
+	assert((time_to_utc(-1, 23.0)) < DBL_EPSILON && "test-27");
 	cout << "time_to_utc passed" << endl;
 
-	assert((time_from_utc(+0, 12.0) - 12.0)< DBL_EPSILON);
-	assert((time_from_utc(+1, 12.0) - 13.0)< DBL_EPSILON);
-	assert((time_from_utc(-1, 12.0) - 11.0)< DBL_EPSILON);
-	assert((time_from_utc(+6, 6.0) - 12.0)< DBL_EPSILON);
-	assert((time_from_utc(-7, 6.0) - 23.0)< DBL_EPSILON);
-	assert((time_from_utc(-1, 0.0) - 23.0)< DBL_EPSILON);
-	assert((time_from_utc(-1, 23.0) - 22.0)< DBL_EPSILON);
-	assert((time_from_utc(+1, 23.0)) < DBL_EPSILON);
+	assert((time_from_utc(+0, 12.0) - 12.0)< DBL_EPSILON && "test-27");
+	assert((time_from_utc(+1, 12.0) - 13.0)< DBL_EPSILON && "test-28");
+	assert((time_from_utc(-1, 12.0) - 11.0)< DBL_EPSILON && "test-29");
+	assert((time_from_utc(+6, 6.0) - 12.0)< DBL_EPSILON && "test-30");
+	assert((time_from_utc(-7, 6.0) - 23.0)< DBL_EPSILON && "test-31");
+	assert((time_from_utc(-1, 0.0) - 23.0)< DBL_EPSILON && "test-32");
+	assert((time_from_utc(-1, 23.0) - 22.0)< DBL_EPSILON && "test-33");
+	assert((time_from_utc(+1, 23.0)) < DBL_EPSILON && "test-34");
 	cout << "time_from_utc passed" << endl;
 
 	cout << "all tests were clearly passed" << endl;
