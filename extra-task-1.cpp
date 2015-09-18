@@ -70,6 +70,8 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
+	double int_part;
+	return modf(hours, int_part) + int_part % 24;
 
     /*
         hours is a number of hours since midnight. Return the
