@@ -36,34 +36,17 @@ double to_float_hours(int hours, int minutes, int seconds)
   
 }
 
-//double to_24_hour_clock(double hours)
-//{
+double to_24_hour_clock(double hours)
+{
     /*
         hours is a number of hours since midnight. Return the
-        hour as seen on a 24-hour clock.
-
-        Precondition: hours >= 0
-
-        >>> to_24_hour_clock(24)
-        0
-        
-        >>> to_24_hour_clock(48)
-        0
-        
-        >>> to_24_hour_clock(25)
-        1
-        
-        >>> to_24_hour_clock(4)
-        4
-        
-        >>> to_24_hour_clock(28.5)
-        4.5
-        
-        You may wish to inspect various function in <cmath> to work
-        with integer and fractional part of a hours separately.
-        
+        hour as seen on a 24-hour clock.       
     */
-//}
+
+	assert(hours >= 0);
+	int hhours = floor(hours) / 24;
+	return hours - hhours * 24;
+}
 
 /*
     Implement three functions
@@ -158,8 +141,16 @@ int main()
 	assert(hours_difference(3600.0, 1800.0) == -0.5);
 	assert(hours_difference(1800.0, 2160.0) == 0.1);
 	assert(hours_difference(1800.0, 1800.0) == 0.0);
+	
 	//to float hours
 	assert(to_float_hours(0, 15, 0) == 0.25);
 	assert(to_float_hours(2, 45, 9) == 2.7525);
 	assert(to_float_hours(1, 0, 36) == 1.01);
+	
+	//to24hour_clock
+	assert(to_24_hour_clock(24) == 0);
+	assert(to_24_hour_clock(48) == 0);
+	assert(to_24_hour_clock(25) == 1);
+	assert(to_24_hour_clock(4) == 4);
+	assert(to_24_hour_clock(28.5) == 4.5);
 }
