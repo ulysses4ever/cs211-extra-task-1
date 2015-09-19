@@ -1,25 +1,26 @@
+#include <cassert>
+
+using namespace std;
+
+// Returns the number of seconds later that a time in seconds
+// time_2 is than a time in seconds time_1.
 double seconds_difference(double time_1, double time_2)
 {
-    // your implementation goes here...
-    
-    /*    
-        Return the number of seconds later that a time in seconds
-        time_2 is than a time in seconds time_1.
-            
-        >>> seconds_difference(1800.0, 3600.0)
-        1800.0
-
-        >>> seconds_difference(3600.0, 1800.0)
-        -1800.0
-
-        >>> seconds_difference(1800.0, 2160.0)
-        360.0
-
-        >>> seconds_difference(1800.0, 1800.0)
-        0.0
-    */
+	return(time_2 - time_1);
 }
 
+int main()
+{
+	assert(seconds_difference(1800.0, 3600.0) == 1800.0, "seconds_difference: test #1");
+	assert(seconds_difference(3600.0, 1800.0) == -1800.0, "seconds_difference: test #2");
+	assert(seconds_difference(1800.0, 2160.0) == 360.0, "seconds_difference: test #3");
+	assert(seconds_difference(1800.0, 1800.0) == 0.0, "seconds_difference: test #4");
+
+
+}
+
+
+/* 
 double hours_difference(double time_1, double time_2)
 {
     /*
@@ -38,10 +39,10 @@ double hours_difference(double time_1, double time_2)
         >>> hours_difference(1800.0, 1800.0)
         0.0
     */
-}
+//}
 
-double to_float_hours(int hours, int minutes, int seconds)
-{
+//double to_float_hours(int hours, int minutes, int seconds)
+//{
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
@@ -57,10 +58,10 @@ double to_float_hours(int hours, int minutes, int seconds)
         >>> to_float_hours(1, 0, 36)
         1.01
     */
-}
+//}
 
-double to_24_hour_clock(double hours)
-{
+//double to_24_hour_clock(double hours)
+//{
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -86,7 +87,7 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
-}
+//}
 
 /*
     Implement three functions
@@ -109,8 +110,8 @@ double to_24_hour_clock(double hours)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
-double time_to_utc(int utc_offset, double time)
-{
+//double time_to_utc(int utc_offset, double time)
+//{
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -135,10 +136,10 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
-}
+//}
 
-double time_from_utc(int utc_offset, double time)
-{
+//double time_from_utc(int utc_offset, double time)
+//{
     /*
         Return UTC time in time zone utc_offset.
 
@@ -166,4 +167,5 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
-}
+//}*/  
+
