@@ -89,6 +89,18 @@ double to_24_hour_clock(double hours)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
+int get_hours(int seconds){
+	return seconds/3600;
+}
+
+int get_minutes(int seconds){
+	return (seconds - get_hours(seconds)*3600) / 60;
+}
+
+int get_seconds(int seconds){
+	return seconds - get_hours(seconds)*3600 - get_minutes(seconds)*60;
+}
+
 double time_to_utc(int utc_offset, double time)
 {
     /*
@@ -177,6 +189,10 @@ int main(){
 	assert("Test 14" && equals( to_24_hour_clock(4), 4.0));
 	assert("Test 15" && equals( to_24_hour_clock(28.5), 4.5));
 
+	// get_hours(), get_minutes(), get_seconds()
+	assert("Test 16" && (get_hours(3800) == 1));
+	assert("Test 17" && (get_minutes(3800) == 3));
+	assert("Test 18" && (get_seconds(3800) == 20));
 	cout << "Tests are completed successfully" << endl;
 
 	return 0;
