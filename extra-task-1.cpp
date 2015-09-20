@@ -44,8 +44,7 @@ double to_24_hour_clock(double hours)
     */
 
 	assert(hours >= 0);
-	int hhours = floor(hours) / 24;
-	return hours - hhours * 24;
+	return fmod(hours, 24.0); //решение с fmod
 }
 
 /*
@@ -86,7 +85,7 @@ double time_from_utc(int utc_offset, double time)
     /*
         Return UTC time in time zone utc_offset.   */
 		assert(time >= 0);
-		return (time + utc_offset < 0) ? time + utc_offset + 24 : fmod(time + utc_offset, 24);
+		return (time + utc_offset < 0) ? (time + utc_offset + 24) : fmod(time + utc_offset, 24);
 }
        
 
@@ -115,6 +114,8 @@ int main()
 	assert(to_24_hour_clock(25) == 1);
 	assert(to_24_hour_clock(4) == 4);
 	assert(to_24_hour_clock(28.5) == 4.5);
+	assert(to_24_hour_clock(9) == 9);
+	assert(to_24_hour_clock(28) == 4);
 	
 	//time_to_utc
 	assert(time_to_utc(+0, 12.0) == 12.0);
