@@ -12,22 +12,7 @@ double seconds_difference(double time_1, double time_2)
 
 double hours_difference(double time_1, double time_2)
 {
-    /*
-        Return the number of hours later that a time in seconds
-        time_2 is than a time in seconds time_1.
-            
-        >>> hours_difference(1800.0, 3600.0)
-        0.5
-
-        >>> hours_difference(3600.0, 1800.0)
-        -0.5
-
-        >>> hours_difference(1800.0, 2160.0)
-        0.1
-
-        >>> hours_difference(1800.0, 1800.0)
-        0.0
-    */
+    return (time_2 - time_1)/3600;
 }
 
 double to_float_hours(int hours, int minutes, int seconds)
@@ -167,7 +152,14 @@ int main(){
 	assert("Test 0" && equals(seconds_difference(1800.0, 3600.0), 1800.0));
 	assert("Test 1" && equals(seconds_difference(3600.0, 1800.0), -1800.0));
 	assert("Test 2" && equals(seconds_difference(1800.0, 2160.0), 360.0));
-	assert("Test 3" && equals(seconds_difference(1800.0, 1800.0), .0));
+	assert("Test 3" && equals(seconds_difference(1800.0, 1800.0), 0.0));
+
+
+	// hours_difference()
+	assert("Test 4" && equals(hours_difference(1800.0, 3600.0), 0.5));
+	assert("Test 5" && equals(hours_difference(3600.0, 1800.0), -0.5));
+	assert("Test 6" && equals(hours_difference(1800.0, 2160.0), 0.1));
+	assert("Test 7" && equals(hours_difference(1800.0, 1800.0), 0.0));
 
 	cout << "Tests are completed successfully" << endl;
 
