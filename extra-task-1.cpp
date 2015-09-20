@@ -23,14 +23,6 @@ double to_float_hours(int hours, int minutes, int seconds)
 
         Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
 
-        >>> to_float_hours(0, 15, 0)
-        0.25
-
-        >>> to_float_hours(2, 45, 9)
-        2.7525
-
-        >>> to_float_hours(1, 0, 36)
-        1.01
     */
     assert((minutes >= 0) && (minutes < 60));
     assert((seconds >= 0) && (seconds < 60));
@@ -45,25 +37,6 @@ double to_24_hour_clock(double hours)
         hour as seen on a 24-hour clock.
 
         Precondition: hours >= 0
-
-        >>> to_24_hour_clock(24)
-        0
-        
-        >>> to_24_hour_clock(48)
-        0
-        
-        >>> to_24_hour_clock(25)
-        1
-        
-        >>> to_24_hour_clock(4)
-        4
-        
-        >>> to_24_hour_clock(28.5)
-        4.5
-        
-        You may wish to inspect various function in <cmath> to work
-        with integer and fractional part of a hours separately.
-        
     */
 	assert(hours >= 0);
 	return fmod(hours, 24);
@@ -88,30 +61,7 @@ int get_seconds(int time){
 
 double time_to_utc(int utc_offset, double time)
 {
-    /*
-        Return time at UTC+0, where utc_offset is the number of hours away from
-        UTC+0.
-        You may be interested in:
-        https://en.wikipedia.org/wiki/Coordinated_Universal_Time
-
-        >>> time_to_utc(+0, 12.0)
-        12.0
- 
-        >>> time_to_utc(+1, 12.0)
-        11.0
- 
-        >>> time_to_utc(-1, 12.0)
-        13.0
- 
-        >>> time_to_utc(-11, 18.0)
-        5.0
- 
-        >>> time_to_utc(-1, 0.0)
-        1.0
- 
-        >>> time_to_utc(-1, 23.0)
-        0.0
-    */
+        //Return time at UTC+0, where utc_offset is the number of hours away from UTC+0.
 	assert((utc_offset >= -12) && ((utc_offset <= 14)));
 	return to_24_hour_clock(time + 24 - utc_offset);
 
@@ -119,33 +69,10 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
-    /*
-        Return UTC time in time zone utc_offset.
-
-        >>> time_from_utc(+0, 12.0)
-        12.0
- 
-        >>> time_from_utc(+1, 12.0)
-        13.0
- 
-        >>> time_from_utc(-1, 12.0)
-        11.0
- 
-        >>> time_from_utc(+6, 6.0)
-        12.0
- 
-        >>> time_from_utc(-7, 6.0)
-        23.0
- 
-        >>> time_from_utc(-1, 0.0)
-        23.0
- 
-        >>> time_from_utc(-1, 23.0)
-        22.0
- 
-        >>> time_from_utc(+1, 23.0)
-        0.0
-    */
+    
+        //Return UTC time in time zone utc_offset.
+	assert((utc_offset >= -12) && ((utc_offset <= 14)));
+	return to_24_hour_clock(time + 24 + utc_offset);
 }
 
 bool equals(double d1, double d2){
@@ -194,6 +121,15 @@ int main(){
 	assert("Test 23" && equals(time_to_utc(-1, 0.0), 1.0));
 	assert("Test 24" && equals(time_to_utc(-1, 23.0), 0.0));
 
+	// time_from_utc()
+	assert("Test 25" && equals(time_from_utc(+0, 12.0), 12.0));
+	assert("Test 26" && equals(time_from_utc(+1, 12.0), 13.0));
+	assert("Test 27" && equals(time_from_utc(-1, 12.0), 11.0));
+	assert("Test 28" && equals(time_from_utc(+6, 6.0), 12.0));
+	assert("Test 29" && equals(time_from_utc(-7, 6.0), 23.0));
+	assert("Test 30" && equals(time_from_utc(-1, 0.0), 23.0));
+	assert("Test 31" && equals(time_from_utc(-1, 23.0), 22.0));
+	assert("Test 32" && equals(time_from_utc(+1, 23.0), 0.0));
 
 	cout << "Tests are completed successfully" << endl;
 
