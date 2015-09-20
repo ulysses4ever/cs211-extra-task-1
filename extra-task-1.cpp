@@ -73,14 +73,14 @@ double time_to_utc(int utc_offset, double time)
 {
 	assert((0.0 <= time) && (time <= 24.0));
 
-	return (double)((int)(time - utc_offset) % 24);
+	return ((int)(time - utc_offset) % 24) + (time - trunc(time));
 }
 
 double time_from_utc(int utc_offset, double time)
 {
 	assert((0.0 <= time) && (time <= 24.0));
 
-	return (double)((24 + (int)(time + utc_offset)) % 24);
+	return (int)(24 + (time + utc_offset)) % 24 + (time - trunc(time));
 }
 
 int main()
@@ -125,6 +125,9 @@ int main()
 	assert(AreEqual(time_to_utc(-1, 0.0), 1.0));
 	assert(AreEqual(time_to_utc(-1, 23.0), 0.0));
 
+	assert(AreEqual(time_to_utc(-1, 12.3), 13.3));
+	assert(AreEqual(time_to_utc(+1, 12.3), 11.3));
+
 	// Tests for time_from_utc
 	assert(AreEqual(time_from_utc(+0, 12.0), 12.0));
 	assert(AreEqual(time_from_utc(+1, 12.0), 13.0));
@@ -134,4 +137,7 @@ int main()
 	assert(AreEqual(time_from_utc(-1, 0.0), 23.0));
 	assert(AreEqual(time_from_utc(-1, 23.0), 22.0));
     assert(AreEqual(time_from_utc(+1, 23.0), 0.0));
+
+	assert(AreEqual(time_from_utc(-7, 6.2), 23.2));
+	assert(AreEqual(time_from_utc(+6, 6.3), 12.3));
 }
