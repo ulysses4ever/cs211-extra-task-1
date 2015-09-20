@@ -152,7 +152,7 @@ it is currently 01:03:20 (hh:mm:ss).
 
 double time_to_utc(int utc_offset, double time)
 {
-	return 0.0;
+	return (double)((int)(time - utc_offset) % 24);
 	/*
 	Return time at UTC+0, where utc_offset is the number of hours away from
 	UTC+0.
@@ -245,4 +245,11 @@ int main()
 	assert(AreEqual(get_seconds(1000000), 40));
 	assert(AreEqual(get_minutes(1000000), 46));
 	assert(AreEqual(get_hours(1000000), 13));
+
+	assert(AreEqual(time_to_utc(+0, 12.0), 12.0));
+	assert(AreEqual(time_to_utc(+1, 12.0), 11.0));
+	assert(AreEqual(time_to_utc(-1, 12.0), 13.0));
+	assert(AreEqual(time_to_utc(-11, 18.0), 5.0));
+	assert(AreEqual(time_to_utc(-1, 0.0), 1.0));
+	assert(AreEqual(time_to_utc(-1, 23.0), 0.0));
 }
