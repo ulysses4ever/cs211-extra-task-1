@@ -17,7 +17,7 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
-    /*
+	/*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
 
@@ -32,6 +32,10 @@ double to_float_hours(int hours, int minutes, int seconds)
         >>> to_float_hours(1, 0, 36)
         1.01
     */
+    assert((minutes >= 0) && (minutes <60));
+    assert((seconds >= 0) && (seconds <60));
+
+    return hours + minutes / 60.0 + seconds / 3600.0;
 }
 
 double to_24_hour_clock(double hours)
@@ -148,18 +152,22 @@ bool equals(double d1, double d2){
 }
 
 int main(){
-	//seconds_difference()
+	// seconds_difference()
 	assert("Test 0" && equals(seconds_difference(1800.0, 3600.0), 1800.0));
 	assert("Test 1" && equals(seconds_difference(3600.0, 1800.0), -1800.0));
 	assert("Test 2" && equals(seconds_difference(1800.0, 2160.0), 360.0));
 	assert("Test 3" && equals(seconds_difference(1800.0, 1800.0), 0.0));
-
 
 	// hours_difference()
 	assert("Test 4" && equals(hours_difference(1800.0, 3600.0), 0.5));
 	assert("Test 5" && equals(hours_difference(3600.0, 1800.0), -0.5));
 	assert("Test 6" && equals(hours_difference(1800.0, 2160.0), 0.1));
 	assert("Test 7" && equals(hours_difference(1800.0, 1800.0), 0.0));
+
+	// to_float_hours()
+	assert("Test 8" && equals(to_float_hours(0, 15, 0), 0.25));
+	assert("Test 9" && equals(to_float_hours(2, 45, 9), 2.7525));
+	assert("Test 10" && equals(to_float_hours(1, 0, 36), 1.01));
 
 	cout << "Tests are completed successfully" << endl;
 
