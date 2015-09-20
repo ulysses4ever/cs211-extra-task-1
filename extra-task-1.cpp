@@ -65,40 +65,25 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
-	return fmod(hours, 24);;
+	assert(hours >= 0);
+	return fmod(hours, 24);
 }
 
-/*
-    Implement three functions
-        * get_hours
-        * get_minutes
-        * get_seconds
-    They are used to determine the hours part, minutes part and seconds part 
-    of a time in seconds. E.g.:
 
-    >>> get_hours(3800)
-    1
-
-    >>> get_minutes(3800)
-    3
-
-    >>> get_seconds(3800)
-    20
-
-    In other words, if 3800 seconds have elapsed since midnight, 
-    it is currently 01:03:20 (hh:mm:ss).
-*/
-
-int get_hours(int seconds){
-	return seconds/3600;
+int get_hours(int time){
+	assert(time >= 0);
+	return time/3600;
 }
 
-int get_minutes(int seconds){
-	return (seconds - get_hours(seconds)*3600) / 60;
+int get_minutes(int time){
+	assert(time >= 0);
+	return (time - get_hours(time)*3600) / 60;
 }
 
-int get_seconds(int seconds){
-	return seconds - get_hours(seconds)*3600 - get_minutes(seconds)*60;
+int get_seconds(int time){
+	assert(time>= 0);
+	//it doesn't looks good
+	return time - get_hours(time)*3600 - get_minutes(time)*60;
 }
 
 double time_to_utc(int utc_offset, double time)
@@ -127,6 +112,9 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
+	assert((utc_offset >= -12) && ((utc_offset <= 14)));
+	return to_24_hour_clock(time + 24 - utc_offset);
+
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -189,10 +177,24 @@ int main(){
 	assert("Test 14" && equals( to_24_hour_clock(4), 4.0));
 	assert("Test 15" && equals( to_24_hour_clock(28.5), 4.5));
 
-	// get_hours(), get_minutes(), get_seconds()
+	// get_hours()
 	assert("Test 16" && (get_hours(3800) == 1));
+
+	// get_minutes()
 	assert("Test 17" && (get_minutes(3800) == 3));
+
+	// get_seconds()
 	assert("Test 18" && (get_seconds(3800) == 20));
+
+	// time_to_utc()
+	assert("Test 19" && equals(time_to_utc(+0, 12.0), 12.0));
+	assert("Test 20" && equals(time_to_utc(+1, 12.0), 11.0));
+	assert("Test 21" && equals(time_to_utc(-1, 12.0), 13.0));
+	assert("Test 22" && equals(time_to_utc(-11, 18.0), 5.0));
+	assert("Test 23" && equals(time_to_utc(-1, 0.0), 1.0));
+	assert("Test 24" && equals(time_to_utc(-1, 23.0), 0.0));
+
+
 	cout << "Tests are completed successfully" << endl;
 
 	return 0;
