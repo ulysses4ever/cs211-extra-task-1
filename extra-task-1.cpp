@@ -62,6 +62,8 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
+    int t = ceil(24 * 60);
+    return << t % 1440 / 60.0;
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
