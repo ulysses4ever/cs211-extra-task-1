@@ -1,4 +1,5 @@
 #include <cassert>
+#include <cmath>
 
 using namespace std;
 
@@ -16,8 +17,8 @@ double hours_difference(double time_1, double time_2)
 	return((time_2 - time_1) / 3600.0);
 	}
 
-//Return the total number of hours in the specified number
-//of hours, minutes, and seconds.
+// Returns the total number of hours in the specified number
+// of hours, minutes, and seconds.
 double to_float_hours(int hours, int minutes, int seconds)
 {
 
@@ -25,6 +26,16 @@ double to_float_hours(int hours, int minutes, int seconds)
 	assert((minutes >= 0) && (minutes <= 60), "TO_FLOAT_HOURS: minutes out of range");
 
 	return(hours + (double)minutes / 60 + (double)seconds / 3600);
+}
+
+// Returns total number of hours since midnight 
+// as seen on a 24-hour clock
+double to_24_hour_clock(double hours)
+{
+
+	assert(hours >= 0, "TO_24_HOUR_CLOCK: hours out of range");
+
+	return(int)trunc(hours) % 24 + hours - trunc(hours);
 }
 
 int main()
@@ -46,6 +57,13 @@ int main()
 	assert(to_float_hours(0, 15, 0) == 0.25, "to_float_hours: test #1");
 	assert(to_float_hours(2, 45, 9) == 2.7525, "to_float_hours: test #2");
 	assert(to_float_hours(1, 0, 36) == 1.01, "to_float_hours: test #3");
+
+	//TO_24_HOUR_CLOCK TESTS:
+	assert(to_24_hour_clock(24) == 0, "to_24_hour_clock: test #1");
+	assert(to_24_hour_clock(48) == 0, "to_24_hour_clock: test #2");
+	assert(to_24_hour_clock(25) == 1, "to_24_hour_clock: test #3");
+	assert(to_24_hour_clock(4) == 4, "to_24_hour_clock: test #4");
+	assert(to_24_hour_clock(28.5) == 4.5, "to_24_hour_clock: test #5");
 }
 
 
@@ -60,24 +78,7 @@ int main()
 /* 
 
 
-//double to_float_hours(int hours, int minutes, int seconds)
-//{
-    /*
-        Return the total number of hours in the specified number
-        of hours, minutes, and seconds.
 
-        Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
-
-        >>> to_float_hours(0, 15, 0)
-        0.25
-
-        >>> to_float_hours(2, 45, 9)
-        2.7525
-
-        >>> to_float_hours(1, 0, 36)
-        1.01
-    */
-//}
 
 //double to_24_hour_clock(double hours)
 //{
