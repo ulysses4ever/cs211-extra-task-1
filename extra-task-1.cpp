@@ -38,6 +38,13 @@ double to_24_hour_clock(double hours)
 	return(int)trunc(hours) % 24 + hours - trunc(hours);
 }
 
+// Returns hour part of a time in seconds
+int get_hours(int seconds)
+{
+	assert(seconds >= 0, "GET_HOURS: seconds out of range");
+	return(seconds / 3600);
+}
+
 int main()
 {
 
@@ -64,6 +71,12 @@ int main()
 	assert(to_24_hour_clock(25) == 1, "to_24_hour_clock: test #3");
 	assert(to_24_hour_clock(4) == 4, "to_24_hour_clock: test #4");
 	assert(to_24_hour_clock(28.5) == 4.5, "to_24_hour_clock: test #5");
+
+	//GET_HOURS TESTS:
+	assert(get_hours(3600) == 1, "get_hours: test #1");
+	assert(get_hours(9032) == 2, "get_hours: test #2");
+	assert(get_hours(73) == 0, "get_hours: test #3");
+	assert(get_hours(0) == 0, "get_hours: test #4");
 }
 
 
@@ -77,37 +90,6 @@ int main()
 
 /* 
 
-
-
-
-//double to_24_hour_clock(double hours)
-//{
-    /*
-        hours is a number of hours since midnight. Return the
-        hour as seen on a 24-hour clock.
-
-        Precondition: hours >= 0
-
-        >>> to_24_hour_clock(24)
-        0
-        
-        >>> to_24_hour_clock(48)
-        0
-        
-        >>> to_24_hour_clock(25)
-        1
-        
-        >>> to_24_hour_clock(4)
-        4
-        
-        >>> to_24_hour_clock(28.5)
-        4.5
-        
-        You may wish to inspect various function in <cmath> to work
-        with integer and fractional part of a hours separately.
-        
-    */
-//}
 
 /*
     Implement three functions
