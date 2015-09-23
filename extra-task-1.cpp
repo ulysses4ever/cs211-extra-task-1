@@ -52,6 +52,13 @@ int get_minutes(int seconds)
 	return((seconds % 3600) / 60);
 }
 
+// Returns second part of a time in seconds
+int get_seconds(int seconds)
+{
+	assert(seconds >= 0, "GET_SECONDS: seconds out of range");
+	return((seconds % 3600) % 60);
+}
+
 int main()
 {
 
@@ -92,6 +99,13 @@ int main()
 	assert(get_minutes(9032) == 30, "get_minutes: test #3");
 	assert(get_minutes(73) == 1, "get_minutes: test #4");
 	assert(get_minutes(0) == 0, "get_minutes: test #5");
+
+	//GET_SECONDS TESTS:
+	assert(get_seconds(3800) == 20, "get_seconds: test #1");
+	assert(get_seconds(3600) == 0, "get_seconds: test #2");
+	assert(get_seconds(9032) == 32, "get_seconds: test #3");
+	assert(get_seconds(73) == 13, "get_seconds: test #4");
+	assert(get_seconds(0) == 0, "get_seconds: test #5");
 }
 
 
