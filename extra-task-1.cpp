@@ -1,3 +1,9 @@
+#include <iostream>
+#include <cmath>
+#include <cassert>
+
+using namespace std;
+
 double seconds_difference(double time_1, double time_2)
 {
     return time_2 - time_1;
@@ -62,7 +68,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
-    int t = ceil(24 * 60);
+    int t = ceil(hours * 60);
     return << t % 1440 / 60.0;
     /*
         hours is a number of hours since midnight. Return the
@@ -113,7 +119,9 @@ double to_24_hour_clock(double hours)
 */
 
 double time_to_utc(int utc_offset, double time)
-{
+{  
+    int t = ceil(time * 60) - utc_offset * 60;
+    return t % 1440 / 60.0;
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -141,7 +149,9 @@ double time_to_utc(int utc_offset, double time)
 }
 
 double time_from_utc(int utc_offset, double time)
-{
+{   
+    int t = ceil(time * 60) + utc_offset * 60;
+    return t % 1440 / 60.0;
     /*
         Return UTC time in time zone utc_offset.
 
