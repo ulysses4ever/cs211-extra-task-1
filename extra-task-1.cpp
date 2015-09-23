@@ -9,12 +9,23 @@ double seconds_difference(double time_1, double time_2)
 	return(time_2 - time_1);
 }
 
-
+// Returns the number of hours later that a time in seconds
+// time_2 is than a time in seconds time_1.
 double hours_difference(double time_1, double time_2)
 {
 	return((time_2 - time_1) / 3600.0);
 	}
 
+//Return the total number of hours in the specified number
+//of hours, minutes, and seconds.
+double to_float_hours(int hours, int minutes, int seconds)
+{
+
+	assert((seconds >= 0) && (seconds <= 60), "TO_FLOAT_HOURS: seconds out of range");
+	assert((minutes >= 0) && (minutes <= 60), "TO_FLOAT_HOURS: minutes out of range");
+
+	return(hours + (double)minutes / 60 + (double)seconds / 3600);
+}
 
 int main()
 {
@@ -31,7 +42,10 @@ int main()
 	assert(hours_difference(1800.0, 2160.0) == 0.1, "hours_difference: test #3");
 	assert(hours_difference(1800.0, 1800.0) == 0.0, "hours_difference: test #4");
 
-
+	//TO_FLOAT_HOURS TESTS:
+	assert(to_float_hours(0, 15, 0) == 0.25, "to_float_hours: test #1");
+	assert(to_float_hours(2, 45, 9) == 2.7525, "to_float_hours: test #2");
+	assert(to_float_hours(1, 0, 36) == 1.01, "to_float_hours: test #3");
 }
 
 
