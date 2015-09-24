@@ -129,6 +129,11 @@ int get_minutes(int seconds)
 	return (seconds / 60) % 60;
 }
 
+int get_seconds(int seconds)
+{
+	return seconds % 60;
+}
+
 double time_to_utc(int utc_offset, double time)
 {
 	return 0;
@@ -219,6 +224,7 @@ int main()
 	// Test 
 	assert(get_hours(3800) == 1);
 	assert(get_minutes(3800) == 3);
+	assert(get_seconds(3800) == 20);
 
 	cout << "Tests successfully completed!" << endl;
 }
