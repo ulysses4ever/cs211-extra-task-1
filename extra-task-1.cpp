@@ -70,7 +70,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
-    assert(hours > 0 && test 8);
+    assert(hours >= 0 && test 8);
 	double doubleDig = hours - floor(hours);
 	int integer = floor(hours);
 	if (doubleDig != 0)
@@ -125,8 +125,28 @@ double to_24_hour_clock(double hours)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
+double get_hours(double seconds)
+{
+	return floor(seconds / 3600);
+}
+
+
+double get_minutes(double seconds)
+{
+	return floor((seconds - get_hours(seconds) * 3600) / 60);
+}
+
+
+double get_seconds(double seconds)
+{
+	return floor(seconds - get_hours(seconds) * 3600 - get_minutes(seconds) * 60);
+}
+
+
 double time_to_utc(int utc_offset, double time)
 {
+	
+    return (_CMATH_::abs(to_24_hour_clock(Time - Zone)));	
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -151,10 +171,12 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
+    
 }
 
 double time_from_utc(int utc_offset, double time)
 {
+	return (_CMATH_::abs(to_24_hour_clock(Time + Zone + 24)));
     /*
         Return UTC time in time zone utc_offset.
 
