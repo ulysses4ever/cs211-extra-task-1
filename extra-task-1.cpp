@@ -30,84 +30,78 @@ double to_24_hour_clock(double hours)
 	return (int)hours % 24 + (hours - trunc(hours));
 }
 
-/*
-    Implement three functions
-        * get_hours
-        * get_minutes
-        * get_seconds
-    They are used to determine the hours part, minutes part and seconds part 
-    of a time in seconds. E.g.:
+int get_hours(int seconds) {
+	assert(seconds >= 0);
+	return seconds / 3600;
+}
 
-    >>> get_hours(3800)
-    1
+int get_minutes(int seconds) {
+	assert(seconds >= 0);
+	return (seconds / 60) % 60;
+}
 
-    >>> get_minutes(3800)
-    3
-
-    >>> get_seconds(3800)
-    20
-
-    In other words, if 3800 seconds have elapsed since midnight, 
-    it is currently 01:03:20 (hh:mm:ss).
-*/
+int get_seconds(int seconds) {
+	assert(seconds >= 0);
+	return seconds % 60;
+}
 
 double time_to_utc(int utc_offset, double time)
 {
-    /*
-        Return time at UTC+0, where utc_offset is the number of hours away from
-        UTC+0.
-        You may be interested in:
-        https://en.wikipedia.org/wiki/Coordinated_Universal_Time
+	/*
+	Return time at UTC+0, where utc_offset is the number of hours away from
+	UTC+0.
+	You may be interested in:
+	https://en.wikipedia.org/wiki/Coordinated_Universal_Time
 
-        >>> time_to_utc(+0, 12.0)
-        12.0
- 
-        >>> time_to_utc(+1, 12.0)
-        11.0
- 
-        >>> time_to_utc(-1, 12.0)
-        13.0
- 
-        >>> time_to_utc(-11, 18.0)
-        5.0
- 
-        >>> time_to_utc(-1, 0.0)
-        1.0
- 
-        >>> time_to_utc(-1, 23.0)
-        0.0
-    */
+	>>> time_to_utc(+0, 12.0)
+	12.0
+
+	>>> time_to_utc(+1, 12.0)
+	11.0
+
+	>>> time_to_utc(-1, 12.0)
+	13.0
+
+	>>> time_to_utc(-11, 18.0)
+	5.0
+
+	>>> time_to_utc(-1, 0.0)
+	1.0
+
+	>>> time_to_utc(-1, 23.0)
+	0.0
+	*/
 }
 
 double time_from_utc(int utc_offset, double time)
 {
-    /*
-        Return UTC time in time zone utc_offset.
+	/*
+	Return UTC time in time zone utc_offset.
 
-        >>> time_from_utc(+0, 12.0)
-        12.0
- 
-        >>> time_from_utc(+1, 12.0)
-        13.0
- 
-        >>> time_from_utc(-1, 12.0)
-        11.0
- 
-        >>> time_from_utc(+6, 6.0)
-        12.0
- 
-        >>> time_from_utc(-7, 6.0)
-        23.0
- 
-        >>> time_from_utc(-1, 0.0)
-        23.0
- 
-        >>> time_from_utc(-1, 23.0)
-        22.0
- 
-        >>> time_from_utc(+1, 23.0)
-        0.0
-    */
+	>>> time_from_utc(+0, 12.0)
+	12.0
+
+	>>> time_from_utc(+1, 12.0)
+	13.0
+
+	>>> time_from_utc(-1, 12.0)
+	11.0
+
+	>>> time_from_utc(+6, 6.0)
+	12.0
+
+	>>> time_from_utc(-7, 6.0)
+	23.0
+
+	>>> time_from_utc(-1, 0.0)
+	23.0
+
+	>>> time_from_utc(-1, 23.0)
+	22.0
+
+	>>> time_from_utc(+1, 23.0)
+	0.0
+	*/
 }
 
 int main() {
@@ -134,4 +128,19 @@ int main() {
 	assert(areEquals(to_24_hour_clock(25), 1) && ("test #4.3"));
 	assert(areEquals(to_24_hour_clock(4), 4) && ("test #4.4"));
 	assert(areEquals(to_24_hour_clock(28.5), 4.5) && ("test #4.5"));
+
+	//get_hours tests
+	assert((get_hours(3800) == 1) && ("test #5.1"));
+	assert((get_hours(2400) == 0) && ("test #5.2"));
+	assert((get_hours(10000) == 2) && ("test #5.3"));
+
+	//get_minutes tests
+	assert((get_minutes(3800) == 3) && ("test #6.1"));
+	assert((get_minutes(50) == 0) && ("test #6.2"));
+	assert((get_minutes(70) == 1) && ("test #6.3"));
+
+	//get_seconds tests
+	assert((get_seconds(3800) == 20) && ("test #7.1"));
+	assert((get_seconds(0) == 0) && ("test #7.2"));
+	assert((get_seconds(1) == 1) && ("test #7.3"));
 }
