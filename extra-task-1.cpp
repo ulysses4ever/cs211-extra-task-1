@@ -2,6 +2,10 @@
 #include <cmath>
 #include <cfloat>
 
+bool areEquals(double x, double y) {
+	return fabs(x - y) < DBL_EPSILON;
+}
+
 double seconds_difference(double time_1, double time_2)
 {
 	return time_2 - time_1;
@@ -22,31 +26,8 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
-    /*
-        hours is a number of hours since midnight. Return the
-        hour as seen on a 24-hour clock.
-
-        Precondition: hours >= 0
-
-        >>> to_24_hour_clock(24)
-        0
-        
-        >>> to_24_hour_clock(48)
-        0
-        
-        >>> to_24_hour_clock(25)
-        1
-        
-        >>> to_24_hour_clock(4)
-        4
-        
-        >>> to_24_hour_clock(28.5)
-        4.5
-        
-        You may wish to inspect various function in <cmath> to work
-        with integer and fractional part of a hours separately.
-        
-    */
+	assert(hours >= 0);
+	return (int)hours % 24 + (hours - trunc(hours));
 }
 
 /*
@@ -130,20 +111,27 @@ double time_from_utc(int utc_offset, double time)
 }
 
 int main() {
-	//seconds_difference asserts
-	assert((fabs(seconds_difference(1800.0, 3600.0) - 1800.0) < DBL_EPSILON) && ("test #1.1"));
-	assert((fabs(seconds_difference(3600.0, 1800.0) - (-1800.0)) < DBL_EPSILON) && ("test #1.2"));
-	assert((fabs(seconds_difference(1800.0, 2160.0) - 360.0) < DBL_EPSILON) && ("test #1.3"));
-	assert((fabs(seconds_difference(1800.0, 1800.0) - 0.0) < DBL_EPSILON) && ("test #1.4"));
+	//seconds_difference tests
+	assert(areEquals(seconds_difference(1800.0, 3600.0), 1800.0) && ("test #1.1"));
+	assert(areEquals(seconds_difference(3600.0, 1800.0), -1800.0) && ("test #1.2"));
+	assert(areEquals(seconds_difference(1800.0, 2160.0), 360.0) && ("test #1.3"));
+	assert(areEquals(seconds_difference(1800.0, 1800.0), 0.0) && ("test #1.4"));
 
-	//hours_difference asserts
-	assert((fabs(hours_difference(1800.0, 3600.0) - 0.5) < DBL_EPSILON) && ("test #2.1"));
-	assert((fabs(hours_difference(3600.0, 1800.0) - (-0.5)) < DBL_EPSILON) && ("test #2.2"));
-	assert((fabs(hours_difference(1800.0, 2160.0) - 0.1) < DBL_EPSILON) && ("test #2.3"));
-	assert((fabs(hours_difference(1800.0, 1800.0) - 0.0) < DBL_EPSILON) && ("test #2.4"));
+	//hours_difference tests
+	assert(areEquals(hours_difference(1800.0, 3600.0), 0.5) && ("test #2.1"));
+	assert(areEquals(hours_difference(3600.0, 1800.0), -0.5) && ("test #2.2"));
+	assert(areEquals(hours_difference(1800.0, 2160.0), 0.1) && ("test #2.3"));
+	assert(areEquals(hours_difference(1800.0, 1800.0), 0.0) && ("test #2.4"));
 
-	//to_float_hours asserts
-	assert((fabs(to_float_hours(0, 15, 0) - 0.25) < DBL_EPSILON) && ("test #3.1"));
-	assert((fabs(to_float_hours(2, 45, 9) - 2.7525) < DBL_EPSILON) && ("test #3.2"));
-	assert((fabs(to_float_hours(1, 0, 36) - 1.01) < DBL_EPSILON) && ("test #3.3"));
+	//to_float_hours tests
+	assert(areEquals(to_float_hours(0, 15, 0), 0.25) && ("test #3.1"));
+	assert(areEquals(to_float_hours(2, 45, 9), 2.7525) && ("test #3.2"));
+	assert(areEquals(to_float_hours(1, 0, 36), 1.01) && ("test #3.3"));
+
+	//to_24_hour_clock tests
+	assert(areEquals(to_24_hour_clock(24), 0) && ("test #4.1"));
+	assert(areEquals(to_24_hour_clock(48), 0) && ("test #4.2"));
+	assert(areEquals(to_24_hour_clock(25), 1) && ("test #4.3"));
+	assert(areEquals(to_24_hour_clock(4), 4) && ("test #4.4"));
+	assert(areEquals(to_24_hour_clock(28.5), 4.5) && ("test #4.5"));
 }
