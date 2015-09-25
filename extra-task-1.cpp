@@ -60,13 +60,26 @@ int get_seconds(int seconds)
 	return((seconds % 3600) % 60);
 }
 
-// Returns time at UTC+0, where utc_offset is the number of hours away from UTC + 0
-        
+// Returns time at UTC +0, where utc_offset is the number of hours away from UTC +0      
 double time_to_utc(int utc_offset, double time)
 {
 	assert(time >= 0.0 && time < 24.00, "TIME_TO_UTC: time out of range");
 	double t = time - utc_offset;
-	return (int)trunc(t) % 24 + t - trunc(t);
+	double tm = (int)trunc(t) % 24 + t - trunc(t);
+	if (tm < 0.0)
+		tm += 24;
+	return tm;
+}
+
+// Returns UTC time in time zone utc_offset.
+double time_from_utc(int utc_offset, double time)
+{
+	assert(time >= 0.0 && time < 24.00, "TIME_FROM_UTC: time out of range");
+	double t = time + utc_offset;
+	double utc0time = (int)trunc(t) % 24 + t - trunc(t);
+	if (utc0time < 0)
+		utc0time += 24;
+	return utc0time;
 }
 
 int main()
@@ -124,68 +137,18 @@ int main()
 	assert(abs(time_to_utc(-11, 18.0) - 5.0) < DBL_EPSILON, "time_to_utc: test #4");
 	assert(abs(time_to_utc(-1, 0.0) - 1.0) < DBL_EPSILON, "time_to_utc: test #5");
 	assert(abs(time_to_utc(-1, 23.0) - 0.0) < DBL_EPSILON, "time_to_utc: test #6");
+	assert(abs(time_to_utc(+7, 3.0) - 20.0) < DBL_EPSILON, "time_to_utc: test #7");
+	
+	//TIME_FROM_UTC TESTS:
+	assert(abs(time_from_utc(+0, 12.0) - 12.0) < DBL_EPSILON, "time_from_utc: test #1");
+	assert(abs(time_from_utc(+1, 12.0) - 13.0) < DBL_EPSILON, "time_from_utc: test #2");
+	assert(abs(time_from_utc(-1, 12.0) - 11.0) < DBL_EPSILON, "time_from_utc: test #3");
+	assert(abs(time_from_utc(+6, 6.0) - 12.0) < DBL_EPSILON, "time_from_utc: test #4");
+	assert(abs(time_from_utc(-7, 6.0) - 23.0) < DBL_EPSILON, "time_from_utc: test #5");
+	assert(abs(time_from_utc(-1, 0.0) - 23.0) < DBL_EPSILON, "time_from_utc: test #6");
+	assert(abs(time_from_utc(-1, 23.0) - 22.0) < DBL_EPSILON, "time_from_utc: test #7");
+	assert(abs(time_from_utc(+1, 23.0) - 0.0) < DBL_EPSILON, "time_from_utc: test #8");
 
 }
 
-
-
-
-//double time_to_utc(int utc_offset, double time)
-//{
-    /*
-        Return time at UTC+0, where utc_offset is the number of hours away from
-        UTC+0.
-        You may be interested in:
-        https://en.wikipedia.org/wiki/Coordinated_Universal_Time
-
-        >>> time_to_utc(+0, 12.0)
-        12.0
- 
-        >>> time_to_utc(+1, 12.0)
-        11.0
- 
-        >>> time_to_utc(-1, 12.0)
-        13.0
- 
-        >>> time_to_utc(-11, 18.0)
-        5.0
- 
-        >>> time_to_utc(-1, 0.0)
-        1.0
- 
-        >>> time_to_utc(-1, 23.0)
-        0.0
-    */
-//}
-
-//double time_from_utc(int utc_offset, double time)
-//{
-    /*
-        Return UTC time in time zone utc_offset.
-
-        >>> time_from_utc(+0, 12.0)
-        12.0
- 
-        >>> time_from_utc(+1, 12.0)
-        13.0
- 
-        >>> time_from_utc(-1, 12.0)
-        11.0
- 
-        >>> time_from_utc(+6, 6.0)
-        12.0
- 
-        >>> time_from_utc(-7, 6.0)
-        23.0
- 
-        >>> time_from_utc(-1, 0.0)
-        23.0
- 
-        >>> time_from_utc(-1, 23.0)
-        22.0
- 
-        >>> time_from_utc(+1, 23.0)
-        0.0
-    */
-//}*/  
 
