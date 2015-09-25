@@ -21,25 +21,18 @@ double hours_difference(double time_1, double time_2)
 	return seconds_difference(time_1, time_2) / 3600;
 }
 
+/*
+Return the total number of hours in the specified number
+of hours, minutes, and seconds.
+
+Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
+*/
 double to_float_hours(int hours, int minutes, int seconds)
 {
-    /*
-        Return the total number of hours in the specified number
-        of hours, minutes, and seconds.
+	assert((minutes >= 0) && (minutes < 60));
+	assert((seconds >= 0) && (seconds < 60));
 
-        Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
-
-        >>> to_float_hours(0, 15, 0)
-        0.25
-
-        >>> to_float_hours(2, 45, 9)
-        2.7525
-
-        >>> to_float_hours(1, 0, 36)
-        1.01
-    */
-	return 0;
-
+	return double(hours) + (double(minutes) + double(seconds) / 60) / 60;
 }
 
 double to_24_hour_clock(double hours)
@@ -180,5 +173,18 @@ int main() {
 	assert(fabs(hours_difference(1800.0, 1800.0)) < DBL_EPSILON);
 
 	cout << "Tests for the function 'hours_difference' are completed successfully" << endl;
+
+	/*
+	Return the total number of hours in the specified number
+	of hours, minutes, and seconds.
+
+	Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
+	*/
+
+	assert(fabs(to_float_hours(0, 15, 0) - 0.25) < DBL_EPSILON);
+	assert(fabs(to_float_hours(2, 45, 9) - 2.7525) < DBL_EPSILON);
+	assert(fabs(to_float_hours(1, 0, 36) - 1.01) < DBL_EPSILON);
+
+	cout << "Tests for the function 'to_float_hours' are completed successfully" << endl;
 
 }
