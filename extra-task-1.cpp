@@ -1,5 +1,6 @@
 #include <cassert>
 #include <cmath>
+#include <cfloat>
 
 using namespace std;
 
@@ -72,28 +73,28 @@ int main()
 {
 
 	// SECONDS_DIFFERENCE TESTS:
-	assert(seconds_difference(1800.0, 3600.0) == 1800.0, "seconds_difference: test #1");
-	assert(seconds_difference(3600.0, 1800.0) == -1800.0, "seconds_difference: test #2");
-	assert(seconds_difference(1800.0, 2160.0) == 360.0, "seconds_difference: test #3");
-	assert(seconds_difference(1800.0, 1800.0) == 0.0, "seconds_difference: test #4");
+	assert(abs(seconds_difference(1800.0, 3600.0) - 1800.0) < DBL_EPSILON, "seconds_difference: test #1");
+	assert(abs(seconds_difference(3600.0, 1800.0) - -1800.0) < DBL_EPSILON, "seconds_difference: test #2");
+	assert(abs(seconds_difference(1800.0, 2160.0) - 360.0) < DBL_EPSILON, "seconds_difference: test #3");
+	assert(abs(seconds_difference(1800.0, 1800.0) - 0.0) < DBL_EPSILON, "seconds_difference: test #4");
 
 	// HOURS_DIFFERENCE TESTS:
-	assert(hours_difference(1800.0, 3600.0) == 0.5, "hours_difference: test #1");
-	assert(hours_difference(3600.0, 1800.0) == -0.5, "hours_difference: test #2");
-	assert(hours_difference(1800.0, 2160.0) == 0.1, "hours_difference: test #3");
-	assert(hours_difference(1800.0, 1800.0) == 0.0, "hours_difference: test #4");
+	assert(abs(hours_difference(1800.0, 3600.0) - 0.5) < DBL_EPSILON, "hours_difference: test #1");
+	assert(abs(hours_difference(3600.0, 1800.0) - -0.5) < DBL_EPSILON, "hours_difference: test #2");
+	assert(abs(hours_difference(1800.0, 2160.0) - 0.1) < DBL_EPSILON, "hours_difference: test #3");
+	assert(abs(hours_difference(1800.0, 1800.0) - 0.0) < DBL_EPSILON, "hours_difference: test #4");
 
 	//TO_FLOAT_HOURS TESTS:
-	assert(to_float_hours(0, 15, 0) == 0.25, "to_float_hours: test #1");
-	assert(to_float_hours(2, 45, 9) == 2.7525, "to_float_hours: test #2");
-	assert(to_float_hours(1, 0, 36) == 1.01, "to_float_hours: test #3");
+	assert(abs(to_float_hours(0, 15, 0) - 0.25) < DBL_EPSILON, "to_float_hours: test #1");
+	assert(abs(to_float_hours(2, 45, 9) - 2.7525) < DBL_EPSILON, "to_float_hours: test #2");
+	assert(abs(to_float_hours(1, 0, 36) - 1.01) < DBL_EPSILON, "to_float_hours: test #3");
 
 	//TO_24_HOUR_CLOCK TESTS:
-	assert(to_24_hour_clock(24) == 0, "to_24_hour_clock: test #1");
-	assert(to_24_hour_clock(48) == 0, "to_24_hour_clock: test #2");
-	assert(to_24_hour_clock(25) == 1, "to_24_hour_clock: test #3");
-	assert(to_24_hour_clock(4) == 4, "to_24_hour_clock: test #4");
-	assert(to_24_hour_clock(28.5) == 4.5, "to_24_hour_clock: test #5");
+	assert(abs(to_24_hour_clock(24.0) - 0.0) < DBL_EPSILON, "to_24_hour_clock: test #1");
+	assert(abs(to_24_hour_clock(48.0) - 0.0) < DBL_EPSILON, "to_24_hour_clock: test #2");
+	assert(abs(to_24_hour_clock(25.0) - 1.0) < DBL_EPSILON, "to_24_hour_clock: test #3");
+	assert(abs(to_24_hour_clock(4.0) - 4.0) < DBL_EPSILON, "to_24_hour_clock: test #4");
+	assert(abs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON, "to_24_hour_clock: test #5");
 
 	//GET_HOURS TESTS:
 	assert(get_hours(3600) == 1, "get_hours: test #1");
@@ -117,12 +118,12 @@ int main()
 	assert(get_seconds(0) == 0, "get_seconds: test #5");
 
 	//TIME_TO_UTC TESTS:
-	assert(time_to_utc(+0, 12.0) == 12.0, "time_to_utc: test #1");
-	assert(time_to_utc(+1, 12.0) == 11.0, "time_to_utc: test #2");
-	assert(time_to_utc(-1, 12.0) == 13.0, "time_to_utc: test #3");
-	assert(time_to_utc(-11, 18.0) == 5.0, "time_to_utc: test #4");
-	assert(time_to_utc(-1, 0.0) == 1.0, "time_to_utc: test #5");
-	assert(time_to_utc(-1, 23.0) == 0.0, "time_to_utc: test #6");
+	assert(abs(time_to_utc(+0, 12.0) - 12.0) < DBL_EPSILON, "time_to_utc: test #1");
+	assert(abs(time_to_utc(+1, 12.0) - 11.0) < DBL_EPSILON, "time_to_utc: test #2");
+	assert(abs(time_to_utc(-1, 12.0) - 13.0) < DBL_EPSILON, "time_to_utc: test #3");
+	assert(abs(time_to_utc(-11, 18.0) - 5.0) < DBL_EPSILON, "time_to_utc: test #4");
+	assert(abs(time_to_utc(-1, 0.0) - 1.0) < DBL_EPSILON, "time_to_utc: test #5");
+	assert(abs(time_to_utc(-1, 23.0) - 0.0) < DBL_EPSILON, "time_to_utc: test #6");
 
 }
 
