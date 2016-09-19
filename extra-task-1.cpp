@@ -68,7 +68,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
-	return hours - ((hours / 24) * 24);
+	return fmod(hours, 24.0);
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -117,8 +117,36 @@ double to_24_hour_clock(double hours)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
+int get_hours(int seconds)
+{
+	/*
+	Returns the hours part from seconds
+	*/
+	return seconds / 3600 % 24;
+}
+
+int get_minutes(int minutes)
+{
+	/*
+	Returns the minutes part from seconds
+	*/
+	return minutes / 60 % 60;
+}
+
+int get_seconds(int seconds)
+{
+	/*
+	Returns the seconds part from seconds
+	*/
+	return seconds % 60;
+}
+
+
 double time_to_utc(int utc_offset, double time)
 {
+	time -= utc_offset;
+	time = fmod(time, 24.0);
+	return time;
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -143,11 +171,13 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
-	return 0.0;
 }
 
 double time_from_utc(int utc_offset, double time)
 {
+	time += utc_offset;
+	time = fmod(time, 24.0);
+	return time < 0 ? 24.0 + time : time;
     /*
         Return UTC time in time zone utc_offset.
 
@@ -175,7 +205,6 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
-	return 0.0;
 }
 
 int main()
@@ -197,37 +226,33 @@ int main()
 	assert(to_float_hours(1, 0, 36) == 1.01);
 	cout << "to_float_hours tests passed!" << endl;
 
-	/*
-	hours is a number of hours since midnight. Return the
-	hour as seen on a 24-hour clock.
-
-	Precondition: hours >= 0
-
-	>>> to_24_hour_clock(24)
-	0
-
-	>>> to_24_hour_clock(48)
-	0
-
-	>>> to_24_hour_clock(25)
-	1
-
-	>>> to_24_hour_clock(4)
-	4
-
-	>>> to_24_hour_clock(28.5)
-	4.5
-
-	You may wish to inspect various function in <cmath> to work
-	with integer and fractional part of a hours separately.
-
-	*/
 	assert(to_24_hour_clock(24) == 0);
 	assert(to_24_hour_clock(48) == 0);
-	cout << to_24_hour_clock(300) << endl;
-	//assert(to_24_hour_clock(25) == 1);
-	//assert(to_24_hour_clock(4) == 4);
-	//assert(to_24_hour_clock(28.5) == 4.5);
+	assert(to_24_hour_clock(25) == 1);
+	assert(to_24_hour_clock(4) == 4);
+	assert(to_24_hour_clock(28.5) == 4.5);
 	cout << "to_24_hour_clock tests passed!" << endl;
 
+	assert(get_hours(3800) == 1);
+	assert(get_minutes(3800) == 3);
+	assert(get_seconds(3800) == 20);
+	cout << "get_hours get_minutes get_seconds tests passed!" << endl;
+
+	assert(time_to_utc(+0, 12.0) == 12.0);
+	assert(time_to_utc(+1, 12.0) == 11.0);
+	assert(time_to_utc(-1, 12.0) == 13.0);
+	assert(time_to_utc(-11, 18.0) == 5.0);
+	assert(time_to_utc(-1, 0.0) == 1.0);
+	assert(time_to_utc(-1, 23.0) == 0.0);
+	cout << "time_to_utc tests passed!" << endl;
+
+	assert(time_from_utc(+0, 12.0) == 12.0);
+	assert(time_from_utc(+1, 12.0) == 13.0);
+	assert(time_from_utc(-1, 12.0) == 11.0);
+	assert(time_from_utc(+6, 6.0) == 12.0);
+	assert(time_from_utc(-7, 6.0) == 23.0);
+	assert(time_from_utc(-1, 0.0) == 23.0);
+	assert(time_from_utc(-1, 23.0) == 22.0);
+	assert(time_from_utc(+1, 23.0) == 0.0);
+	cout << "time_from_utc test passed!" << endl;
 }
