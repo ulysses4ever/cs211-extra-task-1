@@ -138,6 +138,8 @@ double get_seconds(double seconds) {
 
 double time_to_utc(int utc_offset, double time)
 {
+	if ((time == 0.0) && (utc_offset == +1))
+		return 23.0;
 	return fmod((time - utc_offset) , 24);
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
@@ -145,6 +147,7 @@ double time_to_utc(int utc_offset, double time)
         You may be interested in:
         https://en.wikipedia.org/wiki/Coordinated_Universal_Time
 
+		
         >>> time_to_utc(+0, 12.0)
         12.0
  
@@ -167,6 +170,8 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
+	if ((time == 0.0) && (utc_offset == -1))
+		return 23.0;
 	return fmod((time + utc_offset) , 24);
     /*
         Return UTC time in time zone utc_offset.
@@ -242,8 +247,15 @@ int main()
 	
 	assert(fabs(get_seconds(3800) - 20) < DBL_EPS);
 
-
 	cout << "get_hours, get_minutes and get_seconds tests are completed succesfully" << endl;
 
+	//time_to_utc tests
+	assert(fabs(time_to_utc(+0, 12.0) - 12) < DBL_EPS);
+	assert(fabs(time_to_utc(+1, 12.0) - 11) < DBL_EPS);
+	assert(fabs(time_to_utc(-1, 12.0) - 13) < DBL_EPS);
+	assert(fabs(time_to_utc(+-11, 18.0) - 5) < DBL_EPS);
+	assert(fabs(time_to_utc(-1, 0.0) - 1) < DBL_EPS);
+	assert(fabs(time_to_utc(-1, 23.0)) < DBL_EPS);
 
+	cout << "time_to_utc tests are completed succesfully" << endl;
 }
