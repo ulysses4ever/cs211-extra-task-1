@@ -138,9 +138,10 @@ double get_seconds(double seconds) {
 
 double time_to_utc(int utc_offset, double time)
 {
-	if ((time == 0.0) && (utc_offset == +1))
-		return 23.0;
-	return fmod((time - utc_offset) , 24);
+	double res = time - utc_offset;
+	if (res < 0)
+		res = 24 + res;
+	return fmod(res , 24);
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -170,6 +171,11 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
+	double res = time + utc_offset;
+	if (res < 0)
+		res = 24 + res;
+	return fmod(res, 24);
+
 	if ((time == 0.0) && (utc_offset == -1))
 		return 23.0;
 	return fmod((time + utc_offset) , 24);
@@ -258,4 +264,16 @@ int main()
 	assert(fabs(time_to_utc(-1, 23.0)) < DBL_EPS);
 
 	cout << "time_to_utc tests are completed succesfully" << endl;
+
+	//time_from_utc tests
+	assert(fabs(time_from_utc(+0, 12.0) - 12.0) < DBL_EPS);
+	assert(fabs(time_from_utc(+1, 12.0) - 13.0) < DBL_EPS);
+	assert(fabs(time_from_utc(-1, 12.0) - 11.0) < DBL_EPS);
+	assert(fabs(time_from_utc(+6, 6.0) - 12.0) < DBL_EPS);
+	assert(fabs(time_from_utc(-7, 6.0) - 23.0) < DBL_EPS);
+	assert(fabs(time_from_utc(-1, 0.0) - 23.0) < DBL_EPS);
+	assert(fabs(time_from_utc(-1, 23.0) - 22.0) < DBL_EPS);
+	assert(fabs(time_from_utc(+1, 23.0)) < DBL_EPS);
+
+	cout << "time_from_utc tests are completed succesfully" << endl;
 }
