@@ -230,6 +230,20 @@ int main()
 	assert(fabs(to_24_hour_clock(25)-1) < DBL_EPS);
 	assert(fabs(to_24_hour_clock(4)-4) < DBL_EPS);
 	assert(fabs(to_24_hour_clock(28.5)-4.5) < DBL_EPS);
+
 	cout << "to_24_hour_clock tests are completed succesfully" << endl;
+
+
+	//get_hours, get_minutes, get_seconds tests
+	assert(get_hours(3800) == 1);
+	assert(get_minutes(3800) == 3);
+	/*"get_hours" and "get_minutes" tests do not use the "DBL_EPS" constant because
+	the type of their returning values is integer*/
+	
+	assert(fabs(get_seconds(3800) - 20) < DBL_EPS);
+
+
+	cout << "get_hours, get_minutes and get_seconds tests are completed succesfully" << endl;
+
 
 }
