@@ -224,6 +224,12 @@ int main()
 	cout << "to_float_hours tests are completed succesfully" << endl;
 
 
-
+	//to_24_hour_clock tests
+	assert(fabs(to_24_hour_clock(24)) < DBL_EPS);
+	assert(fabs(to_24_hour_clock(48)) < DBL_EPS);
+	assert(fabs(to_24_hour_clock(25)-1) < DBL_EPS);
+	assert(fabs(to_24_hour_clock(4)-4) < DBL_EPS);
+	assert(fabs(to_24_hour_clock(28.5)-4.5) < DBL_EPS);
+	cout << "to_24_hour_clock tests are completed succesfully" << endl;
 
 }
