@@ -139,6 +139,7 @@ int get_seconds(int time)
 
 double time_to_utc(int utc_offset, double time)
 {
+	return (floor(time) - utc_offset) % 24 + time - floor(time);
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -167,6 +168,8 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
+	return (floor(time) + utc_offset + 24) % 24 + time - floor(time);
+
     /*
         Return UTC time in time zone utc_offset.
 
@@ -224,6 +227,22 @@ int main()
 	assert((fabs(to_24_hour_clock(4) - 4) < DBL_EPSILON) && "Test 15");
 	assert((fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON) && "Test 16");
 
+	//Tests for time_to_utc
+	assert((fabs(time_to_utc(0, 12.0) - 12.0) < DBL_EPSILON) && "Test 17");
+	assert((fabs(time_to_utc(1, 12.0) - 11.0) < DBL_EPSILON) && "Test 18");
+	assert((fabs(time_to_utc(-1, 12.0) - 13.0) < DBL_EPSILON) && "Test 19");
+	assert((fabs(time_to_utc(-11, 18.0) - 5.0) < DBL_EPSILON) && "Test 20");
+	assert((fabs(time_to_utc(-1, 0.0) - 1.0) < DBL_EPSILON) && "Test 21");
+	assert((fabs(time_to_utc(-1, 23.0)) < DBL_EPSILON) && "Test 22");
 
-	
+	//Tests for time_from_utc
+	assert((fabs(time_from_utc(0, 12.0) - 12.0) < DBL_EPSILON) && "Test 23");
+	assert((fabs(time_from_utc(1, 12.0) - 13.0) < DBL_EPSILON) && "Test 24");
+	assert((fabs(time_from_utc(-1, 12.0) - 11.0) < DBL_EPSILON) && "Test 25");
+	assert((fabs(time_from_utc(6, 6.0) - 12.0) < DBL_EPSILON) && "Test 26");
+	assert((fabs(time_from_utc(-7, 6.0) - 23.0) < DBL_EPSILON) && "Test 27");
+	assert((fabs(time_from_utc(-1, 0.0) - 23.0) < DBL_EPSILON) && "Test 28");
+	assert((fabs(time_from_utc(-1, 23.0) - 22.0) < DBL_EPSILON) && "Test 29");
+
+
 }
