@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cassert> 
+#include <cmath>
 
 double seconds_difference(double time_1, double time_2)
 {
@@ -25,6 +26,7 @@ double seconds_difference(double time_1, double time_2)
 
 double hours_difference(double time_1, double time_2)
 {
+	return seconds_difference(time_1, time_2) / 3600.0;
     /*
         Return the number of hours later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -45,6 +47,8 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
+	assert((minutes >= 0) && (minutes < 60) && "Invalid value of minutes");
+	return (hours * 3600 + minutes * 60 + seconds) / 3600.0;
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
@@ -63,7 +67,9 @@ double to_float_hours(int hours, int minutes, int seconds)
 }
 
 double to_24_hour_clock(double hours)
-{
+{	
+	assert((hours >= 0) && "Invalid value of hours");
+	return floor(hours) mod 24 + hours - floor(hours) ;
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -174,11 +180,31 @@ double time_from_utc(int utc_offset, double time)
 
 int main()
 {
-	assert(fabs(seconds_difference(1800.0, 3600.0) - 1800.0) < DBL_EPSILON);
-	assert(fabs(seconds_difference(3600.0, 1800.0) + 1800.0) < DBL_EPSILON);
-	assert(fabs(seconds_difference(1800.0, 2160.0) - 360.0) < DBL_EPSILON);
-	assert(fabs(seconds_difference(1800.0, 1800.0)) < DBL_EPSILON);
+	//Tests for seconds_difference
+	assert((fabs(seconds_difference(1800.0, 3600.0) - 1800.0) < DBL_EPSILON) && "Test 1");
+	assert((fabs(seconds_difference(3600.0, 1800.0) + 1800.0) < DBL_EPSILON) && "Test 2");
+	assert((fabs(seconds_difference(1800.0, 2160.0) - 360.0) < DBL_EPSILON) && "Test 3");
+	assert((fabs(seconds_difference(1800.0, 1800.0)) < DBL_EPSILON) && "Test 4");
 
-	
+	//Tests for hours_difference
+	assert((fabs(hours_difference(1800.0, 3600.0) - 0.5) < DBL_EPSILON) && "Test 5");
+	assert((fabs(hours_difference(1800.0, 3600.0) + 0.5) < DBL_EPSILON) && "Test 6");
+	assert((fabs(hours_difference(1800.0, 3600.0) - 0.1) < DBL_EPSILON) && "Test 7");
+	assert((fabs(hours_difference(1800.0, 3600.0)) < DBL_EPSILON) && "Test 8");
+
+	//Tests for to_float_hours
+	assert((fabs(to_float_hours(0, 15, 0) - 0.25) < DBL_EPSILON) && "Test 9");
+	assert((fabs(to_float_hours(2, 45, 9) - 2.7525) < DBL_EPSILON) && "Test 10");
+	assert((fabs(to_float_hours(1, 0, 36) - 1.01) < DBL_EPSILON) && "Test 11");
+
+
+	//Tests for to_24_hour_clock
+	assert((fabs(to_24_hour_clock(24)) < DBL_EPSILON) && "Test 12");
+	assert((fabs(to_24_hour_clock(48)) < DBL_EPSILON) && "Test 13");
+	assert((fabs(to_24_hour_clock(25) - 1) < DBL_EPSILON) && "Test 14");
+	assert((fabs(to_24_hour_clock(4) - 4) < DBL_EPSILON) && "Test 15");
+	assert((fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON) && "Test 16");
+
+
 	
 }
