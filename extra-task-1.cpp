@@ -1,4 +1,7 @@
 #include <cassert>
+#include <cmath>
+
+const double DBL_EPSILON = 0.00001;
 
 double seconds_difference(double time_1, double time_2)
 {
@@ -47,6 +50,7 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
+	
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
@@ -174,12 +178,12 @@ double time_from_utc(int utc_offset, double time)
 }
 
 int main(){
-		assert(seconds_difference(1800.0, 3600.0) == 1800.0 && "test-1.1");
-		assert(seconds_difference(3600.0, 1800.0) == -1800.0 && "test-1.2");
-		assert(seconds_difference(1800.0, 2160.0) == 360.0 && "test-1.3");
-		assert(seconds_difference(1800.0, 1800.0) == 0.0 && "test-1.4");
-		assert(hours_difference(1800.0, 3600.0) == 0.5 && "test-2.1");
-		assert(hours_difference(3600.0, 1800.0) == -0.5 && "test-2.2");
-		assert(hours_difference(1800.0, 2160.0) == 0.1 && "test-2.3");
-		assert(hours_difference(1800.0, 1800.0) == 0.0 && "test-2.4");
+		assert(fabs(seconds_difference(1800.0, 3600.0) - 1800.0) < DBL_EPSILON && "test-1.1");
+		assert(fabs(seconds_difference(3600.0, 1800.0) + 1800.0) < DBL_EPSILON && "test-1.2");
+		assert(fabs(seconds_difference(1800.0, 2160.0) - 360.0) < DBL_EPSILON && "test-1.3");
+		assert(fabs(seconds_difference(1800.0, 1800.0) - 0.0) < DBL_EPSILON && "test-1.4");
+		assert(fabs(hours_difference(1800.0, 3600.0) - 0.5) < DBL_EPSILON && "test-2.1");
+		assert(fabs(hours_difference(3600.0, 1800.0) + 0.5) < DBL_EPSILON && "test-2.2");
+		assert(fabs(hours_difference(1800.0, 2160.0) - 0.1) < DBL_EPSILON && "test-2.3");
+		assert(fabs(hours_difference(1800.0, 1800.0) - 0.0) < DBL_EPSILON && "test-2.4");
 }
