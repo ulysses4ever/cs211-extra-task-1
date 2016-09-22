@@ -66,42 +66,26 @@ double time_to_utc(int utc_offset, double time)
 	double time_double = time - time_int;
 	double res;
 	res = (time_int - utc_offset) % 24;
+
+	if (res < 0)
+		res += 24;
 	
 	return res + time_double;
 }
 	
-	
-
-/*double time_from_utc(int utc_offset, double time)
+/*Returns UTC time in time zone utc_offset.*/
+double time_from_utc(int utc_offset, double time)
 {
-	/*
-	Return UTC time in time zone utc_offset.
+	int time_int = trunc(time);
+	double time_double = time - time_int;
+	double res;
+	res = (time_int + utc_offset) % 24;
 
-	>>> time_from_utc(+0, 12.0)
-	12.0
+	if (res < 0)
+		res += 24;
 
-	>>> time_from_utc(+1, 12.0)
-	13.0
-
-	>>> time_from_utc(-1, 12.0)
-	11.0
-
-	>>> time_from_utc(+6, 6.0)
-	12.0
-
-	>>> time_from_utc(-7, 6.0)
-	23.0
-
-	>>> time_from_utc(-1, 0.0)
-	23.0
-
-	>>> time_from_utc(-1, 23.0)
-	22.0
-
-	>>> time_from_utc(+1, 23.0)
-	0.0
-	
-}*/
+	return res + time_double;
+}
 
 int main()
 {
@@ -140,7 +124,7 @@ int main()
 	assert(get_minutes(3800) == 3);
 	assert(get_minutes(3690) == 1);
 	assert(get_minutes(7200) == 0);
-	assert(get_minutes(3785) ==3);
+	assert(get_minutes(3785) == 3);
 
 	/*get_seconds tests*/
 	assert(get_seconds(3800) == 20);
@@ -155,4 +139,14 @@ int main()
 	assert(abs(time_to_utc(-11, 18.0) - 5.0) < Eps);
 	assert(abs(time_to_utc(-1, 0.0) - 1.0) < Eps);
 	assert(abs(time_to_utc(-1, 23.0)) < Eps);
+
+	/*time_from_utc tests*/
+	assert(abs(time_from_utc(+0, 12.0) - 12.0) < Eps);
+	assert(abs(time_from_utc(+1, 12.0) - 13.0) < Eps);
+	assert(abs(time_from_utc(-1, 12.0) - 11.0) < Eps);
+	assert(abs(time_from_utc(+6, 6.0) - 12.0) < Eps);
+	assert(abs(time_from_utc(-7, 6.0) - 23.0) < Eps);
+	assert(abs(time_from_utc(-1, 0.0) - 23.0) < Eps);
+	assert(abs(time_from_utc(-1, 23.0) - 22.0) < Eps);
+	assert(abs(time_from_utc(+1, 23.0) - 0.0) < Eps);
 }
