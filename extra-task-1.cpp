@@ -103,6 +103,13 @@ double to_24_hour_clock(double hours)
     */
 }
 
+
+int get_hours(double time_1)
+{
+        return ((int)time_1) /3600;
+
+}
+
 /*
     Implement three functions
         * get_hours
