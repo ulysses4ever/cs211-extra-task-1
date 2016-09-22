@@ -110,6 +110,15 @@ int get_hours(double time_1)
 
 }
 
+int get_minutes(double time_1)
+{
+        return ((int)time_1) /60%60;
+}
+
+int get_seconds(double time_1)
+{
+        return ((int)time_1) %60;
+}
 /*
     Implement three functions
         * get_hours
