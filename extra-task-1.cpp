@@ -1,3 +1,5 @@
+#include <cassert>
+
 double seconds_difference(double time_1, double time_2)
 {
     // implementation
@@ -44,6 +46,12 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
+
+    assert(seconds >= 0 && seconds < 60 && "seconds out of range");
+    assert(minutes >= 0 && minutes < 60 && "minutes out of range");
+
+    return hours_difference(0,hours*3600 + minutes*60 + seconds);
+
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
@@ -63,6 +71,9 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
+    assert(hours >=0 && "hours out of range");
+
+
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
