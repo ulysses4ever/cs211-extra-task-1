@@ -1,4 +1,5 @@
 #include <cassert>
+#include <cmath>
 
 double seconds_difference(double time_1, double time_2)
 {
@@ -72,6 +73,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 double to_24_hour_clock(double hours)
 {
     assert(hours >=0 && "hours out of range");
+    return ( ( (int) hours)%24)+(hours - std::trunc(hours));
 
 
     /*
