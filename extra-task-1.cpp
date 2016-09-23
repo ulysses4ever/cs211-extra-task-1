@@ -142,6 +142,8 @@ double get_seconds(double seconds)
 
 double time_to_utc(int utc_offset, double time)
 {
+
+	return to_24_hour_clock(time - utc_offset);
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -197,4 +199,9 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+}
+
+int main() 
+{
+	double DBL_EPS = 0.00001;
 }
