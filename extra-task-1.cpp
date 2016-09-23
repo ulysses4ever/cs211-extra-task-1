@@ -120,6 +120,14 @@ double to_24_hour_clock(double hours)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
+
+int get_hours(double seconds)
+{
+	return int(seconds / 3600);
+	//determine the hours part
+
+}
+
 double time_to_utc(int utc_offset, double time)
 {
     /*
