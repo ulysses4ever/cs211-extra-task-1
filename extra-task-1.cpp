@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cassert>
+#include <cmath>
 
 using namespace std;
 
@@ -69,6 +70,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
+	return fmod(hours, 24);
 
     /*
         hours is a number of hours since midnight. Return the
