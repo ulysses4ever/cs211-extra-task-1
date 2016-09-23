@@ -1,5 +1,6 @@
 #include <cassert>
 #include <cmath>
+#include <cfloat>
 
 //Return the number of seconds later that a time in seconds
 //time_2 is than a time in seconds time_1.
@@ -33,28 +34,55 @@ double to_24_hour_clock(double hours)
 	assert(hours >= 0);
 	return fmod(hours, 24);
 }
-//
-///*
-//    Implement three functions
-//        * get_hours
-//        * get_minutes
-//        * get_seconds
-//    They are used to determine the hours part, minutes part and seconds part 
-//    of a time in seconds. E.g.:
-//
-//    >>> get_hours(3800)
-//    1
-//
-//    >>> get_minutes(3800)
-//    3
-//
-//    >>> get_seconds(3800)
-//    20
-//
-//    In other words, if 3800 seconds have elapsed since midnight, 
-//    it is currently 01:03:20 (hh:mm:ss).
-//*/
-//
+
+
+/*
+Implement three functions
+* get_hours
+* get_minutes
+* get_seconds
+They are used to determine the hours part, minutes part and seconds part
+of a time in seconds.
+*/
+
+//determine hours part
+int get_hours(int seconds) {
+	assert(seconds >= 0);
+	return seconds / 3600;
+}
+
+//determine minutes part
+int get_minutes(int seconds) {
+	assert(seconds >= 0);
+	return seconds % 3600 / 60;
+}
+
+//determine seconds part
+int get_seconds(int seconds) {
+	assert(seconds >= 0);
+	return seconds % 60;
+}
+/*
+    Implement three functions
+        * get_hours
+        * get_minutes
+        * get_seconds
+    They are used to determine the hours part, minutes part and seconds part 
+    of a time in seconds. E.g.:
+
+    >>> get_hours(3800)
+    1
+
+    >>> get_minutes(3800)
+    3
+
+    >>> get_seconds(3800)
+    20
+
+    In other words, if 3800 seconds have elapsed since midnight, 
+    it is currently 01:03:20 (hh:mm:ss).
+*/
+
 //double time_to_utc(int utc_offset, double time)
 //{
 //    /*
@@ -116,24 +144,33 @@ double to_24_hour_clock(double hours)
 
 
 int main() {
-	assert(seconds_difference(1800.0, 3600.0) == 1800.0);
-	assert(seconds_difference(3600.0, 1800.0) == -1800.0);
-	assert(seconds_difference(1800.0, 2160.0) == 360.0);
-	assert(seconds_difference(1800.0, 1800.0) == 0.0);
+//----------------Test seconds_difference------------------------
+	assert(fabs(seconds_difference(1800.0, 3600.0) - 1800.0) < DBL_EPSILON);
+	assert(fabs(seconds_difference(3600.0, 1800.0) + 1800.0) < DBL_EPSILON);
+	assert(fabs(seconds_difference(1800.0, 2160.0) - 360.0) < DBL_EPSILON);
+	assert(fabs(seconds_difference(1800.0, 1800.0)) < DBL_EPSILON);
 
-	assert(hours_difference(1800.0, 3600.0) == 0.5);
-	assert(hours_difference(3600.0, 1800.0) == -0.5);
-	assert(hours_difference(1800.0, 2160.0) == 0.1);
-	assert(hours_difference(1800.0, 1800.0) == 0.0);
+//----------------Test hours_difference--------------------------
+	assert(fabs(hours_difference(1800.0, 3600.0) - 0.5) < DBL_EPSILON);
+	assert(fabs(hours_difference(3600.0, 1800.0) + 0.5) < DBL_EPSILON);
+	assert(fabs(hours_difference(1800.0, 2160.0) - 0.1) < DBL_EPSILON);
+	assert(fabs(hours_difference(1800.0, 1800.0)) < DBL_EPSILON);
 
-	assert(to_float_hours(0, 15, 0) == 0.25);
-	assert(to_float_hours(2, 45, 9) == 2.7525);
-	assert(to_float_hours(1, 0, 36) == 1.01);
+//----------------Test to_float_hours----------------------------
+	assert(fabs(to_float_hours(0, 15, 0) - 0.25) < DBL_EPSILON);
+	assert(fabs(to_float_hours(2, 45, 9) - 2.7525) < DBL_EPSILON);
+	assert(fabs(to_float_hours(1, 0, 36) - 1.01) < DBL_EPSILON);
 
-	assert(to_24_hour_clock(24) == 0);
-	assert(to_24_hour_clock(48) == 0);
-	assert(to_24_hour_clock(25) == 1);
-	assert(to_24_hour_clock(4) == 4);
-	assert(to_24_hour_clock(28.5) == 4.5);
+//----------------Test to_24_hour_clock--------------------------
+	assert(fabs(to_24_hour_clock(24)) < DBL_EPSILON);
+	assert(fabs(to_24_hour_clock(48)) < DBL_EPSILON);
+	assert(fabs(to_24_hour_clock(25) - 1) < DBL_EPSILON);
+	assert(fabs(to_24_hour_clock(4) - 4) < DBL_EPSILON);
+	assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
+
+//-------Test get_hours, get_minutes, get_seconds----------------
+	assert(get_hours(3800) == 1);
+	assert(get_minutes(3800) == 3);
+	assert(get_seconds(3800) == 20);
 
 }
