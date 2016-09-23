@@ -134,6 +134,12 @@ int get_minutes(double seconds)
 	//determine the minutes part
 }
 
+double get_seconds(double seconds)
+{
+	return seconds - get_hours(seconds)*3600.0 - get_minutes(seconds) * 60.0;
+	//determine the seconds part
+}
+
 double time_to_utc(int utc_offset, double time)
 {
     /*
