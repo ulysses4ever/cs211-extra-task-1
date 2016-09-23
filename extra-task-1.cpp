@@ -128,6 +128,12 @@ int get_hours(double seconds)
 
 }
 
+int get_minutes(double seconds)
+{
+	return int(fmod(seconds, 3600) / 60);
+	//determine the minutes part
+}
+
 double time_to_utc(int utc_offset, double time)
 {
     /*
