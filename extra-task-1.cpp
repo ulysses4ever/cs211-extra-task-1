@@ -1,5 +1,6 @@
 #include <cassert>
 #include <cfloat>
+#include <cmath>
 
 double seconds_difference(double time_1, double time_2)
 {
@@ -63,8 +64,9 @@ double to_float_hours(int hours, int minutes, int seconds)
     */
 }
 
-/*double to_24_hour_clock(double hours)
+double to_24_hour_clock(double hours)
 {
+	return fmod(hours, 24);
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -90,7 +92,7 @@ double to_float_hours(int hours, int minutes, int seconds)
         with integer and fractional part of a hours separately.
         
     */
-//}
+}
 
 /*
     Implement three functions
@@ -170,7 +172,7 @@ double to_float_hours(int hours, int minutes, int seconds)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
-//}
+//} 
 int main()
 {
 	//tests for seconds_difference
@@ -190,4 +192,13 @@ int main()
 	assert(to_float_hours(2, 45, 9) - 2.7525 <= DBL_EPSILON);
 	assert(to_float_hours(1, 0, 36) - 1.01 <= DBL_EPSILON);
 	assert(to_float_hours(4, 30, 1800) - 5.0 <= DBL_EPSILON);
+
+	//tests for to_24_hour_clock
+	assert(to_24_hour_clock(24) - 0 <= DBL_EPSILON);
+	assert(to_24_hour_clock(48) - 0 <= DBL_EPSILON);
+	assert(to_24_hour_clock(25) - 1 <= DBL_EPSILON);
+	assert(to_24_hour_clock(4) - 4 <= DBL_EPSILON);
+	assert(to_24_hour_clock(28.5) - 4.5 <= DBL_EPSILON);
+
+
 }
