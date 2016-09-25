@@ -129,8 +129,9 @@ double get_seconds(double seconds)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
-/*double time_to_utc(int utc_offset, double time)
+double time_to_utc(int utc_offset, double time)
 {
+	return fmod(time - utc_offset, 24);
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -155,7 +156,7 @@ double get_seconds(double seconds)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
-//}
+}
 
 /*double time_from_utc(int utc_offset, double time)
 {
@@ -232,5 +233,13 @@ int main()
 	assert(get_seconds(3800) - 20 <= DBL_EPSILON);
 	assert(get_seconds(7500) - 0 <= DBL_EPSILON);
 
+	//tests for time_to_utc
+	assert(time_to_utc(0, 12.0) - 12.0 <= DBL_EPSILON);
+	assert(time_to_utc(1, 12.0) - 11.0 <= DBL_EPSILON);
+	assert(time_to_utc(-1, 12.0) - 13.0 <= DBL_EPSILON);
+	assert(time_to_utc(-11, 18.0) - 5.0 <= DBL_EPSILON);
+	assert(time_to_utc(-1, 0.0) - 1.0 <= DBL_EPSILON);
+	assert(time_to_utc(-1, 23.0) - 0.0 <= DBL_EPSILON);
 
+	
 }
