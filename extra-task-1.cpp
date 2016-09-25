@@ -94,6 +94,20 @@ double to_24_hour_clock(double hours)
     */
 }
 
+double get_hours(double seconds)
+{
+	return trunc(seconds / 3600);
+}
+
+double get_minutes(double seconds)
+{
+	return trunc(fmod(seconds, 3600) / 60);
+}
+
+double get_seconds(double seconds)
+{
+	return fmod(fmod(seconds, 3600), 60);
+}
 /*
     Implement three functions
         * get_hours
@@ -199,6 +213,24 @@ int main()
 	assert(to_24_hour_clock(25) - 1 <= DBL_EPSILON);
 	assert(to_24_hour_clock(4) - 4 <= DBL_EPSILON);
 	assert(to_24_hour_clock(28.5) - 4.5 <= DBL_EPSILON);
+
+	//tests for get_hours
+	assert(get_hours(2400) - 0 <= DBL_EPSILON);
+	assert(get_hours(3600) - 1 <= DBL_EPSILON);
+	assert(get_hours(3800) - 1 <= DBL_EPSILON);
+	assert(get_hours(7500) - 2 <= DBL_EPSILON);
+
+	//tests for get_minutes
+	assert(get_minutes(2400) - 40 <= DBL_EPSILON);
+	assert(get_minutes(3600) - 0 <= DBL_EPSILON);
+	assert(get_minutes(3800) - 3 <= DBL_EPSILON);
+	assert(get_minutes(7500) - 5 <= DBL_EPSILON);
+
+	//tests for get_seconds
+	assert(get_seconds(2400) - 0 <= DBL_EPSILON);
+	assert(get_seconds(3600) - 0 <= DBL_EPSILON);
+	assert(get_seconds(3800) - 20 <= DBL_EPSILON);
+	assert(get_seconds(7500) - 0 <= DBL_EPSILON);
 
 
 }
