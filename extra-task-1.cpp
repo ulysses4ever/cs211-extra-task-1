@@ -43,7 +43,7 @@ int get_hours(int seconds)
 
 int get_minutes(int seconds)
 {
-	return get_hours(seconds) / 60;
+	return seconds % 3600 / 60;
 }
 
 int get_seconds(int seconds)
@@ -136,7 +136,15 @@ int main()
     assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
 	
     /* get_hours, get_minutes, get_seconds */
-    assert(get_hours(3800) = 1);
-    assert(get_minutes(3800) = 3);
-    assert(get_seconds(3800) = 20);
+    assert(get_hours(3800) == 1);
+    assert(get_minutes(3800) == 3);
+    assert(get_seconds(3800) == 20);
+	
+    /* time_to_utc*/
+    assert(fabs(time_to_utc(+0, 12.0) - 12) < DBL_EPSILON);
+    assert(fabs(time_to_utc(+1, 12.0) - 11) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-1, 12.0) - 13) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-11, 18.0) - 5) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-1, 0.0) - 1) < DBL_EPSILON);
+    assert(time_to_utc(-1, 23.0) < DBL_EPSILON);
 }
