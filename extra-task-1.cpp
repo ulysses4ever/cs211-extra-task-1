@@ -1,3 +1,5 @@
+#include <cmath>
+
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
@@ -89,6 +91,10 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
+    double fractpart, intpart; 
+    fractpart = modf(val , &intpart);
+    int hours = intpart;
+    return (hours % 24) + fractpart;
 }
 
 /*
@@ -111,6 +117,17 @@ double to_24_hour_clock(double hours)
     In other words, if 3800 seconds have elapsed since midnight, 
     it is currently 01:03:20 (hh:mm:ss).
 */
+int get_hours(int time_in_seconds){
+    return (time_in_seconds / 3600) % 24;
+}
+
+int get_minutes(int time_in_seconds){
+    return (time_in_seconds % 3600) / 60;
+}
+
+int get_seconds(int time_in_seconds){
+    return (time_in_seconds % 3600) % 60;
+}
 
 double time_to_utc(int utc_offset, double time)
 {
