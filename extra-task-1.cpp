@@ -58,36 +58,12 @@ double time_to_utc(int utc_offset, double time)
 	return (x - utc_offset) % 24 + time - x;
 }
 
-/*double time_from_utc(int utc_offset, double time)
+//Return UTC time in time zone utc_offset.
+double time_from_utc(int utc_offset, double time)
 {
-    /*
-        Return UTC time in time zone utc_offset.
-
-        >>> time_from_utc(+0, 12.0)
-        12.0
- 
-        >>> time_from_utc(+1, 12.0)
-        13.0
- 
-        >>> time_from_utc(-1, 12.0)
-        11.0
- 
-        >>> time_from_utc(+6, 6.0)
-        12.0
- 
-        >>> time_from_utc(-7, 6.0)
-        23.0
- 
-        >>> time_from_utc(-1, 0.0)
-        23.0
- 
-        >>> time_from_utc(-1, 23.0)
-        22.0
- 
-        >>> time_from_utc(+1, 23.0)
-        0.0
-    */
-//}
+		int x = ceil(time);//используется, чтобы сохранить дробную часть
+		return (x + utc_offset + 24) % 24 + time - x;
+}
 
 int main()
 {
@@ -127,4 +103,14 @@ int main()
 	assert((time_to_utc(-11, 18.0) - 5) < DBL_EPSILON && "test-23");
 	assert((time_to_utc(-1, 0.0) - 1) < DBL_EPSILON && "test-24");
 	assert((time_to_utc(-1, 23.0) - 0.0) < DBL_EPSILON && "test-25");
+
+	//проверяет работу time_from_utc
+	assert((time_from_utc(+0, 12.0) - 12) < DBL_EPSILON && "test-26");
+	assert((time_from_utc(+1, 12.0) - 13) < DBL_EPSILON && "test-27");
+	assert((time_from_utc(-1, 12.0) - 11) < DBL_EPSILON && "test-28");
+	assert((time_from_utc(+6, 6.0) - 12) < DBL_EPSILON && "test-29");
+	assert((time_from_utc(-7, 6.0) - 23) < DBL_EPSILON && "test-30");
+	assert((time_from_utc(-1, 0.0) - 23) < DBL_EPSILON && "test-31");
+	assert((time_from_utc(-1, 23.0) - 22) < DBL_EPSILON && "test-32");
+	assert(time_from_utc(+1, 23.0) < DBL_EPSILON && "test-26");
 }
