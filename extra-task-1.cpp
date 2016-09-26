@@ -162,7 +162,7 @@ double time_to_utc(int utc_offset, double time)
     double fractpart, intpart; 
     fractpart = modf(time , &intpart);
     int Fullhours = intpart;
-    return ((Fullhours  % 24) - utc_offset) % 24 + fractpart;
+    return (24 + Fullhours - utc_offset) % 24 + fractpart;
     
    ///return to_24_hour_clock();
 }
@@ -196,5 +196,10 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+    assert(time >= 0);
+    double fractpart, intpart; 
+    fractpart = modf(time , &intpart);
+    int Fullhours = intpart;
+    return (24 + Fullhours + utc_offset) % 24 + fractpart;
 }
 //
