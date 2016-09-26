@@ -70,6 +70,13 @@ int get_minutes(int seconds)
 	return (seconds / 60) % 60;
 }
 
+///Determine the seconds part of a time in seconds.
+int get_seconds(int seconds)
+{
+	assert(seconds >= 0);
+	return (seconds % 3600) % 60;
+}
+
 //double time_to_utc(int utc_offset, double time)
 //{
 //    /*
@@ -151,6 +158,13 @@ int main()
 	assert(get_minutes(3599) == 59 && "Test3 'get_minutes'");
 	assert(get_minutes(7200) == 0  && "Test4 'get_minutes'");
 	assert(get_minutes(10800) == 0 && "Test5 'get_minutes'");
+
+	//Tests for 'get_seconds' function
+	assert(get_seconds(3800) == 20 && "Test1 'get_seconds'");
+	assert(get_seconds(1600) == 40 && "Test2 'get_seconds'");
+	assert(get_seconds(3599) == 59 && "Test3 'get_seconds'");
+	assert(get_seconds(7201) == 1  && "Test4 'get_seconds'");
+	assert(get_seconds(10800) == 0 && "Test5 'get_seconds'");
 
 	//Tests for 'time_from_utc' function
 	assert(fabs(time_from_utc(0, 12.0) - 12.0)  <= DBL_EPSILON  && "Test 1 'time_from_utc'");
