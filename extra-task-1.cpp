@@ -1,4 +1,5 @@
 #include <cmath>
+#include <cassert>
 
 double seconds_difference(double time_1, double time_2)
 {
@@ -61,6 +62,7 @@ double to_float_hours(int hours, int minutes, int seconds)
         >>> to_float_hours(1, 0, 36)
         1.01
     */
+    assert(hours >=0 && minutes>=0 && second>=0);
     return hours + minutes/60.0 + second/3600.0;
 }
 
@@ -91,10 +93,11 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
+    assert(hours >= 0);
     double fractpart, intpart; 
-    fractpart = modf(val , &intpart);
-    int hours = intpart;
-    return (hours % 24) + fractpart;
+    fractpart = modf(hours , &intpart);
+    int Fullhours = intpart;
+    return  (Fullhours % 24) + fractpart;
 }
 
 /*
@@ -155,6 +158,13 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
+    assert(time >= 0);
+    double fractpart, intpart; 
+    fractpart = modf(time , &intpart);
+    int Fullhours = intpart;
+    return ((Fullhours  % 24) - utc_offset) % 24 + fractpart;
+    
+   ///return to_24_hour_clock();
 }
 
 double time_from_utc(int utc_offset, double time)
