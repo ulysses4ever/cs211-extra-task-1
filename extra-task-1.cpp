@@ -8,26 +8,12 @@ double seconds_difference(double time_1, double time_2)
 	return time_2 - time_1;
 }
 
-//double hours_difference(double time_1, double time_2)
-//{
-//    /*
-//        Return the number of hours later that a time in seconds
-//        time_2 is than a time in seconds time_1.
-//            
-//        >>> hours_difference(1800.0, 3600.0)
-//        0.5
-//
-//        >>> hours_difference(3600.0, 1800.0)
-//        -0.5
-//
-//        >>> hours_difference(1800.0, 2160.0)
-//        0.1
-//
-//        >>> hours_difference(1800.0, 1800.0)
-//        0.0
-//    */
-//}
-//
+///Return the number of hours later that a time in seconds time_2 is than a time in seconds time_1.
+double hours_difference(double time_1, double time_2)
+{
+	return seconds_difference(time_1, time_2) / 3600.0;
+}
+
 //double to_float_hours(int hours, int minutes, int seconds)
 //{
 //    /*
@@ -142,6 +128,14 @@ int main()
 	assert(fabs(seconds_difference(1800.0, 1800.0) - 0.0)    <= DBL_EPSILON && "Test4 'seconds_difference'");
 	assert(fabs(seconds_difference(1800.0, 1801.0) - 1.0)    <= DBL_EPSILON && "Test5 'seconds_difference'");
 	assert(fabs(seconds_difference(3600.0, 2145.0) + 1455.0) <= DBL_EPSILON && "Test6 'seconds_difference'");
+
+	//Tests for 'seconds_difference' function
+	assert(fabs(hours_difference(1800.0, 3600.0) - 0.5)  <= DBL_EPSILON && "Test1 'hours_difference'");
+	assert(fabs(hours_difference(3600.0, 1800.0) + 0.5)  <= DBL_EPSILON && "Test2 'hours_difference'");
+	assert(fabs(hours_difference(1800.0, 2160.0) - 0.1)  <= DBL_EPSILON && "Test3 'hours_difference'");
+	assert(fabs(hours_difference(1800.0, 1800.0) - 0.0)  <= DBL_EPSILON && "Test4 'hours_difference'");
+	assert(fabs(hours_difference(0.0, 3600.0) - 1.0)     <= DBL_EPSILON && "Test5 'hours_difference'");
+	assert(fabs(hours_difference(3600.0, 2700.0) + 0.25) <= DBL_EPSILON && "Test6 'hours_difference'");
 
 	//Tests for 'time_from_utc' function
 	assert(fabs(time_from_utc(0, 12.0) - 12.0)  <= DBL_EPSILON  && "Test 1 'time_from_utc'");
