@@ -35,27 +35,34 @@ double to_24_hour_clock(double hours)
 	return (n % 24) + y;
 }
 
-///*
-//    Implement three functions
-//        * get_hours
-//        * get_minutes
-//        * get_seconds
-//    They are used to determine the hours part, minutes part and seconds part 
-//    of a time in seconds. E.g.:
-//
-//    >>> get_hours(3800)
-//    1
-//
-//    >>> get_minutes(3800)
-//    3
-//
-//    >>> get_seconds(3800)
-//    20
-//
-//    In other words, if 3800 seconds have elapsed since midnight, 
-//    it is currently 01:03:20 (hh:mm:ss).
-//*/
-//
+/*
+    Implement three functions
+        * get_hours
+        * get_minutes
+        * get_seconds
+    They are used to determine the hours part, minutes part and seconds part 
+    of a time in seconds. E.g.:
+
+    >>> get_hours(3800)
+    1
+
+    >>> get_minutes(3800)
+    3
+
+    >>> get_seconds(3800)
+    20
+
+    In other words, if 3800 seconds have elapsed since midnight, 
+    it is currently 01:03:20 (hh:mm:ss).
+*/
+
+///Determine the hours part of a time in seconds.
+int get_hours(int seconds)
+{
+	assert(seconds >= 0);
+	return seconds / 3600;
+}
+
 //double time_to_utc(int utc_offset, double time)
 //{
 //    /*
@@ -123,6 +130,14 @@ int main()
 	assert(fabs(to_24_hour_clock(25) - 1.0)   <= DBL_EPSILON && "Test3 'to_24_hour_clock'");
 	assert(fabs(to_24_hour_clock(4) - 4.0)    <= DBL_EPSILON && "Test4 'to_24_hour_clock'");
 	assert(fabs(to_24_hour_clock(28.5) - 4.5) <= DBL_EPSILON && "Test5 'to_24_hour_clock'");
+
+	//Tests for 'get_hours' function
+	assert(get_hours(3800) == 1  && "Test1 'get_hours'");
+	assert(get_hours(1600) == 0  && "Test2 'get_hours'");
+	assert(get_hours(3599) == 0  && "Test3 'get_hours'");
+	assert(get_hours(7200) == 2  && "Test4 'get_hours'");
+	assert(get_hours(10800) == 3 && "Test5 'get_hours'");
+
 
 	//Tests for 'time_from_utc' function
 	assert(fabs(time_from_utc(0, 12.0) - 12.0)  <= DBL_EPSILON  && "Test 1 'time_from_utc'");
