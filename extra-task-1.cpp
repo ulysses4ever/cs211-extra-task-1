@@ -63,6 +63,13 @@ int get_hours(int seconds)
 	return seconds / 3600;
 }
 
+///Determine the minutes part of a time in seconds.
+int get_minutes(int seconds)
+{
+	assert(seconds >= 0);
+	return (seconds / 60) % 60;
+}
+
 //double time_to_utc(int utc_offset, double time)
 //{
 //    /*
@@ -132,12 +139,18 @@ int main()
 	assert(fabs(to_24_hour_clock(28.5) - 4.5) <= DBL_EPSILON && "Test5 'to_24_hour_clock'");
 
 	//Tests for 'get_hours' function
-	assert(get_hours(3800) == 1  && "Test1 'get_hours'");
-	assert(get_hours(1600) == 0  && "Test2 'get_hours'");
-	assert(get_hours(3599) == 0  && "Test3 'get_hours'");
-	assert(get_hours(7200) == 2  && "Test4 'get_hours'");
+	assert(get_hours(3800) == 1 && "Test1 'get_hours'");
+	assert(get_hours(1600) == 0 && "Test2 'get_hours'");
+	assert(get_hours(3599) == 0 && "Test3 'get_hours'");
+	assert(get_hours(7200) == 2 && "Test4 'get_hours'");
 	assert(get_hours(10800) == 3 && "Test5 'get_hours'");
 
+	//Tests for 'get_minutes' function
+	assert(get_minutes(3800) == 3  && "Test1 'get_minutes'");
+	assert(get_minutes(1600) == 26 && "Test2 'get_minutes'");
+	assert(get_minutes(3599) == 59 && "Test3 'get_minutes'");
+	assert(get_minutes(7200) == 0  && "Test4 'get_minutes'");
+	assert(get_minutes(10800) == 0 && "Test5 'get_minutes'");
 
 	//Tests for 'time_from_utc' function
 	assert(fabs(time_from_utc(0, 12.0) - 12.0)  <= DBL_EPSILON  && "Test 1 'time_from_utc'");
