@@ -74,36 +74,20 @@ int get_seconds(long seconds)
     They are used to determine the hours part, minutes part and seconds part
     of a time in seconds. E.g.:
 
-
     In other words, if 3800 seconds have elapsed since midnight,
     it is currently 01:03:20 (hh:mm:ss).
 */
 
 double time_to_utc(int utc_offset, double time)
 {
+    double absTime = 24 + time - utc_offset;
+    int fullDays = (int)(absTime/24);
+    return absTime - fullDays * 24;
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
         You may be interested in:
         https://en.wikipedia.org/wiki/Coordinated_Universal_Time
-
-        >>> time_to_utc(+0, 12.0)
-        12.0
-
-        >>> time_to_utc(+1, 12.0)
-        11.0
-
-        >>> time_to_utc(-1, 12.0)
-        13.0
-
-        >>> time_to_utc(-11, 18.0)
-        5.0
-
-        >>> time_to_utc(-1, 0.0)
-        1.0
-
-        >>> time_to_utc(-1, 23.0)
-        0.0
     */
 }
 
@@ -168,4 +152,14 @@ int main(){
         assert(1 == get_hours(3800));
         assert(3 == get_minutes(3800));
         assert(20 == get_seconds(3800));
+
+        //time_to_utc
+        assert(fabs(time_to_utc(+0, 12.0) -  12.0) < DBL_EPS);
+        assert(fabs(time_to_utc(+1, 12.0) -  11.0) < DBL_EPS);
+        assert(fabs(time_to_utc(-1, 12.0) -  13.0) < DBL_EPS);
+        assert(fabs(time_to_utc(-11, 18.0) -  5.0) < DBL_EPS);
+        assert(fabs(time_to_utc(-1, 0.0) -  1.0) < DBL_EPS);
+        assert(fabs(time_to_utc(-1, 23.0)       ) < DBL_EPS);
+
+
 }
