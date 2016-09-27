@@ -27,7 +27,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 	return (hours + minutes / 60.0 + seconds / 3600.0);
 }
 
-//Return the hour as seen on a 24 - hour clock.
+//Returns the hour as seen on a 24 - hour clock (25 -> 1, 48 -> 0).
 double to_24_hour_clock(double hours)
 {
 	//Precondition: hours >= 0
@@ -36,7 +36,7 @@ double to_24_hour_clock(double hours)
 	return remainder(hours, 24);
 }
 
-///*
+//*
 //    Implement three functions
 //        * get_hours
 //        * get_minutes
@@ -56,7 +56,14 @@ double to_24_hour_clock(double hours)
 //    In other words, if 3800 seconds have elapsed since midnight, 
 //    it is currently 01:03:20 (hh:mm:ss).
 //*/
-//
+
+//Returns number of hours for given number of seconds.
+int get_hours(double seconds)
+{
+	assert(seconds >= 0);
+	return (int)trunc(seconds / 3600);
+}
+
 //double time_to_utc(int utc_offset, double time)
 //{
 //    /*
@@ -141,4 +148,13 @@ int main()
 	assert(fabs(to_24_hour_clock(25) - 1) < DBL_EPSILON);
 	assert(fabs(to_24_hour_clock(4) - 4) < DBL_EPSILON);
 	assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
+
+	// Tests for get_hours
+	assert(get_hours(3800) == 1);
+	assert(get_hours(0) == 0);
+	assert(get_hours(1900) == 0);
+	assert(get_hours(4000) == 1);
+	assert(get_hours(3599) == 0);
+	assert(get_hours(3600) == 1);
+	assert(get_hours(7200) == 2);
 }
