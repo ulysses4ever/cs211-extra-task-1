@@ -51,6 +51,21 @@ double to_24_hour_clock(double hours)
 	return (hours <= 12.0)? hours: 24 - hours;
 }
 
+
+int get_hours(long seconds)
+{
+    return seconds / 3600;
+}
+
+int get_minutes(long seconds)
+{
+    return (seconds / 60) % 60;;
+}
+
+int get_seconds(long seconds)
+{
+    return seconds % 60;
+}
 /*
     Implement three functions
         * get_hours
@@ -59,14 +74,6 @@ double to_24_hour_clock(double hours)
     They are used to determine the hours part, minutes part and seconds part
     of a time in seconds. E.g.:
 
-    >>> get_hours(3800)
-    1
-
-    >>> get_minutes(3800)
-    3
-
-    >>> get_seconds(3800)
-    20
 
     In other words, if 3800 seconds have elapsed since midnight,
     it is currently 01:03:20 (hh:mm:ss).
@@ -157,5 +164,8 @@ int main(){
         assert(fabs(to_24_hour_clock(4) - 4) < DBL_EPS);
         assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPS);
 
-        //
+        //get_hours , minutes, seconds
+        assert(1 == get_hours(3800));
+        assert(3 == get_minutes(3800));
+        assert(20 == get_seconds(3800));
 }
