@@ -51,6 +51,17 @@ double to_24_hour_clock(double hours)
 	return (hours <= 12.0)? hours: 24 - hours;
 }
 
+/*
+    Implement three functions
+        * get_hours
+        * get_minutes
+        * get_seconds
+    They are used to determine the hours part, minutes part and seconds part
+    of a time in seconds. E.g.:
+
+    In other words, if 3800 seconds have elapsed since midnight,
+    it is currently 01:03:20 (hh:mm:ss).
+*/
 
 int get_hours(long seconds)
 {
@@ -66,60 +77,26 @@ int get_seconds(long seconds)
 {
     return seconds % 60;
 }
-/*
-    Implement three functions
-        * get_hours
-        * get_minutes
-        * get_seconds
-    They are used to determine the hours part, minutes part and seconds part
-    of a time in seconds. E.g.:
-
-    In other words, if 3800 seconds have elapsed since midnight,
-    it is currently 01:03:20 (hh:mm:ss).
-*/
 
 double time_to_utc(int utc_offset, double time)
 {
-    double absTime = 24 + time - utc_offset;
-    int fullDays = (int)(absTime/24);
-    return absTime - fullDays * 24;
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
         You may be interested in:
         https://en.wikipedia.org/wiki/Coordinated_Universal_Time
     */
+    double absTime = 24 + time - utc_offset;
+    int fullDays = (int)(absTime/24);
+    return absTime - fullDays * 24;
 }
 
 double time_from_utc(int utc_offset, double time)
 {
     /*
         Return UTC time in time zone utc_offset.
-
-        >>> time_from_utc(+0, 12.0)
-        12.0
-
-        >>> time_from_utc(+1, 12.0)
-        13.0
-
-        >>> time_from_utc(-1, 12.0)
-        11.0
-
-        >>> time_from_utc(+6, 6.0)
-        12.0
-
-        >>> time_from_utc(-7, 6.0)
-        23.0
-
-        >>> time_from_utc(-1, 0.0)
-        23.0
-
-        >>> time_from_utc(-1, 23.0)
-        22.0
-
-        >>> time_from_utc(+1, 23.0)
-        0.0
     */
+    return time_to_utc(-utc_offset, time);
 }
 
 
@@ -161,5 +138,13 @@ int main(){
         assert(fabs(time_to_utc(-1, 0.0) -  1.0) < DBL_EPS);
         assert(fabs(time_to_utc(-1, 23.0)       ) < DBL_EPS);
 
-
+        //time_from_utc
+        assert(fabs(time_from_utc(+0, 12.0) -  12.0) < DBL_EPS);
+        assert(fabs(time_from_utc(+1, 12.0) -  13.0) < DBL_EPS);
+        assert(fabs(time_from_utc(-1, 12.0) -  11.0) < DBL_EPS);
+        assert(fabs(time_from_utc(+6, 6.0) -  12.0) < DBL_EPS);
+        assert(fabs(time_from_utc(-7, 6.0) -  23.0) < DBL_EPS);
+        assert(fabs(time_from_utc(-1, 0.0) -  23.0) < DBL_EPS);
+        assert(fabs(time_from_utc(-1, 23.0) -  22.0) < DBL_EPS);
+        assert(fabs(time_from_utc(+1, 23.0) -  0.0) < DBL_EPS);
 }
