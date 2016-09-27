@@ -33,7 +33,7 @@ double to_24_hour_clock(double hours)
 	//Precondition: hours >= 0
 	assert(hours >= 0);
 	
-	return remainder(hours, 24);
+	return fmod(hours, 24);
 }
 
 //*
@@ -57,11 +57,18 @@ double to_24_hour_clock(double hours)
 //    it is currently 01:03:20 (hh:mm:ss).
 //*/
 
-//Returns number of hours for given number of seconds.
+//Determines the hours part of a time in seconds.
 int get_hours(double seconds)
 {
 	assert(seconds >= 0);
-	return (int)trunc(seconds / 3600);
+	return (int) trunc(seconds / 3600);
+}
+
+//Determines the minutes part of a time in seconds.
+int get_minutes(double seconds)
+{
+	assert(seconds >= 0);
+	return (int) trunc(fmod(seconds, 3600) / 60);
 }
 
 //double time_to_utc(int utc_offset, double time)
@@ -148,6 +155,7 @@ int main()
 	assert(fabs(to_24_hour_clock(25) - 1) < DBL_EPSILON);
 	assert(fabs(to_24_hour_clock(4) - 4) < DBL_EPSILON);
 	assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
+	assert(fabs(to_24_hour_clock(47.50) - 23.5) < DBL_EPSILON);
 
 	// Tests for get_hours
 	assert(get_hours(3800) == 1);
@@ -157,4 +165,14 @@ int main()
 	assert(get_hours(3599) == 0);
 	assert(get_hours(3600) == 1);
 	assert(get_hours(7200) == 2);
+
+	// Tests for get_minutes
+	assert(get_minutes(3800) == 3);
+	assert(get_minutes(0) == 0);
+	assert(get_minutes(60) == 1);
+	assert(get_minutes(185) == 3);
+	assert(get_minutes(3659) == 0);
+	assert(get_minutes(3600) == 0);
+	assert(get_minutes(3539) == 58);
+	assert(get_minutes(7199) == 59);
 }
