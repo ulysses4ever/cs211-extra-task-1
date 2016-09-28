@@ -90,7 +90,7 @@ double time_to_utc(int utc_offset, double time)
     */
     assert(std::abs(utc_offset) <= 12);
 
-    double absTime = 48 + time - utc_offset;
+    double absTime = 24 + time - utc_offset;
     return to_24_hour_clock(absTime);
 }
 
@@ -139,6 +139,7 @@ int main(){
         assert(fabs(time_to_utc(-1, 12.0) -  13.0) < DBL_EPS && "test-22");
         assert(fabs(time_to_utc(-11, 18.0) -  5.0) < DBL_EPS && "test-23");
         assert(fabs(time_to_utc(-1, 0.0) -  1.0) < DBL_EPS && "test-24");
+        assert(fabs(time_to_utc(-1, 23.0)       ) < DBL_EPS && "test-25");
 
         //time_from_utc
         assert(fabs(time_from_utc(+0, 12.0) -  12.0) < DBL_EPS && "test-26");
