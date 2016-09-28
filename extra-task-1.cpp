@@ -71,6 +71,13 @@ int get_minutes(double seconds)
 	return (int) trunc(fmod(seconds, 3600) / 60);
 }
 
+//Determines the seconds part of a time in seconds.
+int get_seconds(double seconds)
+{
+	assert(seconds >= 0);
+	return (int) trunc(fmod(fmod(seconds, 60), 60));
+}
+
 //double time_to_utc(int utc_offset, double time)
 //{
 //    /*
@@ -175,4 +182,13 @@ int main()
 	assert(get_minutes(3600) == 0);
 	assert(get_minutes(3539) == 58);
 	assert(get_minutes(7199) == 59);
+	assert(get_minutes(59.99) == 0);
+
+	// Tests for get_seconds
+	assert(get_seconds(0) == 0);
+	assert(get_seconds(13) == 13);
+	assert(get_seconds(60) == 0);
+	assert(get_seconds(71.9) == 11);
+	assert(get_seconds(3600) == 0);
+	assert(get_seconds(3650) == 50);
 }
