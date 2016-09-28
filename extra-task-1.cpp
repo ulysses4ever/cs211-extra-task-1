@@ -178,6 +178,11 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
+	double t = time + utc_offset;
+	if (t < 0) t = 24 + t;
+	if (t >= 24) t -= 24.0;
+	if (t < 0) t = abs(t);
+	return t;
     /*
         Return UTC time in time zone utc_offset.
 
