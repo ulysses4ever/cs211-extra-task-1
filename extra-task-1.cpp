@@ -106,6 +106,14 @@ double get_hours(double time)
 {
 	return floor(time / 3600.0);
 }
+
+double get_minutes(double time)
+{
+	while (time >= 3600)
+		time -= 3600;
+	return floor(time / 60.0);
+}
+
 /*
     Implement three functions
         * get_hours
