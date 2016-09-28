@@ -58,6 +58,13 @@ double to_24_hour_clock(double hours)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
+// Determine the hours part of a time in seconds.
+int get_hours(int seconds)
+{
+	assert(seconds >= 0);
+	return seconds / 3600;
+}
+
 double time_to_utc(int utc_offset, double time)
 {
     /*
@@ -148,4 +155,10 @@ int main()
 	assert(are_equal(to_24_hour_clock(25), 1));
 	assert(are_equal(to_24_hour_clock(4), 4));
 	assert(are_equal(to_24_hour_clock(28.5), 4.5));
+	
+	// testing get_hours
+	assert(get_hours(0) == 0);
+	assert(get_hours(1950) == 0);
+	assert(get_hours(3800) == 1);
+	assert(get_hours(10800) == 3);
 }
