@@ -102,6 +102,10 @@ double to_24_hour_clock(double hours)
 	return hours;
 }
 
+double get_hours(double time)
+{
+	return floor(time / 3600.0);
+}
 /*
     Implement three functions
         * get_hours
