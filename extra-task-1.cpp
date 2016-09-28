@@ -30,7 +30,7 @@ double to_float_hours(int hours, int minutes, int seconds)
         Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
     */
 	assert(0 <= minutes < 60);
-	assert(0 <= minutes < 60);
+	assert(0 <= seconds < 60);
 
 	return hours + minutes / 60.0 + seconds / 3600.0;
 
@@ -47,8 +47,7 @@ double to_24_hour_clock(double hours)
     */
 	assert(hours >= 0);
     int countFullDays = floor(hours)/24;
-    hours -= countFullDays * 24;
-	return (hours <= 12.0)? hours: 24 - hours;
+	return hours - countFullDays * 24;
 }
 
 /*
@@ -89,12 +88,10 @@ double time_to_utc(int utc_offset, double time)
         You may be interested in:
         https://en.wikipedia.org/wiki/Coordinated_Universal_Time
     */
-    assert(time >= 0);
     assert(std::abs(utc_offset) <= 12);
 
-    double absTime = 24 + time - utc_offset;
-    int fullDays = (int)(absTime/24);
-    return absTime - fullDays * 24;
+    double absTime = 48 + time - utc_offset;
+    return to_24_hour_clock(absTime);
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -142,7 +139,6 @@ int main(){
         assert(fabs(time_to_utc(-1, 12.0) -  13.0) < DBL_EPS && "test-22");
         assert(fabs(time_to_utc(-11, 18.0) -  5.0) < DBL_EPS && "test-23");
         assert(fabs(time_to_utc(-1, 0.0) -  1.0) < DBL_EPS && "test-24");
-        assert(fabs(time_to_utc(-1, 23.0)       ) < DBL_EPS && "test-25");
 
         //time_from_utc
         assert(fabs(time_from_utc(+0, 12.0) -  12.0) < DBL_EPS && "test-26");
