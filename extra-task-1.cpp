@@ -4,6 +4,12 @@
 #include <cfloat>
 #include <cmath>
 
+// Comparing real numbers for equality
+bool are_equal(double a, double b)
+{
+	return (fabs(b - a) < DBL_EPSILON);
+}
+
 // Return the number of seconds later that a time in seconds
 // time_2 is than a time in seconds time_1.
 double seconds_difference(double time_1, double time_2)
@@ -31,7 +37,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 // hour as seen on a 24-hour clock.
 double to_24_hour_clock(double hours)
 {
-	assert(hours > 0);
+	assert(hours > 0 || are_equal(hours, 0));
 	int h = (int)hours;
 	double m = hours - h;
 	return h % 24 + m;
@@ -58,32 +64,17 @@ int get_seconds(int seconds)
 	return seconds % 60;
 }
 
+// Return time at UTC+0, where utc_offset is
+// the number of hours away from UTC+0.
 double time_to_utc(int utc_offset, double time)
 {
-    /*
-        Return time at UTC+0, where utc_offset is the number of hours away from
-        UTC+0.
-        You may be interested in:
-        https://en.wikipedia.org/wiki/Coordinated_Universal_Time
-
-        >>> time_to_utc(+0, 12.0)
-        12.0
- 
-        >>> time_to_utc(+1, 12.0)
-        11.0
- 
-        >>> time_to_utc(-1, 12.0)
-        13.0
- 
-        >>> time_to_utc(-11, 18.0)
-        5.0
- 
-        >>> time_to_utc(-1, 0.0)
-        1.0
- 
-        >>> time_to_utc(-1, 23.0)
-        0.0
-    */
+	assert(time > 0 || are_equal(time, 0));
+	assert(-12 <= utc_offset && utc_offset <= +14);
+	time -= utc_offset;
+	
+	// the handling of cases when time >= 24 or time < 0
+	int h = (int)time;
+	return (h + 24) % 24 + time - h;
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -115,12 +106,6 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
-}
-
-// Comparing real numbers for equality
-bool are_equal(double a, double b)
-{
-	return (fabs(b - a) < DBL_EPSILON);
 }
 
 int main()
@@ -169,4 +154,13 @@ int main()
 	assert(get_seconds(10800) == 0);
 	assert(get_seconds(1260) == 0);
 	assert(get_seconds(5555) == 35);
+	
+	// testing time_to_utc
+	assert(are_equal(time_to_utc(+0, 12.0), 12.0));
+	assert(are_equal(time_to_utc(+1, 12.0), 11.0));
+	assert(are_equal(time_to_utc(-1, 12.0), 13.0));
+	assert(are_equal(time_to_utc(-11, 18.0), 5.0));
+	assert(are_equal(time_to_utc(-1, 0.0), 1.0));
+	assert(are_equal(time_to_utc(-1, 23.0), 0.0));
+	assert(are_equal(time_to_utc(+6, 3.7), 21.7));
 }
