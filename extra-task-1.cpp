@@ -211,3 +211,48 @@ double time_from_utc(int utc_offset, double time)
         0.0
     */
 }
+int main()
+{
+	std::cout << "tests  ";
+	assert(seconds_difference(1800.0, 3600.0) == 1800.0 && "test-1");
+	assert(seconds_difference(0.0, 3600.0) == 3600.0 && "test-2");
+	assert(seconds_difference(0.0, 1.0) == 1.0 && "test-3");
+	assert(seconds_difference(1800.0, 1800.0) == 0.0 && "test-4");
+
+	assert(hours_difference(0.0, 1800.0) == 0.5 && "test-5");
+	assert(hours_difference(3600.0, 1800.0) == -0.5 && "test-6");
+	assert(hours_difference(1800.0, 2160.0) == 0.1 && "test-7");
+	assert(hours_difference(1800.0, 1800.0) == 0.0 && "test-8");
+
+	assert(to_float_hours(0, 30, 0) == 0.5 && "test-9");
+	assert(to_float_hours(2, 0, 0) == 2.0 && "test-10");
+	assert(to_float_hours(1, 0, 36) == 1.01 && "test-11");
+
+	assert(to_24_hour_clock(24) == 0 && "test-12");
+	assert(to_24_hour_clock(48) == 0 && "test-13");
+	assert(to_24_hour_clock(25) == 1 && "test-14");
+	assert(to_24_hour_clock(4) == 4 && "test-15");
+	assert(to_24_hour_clock(28.5) == 4.5 && "test-16");
+
+	assert(get_hours(3800.0) == 1.0 && "test-17");
+	assert(get_minutes(3800.0) == 3 && "test-18");
+	assert(get_seconds(3800.0) == 20.0 && "test-19");
+
+	assert(time_to_utc(+0, 12.0) == 12.0 && "test-20");
+	assert(time_to_utc(+1, 12.0) == 11.0 && "test-21");
+	assert(time_to_utc(-1, 12.0) == 13.0 && "test-22");
+	assert(time_to_utc(-11, 18.0) == 5.0 && "test-23");
+	assert(time_to_utc(-1, 0.0) == 1.0 && "test-24");
+	assert(time_to_utc(-1, 23.0) == 0.0 && "test-25");
+
+	assert(time_from_utc(+0, 12.0) == 12.0 && "test-26");
+	assert(time_from_utc(+1, 12.0) == 13.0 && "test-27");
+	assert(time_from_utc(-1, 12.0) == 11.0 && "test-28");
+	assert(time_from_utc(+6, 6.0) == 12.0 && "test-29");
+	assert(time_from_utc(-7, 6.0) == 23.0 && "test-30");
+	assert(time_from_utc(-1, 0.0) == 23.0 && "test-31");
+	assert(time_from_utc(-1, 23.0) == 22.0 && "test-32");
+	assert(time_from_utc(+1, 23.0) == 0.0 && "test-33");
+
+	std::cout << " ok !  ";
+}
