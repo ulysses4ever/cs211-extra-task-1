@@ -65,16 +65,19 @@ double to_24_hour_clock(double hours)
 
 int get_hours(long seconds)
 {
+    assert(seconds >= 0);
     return seconds / 3600;
 }
 
 int get_minutes(long seconds)
 {
+    assert(seconds >= 0);
     return (seconds / 60) % 60;;
 }
 
 int get_seconds(long seconds)
 {
+    assert(seconds >= 0);
     return seconds % 60;
 }
 
@@ -86,6 +89,9 @@ double time_to_utc(int utc_offset, double time)
         You may be interested in:
         https://en.wikipedia.org/wiki/Coordinated_Universal_Time
     */
+    assert(time >= 0);
+    assert(std::abs(utc_offset) <= 12);
+
     double absTime = 24 + time - utc_offset;
     int fullDays = (int)(absTime/24);
     return absTime - fullDays * 24;
