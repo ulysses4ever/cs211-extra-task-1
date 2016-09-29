@@ -2,9 +2,6 @@
 #include <cassert> 
 #include <cmath>
 
-using namespace std;
-
-
 /*
 Return the number of seconds later that a time in seconds
 time_2 is than a time in seconds time_1.
@@ -14,16 +11,13 @@ double seconds_difference(double time_1, double time_2)
 	return (time_2 - time_1);
 }
 
+/*
+Return the number of hours later that a time in seconds
+time_2 is than a time in seconds time_1.
+*/
 double hours_difference(double time_1, double time_2)
 {
 	return ((time_2 - time_1) / 3600.0);
-    /*
-        Return the number of hours later that a time in seconds
-        time_2 is than a time in seconds time_1.
-
-        >>> hours_difference(1800.0, 1800.0)
-        0.0
-    */
 }
 
 /*
@@ -112,70 +106,19 @@ UTC+0.
 */
 double time_to_utc(int utc_offset, double time)
 {
-	/*
-	int xneg, xpos;
-	xneg = time - utc_offset;
-	xpos = time + utc_offset;
-
-	if ((utc_offset >= 0) && (xneg < 24))
-	{ 
-		return xneg;
-		(exit);
-	}
-	else if ((utc_offset < 0) && (xpos < 24))
-	{
-		return xpos;
-		(exit);
-	}
-	else if (utc_offset >= 0)
-	{
-		return xneg - 24;
-		(exit);
-	}
-	else if (utc_offset < 0)
-	{
-		return xpos - 24;
-		(exit);
-	}
-	*/
-
 	int x = (time - utc_offset);
 	return x % 24;
 }
 
+/*
+Return UTC time in time zone utc_offset.
+*/
 double time_from_utc(int utc_offset, double time)
 {
 	int x = (time + utc_offset);
 	if (x < 0)
 		return (x + 24);
 	else return x % 24;
-    /*
-        Return UTC time in time zone utc_offset.
-
-        >>> time_from_utc(+0, 12.0)
-        12.0
- 
-        >>> time_from_utc(+1, 12.0)
-        13.0
- 
-        >>> time_from_utc(-1, 12.0)
-        11.0
- 
-        >>> time_from_utc(+6, 6.0)
-        12.0
- 
-        >>> time_from_utc(-7, 6.0)
-        23.0
- 
-        >>> time_from_utc(-1, 0.0)
-        23.0
- 
-        >>> time_from_utc(-1, 23.0)
-        22.0
- 
-        >>> time_from_utc(+1, 23.0)
-        0.0
-    */
 }
 
 
