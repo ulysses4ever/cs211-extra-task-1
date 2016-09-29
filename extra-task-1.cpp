@@ -36,26 +36,22 @@ double to_24_hour_clock(double hours)
 	return fmod(hours + 24.0, 24);
 }
 
-/*
-    Implement three functions
-        * get_hours
-        * get_minutes
-        * get_seconds
-    They are used to determine the hours part, minutes part and seconds part 
-    of a time in seconds. E.g.:
+/* Three functions are used to determine the hours part, minutes part and seconds part 
+    of a time in seconds. */
+double get_hours(int time)
+{
+	return(time / 3600);
+}
 
-    >>> get_hours(3800)
-    1
+double get_minutes(int time)
+{
+	return(time % 3600 / 60);
+}
 
-    >>> get_minutes(3800)
-    3
-
-    >>> get_seconds(3800)
-    20
-
-    In other words, if 3800 seconds have elapsed since midnight, 
-    it is currently 01:03:20 (hh:mm:ss).
-*/
+double get_seconds(int time)
+{
+	return(time % 3600 % 60);
+}
 
 /* Return time at UTC+0, where utc_offset is the number of hours away from UTC+0. */
 double time_to_utc(int utc_offset, double time)
@@ -122,5 +118,23 @@ int main()
 	assert(abs(time_from_utc(-1, 0.0) - 23.0) < DBL_EPSILON);
 	assert(abs(time_from_utc(-1, 23.0) - 22.0) < DBL_EPSILON);
 	assert(abs(time_from_utc(+1, 23.0) - 0.0) < DBL_EPSILON);
-	cout << "Tests for time_to_utc were successfully passed" << endl;
+	cout << "Tests for time_from_utc were successfully passed" << endl;
+
+	// get_hours
+	assert(abs(get_hours(3800) - 1) < DBL_EPSILON);
+	assert(abs(get_hours(7200) - 2) < DBL_EPSILON);
+	assert(abs(get_hours(4500) - 1) < DBL_EPSILON);
+	cout << "Tests for get_hours were successfully passed" << endl;
+
+	// get_minutes
+	assert(abs(get_minutes(3800) - 3) < DBL_EPSILON);
+	assert(abs(get_minutes(7600) - 6) < DBL_EPSILON);
+	assert(abs(get_minutes(4500) - 15) < DBL_EPSILON);
+	cout << "Tests for get_hours were successfully passed" << endl;
+
+	// get_seconds
+	assert(abs(get_seconds(3800) - 20) < DBL_EPSILON);
+	assert(abs(get_seconds(7600) - 40) < DBL_EPSILON);
+	assert(abs(get_seconds(4400) - 20) < DBL_EPSILON);
+	cout << "Tests for get_hours were successfully passed" << endl;
 }
