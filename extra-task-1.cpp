@@ -1,11 +1,11 @@
+#include <iostream>
+#include <assert.h>
+
+//Return the number of seconds later that a time in seconds time_2 is than a time in seconds time_1.
 double seconds_difference(double time_1, double time_2)
 {
-    // your implementation goes here...
-    
-    /*    
-        Return the number of seconds later that a time in seconds
-        time_2 is than a time in seconds time_1.
-            
+	return time_2 - time_1;
+    /*
         >>> seconds_difference(1800.0, 3600.0)
         1800.0
 
@@ -166,4 +166,8 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+}
+
+int main() {
+
 }
