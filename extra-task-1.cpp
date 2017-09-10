@@ -49,24 +49,8 @@ double time_to_utc(int utc_offset, double time)
 //Return UTC time in time zone utc_offset.
 double time_from_utc(int utc_offset, double time)
 {
-    /*
-        >>> time_from_utc(+0, 12.0)
-        12.0
-        >>> time_from_utc(+1, 12.0)
-        13.0
-        >>> time_from_utc(-1, 12.0)
-        11.0
-        >>> time_from_utc(+6, 6.0)
-        12.0
-        >>> time_from_utc(-7, 6.0)
-        23.0
-        >>> time_from_utc(-1, 0.0)
-        23.0
-        >>> time_from_utc(-1, 23.0)
-        22.0
-        >>> time_from_utc(+1, 23.0)
-        0.0
-    */
+	int hour = (int)floor(time) + utc_offset + 24;
+	return (hour) % 24 + time - floor(time);
 	return 0;
 }
 
@@ -122,4 +106,16 @@ int main() {
 	assert(are_equal(time_to_utc(-1, 12.0), 13) && "test 5");
 	assert(are_equal(time_to_utc(-11, 18.0), 5) && "test 6");
 	assert(are_equal(time_to_utc(1, 0.0), 23) && "test 7");
+
+	//time_from_utc
+	assert(are_equal(time_from_utc(+0, 12.0), 12) && "test 1");
+	assert(are_equal(time_from_utc(+1, 12.0), 13) && "test 2");
+	assert(are_equal(time_from_utc(-1, 12.0), 11) && "test 3");
+	assert(are_equal(time_from_utc(+6, 6.0),  12) && "test 4");
+	assert(are_equal(time_from_utc(-7, 6.0),  23) && "test 5");
+	assert(are_equal(time_from_utc(-1, 0.0),  23) && "test 6");
+	assert(are_equal(time_from_utc(-1, 23.0), 22) && "test 7");
+	assert(are_equal(time_from_utc(+1, 23.0), 0) && "test 8");
+
+	return 0;
 }
