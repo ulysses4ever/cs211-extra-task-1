@@ -20,34 +20,11 @@ double to_float_hours(int hours, int minutes, int seconds)
 	return hours + (minutes * 60 + seconds) / 3600.0;
 }
 
+
+//hours is a number of hours since midnight. Return the hour as seen on a 24 - hour clock.
 double to_24_hour_clock(double hours)
 {
-    /*
-        hours is a number of hours since midnight. Return the
-        hour as seen on a 24-hour clock.
-
-        Precondition: hours >= 0
-
-        >>> to_24_hour_clock(24)
-        0
-        
-        >>> to_24_hour_clock(48)
-        0
-        
-        >>> to_24_hour_clock(25)
-        1
-        
-        >>> to_24_hour_clock(4)
-        4
-        
-        >>> to_24_hour_clock(28.5)
-        4.5
-        
-        You may wish to inspect various function in <cmath> to work
-        with integer and fractional part of a hours separately.
-        
-    */
-	return 0;
+	return (int)floor(hours) % 24 + hours-floor(hours);
 }
 
 /*
@@ -154,4 +131,11 @@ int main() {
 	assert(are_equal(to_float_hours(2, 45, 9), 2.7525) && "test 2");
 	assert(are_equal(to_float_hours(1, 0, 36), 1.01) && "test 3");
 	
+	//to_24_hour_clock testing
+	assert(are_equal(to_24_hour_clock(24), 0) && "test 1");
+	assert(are_equal(to_24_hour_clock(48), 0) && "test 2");
+	assert(are_equal(to_24_hour_clock(25), 1) && "test 3");
+	assert(are_equal(to_24_hour_clock(4), 4) && "test 4");
+	assert(are_equal(to_24_hour_clock(28.5), 4.5) && "test 5");
+
 }
