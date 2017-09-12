@@ -28,33 +28,15 @@ double to_float_hours(int hours, int minutes, int seconds)
 	return hours + seconds / 3600.0 + (minutes * 60 / 3600.0);
 
 }
+
+/*
+hours is a number of hours since midnight. Return the
+hour as seen on a 24-hour clock.
+
+*/
 double to_24_hour_clock(double hours)
 {
-    /*
-        hours is a number of hours since midnight. Return the
-        hour as seen on a 24-hour clock.
-
-        Precondition: hours >= 0
-
-        >>> to_24_hour_clock(24)
-        0
-        
-        >>> to_24_hour_clock(48)
-        0
-        
-        >>> to_24_hour_clock(25)
-        1
-        
-        >>> to_24_hour_clock(4)
-        4
-        
-        >>> to_24_hour_clock(28.5)
-        4.5
-        
-        You may wish to inspect various function in <cmath> to work
-        with integer and fractional part of a hours separately.
-        
-    */
+	return ((int)trunc(hours)) % 24 + (hours - trunc(hours));
 }
 
 /*
@@ -158,6 +140,14 @@ int main() {
 	assert(equal(to_float_hours(2, 45, 9), 2.7525) && "test 3.2");
 	assert(equal(to_float_hours(1, 0, 36), 1.01) && "test 3.3");
 	cout << "The third test complied!" << endl << endl;
+
+	cout << "The tests for the fourth programm:" << endl;
+	assert(equal(to_24_hour_clock(24), 0) && "test 4.1");
+	assert(equal(to_24_hour_clock(48), 0) && "test 4.2");
+	assert(equal(to_24_hour_clock(25), 1) && "test 4.3");
+	assert(equal(to_24_hour_clock(4), 4) && "test 4.4");
+	assert(equal(to_24_hour_clock(28.5), 4.5) && "test 4.5");
+	cout << "The fourth test complied!" << endl << endl;
 
 	cout << "Tests Complied!" << endl;
 	system("pause");
