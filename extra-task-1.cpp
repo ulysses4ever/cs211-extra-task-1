@@ -31,20 +31,10 @@ double hours_difference(double time_1, double time_2)
   of hours, minutes, and seconds.*/
 double to_float_hours(int hours, int minutes, int seconds)
 {
-	return 0;
-    /*
-
-        Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
-
-        >>> to_float_hours(0, 15, 0)
-        0.25
-
-        >>> to_float_hours(2, 45, 9)
-        2.7525
-
-        >>> to_float_hours(1, 0, 36)
-        1.01
-    */
+	assert(0 <= minutes && minutes < 60);
+	assert(0 <= seconds && seconds < 60);
+	return (hours + minutes / 60.0 + seconds / 3600.0);
+    
 }
 
 double to_24_hour_clock(double hours)
@@ -173,6 +163,12 @@ int main()
 	assert(areequal(hours_difference(3600.0, 1800.0), -0.5) && "test6");
 	assert(areequal(hours_difference(1800.0, 2160.0), 0.1) && "test7");
 	assert(areequal(hours_difference(1800.0, 1800.0), 0) && "test8");
+
+	//to_float_hours testing
+	assert(areequal(to_float_hours(0, 15, 0), 0.25) && "test9");
+	assert(areequal(to_float_hours(2, 45, 9), 2.7525) && "test10");
+	assert(areequal(to_float_hours(1, 0, 36), 1.01) && "test11");
+
 
 	cout << "Tests have been passed\n";
 	system("PAUSE");
