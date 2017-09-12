@@ -23,7 +23,7 @@ double seconds_difference(double time_1, double time_2)
 
 double hours_difference(double time_1, double time_2)
 {
-	return 0;
+	return (time_2 - time_1) / 3600;
     /*
         Return the number of hours later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -186,6 +186,10 @@ int main()
 		assert(fabs(seconds_difference(1800, 3600) - 1800) < DBL_EPSILON && "test-1-1");
 		assert(fabs(seconds_difference(3600, 1800) - -1800) < DBL_EPSILON && "test-1-2");
 		assert(fabs(seconds_difference(1800, 2160) - 360) < DBL_EPSILON && "test-1-3");
-		assert(fabs(seconds_difference(1800, 1800)) < DBL_EPSILON && "test-1-3");
-	// seconds_difference
+		assert(fabs(seconds_difference(1800, 1800)) < DBL_EPSILON && "test-1-4");
+	// hours_difference
+		assert(fabs(hours_difference(1800, 3600) - 0.5) < DBL_EPSILON && "test-2-1");
+		assert(fabs(hours_difference(3600, 1800) - -0.5) < DBL_EPSILON && "test-2-2");
+		assert(fabs(hours_difference(1800, 2160) - 0.1) < DBL_EPSILON && "test-2-3");
+		assert(fabs(hours_difference(1800, 1800)) < DBL_EPSILON && "test-2-4");
 }
