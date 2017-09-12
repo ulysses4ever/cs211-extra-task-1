@@ -1,24 +1,16 @@
+#include <iostream>
+#include <cfloat>
+#include <cmath>
+#include <cassert>
+using namespace std;
+
+/*Return the number of seconds later that a time in seconds
+time_2 is than a time in seconds time_1.*/
 double seconds_difference(double time_1, double time_2)
 {
-    // your implementation goes here...
-    
-    /*    
-        Return the number of seconds later that a time in seconds
-        time_2 is than a time in seconds time_1.
-            
-        >>> seconds_difference(1800.0, 3600.0)
-        1800.0
-
-        >>> seconds_difference(3600.0, 1800.0)
-        -1800.0
-
-        >>> seconds_difference(1800.0, 2160.0)
-        360.0
-
-        >>> seconds_difference(1800.0, 1800.0)
-        0.0
-    */
+	return time_2 - time_1;
 }
+
 
 double hours_difference(double time_1, double time_2)
 {
@@ -166,4 +158,18 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+}
+
+int main() {
+
+	cout << "The tests for the first programm:" << endl;
+	assert(equal(seconds_difference(1800.0, 3600.0), 1800.0) && "test 1.1");
+	assert(equal(seconds_difference(3600.0, 1800.0), -1800.0) && "test 1.2");
+	assert(equal(seconds_difference(1800.0, 2160.0), 360.0) && "test 1.3");
+	assert(equal(seconds_difference(1800.0, 1800.0), 0.0) && "test 1.4");
+	cout << "The first test complied!" << endl << endl;
+
+	cout << "Tests Complied!" << endl;
+	system("pause");
+	return 0;
 }
