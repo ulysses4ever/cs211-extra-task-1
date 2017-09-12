@@ -21,24 +21,11 @@ double hours_difference(double time_1, double time_2)
 	return  seconds_difference(time_1, time_2) / 3600.0;
 }
 
+/*Return the total number of hours in the specified number
+of hours, minutes, and seconds.*/
 double to_float_hours(int hours, int minutes, int seconds)
 {
-	return 0;
-    /*
-        Return the total number of hours in the specified number
-        of hours, minutes, and seconds.
-
-        Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
-
-        >>> to_float_hours(0, 15, 0)
-        0.25
-
-        >>> to_float_hours(2, 45, 9)
-        2.7525
-
-        >>> to_float_hours(1, 0, 36)
-        1.01
-    */
+	return (hours + minutes / 60.0 + seconds / 3600.0);
 }
 
 double to_24_hour_clock(double hours)
@@ -163,4 +150,8 @@ int main() {
 	assert(are_equal(hours_difference(3600.0, 1800.0), -0.5) && "test 6");
 	assert(are_equal(hours_difference(1800.0, 2160.0), 0.1) && "test 7");
 	assert(are_equal(hours_difference(1800.0, 1800.0), 0.0) && "test 8");
+
+	assert(are_equal(to_float_hours(0, 15, 0), 0.25) && "test 9");
+	assert(are_equal(to_float_hours(2, 45, 9), 2.7525) && "test 10");
+	assert(are_equal(to_float_hours(1, 0, 36), 1.01) && "test 11");
 }
