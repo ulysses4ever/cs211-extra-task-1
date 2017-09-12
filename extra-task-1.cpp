@@ -58,6 +58,11 @@ int get_seconds(int seconds) {
 	return seconds % 60;
 }
 
+int get_minutes(int seconds) {
+
+	return seconds / 60 % 60;
+}
+
 double time_to_utc(int utc_offset, double time)
 {
     /*
@@ -159,6 +164,13 @@ int main() {
 	assert(equal(get_seconds(7600), 40) && "test 5.3.1");
 	assert(equal(get_seconds(5023), 43) && "test 5.3.1");
 	cout << "The sixth test complied!" << endl << endl;
+
+
+	cout << "The tests for the seventh programm:" << endl;
+	assert(equal(get_minutes(3600), 0) && "test 5.2.1");
+	assert(equal(get_minutes(3800), 3) && "test 5.2.2");
+	assert(equal(get_minutes(3700), 1) && "test 5.2.3");
+	cout << "The seventh test complied!" << endl << endl;
 
 	cout << "Tests Complied!" << endl;
 	system("pause");
