@@ -19,25 +19,15 @@ double hours_difference(double time_1, double time_2)
 	return seconds_difference(time_1, time_2) / 3600.0;
 }
 
+/*
+Return the total number of hours in the specified number
+of hours, minutes, and seconds.
+*/
 double to_float_hours(int hours, int minutes, int seconds)
 {
-    /*
-        Return the total number of hours in the specified number
-        of hours, minutes, and seconds.
+	return hours + seconds / 3600.0 + (minutes * 60 / 3600.0);
 
-        Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
-
-        >>> to_float_hours(0, 15, 0)
-        0.25
-
-        >>> to_float_hours(2, 45, 9)
-        2.7525
-
-        >>> to_float_hours(1, 0, 36)
-        1.01
-    */
 }
-
 double to_24_hour_clock(double hours)
 {
     /*
@@ -162,6 +152,12 @@ int main() {
 	assert(equal(hours_difference(1800.0, 2160.0), 0.1) && "test 2.3");
 	assert(equal(hours_difference(1800.0, 1800.0), 0.0) && "test 2.4");
 	cout << "The second test complied!" << endl << endl;
+
+	cout << "The tests for the third programm:" << endl;
+	assert(equal(to_float_hours(0, 15, 0), 0.25) && "test 3.1");
+	assert(equal(to_float_hours(2, 45, 9), 2.7525) && "test 3.2");
+	assert(equal(to_float_hours(1, 0, 36), 1.01) && "test 3.3");
+	cout << "The third test complied!" << endl << endl;
 
 	cout << "Tests Complied!" << endl;
 	system("pause");
