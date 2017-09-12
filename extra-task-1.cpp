@@ -52,20 +52,25 @@ double to_24_hour_clock(double hours)
         * get_minutes
         * get_seconds
     They are used to determine the hours part, minutes part and seconds part 
-    of a time in seconds. E.g.:
+    of a time in seconds.
 
-    >>> get_hours(3800)
-    1
-
-    >>> get_minutes(3800)
-    3
-
-    >>> get_seconds(3800)
-    20
-
-    In other words, if 3800 seconds have elapsed since midnight, 
-    it is currently 01:03:20 (hh:mm:ss).
 */
+
+int get_hours(int time)
+{
+	return time / 3600 % 24;
+}
+
+int get_minutes(int time)
+{
+	return time / 60 % 60;
+}
+
+int get_seconds(int time)
+{
+	return time % 60;
+}
+
 
 double time_to_utc(int utc_offset, double time)
 {
@@ -154,6 +159,11 @@ int main()
 	assert(areequal(to_24_hour_clock(25), 1) && "test14");
 	assert(areequal(to_24_hour_clock(4), 4) && "test15");
 	assert(areequal(to_24_hour_clock(28.5), 4.5) && "test16");
+
+	//get_hours, get_minutes, get_seconds 
+	assert(get_hours(3800) == 1 && "test17");
+	assert(get_minutes(3800) == 3 && "test18");
+	assert(get_seconds(3800) == 20 && "test19");
 
 	cout << "Tests have been passed\n";
 	system("PAUSE");
