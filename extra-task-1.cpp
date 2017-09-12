@@ -1,7 +1,7 @@
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
-    
+	return time_2 - time_1;
     /*    
         Return the number of seconds later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -18,10 +18,12 @@ double seconds_difference(double time_1, double time_2)
         >>> seconds_difference(1800.0, 1800.0)
         0.0
     */
+
 }
 
 double hours_difference(double time_1, double time_2)
 {
+	return 0;
     /*
         Return the number of hours later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -42,6 +44,7 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
+	return 0;
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
@@ -61,6 +64,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
+	return 0;
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -111,6 +115,7 @@ double to_24_hour_clock(double hours)
 
 double time_to_utc(int utc_offset, double time)
 {
+	return 0;
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -139,6 +144,7 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
+	return 0;
     /*
         Return UTC time in time zone utc_offset.
 
@@ -166,4 +172,20 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+}
+
+#include <cmath>
+#include <cassert>
+#include <cfloat>
+
+using namespace std;
+
+int main()
+{
+	// seconds_difference
+		assert(fabs(seconds_difference(1800, 3600) - 1800) < DBL_EPSILON && "test-1-1");
+		assert(fabs(seconds_difference(3600, 1800) - -1800) < DBL_EPSILON && "test-1-2");
+		assert(fabs(seconds_difference(1800, 2160) - 360) < DBL_EPSILON && "test-1-3");
+		assert(fabs(seconds_difference(1800, 1800)) < DBL_EPSILON && "test-1-3");
+	// seconds_difference
 }
