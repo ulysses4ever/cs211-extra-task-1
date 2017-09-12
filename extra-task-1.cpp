@@ -71,34 +71,12 @@ int get_seconds(int time)
 	return time % 60;
 }
 
-
+/*
+Return time at UTC+0, where utc_offset is the number of hours away from
+UTC+0.*/
 double time_to_utc(int utc_offset, double time)
 {
-	return 0;
-    /*
-        Return time at UTC+0, where utc_offset is the number of hours away from
-        UTC+0.
-        You may be interested in:
-        https://en.wikipedia.org/wiki/Coordinated_Universal_Time
-
-        >>> time_to_utc(+0, 12.0)
-        12.0
- 
-        >>> time_to_utc(+1, 12.0)
-        11.0
- 
-        >>> time_to_utc(-1, 12.0)
-        13.0
- 
-        >>> time_to_utc(-11, 18.0)
-        5.0
- 
-        >>> time_to_utc(-1, 0.0)
-        1.0
- 
-        >>> time_to_utc(-1, 23.0)
-        0.0
-    */
+	return (int(floor(time)) - utc_offset + 24) % 24 + time - floor(time);
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -160,10 +138,18 @@ int main()
 	assert(areequal(to_24_hour_clock(4), 4) && "test15");
 	assert(areequal(to_24_hour_clock(28.5), 4.5) && "test16");
 
-	//get_hours, get_minutes, get_seconds 
+	//get_hours, get_minutes, get_seconds testing
 	assert(get_hours(3800) == 1 && "test17");
 	assert(get_minutes(3800) == 3 && "test18");
 	assert(get_seconds(3800) == 20 && "test19");
+
+	//time_to_utc testing
+	assert(areequal(time_to_utc(+0, 12.0), 12.0) && "test20");
+	assert(areequal(time_to_utc(-1, 12.0), 13.0) && "test21");
+	assert(areequal(time_to_utc(-11, 18.0), 5.0) && "test22");
+	assert(areequal(time_to_utc(-1, 0.0), 1.0) && "test23");
+	assert(areequal(time_to_utc(-1, 23.0), 0.0) && "test24");
+	assert(areequal(time_to_utc(+1, 12.0), 11.0) && "test25");
 
 	cout << "Tests have been passed\n";
 	system("PAUSE");
