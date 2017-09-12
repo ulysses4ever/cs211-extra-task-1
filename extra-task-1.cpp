@@ -84,6 +84,10 @@ double time_from_utc(int utc_offset, double time)
 
 }
 
+bool equal(double a, double b) {
+	return fabs(a - b) < DBL_EPSILON;
+}
+
 int main() {
 
 	cout << "The tests for the first programm:" << endl;
