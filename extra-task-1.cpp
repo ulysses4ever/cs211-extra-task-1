@@ -24,20 +24,7 @@ time_2 is than a time in seconds time_1.
 */
 double hours_difference(double time_1, double time_2)
 {
-	return 0;
-   /*
-   >>> hours_difference(1800.0, 3600.0)
-   0.5
-
-   >>> hours_difference(3600.0, 1800.0)
-   -0.5
-
-   >>> hours_difference(1800.0, 2160.0)
-   0.1
-
-   >>> hours_difference(1800.0, 1800.0)
-   0.0
-   */
+	return seconds_difference(time_1, time_2) / 3600.0;
 }
 
 /*Return the total number of hours in the specified number
@@ -181,6 +168,12 @@ int main()
 	assert(areequal(seconds_difference(1800.0, 2160.0), 360) && "test3");
 	assert(areequal(seconds_difference(1800.0, 1800.0), 0) && "test4");
 
-	cout << "Tests have been passed";
-	System("PAUSE");
+	//hours_difference testing
+	assert(areequal(hours_difference(1800.0, 3600.0), 0.5) && "test5");
+	assert(areequal(hours_difference(3600.0, 1800.0), -0.5) && "test6");
+	assert(areequal(hours_difference(1800.0, 2160.0), 0.1) && "test7");
+	assert(areequal(hours_difference(1800.0, 1800.0), 0) && "test8");
+
+	cout << "Tests have been passed\n";
+	system("PAUSE");
 }
