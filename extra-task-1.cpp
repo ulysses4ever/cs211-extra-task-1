@@ -63,32 +63,15 @@ int get_minutes(int seconds) {
 	return seconds / 60 % 60;
 }
 
+/*
+Return time at UTC+0, where utc_offset is the number of hours away from
+UTC+0.
+*/
 double time_to_utc(int utc_offset, double time)
 {
-    /*
-        Return time at UTC+0, where utc_offset is the number of hours away from
-        UTC+0.
-        You may be interested in:
-        https://en.wikipedia.org/wiki/Coordinated_Universal_Time
 
-        >>> time_to_utc(+0, 12.0)
-        12.0
- 
-        >>> time_to_utc(+1, 12.0)
-        11.0
- 
-        >>> time_to_utc(-1, 12.0)
-        13.0
- 
-        >>> time_to_utc(-11, 18.0)
-        5.0
- 
-        >>> time_to_utc(-1, 0.0)
-        1.0
- 
-        >>> time_to_utc(-1, 23.0)
-        0.0
-    */
+	return fmod(time - utc_offset, 24);
+
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -172,6 +155,15 @@ int main() {
 	assert(equal(get_minutes(3700), 1) && "test 5.2.3");
 	cout << "The seventh test complied!" << endl << endl;
 
+	cout << "The tests for the eighth programm:" << endl;
+	assert(equal(time_to_utc(+0, 12.0), 12) && "test 6.1");
+	assert(equal(time_to_utc(+1, 12.0), 11) && "test 6.2");
+	assert(equal(time_to_utc(-1, 12.0), 13) && "test 6.3");
+	assert(equal(time_to_utc(-11, 18.0), 5) && "test 6.4");
+	assert(equal(time_to_utc(-1, 0.0), 1) && "test 6.5");
+	assert(equal(time_to_utc(-1, 23.0), 0) && "test 6.6");
+
+	cout << "The eighth test complied!" << endl << endl;
 	cout << "Tests Complied!" << endl;
 	system("pause");
 	return 0;
