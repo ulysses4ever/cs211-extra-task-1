@@ -79,36 +79,11 @@ double time_to_utc(int utc_offset, double time)
 	return (int(floor(time)) - utc_offset + 24) % 24 + time - floor(time);
 }
 
+/*
+Return UTC time in time zone utc_offset.*/
 double time_from_utc(int utc_offset, double time)
 {
-	return 0;
-    /*
-        Return UTC time in time zone utc_offset.
-
-        >>> time_from_utc(+0, 12.0)
-        12.0
- 
-        >>> time_from_utc(+1, 12.0)
-        13.0
- 
-        >>> time_from_utc(-1, 12.0)
-        11.0
- 
-        >>> time_from_utc(+6, 6.0)
-        12.0
- 
-        >>> time_from_utc(-7, 6.0)
-        23.0
- 
-        >>> time_from_utc(-1, 0.0)
-        23.0
- 
-        >>> time_from_utc(-1, 23.0)
-        22.0
- 
-        >>> time_from_utc(+1, 23.0)
-        0.0
-    */
+	return (int(floor(time)) + utc_offset + 24) % 24 + time - floor(time);
 }
 
 int main()
@@ -150,6 +125,16 @@ int main()
 	assert(areequal(time_to_utc(-1, 0.0), 1.0) && "test23");
 	assert(areequal(time_to_utc(-1, 23.0), 0.0) && "test24");
 	assert(areequal(time_to_utc(+1, 12.0), 11.0) && "test25");
+
+	//time_from_utc testing
+	assert(areequal(time_from_utc(+0, 12.0), 12.0) && "test 26");
+	assert(areequal(time_from_utc(+1, 12.0), 13.0) && "test 27");
+	assert(areequal(time_from_utc(-1, 12.0), 11.0) && "test 28");
+	assert(areequal(time_from_utc(+6, 6.0), 12.0) && "test 29");
+	assert(areequal(time_from_utc(-7, 6.0), 23.0) && "test 30");
+	assert(areequal(time_from_utc(-1, 0.0), 23.0) && "test 31");
+	assert(areequal(time_from_utc(-1, 23.0), 22.0) && "test 32");
+	assert(areequal(time_from_utc(+1, 23.0), 0.0) && "test 33");
 
 	cout << "Tests have been passed\n";
 	system("PAUSE");
