@@ -46,18 +46,9 @@ double to_24_hour_clock(double hours)
         * get_minutes
         * get_seconds
     They are used to determine the hours part, minutes part and seconds part 
-    of a time in seconds. E.g.:
+    of a time in seconds.
 
-    >>> get_hours(3800)
-    1
-
-    >>> get_minutes(3800)
-    3
-
-    >>> get_seconds(3800)
-    20
-
-    In other words, if 3800 seconds have elapsed since midnight, 
+    If 3800 seconds have elapsed since midnight, 
     it is currently 01:03:20 (hh:mm:ss).
 */
 
@@ -71,13 +62,13 @@ int get_minutes(int sec)
 	int t = sec % 3600;
 	return t / 60;
 }
-/*
+
 int get_seconds(int sec)
 {
 	int t = sec % 3600;
 	return t % 60;
 }
-*/
+
 double time_to_utc(int utc_offset, double time)
 {
 	return 0;
@@ -170,5 +161,7 @@ int main()
 		assert(fabs(get_hours(3800)) == 1 && "test-5-1");
 	// get_minutes
 		assert(fabs(get_minutes(3800)) == 3 && "test-6-1");
+	// get_seconds
+		assert(fabs(get_seconds(3800)) == 20 && "test-7-1");
 }
 	
