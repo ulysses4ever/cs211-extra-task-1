@@ -65,13 +65,13 @@ int get_hours(int sec)
 {
 	return sec / 3600;
 }
-/*
+
 int get_minutes(int sec)
 {
 	int t = sec % 3600;
 	return t / 60;
 }
-
+/*
 int get_seconds(int sec)
 {
 	int t = sec % 3600;
@@ -168,5 +168,7 @@ int main()
 		assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON && "test-4-5");
 	// get_hours
 		assert(fabs(get_hours(3800)) == 1 && "test-5-1");
+	// get_minutes
+		assert(fabs(get_minutes(3800)) == 3 && "test-6-1");
 }
 	
