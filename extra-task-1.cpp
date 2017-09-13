@@ -1,5 +1,9 @@
-int main() {
+#include <cassert>
+#include <cmath>
+#include <cfloat>
 
+inline bool double_equal(double a, double b, double eps = DBL_EPSILON) {
+    return (fabs(a - b) < eps);
 }
 
 double seconds_difference(double time_1, double time_2)
@@ -47,6 +51,7 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
+    assert(minutes < 60 && minutes >= 0 && seconds < 60 && seconds >= 0);
     return (hours + minutes / 60.0 + seconds / 3600.0);
     /*
         Return the total number of hours in the specified number
@@ -67,7 +72,8 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
-
+    assert(hours >= 0);
+    return ((static_cast<int>(floor(hours)) % 24) + (hours - floor(hours)));
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -115,9 +121,24 @@ double to_24_hour_clock(double hours)
     In other words, if 3800 seconds have elapsed since midnight, 
     it is currently 01:03:20 (hh:mm:ss).
 */
+//determines the hours part
+int get_hours(int seconds) {
+    return ((seconds / 3600) % 24);
+}
+
+//determines the minutes part
+int get_minutes(int seconds) {
+    return ((seconds / 60) % 60);
+}
+
+//determines the seconds part
+int get_seconds(int seconds) {
+    return (seconds % 60);
+}
 
 double time_to_utc(int utc_offset, double time)
 {
+    return (((int(floor(time)) + 24 - utc_offset) % 24) + (time - int(floor(time))));
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -146,6 +167,7 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
+    return time_to_utc(-utc_offset, time);
     /*
         Return UTC time in time zone utc_offset.
 
@@ -173,4 +195,46 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+}
+
+int main() {
+    assert(double_equal(seconds_difference(1800.0, 3600.0), 1800.0) && "seconds_difference1");
+    assert(double_equal(seconds_difference(3600.0, 1800.0), -1800.0) && "seconds_difference2");
+    assert(double_equal(seconds_difference(1800.0, 2160.0), 360.0) && "seconds_difference3");
+    assert(double_equal(seconds_difference(1800.0, 1800.0), 0.0) && "seconds_difference4");
+
+    assert(double_equal(hours_difference(1800.0, 3600.0), 0.5) && "hours_difference1");
+    assert(double_equal(hours_difference(3600.0, 1800.0), -0.5) && "hours_difference2");
+    assert(double_equal(hours_difference(1800.0, 2160.0), 0.1) && "hours_difference3");
+    assert(double_equal(hours_difference(1800.0, 1800.0), 0.0) && "hours_difference4");
+
+    assert(double_equal(to_float_hours(0, 15, 0), 0.25) && "to_float_hours1");
+    assert(double_equal(to_float_hours(2, 45, 9), 2.7525) && "to_float_hours1");
+    assert(double_equal(to_float_hours(1, 0, 36), 1.01) && "to_float_hours1");
+
+    assert(to_24_hour_clock(24) == 0 && "to_24_hour_clock1");
+    assert(to_24_hour_clock(48) == 0 && "to_24_hour_clock2");
+    assert(to_24_hour_clock(25) == 1 && "to_24_hour_clock3");
+    assert(to_24_hour_clock(4) == 4 && "to_24_hour_clock4");
+    assert(double_equal(to_24_hour_clock(28.5), 4.5) && "to_24_hour_clock5");
+
+    assert(get_hours(3800) == 1 && "get_hours1");
+    assert(get_minutes(3800) == 3 && "get_minutes1");
+    assert(get_seconds(3800) == 20 && "get_seconds1");
+
+    assert(double_equal(time_to_utc(+0, 12.0), 12.0) && "time_to_utc1");
+    assert(double_equal(time_to_utc(+1, 12.0), 11.0) && "time_to_utc2");
+    assert(double_equal(time_to_utc(-1, 12.0), 13.0) && "time_to_utc3");
+    assert(double_equal(time_to_utc(-11, 18.0), 5.0) && "time_to_utc4");
+    assert(double_equal(time_to_utc(-1, 0.0), 1.0) && "time_to_utc5");
+    assert(double_equal(time_to_utc(-1, 23.0), 0.0) && "time_to_utc6");
+
+    assert(double_equal(time_from_utc(+0, 12.0), 12.0) && "time_from_utc1");
+    assert(double_equal(time_from_utc(+1, 12.0), 13.0) && "time_from_utc2");
+    assert(double_equal(time_from_utc(-1, 12.0), 11.0) && "time_from_utc3");
+    assert(double_equal(time_from_utc(+6, 6.0), 12.0) && "time_from_utc4");
+    assert(double_equal(time_from_utc(-7, 6.0), 23.0) && "time_from_utc5");
+    assert(double_equal(time_from_utc(-1, 0.0), 23.0) && "time_from_utc6");
+    assert(double_equal(time_from_utc(-1, 23.0), 22.0) && "time_from_utc7");
+    assert(double_equal(time_from_utc(+1, 23.0), 0.0) && "time_from_utc8");
 }
