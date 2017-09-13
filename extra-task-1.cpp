@@ -135,7 +135,7 @@ int get_seconds(int seconds)
 
 double time_to_utc(int utc_offset, double time)
 {
-	return double(lround(trunc(time - utc_offset))%24 + remainder(time, 1));
+	return double((lround(trunc(24+time - utc_offset))%24) + remainder(time, 1));
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -164,7 +164,7 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
-	return 0;
+	return double(lround(trunc(24+time + utc_offset)) % 24 + remainder(time, 1));
     /*
         Return UTC time in time zone utc_offset.
 
@@ -233,12 +233,52 @@ int main()
 	assert(get_seconds(3800) == 20 && "get-t3");
 
 	//time_to_utc test block
+
 	assert(fabs(time_to_utc(+0, 12.0) - 12.0) <= DBL_EPSILON && "time_to_utc-t1");
 	assert(fabs(time_to_utc(+1, 12.0) - 11.0) <= DBL_EPSILON && "time_to_utc-t2");
 	assert(fabs(time_to_utc(-1, 12.0) - 13.0) <= DBL_EPSILON && "time_to_utc-t3");
 	assert(fabs(time_to_utc(-11, 18.0) - 5.0) <= DBL_EPSILON && "time_to_utc-t4");
 	assert(fabs(time_to_utc(-1, 0.0) - 1.0) <= DBL_EPSILON && "time_to_utc-t5");
 	assert(fabs(time_to_utc(-1, 23.0) - 0.0) <= DBL_EPSILON && "time_to_utc-t6");
+
+	//time_from_utc test block
+	assert(fabs(time_from_utc(+0, 12.0) - 12.0) <= DBL_EPSILON && "time_from_utc-t1");
+	assert(fabs(time_from_utc(+1, 12.0) - 13.0) <= DBL_EPSILON && "time_to_utc-t2");
+	assert(fabs(time_from_utc(-1, 12.0) - 11.0) <= DBL_EPSILON && "time_to_utc-t3");
+	assert(fabs(time_from_utc(+6, 6.0) - 12.0) <= DBL_EPSILON && "time_to_utc-t4");
+	assert(fabs(time_from_utc(-7, 6.0) - 23.0) <= DBL_EPSILON && "time_to_utc-t5");
+	assert(fabs(time_from_utc(-1, 0.0) - 23.0) <= DBL_EPSILON && "time_to_utc-t6");
+	assert(fabs(time_from_utc(-1, 23.0) - 22.0) <= DBL_EPSILON && "time_to_utc-t7");
+	assert(fabs(time_from_utc(+1, 23.0) - 0.0) <= DBL_EPSILON && "time_to_utc-t8");
+	
+
+	/*
+	Return UTC time in time zone utc_offset.
+
+	>>> time_from_utc(+0, 12.0)
+	12.0
+
+	>>> time_from_utc(+1, 12.0)
+	13.0
+
+	>>> time_from_utc(-1, 12.0)
+	11.0
+
+	>>> time_from_utc(+6, 6.0)
+	12.0
+
+	>>> time_from_utc(-7, 6.0)
+	23.0
+
+	>>> time_from_utc(-1, 0.0)
+	23.0
+
+	>>> time_from_utc(-1, 23.0)
+	22.0
+
+	>>> time_from_utc(+1, 23.0)
+	0.0
+	*/
 
 		
 
