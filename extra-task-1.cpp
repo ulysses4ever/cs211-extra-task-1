@@ -13,23 +13,7 @@ double seconds_difference(double time_1, double time_2)
 
 double hours_difference(double time_1, double time_2)
 {
-    /*
-        Return the number of hours later that a time in seconds
-        time_2 is than a time in seconds time_1.
-            
-        >>> hours_difference(1800.0, 3600.0)
-        0.5
-
-        >>> hours_difference(3600.0, 1800.0)
-        -0.5
-
-        >>> hours_difference(1800.0, 2160.0)
-        0.1
-
-        >>> hours_difference(1800.0, 1800.0)
-        0.0
-    */
-	return 0;
+	return (time_2 - time_1) / 3600.0;
 }
 
 double to_float_hours(int hours, int minutes, int seconds)
@@ -165,8 +149,13 @@ double time_from_utc(int utc_offset, double time)
 }
 
 int main() {
-	assert(RealEq(seconds_difference(1800, 3600), 1800));
-	assert(RealEq(seconds_difference(3600, 1800), -1800));
-	assert(RealEq(seconds_difference(1800, 2160), 360));
-	assert(RealEq(seconds_difference(1800, 1800), 0));
+	assert(RealEq(seconds_difference(1800, 3600), 1800) && "number 1");
+	assert(RealEq(seconds_difference(3600, 1800), -1800) && "number 2");
+	assert(RealEq(seconds_difference(1800, 2160), 360) && "number 3");
+	assert(RealEq(seconds_difference(1800, 1800), 0) && "number 4");
+
+	assert(RealEq(hours_difference(1800, 3600), 0.5) && "number 1");
+	assert(RealEq(hours_difference(3600, 1800), -0.5) && "number 2");
+	assert(RealEq(hours_difference(1800, 2160), 0.1) && "number 3");
+	assert(RealEq(hours_difference(1800, 1800), 0) && "number 4");
 }
