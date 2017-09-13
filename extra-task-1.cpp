@@ -96,7 +96,20 @@ double to_24_hour_clock(double hours)
         
     */
 }
+int get_hours(int seconds)
+{
+	return (seconds / 3600);
+}
 
+int get_minutes(int seconds)
+{
+	return (seconds-(get_hours(seconds))*3600)/60;
+}
+
+int get_seconds(int seconds)
+{
+	return (seconds - get_hours(seconds) * 3600 - get_minutes(seconds) * 60);
+}
 
 /*
 
@@ -214,6 +227,10 @@ int main()
 	assert(fabs(to_24_hour_clock(4) - 4) <= DBL_EPSILON && "to_24_hour_clock-t4");
 	assert(fabs(to_24_hour_clock(28.5) - 4.5) <= DBL_EPSILON && "to_24_hour_clock-t5");
 
+	//get_ testblock
+	assert(get_hours(3800) == 1 && "get-t1");
+	assert(get_minutes(3800) == 3 && "get-t2");
+	assert(get_seconds(3800) == 20 && "get-t3");
 	
 
 
