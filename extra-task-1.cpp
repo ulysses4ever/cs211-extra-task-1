@@ -82,39 +82,14 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
-	return 0;
+	return (int(trunc(time + utc_offset)) + 24) % 24;
     /*
         Return UTC time in time zone utc_offset.
-
-        >>> time_from_utc(+0, 12.0)
-        12.0
- 
-        >>> time_from_utc(+1, 12.0)
-        13.0
- 
-        >>> time_from_utc(-1, 12.0)
-        11.0
- 
-        >>> time_from_utc(+6, 6.0)
-        12.0
- 
-        >>> time_from_utc(-7, 6.0)
-        23.0
- 
-        >>> time_from_utc(-1, 0.0)
-        23.0
- 
-        >>> time_from_utc(-1, 23.0)
-        22.0
- 
-        >>> time_from_utc(+1, 23.0)
-        0.0
     */
 }
 
 #include <cassert>
 #include <cfloat>
-#include <iostream>
 using namespace std;
 
 int main()
@@ -151,7 +126,15 @@ int main()
 		assert(fabs(time_to_utc(-1, 12) - 13) < DBL_EPSILON && "test-8-3");
 		assert(fabs(time_to_utc(-11, 18) - 5) < DBL_EPSILON && "test-8-4");
 		assert(fabs(time_to_utc(-1, 0) - 1) < DBL_EPSILON && "test-8-5");
-		assert(fabs(time_to_utc(-1, 23)) < DBL_EPSILON && "test-8-5");
-	//
+		assert(fabs(time_to_utc(-1, 23)) < DBL_EPSILON && "test-8-6");
+	// time_from_utc
+		assert(fabs(time_from_utc(0, 12) - 12) < DBL_EPSILON && "test-9-1");
+		assert(fabs(time_from_utc(1, 12) - 13) < DBL_EPSILON && "test-9-2");
+		assert(fabs(time_from_utc(-1, 12) - 11) < DBL_EPSILON && "test-9-3");
+		assert(fabs(time_from_utc(6, 6) - 12) < DBL_EPSILON && "test-9-4");
+		assert(fabs(time_from_utc(-7, 6) - 23) < DBL_EPSILON && "test-9-5");
+		assert(fabs(time_from_utc(-1, 0) - 23) < DBL_EPSILON && "test-9-6");
+		assert(fabs(time_from_utc(-1, 23) - 22) < DBL_EPSILON && "test-9-7");
+		assert(fabs(time_from_utc(1, 23)) < DBL_EPSILON && "test-9-8");
 }
 	
