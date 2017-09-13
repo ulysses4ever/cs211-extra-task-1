@@ -69,7 +69,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
-	return 0;
+	return double(lround(trunc(hours))%24 + remainder(hours,1)) ;
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -97,7 +97,9 @@ double to_24_hour_clock(double hours)
     */
 }
 
+
 /*
+
     Implement three functions
         * get_hours
         * get_minutes
@@ -204,6 +206,13 @@ int main()
 	assert(fabs(to_float_hours(2, 45, 9) - 2.7525) <= DBL_EPSILON && "ToFloatHours-t2");
 	assert(fabs(to_float_hours(1, 0, 36) - 1.01) <= DBL_EPSILON && "ToFloatHours-t3");
 	
+	//to_24_hour_clock test block
+
+	assert(fabs(to_24_hour_clock(24) - 0) <= DBL_EPSILON && "to_24_hour_clock-t1");
+	assert(fabs(to_24_hour_clock(48) - 0) <= DBL_EPSILON && "to_24_hour_clock-t2");
+	assert(fabs(to_24_hour_clock(25) - 1) <= DBL_EPSILON && "to_24_hour_clock-t3");
+	assert(fabs(to_24_hour_clock(4) - 4) <= DBL_EPSILON && "to_24_hour_clock-t4");
+	assert(fabs(to_24_hour_clock(28.5) - 4.5) <= DBL_EPSILON && "to_24_hour_clock-t5");
 
 	
 
