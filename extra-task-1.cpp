@@ -37,27 +37,6 @@ double to_24_hour_clock(double hours)
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
-
-        Precondition: hours >= 0
-
-        >>> to_24_hour_clock(24)
-        0
-        
-        >>> to_24_hour_clock(48)
-        0
-        
-        >>> to_24_hour_clock(25)
-        1
-        
-        >>> to_24_hour_clock(4)
-        4
-        
-        >>> to_24_hour_clock(28.5)
-        4.5
-        
-        You may wish to inspect various function in <cmath> to work
-        with integer and fractional part of a hours separately.
-        
     */
 }
 
@@ -82,6 +61,23 @@ double to_24_hour_clock(double hours)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
+int get_hours(int sec)
+{
+	return sec / 3600;
+}
+/*
+int get_minutes(int sec)
+{
+	int t = sec % 3600;
+	return t / 60;
+}
+
+int get_seconds(int sec)
+{
+	int t = sec % 3600;
+	return t % 60;
+}
+*/
 double time_to_utc(int utc_offset, double time)
 {
 	return 0;
@@ -170,5 +166,7 @@ int main()
 		assert(fabs(to_24_hour_clock(25) - 1) < DBL_EPSILON && "test-4-3");
 		assert(fabs(to_24_hour_clock(4) - 4) < DBL_EPSILON && "test-4-4");
 		assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON && "test-4-5");
+	// get_hours
+		assert(fabs(get_hours(3800)) == 1 && "test-5-1");
 }
 	
