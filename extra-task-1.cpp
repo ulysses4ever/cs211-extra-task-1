@@ -139,7 +139,7 @@ int get_seconds(int seconds)
 
 double time_to_utc(int utc_offset, double time)
 {
-	return 0;
+	return to_24_hour_clock(time - utc_offset*1.0);
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -230,6 +230,14 @@ int main()
 	assert((get_minutes(3800) == 3) && "test 5.2");
 	assert((get_seconds(3800) == 20) && "test 5.3");
 	cout << "test 5 is succasseful" << endl;
+
+	assert(abs(time_to_utc(+0, 12.0) - 12.0)<eps && "test 6.1");
+	assert(abs(time_to_utc(+1, 12.0) - 11.0)<eps && "test 6.2");
+	assert(abs(time_to_utc(-1, 12.0) - 13.0)<eps && "test 6.3");
+	assert(abs(time_to_utc(-11, 18.0) - 5.0)<eps && "test 6.4");
+	assert(abs(time_to_utc(-1, 0.0) - 1.0)<eps && "test 6.5");
+	assert(abs(time_to_utc(-1, 23.0) - 0.0)<eps && "test 6.6");
+	cout << "test 6 is succasseful " << endl;
 
 	system("PAUSE");
 }
