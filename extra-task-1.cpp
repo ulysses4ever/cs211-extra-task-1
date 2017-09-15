@@ -168,7 +168,7 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
-	return 0;
+	return to_24_hour_clock(24 + (utc_offset + time));
     /*
         Return UTC time in time zone utc_offset.
 
@@ -239,5 +239,14 @@ int main()
 	assert(abs(time_to_utc(-1, 23.0) - 0.0)<eps && "test 6.6");
 	cout << "test 6 is succasseful " << endl;
 
+	assert(abs(time_from_utc(+0, 12.0) - 12.0)<eps && "test 7.1");
+	assert(abs(time_from_utc(+1, 12.0) - 13.0)<eps && "test 7.2");
+	assert(abs(time_from_utc(-1, 12.0) - 11.0)<eps && "test 7.3");
+	assert(abs(time_from_utc(+6, 6.0) - 12.0)<eps && "test 7.4");
+	assert(abs(time_from_utc(-7, 6.0) - 23.0)<eps && "test 7.5");
+	assert(abs(time_from_utc(-1, 0.0) - 23.0)<eps && "test 7.6");
+	assert(abs(time_from_utc(-1, 23.0) - 22.0)<eps && "test 7.7");
+	assert(abs(time_from_utc(+1, 23.0) - 0.0)<eps && "test 7.8");
+	cout << "test 7 is succasseful " << endl;
 	system("PAUSE");
 }
