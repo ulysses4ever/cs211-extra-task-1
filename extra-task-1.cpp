@@ -73,7 +73,8 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
-	return 0;
+	assert(hours >= 0);
+	return (((int)hours) % 24 + (hours - (int)hours));
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -203,5 +204,12 @@ int main()
 	assert(abs(to_float_hours(2, 45, 9) - 2.7525)<eps && "test 3.2");
 	assert(abs(to_float_hours(1, 0, 36) - 1.01)<eps && "test 3.3");
 	cout << "test 3 is succasseful" << endl;
+
+	assert(abs(to_24_hour_clock(24) - 0)<eps && "test 4.1");
+	assert(abs(to_24_hour_clock(48) - 0)<eps && "test 4.2");
+	assert(abs(to_24_hour_clock(25) - 1)<eps && "test 4.3");
+	assert(abs(to_24_hour_clock(4) - 4)<eps && "test 4.4");
+	assert(abs(to_24_hour_clock(28.5) - 4.5)<eps && "test 4.5");
+	cout << "test 4 is succasseful" << endl;
 	system("PAUSE");
 }
