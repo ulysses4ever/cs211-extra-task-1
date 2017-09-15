@@ -101,7 +101,21 @@ double to_24_hour_clock(double hours)
         
     */
 }
-
+int get_hours(int hours)
+{
+	assert(hours >= 0);
+	return (hours / 3600);
+}
+int get_minutes(int minutes)
+{
+	assert(minutes >= 0);
+	return ((minutes - 3600 * (get_hours(minutes))) / 60);
+}
+int get_seconds(int seconds)
+{
+	assert(seconds >= 0);
+	return (seconds - 60 * get_minutes(seconds) - 3600 * get_hours(seconds));
+}
 /*
     Implement three functions
         * get_hours
@@ -211,5 +225,11 @@ int main()
 	assert(abs(to_24_hour_clock(4) - 4)<eps && "test 4.4");
 	assert(abs(to_24_hour_clock(28.5) - 4.5)<eps && "test 4.5");
 	cout << "test 4 is succasseful" << endl;
+
+	assert((get_hours(3800) == 1) && "test 5.1");
+	assert((get_minutes(3800) == 3) && "test 5.2");
+	assert((get_seconds(3800) == 20) && "test 5.3");
+	cout << "test 5 is succasseful" << endl;
+
 	system("PAUSE");
 }
