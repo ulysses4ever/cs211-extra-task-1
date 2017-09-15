@@ -1,9 +1,13 @@
 #include "stdafx.h"
-
+#include <iostream>
+#include <cassert>
+#include <cmath>
+using namespace std;
+const double eps = 0.001;
 
 double seconds_difference(double time_1, double time_2)
 {
-    // your implementation goes here...
+	return (time_2 - time_1);
 	return 0;
     /*    
         Return the number of seconds later that a time in seconds
@@ -180,5 +184,10 @@ double time_from_utc(int utc_offset, double time)
 
 int main()
 {
-	return 0;
+	assert((abs(seconds_difference(1800.0, 3600.0) - 1800.0)<eps) && "test 1.1");
+	assert((abs(seconds_difference(3600.0, 1800.0) + 1800.0)<eps) && "test 1.2");
+	assert((abs(seconds_difference(1800.0, 2160.0) - 360.0)<eps) && "test 1.3");
+	assert((abs(seconds_difference(1800.0, 1800.0) - 0.0)<eps) && "test 1.4");
+	cout << "test 1 is succasseful" << endl;
+	system("PAUSE");
 }
