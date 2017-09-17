@@ -62,7 +62,7 @@ double to_float_hours(int hours, int minutes, int seconds)
         >>> to_float_hours(1, 0, 36)
         1.01
     */
-	return 0;
+	return hours + minutes / 60.0 + seconds / 3600.0;
 }
 
 double to_24_hour_clock(double hours)
@@ -92,7 +92,7 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
-	return 0;
+	return int(trunc(hours)) % 24 + (hours - trunc(hours));
 }
 
 /*
@@ -194,4 +194,17 @@ void main()
 	assert(fabs(hours_difference(3600.0, 1800.0) + 0.5) < Eps && "test-2-2");
 	assert(fabs(hours_difference(1800.0, 2160.0) - 0.1) < Eps && "test-2-3");
 	assert(fabs(hours_difference(1800.0, 1800.0)) < Eps && "test-2-4");
+
+	//tests#3 to_float_hours
+	assert(fabs(to_float_hours(0, 15, 0) - 0.25) < Eps && "test-3-1");
+	assert(fabs(to_float_hours(2, 45, 9) - 2.7525) < Eps && "test-3-2");
+	assert(fabs(to_float_hours(1, 0, 36) - 1.01) < Eps && "test-3-3");
+
+	//tests#4 to_24_hour_clock
+	assert(fabs(to_24_hour_clock(24)) < Eps && "test-4-1");
+	assert(fabs(to_24_hour_clock(48)) < Eps && "test-4-2");
+	assert(fabs(to_24_hour_clock(25) - 1) < Eps && "test-4-3");
+	assert(fabs(to_24_hour_clock(4) - 4) < Eps && "test-4-4");
+	assert(fabs(to_24_hour_clock(28.5) - 4.5) < Eps && "test-4-5");
+
 }
