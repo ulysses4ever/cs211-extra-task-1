@@ -1,3 +1,6 @@
+#include<cmath>
+#include<cassert>
+
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
@@ -18,6 +21,8 @@ double seconds_difference(double time_1, double time_2)
         >>> seconds_difference(1800.0, 1800.0)
         0.0
     */
+
+	return time_2 - time_1;
 }
 
 double hours_difference(double time_1, double time_2)
@@ -38,6 +43,7 @@ double hours_difference(double time_1, double time_2)
         >>> hours_difference(1800.0, 1800.0)
         0.0
     */
+	return 0;
 }
 
 double to_float_hours(int hours, int minutes, int seconds)
@@ -57,6 +63,7 @@ double to_float_hours(int hours, int minutes, int seconds)
         >>> to_float_hours(1, 0, 36)
         1.01
     */
+	return 0;
 }
 
 double to_24_hour_clock(double hours)
@@ -86,6 +93,7 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
+	return 0;
 }
 
 /*
@@ -135,6 +143,8 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
+
+	return 0;
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -166,4 +176,17 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+
+	return 0;
+} 
+
+const double Eps = 0.0000001;
+
+void main()
+{
+	//tests#1 seconds_difference
+	assert(fabs(seconds_difference(1800.0, 3600.0) - 1800.0) < Eps && "test-1-1");
+	assert(fabs(seconds_difference(3600.0, 1800.0) + 1800.0) < Eps && "test-1-2");
+	assert(fabs(seconds_difference(1800.0, 2160.0) - 360.0) < Eps && "test-1-3");
+	assert(fabs(seconds_difference(1800.0, 1800.0)) < Eps && "test-1-4");
 }
