@@ -132,11 +132,6 @@ int get_seconds(int seconds)
 double time_to_utc(int utc_offset, double time)
 {
     /*
-        Return time at UTC+0, where utc_offset is the number of hours away from
-        UTC+0.
-        You may be interested in:
-        https://en.wikipedia.org/wiki/Coordinated_Universal_Time
-
         >>> time_to_utc(+0, 12.0)
         12.0
  
@@ -156,7 +151,7 @@ double time_to_utc(int utc_offset, double time)
         0.0
     */
 
-	return 0;
+	return (int(trunc(time)) - utc_offset)  % 24 + (time - trunc(time));
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -232,4 +227,12 @@ void main()
 	assert(get_seconds(3800) == 20 && "test-5-7");
 	assert(get_seconds(7700) == 20 && "test-5-8");
 	assert(get_seconds(10800) == 0 && "test-5-9");
+
+	//tests#6 time_to_utc
+	assert(fabs(time_to_utc(+0, 12.0) - 12.0) < Eps && "test-6-1");
+	assert(fabs(time_to_utc(+1, 12.0) - 11.0) < Eps && "test-6-2");
+	assert(fabs(time_to_utc(-1, 12.0) - 13.0) < Eps && "test-6-3");
+	assert(fabs(time_to_utc(-11, 18.0) - 5.0) < Eps && "test-6-4");
+	assert(fabs(time_to_utc(-1, 0.0) - 1.0) < Eps && "test-6-5");
+	assert(fabs(time_to_utc(-1, 23.0) - 0.0) < Eps && "test-6-6");
 }
