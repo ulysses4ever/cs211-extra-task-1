@@ -1,5 +1,6 @@
 #include<cmath>
 #include<cassert>
+#include<iostream>
 
 double seconds_difference(double time_1, double time_2)
 {
@@ -187,6 +188,8 @@ double time_from_utc(int utc_offset, double time)
 	return (24 + utc_offset + int(trunc(time))) % 24 + (time - trunc(time));
 } 
 
+using namespace std;
+
 const double Eps = 0.0000001;
 
 void main()
@@ -196,17 +199,20 @@ void main()
 	assert(fabs(seconds_difference(3600.0, 1800.0) + 1800.0) < Eps && "test-1-2");
 	assert(fabs(seconds_difference(1800.0, 2160.0) - 360.0) < Eps && "test-1-3");
 	assert(fabs(seconds_difference(1800.0, 1800.0)) < Eps && "test-1-4");
+	cout << "Tests #1 passed" << endl;
 
 	//tests#2 hours_difference
 	assert(fabs(hours_difference(1800.0, 3600.0) - 0.5) < Eps && "test-2-1");
 	assert(fabs(hours_difference(3600.0, 1800.0) + 0.5) < Eps && "test-2-2");
 	assert(fabs(hours_difference(1800.0, 2160.0) - 0.1) < Eps && "test-2-3");
 	assert(fabs(hours_difference(1800.0, 1800.0)) < Eps && "test-2-4");
+	cout << "Tests #2 passed" << endl;
 
 	//tests#3 to_float_hours
 	assert(fabs(to_float_hours(0, 15, 0) - 0.25) < Eps && "test-3-1");
 	assert(fabs(to_float_hours(2, 45, 9) - 2.7525) < Eps && "test-3-2");
 	assert(fabs(to_float_hours(1, 0, 36) - 1.01) < Eps && "test-3-3");
+	cout << "Tests #3 passed" << endl;
 
 	//tests#4 to_24_hour_clock
 	assert(fabs(to_24_hour_clock(24)) < Eps && "test-4-1");
@@ -214,6 +220,7 @@ void main()
 	assert(fabs(to_24_hour_clock(25) - 1) < Eps && "test-4-3");
 	assert(fabs(to_24_hour_clock(4) - 4) < Eps && "test-4-4");
 	assert(fabs(to_24_hour_clock(28.5) - 4.5) < Eps && "test-4-5");
+	cout << "Tests #4 passed" << endl;
 
 	//tests#5 get_hours get_minutes get_seconds
 	assert(get_hours(3800) == 1 && "test-5-1");
@@ -227,6 +234,7 @@ void main()
 	assert(get_seconds(3800) == 20 && "test-5-7");
 	assert(get_seconds(7700) == 20 && "test-5-8");
 	assert(get_seconds(10800) == 0 && "test-5-9");
+	cout << "Tests #5 passed" << endl;
 
 	//tests#6 time_to_utc
 	assert(fabs(time_to_utc(+0, 12.0) - 12.0) < Eps && "test-6-1");
@@ -235,6 +243,7 @@ void main()
 	assert(fabs(time_to_utc(-11, 18.0) - 5.0) < Eps && "test-6-4");
 	assert(fabs(time_to_utc(-1, 0.0) - 1.0) < Eps && "test-6-5");
 	assert(fabs(time_to_utc(-1, 23.0) - 0.0) < Eps && "test-6-6");
+	cout << "Tests #6 passed" << endl;
 
 	//tests#7 time_from_utc
 	assert(fabs(time_from_utc(+0, 12.0) - 12.0) < Eps && "test-7-1");
@@ -245,4 +254,5 @@ void main()
 	assert(fabs(time_from_utc(-1, 0.0) - 23.0) < Eps && "test-7-6");
 	assert(fabs(time_from_utc(-1, 23.0) - 22.0) < Eps && "test-7-7");
 	assert(fabs(time_from_utc(+1, 23.0) - 0.0) < Eps && "test-7-8");
+	cout << "Tests #7 passed" << endl;
 }
