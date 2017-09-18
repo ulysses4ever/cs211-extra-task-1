@@ -27,6 +27,7 @@ double seconds_difference(double time_1, double time_2)
 
 double hours_difference(double time_1, double time_2)
 {
+	return seconds_difference(time_1, time_2) / 3600;
     /*
         Return the number of hours later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -181,4 +182,6 @@ int main() {
 	assert(abs(seconds_difference(1800.0, 3600.0) - 1800.0) < DBL_EPSILN && "seconds_difference, test 1");
 	assert(abs(seconds_difference(3600.0, 1800.0) + 1800.0) < DBL_EPSILN && "seconds_difference, test 2");
 	cout << "Tests have been gone. My congrats for seconds_difference function! :)";
+
+
 }
