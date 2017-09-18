@@ -87,9 +87,7 @@ double to_24_hour_clock(double hours)
         
         >>> to_24_hour_clock(28.5)
         4.5
-        
-        You may wish to inspect various function in <cmath> to work
-        with integer and fractional part of a hours separately.
+
         
     */
 	return int(trunc(hours)) % 24 + (hours - trunc(hours));
@@ -115,6 +113,21 @@ double to_24_hour_clock(double hours)
     In other words, if 3800 seconds have elapsed since midnight, 
     it is currently 01:03:20 (hh:mm:ss).
 */
+
+int get_hours(int seconds)
+{
+	return seconds / 3600;
+}
+
+int get_minutes(int seconds)
+{
+	return seconds % 3600 / 60;
+}
+
+int get_seconds(int seconds)
+{
+	return seconds % 3600 % 60;
+}
 
 double time_to_utc(int utc_offset, double time)
 {
@@ -207,4 +220,16 @@ void main()
 	assert(fabs(to_24_hour_clock(4) - 4) < Eps && "test-4-4");
 	assert(fabs(to_24_hour_clock(28.5) - 4.5) < Eps && "test-4-5");
 
+	//tests#5 get_hours get_minutes get_seconds
+	assert(get_hours(3800) == 1 && "test-5-1");
+	assert(get_hours(7700) == 2 && "test-5-2");
+	assert(get_hours(10800) == 3 && "test-5-3");
+
+	assert(get_minutes(3800) == 3 && "test-5-4");
+	assert(get_minutes(7700) == 8 && "test-5-5");
+	assert(get_minutes(10800) == 0 && "test-5-6");
+
+	assert(get_seconds(3800) == 20 && "test-5-7");
+	assert(get_seconds(7700) == 20 && "test-5-8");
+	assert(get_seconds(10800) == 0 && "test-5-9");
 }
