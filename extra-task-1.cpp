@@ -178,7 +178,7 @@ double time_from_utc(int utc_offset, double time)
 }
 
 int main() {
-	// assert's for seconds_difference()
+	// asserts for seconds_difference()
 	assert(abs(seconds_difference(1800.0, 1800.0) - 0.0) < DBL_EPSILN    && "seconds_difference, test 4");
 	assert(abs(seconds_difference(1233.0, 1200.0) + 33.0) < DBL_EPSILN   && "seconds_difference, test 5");
 	assert(abs(seconds_difference(1800.0, 2160.0) - 360.0) < DBL_EPSILN  && "seconds_difference, test 3");
@@ -186,11 +186,19 @@ int main() {
 	assert(abs(seconds_difference(3600.0, 1800.0) + 1800.0) < DBL_EPSILN && "seconds_difference, test 2");
 	cout << "Tests for seconds_difference() function have been gone.\n";
 
-	// assert's for hours_differrence()
+	// asserts for hours_differrence()
 	assert(abs(hours_difference(1800.0, 1800.0) - 0.0) < DBL_EPSILN && "hours_difference, test 1");
 	assert(abs(hours_difference(1800.0, 3600.0) - 0.5) < DBL_EPSILN && "hours_difference, test 2");
-	assert(abs(hours_difference(3600.0, 1800.0) + 0.5) < DBL_EPSILN && "hours_difference, test 1");
-	assert(abs(hours_difference(3600.0, 0.0) + 1.0) < DBL_EPSILN && "hours_difference, test 1");
-	assert(abs(hours_difference(0.0, 3600.0) - 1.0) < DBL_EPSILN && "hours_difference, test 1");
+	assert(abs(hours_difference(3600.0, 1800.0) + 0.5) < DBL_EPSILN && "hours_difference, test 3");
+	assert(abs(hours_difference(3600.0, 0.0) + 1.0) < DBL_EPSILN    && "hours_difference, test 4");
+	assert(abs(hours_difference(0.0, 3600.0) - 1.0) < DBL_EPSILN    && "hours_difference, test 5");
+	cout << "Tests for hours_difference() function have been gone.\n";
+
+	// asserts for to_float_hours()
+	assert(abs(to_float_hours(0, 15, 0) - 0.25)   < DBL_EPSILN && "to_float_hours, test 1");
+	assert(abs(to_float_hours(1, 0, 36) - 1.01)   < DBL_EPSILN && "to_float_hours, test 1");
+	assert(abs(to_float_hours(1, 15, 0) - 1.25)   < DBL_EPSILN && "to_float_hours, test 1");
+	assert(abs(to_float_hours(2, 15, 36) - 2.26)  < DBL_EPSILN && "to_float_hours, test 1");
+	assert(abs(to_float_hours(2, 45, 9) - 2.7525) < DBL_EPSILN && "to_float_hours, test 1");
 	cout << "Tests for hours_difference() function have been gone.\n";
 }
