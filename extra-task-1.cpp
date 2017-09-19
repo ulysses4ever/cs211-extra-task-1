@@ -100,6 +100,27 @@ double to_24_hour_clock(double hours)
     */
 }
 
+int get_seconds(int seconds) {
+	return seconds % 60;
+	/*
+	Return number of seconds, which have already been gone since midnight
+	*/
+}
+
+int get_minutes(int seconds) {
+	return ((seconds - get_seconds(3800)) / 60) % 60;
+	/*
+	Return number of minutes, which have already been gone since midnight
+	*/
+}
+
+int get_hours(int seconds) {
+	return seconds / 3600;
+	/*
+	Return number of hours, which have already been gone since midnight
+	*/
+}
+
 /*
     Implement three functions
         * get_hours
