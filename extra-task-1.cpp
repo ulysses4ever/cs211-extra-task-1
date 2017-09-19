@@ -56,6 +56,31 @@ double time_from_utc(int utc_offset, double time)
 	return a;
 }
 
+int get_hours(int seconds) {
+
+	int i = 0;
+	while (seconds >= 3600) {
+		seconds -= 3600;
+		i += 1;
+	}
+	return i;
+}
+
+int get_minutes(int seconds) {
+	int i = 0;
+	seconds = seconds - 3600 * get_hours(seconds);
+	while (seconds >= 60) {
+		seconds -= 60;
+		i += 1;
+	}
+	return i;
+}
+
+int get_seconds(int seconds) {
+	return seconds - 3600 * get_hours(seconds) - 60 * get_minutes(seconds);
+}
+
+
 
 int main() {
 
@@ -94,6 +119,9 @@ int main() {
 	assert(f(time_from_utc(-1, 23.0), 22.0) && "test 6.7");
 	assert(f(time_from_utc(+1, 23.0), 0.0) && "test 6.8");
 
+	assert(f(get_hours(3800), 1) && "test 7.1");
+	assert(f(get_minutes(3800), 3) && "test 7.2");
+	assert(f(get_seconds(3800), 20) && "test 7.3");
 
 	return 0;
 }
