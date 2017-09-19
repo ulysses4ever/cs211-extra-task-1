@@ -123,6 +123,23 @@ of a time in seconds. E.g.:
 In other words, if 3800 seconds have elapsed since midnight,
 it is currently 01:03:20 (hh:mm:ss).
 */
+double get_hours(double time)
+{
+	assert(time >= 0);
+	return fmod(floor(time / 3600.0), 24);;
+}
+
+double get_minutes(double time)
+{
+	assert(time >= 0);
+	return fmod(floor(time / 60.0), 60);
+}
+
+double get_seconds(double time)
+{
+	assert(time >= 0);
+	return fmod(time, 60);
+}
 
 int main()
 {
@@ -149,4 +166,11 @@ int main()
 	assert(fabs(to_24_hour_clock(25) - 1) < DBL_EPSILON);
 	assert(fabs(to_24_hour_clock(4) - 4) < DBL_EPSILON);
 	assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
+
+	//get_hours
+	assert(fabs(get_hours(3800) - 1) < DBL_EPSILON);
+	//get_minutes
+	assert(fabs(get_minutes(3800) - 3) < DBL_EPSILON);
+	//get_seconds
+	assert(fabs(get_seconds(3800) - 20) < DBL_EPSILON);
 }
