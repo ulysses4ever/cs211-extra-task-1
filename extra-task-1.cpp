@@ -174,7 +174,9 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
-    /*
+	int int_hours = (int)time;
+	return ((int_hours + utc_offset + 24) % 24) + (time - int_hours);
+	/*
         Return UTC time in time zone utc_offset.
 
         >>> time_from_utc(+0, 12.0)
