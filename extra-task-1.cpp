@@ -179,11 +179,11 @@ double time_from_utc(int utc_offset, double time)
 
 int main() {
 	// asserts for seconds_difference()
-	assert(abs(seconds_difference(1800.0, 1800.0) - 0.0) < DBL_EPSILN    && "seconds_difference, test 4");
-	assert(abs(seconds_difference(1233.0, 1200.0) + 33.0) < DBL_EPSILN   && "seconds_difference, test 5");
+	assert(abs(seconds_difference(1800.0, 1800.0) - 0.0) < DBL_EPSILN    && "seconds_difference, test 1");
+	assert(abs(seconds_difference(1233.0, 1200.0) + 33.0) < DBL_EPSILN   && "seconds_difference, test 2");
 	assert(abs(seconds_difference(1800.0, 2160.0) - 360.0) < DBL_EPSILN  && "seconds_difference, test 3");
-	assert(abs(seconds_difference(1800.0, 3600.0) - 1800.0) < DBL_EPSILN && "seconds_difference, test 1");
-	assert(abs(seconds_difference(3600.0, 1800.0) + 1800.0) < DBL_EPSILN && "seconds_difference, test 2");
+	assert(abs(seconds_difference(1800.0, 3600.0) - 1800.0) < DBL_EPSILN && "seconds_difference, test 4");
+	assert(abs(seconds_difference(3600.0, 1800.0) + 1800.0) < DBL_EPSILN && "seconds_difference, test 5");
 	cout << "Tests for seconds_difference() function have been gone.\n";
 
 	// asserts for hours_differrence()
