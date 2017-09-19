@@ -62,6 +62,9 @@ double to_float_hours(int hours, int minutes, int seconds)
 	>>> to_float_hours(1, 0, 36)
 	1.01
 	*/
+	assert(0 <= minutes && minutes < 60);
+	assert(0 <= seconds && seconds < 60);
+
 	return hours + minutes / 60.0 + seconds / 3600.0;
 }
 
