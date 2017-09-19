@@ -18,6 +18,9 @@ double seconds_difference(double time_1, double time_2)
         >>> seconds_difference(1800.0, 1800.0)
         0.0
     */
+
+	return time_2 - time_1;
+
 }
 
 double hours_difference(double time_1, double time_2)
@@ -38,6 +41,9 @@ double hours_difference(double time_1, double time_2)
         >>> hours_difference(1800.0, 1800.0)
         0.0
     */
+
+	return (time_2 - time_1) / 3600;
+
 }
 
 double to_float_hours(int hours, int minutes, int seconds)
@@ -57,6 +63,9 @@ double to_float_hours(int hours, int minutes, int seconds)
         >>> to_float_hours(1, 0, 36)
         1.01
     */
+
+	return (seconds + minutes * 60) / 3600 + hours;
+
 }
 
 double to_24_hour_clock(double hours)
@@ -86,6 +95,9 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
+
+	return hours % 24;
+
 }
 
 /*
@@ -135,6 +147,9 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
+
+	return (time - utc_offset) % 24;
+
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -166,4 +181,7 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+
+	return (time + utc_offset) % 24;
+
 }
