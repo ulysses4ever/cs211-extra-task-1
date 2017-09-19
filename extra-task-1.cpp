@@ -181,7 +181,13 @@ int main() {
 	assert(abs(seconds_difference(1800.0, 2160.0) - 360.0) < DBL_EPSILN  && "seconds_difference, test 3");
 	assert(abs(seconds_difference(1800.0, 3600.0) - 1800.0) < DBL_EPSILN && "seconds_difference, test 1");
 	assert(abs(seconds_difference(3600.0, 1800.0) + 1800.0) < DBL_EPSILN && "seconds_difference, test 2");
-	cout << "Tests have been gone. My congrats for seconds_difference function! :)";
+	cout << "Tests for seconds_difference() function have been gone.\n";
 
-
+	// assert's for hours_differrence()
+	assert(abs(hours_difference(1800.0, 1800.0) - 0.0) < DBL_EPSILN && "hours_difference, test 1");
+	assert(abs(hours_difference(1800.0, 3600.0) - 0.5) < DBL_EPSILN && "hours_difference, test 2");
+	assert(abs(hours_difference(3600.0, 1800.0) + 0.5) < DBL_EPSILN && "hours_difference, test 1");
+	assert(abs(hours_difference(3600.0, 0.0) + 1.0) < DBL_EPSILN && "hours_difference, test 1");
+	assert(abs(hours_difference(0.0, 3600.0) - 1.0) < DBL_EPSILN && "hours_difference, test 1");
+	cout << "Tests for hours_difference() function have been gone.\n";
 }
