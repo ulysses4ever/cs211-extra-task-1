@@ -1,3 +1,5 @@
+// Бонусное задание 1 / GitHub
+
 #include <iostream>
 #include <cmath>
 #include <cassert>
@@ -129,36 +131,18 @@ double time_to_utc(int utc_offset, double time)
 	return (res);
 }
 
+// Возвращает время UTC в часовом поясе utc_offset
 double time_from_utc(int utc_offset, double time)
 {
     /*
         Return UTC time in time zone utc_offset.
-
-        >>> time_from_utc(+0, 12.0)
-        12.0
- 
-        >>> time_from_utc(+1, 12.0)
-        13.0
- 
-        >>> time_from_utc(-1, 12.0)
-        11.0
- 
-        >>> time_from_utc(+6, 6.0)
-        12.0
- 
-        >>> time_from_utc(-7, 6.0)
-        23.0
- 
-        >>> time_from_utc(-1, 0.0)
-        23.0
- 
-        >>> time_from_utc(-1, 23.0)
-        22.0
- 
-        >>> time_from_utc(+1, 23.0)
-        0.0
     */
-	return 0;
+	double res = time + utc_offset;
+	if (res >= 24)
+		res -= 24;
+	if (res < 0)
+		res += 24;
+	return (res);
 }
 
 int main()
@@ -297,4 +281,43 @@ int main()
 	assert(RealsAreEqual(time_to_utc(-11, 18.0), 5.0) && "test-5.4");
 	assert(RealsAreEqual(time_to_utc(-1, 0.0), 1.0) && "test-5.5");
 	assert(RealsAreEqual(time_to_utc(-1, 23.0), 0.0) && "test-5.6");
+
+
+
+	//-------------------------------time_from_utc-------------------------------------
+	/*
+	Return UTC time in time zone utc_offset.
+
+	>>> time_from_utc(+0, 12.0)
+	12.0
+
+	>>> time_from_utc(+1, 12.0)
+	13.0
+
+	>>> time_from_utc(-1, 12.0)
+	11.0
+
+	>>> time_from_utc(+6, 6.0)
+	12.0
+
+	>>> time_from_utc(-7, 6.0)
+	23.0
+
+	>>> time_from_utc(-1, 0.0)
+	23.0
+
+	>>> time_from_utc(-1, 23.0)
+	22.0
+
+	>>> time_from_utc(+1, 23.0)
+	0.0
+	*/
+	assert(RealsAreEqual(time_from_utc(+0, 12.0), 12.0) && "test-6.1");
+	assert(RealsAreEqual(time_from_utc(+1, 12.0), 13.0) && "test-6.2");
+	assert(RealsAreEqual(time_from_utc(-1, 12.0), 11.0) && "test-6.3");
+	assert(RealsAreEqual(time_from_utc(+6, 6.0), 12.0) && "test-6.4");
+	assert(RealsAreEqual(time_from_utc(-7, 6.0), 23.0) && "test-6.5");
+	assert(RealsAreEqual(time_from_utc(-1, 0.0), 23.0) && "test-6.6");
+	assert(RealsAreEqual(time_from_utc(-1, 23.0), 22.0) && "test-6.7");
+	assert(RealsAreEqual(time_from_utc(+1, 23.0), 0.0) && "test-6.8");
 }
