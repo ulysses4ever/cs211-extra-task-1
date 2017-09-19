@@ -18,7 +18,7 @@ double seconds_difference(double time_1, double time_2)
 	return (time_2 - time_1);
 }
 
-
+// Вычисляет разницу в ЧАСАХ между time_2 и time_1
 double hours_difference(double time_1, double time_2)
 {
 	/*
@@ -37,7 +37,7 @@ double hours_difference(double time_1, double time_2)
 		>>> hours_difference(1800.0, 1800.0)
 		0.0
 	*/
-	return 0;
+	return ((time_2 / 3600.0) - (time_1 / 3600.0));
 }
 
 double to_float_hours(int hours, int minutes, int seconds)
@@ -174,7 +174,7 @@ double time_from_utc(int utc_offset, double time)
 
 int main()
 {
-	//--------------------------seconds_difference-----------------------------------
+	//-----------------------------seconds_difference--------------------------------
 	/*
 	Return the number of seconds later that a time in seconds
 	time_2 is than a time in seconds time_1.
@@ -195,4 +195,27 @@ int main()
 	assert(RealsAreEqual(seconds_difference(3600.0, 1800.0), -1800.0) && "test-1.2");
 	assert(RealsAreEqual(seconds_difference(1800.0, 2160.0), 360.0) && "test-1.3");
 	assert(RealsAreEqual(seconds_difference(1800.0, 1800.0), 0.0) && "test-1.4");
+
+
+	//-----------------------------hours_difference-----------------------------------
+	/*
+	Return the number of hours later that a time in seconds
+	time_2 is than a time in seconds time_1.
+
+	>>> hours_difference(1800.0, 3600.0)
+	0.5
+
+	>>> hours_difference(3600.0, 1800.0)
+	-0.5
+
+	>>> hours_difference(1800.0, 2160.0)
+	0.1
+
+	>>> hours_difference(1800.0, 1800.0)
+	0.0
+	*/
+	assert(RealsAreEqual(hours_difference(1800.0, 3600.0), 0.5) && "test-2.1");
+	assert(RealsAreEqual(hours_difference(3600.0, 1800.0), -0.5) && "test-2.2");
+	assert(RealsAreEqual(hours_difference(1800.0, 2160.0), 0.1) && "test-2.3");
+	assert(RealsAreEqual(hours_difference(1800.0, 1800.0), 0.0) && "test-2.4");
 }
