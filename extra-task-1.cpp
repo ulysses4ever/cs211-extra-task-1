@@ -70,6 +70,9 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
+	assert(hours >= 0 && "Wrong format for hours in to_24_hour_clock() function");
+	int int_hours = (int)hours;
+	return (int_hours % 24) + (hours - int_hours);
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
