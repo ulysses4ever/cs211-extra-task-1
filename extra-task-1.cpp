@@ -240,6 +240,7 @@ int main() {
 	assert(get_seconds(3800) == 20, "get_seconds, test 3");
 	assert(get_seconds(4050) == 30, "get_seconds, test 4");
 	assert(get_seconds(3700) == 40, "get_seconds, test 5");
+	cout << "Tests for get_seconds() function have been gone.\n";
 
 	//asserts for get_minutes()
 	assert(get_minutes(3800) == 3,  "get_minutes, test 1");
@@ -247,4 +248,13 @@ int main() {
 	assert(get_minutes(4100) == 8,  "get_minutes, test 3");
 	assert(get_minutes(4800) == 20, "get_minutes, test 4");
 	assert(get_minutes(5300) == 28, "get_minutes, test 5");
+	cout << "Tests for get_minutes() function have been gone.\n";
+
+	//asserts for get_hours()
+	assert(get_hours(3500)  == 0, "get_hours, test 1");
+	assert(get_hours(3800)  == 1, "get_hours, test 2");
+	assert(get_hours(4800)  == 1, "get_hours, test 3");
+	assert(get_hours(7210)  == 2, "get_hours, test 4");
+	assert(get_hours(15300) == 4, "get_hours, test 5");
+	cout << "Tests for get_minutes() function have been gone.\n";
 }
