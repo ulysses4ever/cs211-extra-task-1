@@ -233,4 +233,11 @@ int main() {
 	assert(abs(to_24_hour_clock(48.3) - 0.3) < DBL_EPSILN && "to_24_hours, test 4");
 	assert(abs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILN && "to_24_hours, test 5");
 	cout << "Tests for to_24_hour_clock() function have been gone.\n";
+
+	//asserts for get_seconds()
+	assert(get_seconds(3600) == 0, "get_seconds(), test 1");
+	assert(get_seconds(3910) == 10, "get_seconds(), test 2");
+	assert(get_seconds(3800) == 20, "get_seconds(), test 3");
+	assert(get_seconds(4050) == 30, "get_seconds(), test 4");
+	assert(get_seconds(3700) == 40, "get_seconds(), test 5");
 }
