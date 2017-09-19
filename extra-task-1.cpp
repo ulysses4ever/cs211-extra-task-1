@@ -204,4 +204,12 @@ int main() {
 	assert(abs(to_float_hours(2, 15, 36) - 2.26)  < DBL_EPSILN && "to_float_hours, test 4");
 	assert(abs(to_float_hours(2, 45, 9) - 2.7525) < DBL_EPSILN && "to_float_hours, test 5");
 	cout << "Tests for hours_difference() function have been gone.\n";
+
+	//asserts for to_24_hour_clock()
+	assert(abs(to_24_hour_clock(4) - 4)      < DBL_EPSILN && "to_24_hours, test 1");
+	assert(abs(to_24_hour_clock(24) - 0)     < DBL_EPSILN && "to_24_hours, test 2");
+	assert(abs(to_24_hour_clock(25) - 1)     < DBL_EPSILN && "to_24_hours, test 3");
+	assert(abs(to_24_hour_clock(48.3) - 0.3) < DBL_EPSILN && "to_24_hours, test 4");
+	assert(abs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILN && "to_24_hours, test 5");
+	cout << "Tests for to_24_hour_clock() function have been gone.\n";
 }
