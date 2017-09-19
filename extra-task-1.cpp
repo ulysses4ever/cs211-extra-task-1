@@ -240,4 +240,11 @@ int main() {
 	assert(get_seconds(3800) == 20, "get_seconds, test 3");
 	assert(get_seconds(4050) == 30, "get_seconds, test 4");
 	assert(get_seconds(3700) == 40, "get_seconds, test 5");
+
+	//asserts for get_minutes()
+	assert(get_minutes(3800) == 3,  "get_minutes, test 1");
+	assert(get_minutes(3900) == 5,  "get_minutes, test 2");
+	assert(get_minutes(4100) == 8,  "get_minutes, test 3");
+	assert(get_minutes(4800) == 20, "get_minutes, test 4");
+	assert(get_minutes(5300) == 28, "get_minutes, test 5");
 }
