@@ -196,9 +196,9 @@ int main() {
 
 	// asserts for to_float_hours()
 	assert(abs(to_float_hours(0, 15, 0) - 0.25)   < DBL_EPSILN && "to_float_hours, test 1");
-	assert(abs(to_float_hours(1, 0, 36) - 1.01)   < DBL_EPSILN && "to_float_hours, test 1");
-	assert(abs(to_float_hours(1, 15, 0) - 1.25)   < DBL_EPSILN && "to_float_hours, test 1");
-	assert(abs(to_float_hours(2, 15, 36) - 2.26)  < DBL_EPSILN && "to_float_hours, test 1");
-	assert(abs(to_float_hours(2, 45, 9) - 2.7525) < DBL_EPSILN && "to_float_hours, test 1");
+	assert(abs(to_float_hours(1, 0, 36) - 1.01)   < DBL_EPSILN && "to_float_hours, test 2");
+	assert(abs(to_float_hours(1, 15, 0) - 1.25)   < DBL_EPSILN && "to_float_hours, test 3");
+	assert(abs(to_float_hours(2, 15, 36) - 2.26)  < DBL_EPSILN && "to_float_hours, test 4");
+	assert(abs(to_float_hours(2, 45, 9) - 2.7525) < DBL_EPSILN && "to_float_hours, test 5");
 	cout << "Tests for hours_difference() function have been gone.\n";
 }
