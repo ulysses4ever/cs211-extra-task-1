@@ -269,4 +269,15 @@ int main() {
 	assert(abs(time_to_utc(-11, 18.0) - 5.0)  < DBL_EPSILN && "time_to_utc, test 4");
 	assert(abs(time_to_utc(-1, 12.0)  - 13.0) < DBL_EPSILN && "time_to_utc, test 5");
 	cout << "Tests for time_to_utc() function have been gone.\n";
+	
+	//asserts for time_from_utc()
+	assert(abs(time_from_utc(1, 23.0)  - 0.0)  < DBL_EPSILN && "time_from_utc, test 1");
+	assert(abs(time_from_utc(6, 6.0)   - 12.0) < DBL_EPSILN && "time_from_utc, test 2");
+	assert(abs(time_from_utc(0, 12.0)  - 12.0) < DBL_EPSILN && "time_from_utc, test 3");
+	assert(abs(time_from_utc(1, 12.0)  - 13.0) < DBL_EPSILN && "time_from_utc, test 4");
+	assert(abs(time_from_utc(-7, 6.0)  - 23.0) < DBL_EPSILN && "time_from_utc, test 5");
+	assert(abs(time_from_utc(-1, 12.0) - 11.0) < DBL_EPSILN && "time_from_utc, test 6");
+	cout << "Tests for time_from_utc() function have been gone.\n";
+
+	cout << "All tests have past!!! Wonderful! :)";
 }
