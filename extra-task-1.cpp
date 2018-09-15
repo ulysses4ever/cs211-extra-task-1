@@ -43,26 +43,29 @@ double to_24_hour_clock(double hours)
 	return t % 24 + nhours;
 }
 
-/*
-    Implement three functions
-        * get_hours
-        * get_minutes
-        * get_seconds
-    They are used to determine the hours part, minutes part and seconds part 
-    of a time in seconds. E.g.:
+/*Determines a hours part in time in seconds*/
+double get_hours(double seconds)
+{
+	assert(seconds >= 0);
+	int to_hours = trunc(seconds);
 
-    >>> get_hours(3800)
-    1
+	return to_hours / 3600;
+}
 
-    >>> get_minutes(3800)
-    3
+/*Determines a minutes part in time in seconds*/
+double get_minutes(double seconds)
+{
+	int to_minutes = trunc(seconds - get_hours(seconds)*3600);
 
-    >>> get_seconds(3800)
-    20
+	return to_minutes / 60;
+}
 
-    In other words, if 3800 seconds have elapsed since midnight, 
-    it is currently 01:03:20 (hh:mm:ss).
-*/
+/*Determines a seconds part in time in seconds*/
+double get_seconds(double seconds)
+{
+	int to_seconds = trunc(seconds - get_minutes(seconds) * 60 - get_hours(seconds)*3600);
+	return to_seconds;
+}
 
 double time_to_utc(int utc_offset, double time)
 {
@@ -158,6 +161,17 @@ int main()
 	assert(fabs(to_24_hour_clock(4) - 4.0) < DBL_EPSILON);
 	assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
 	cout << "Task 4 Check Complete" << endl;
+
+	/*Task 5 Implement three functions
+        * get_hours
+        * get_minutes
+        * get_seconds
+    They are used to determine the hours part, minutes part and seconds part 
+    of a time in seconds.*/
+	assert(fabs(get_hours(3800) - 1.0) < DBL_EPSILON);
+	assert(fabs(get_minutes(3800) - 3.0) < DBL_EPSILON);
+	assert(fabs(get_seconds(3800) - 20.0) < DBL_EPSILON);
+	cout << "Task 5 Check Complete" << endl;
 
 	system("pause");
 	//Very Good Committing
