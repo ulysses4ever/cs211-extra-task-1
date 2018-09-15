@@ -31,34 +31,16 @@ double to_float_hours(int hours, int minutes, int seconds)
 	return hours + minutes / 60.0 + seconds / 3600.0;
 }
 
+/*hours is a number of hours since midnight. Return the
+        hour as seen on a 24-hour clock.*/
 double to_24_hour_clock(double hours)
 {
-	return 0.0;
-    /*
-        hours is a number of hours since midnight. Return the
-        hour as seen on a 24-hour clock.
-
-        Precondition: hours >= 0
-
-        >>> to_24_hour_clock(24)
-        0
-        
-        >>> to_24_hour_clock(48)
-        0
-        
-        >>> to_24_hour_clock(25)
-        1
-        
-        >>> to_24_hour_clock(4)
-        4
-        
-        >>> to_24_hour_clock(28.5)
-        4.5
-        
-        You may wish to inspect various function in <cmath> to work
-        with integer and fractional part of a hours separately.
-        
-    */
+	assert(hours >= 0);
+	double nhours;
+	nhours = modf(hours, &hours);
+	int t = trunc(hours);
+	
+	return t % 24 + nhours;
 }
 
 /*
@@ -168,6 +150,15 @@ int main()
 	assert(fabs(to_float_hours(1, 0, 36) - 1.01) < DBL_EPSILON);
 	cout << "Task 3 Check Complete" << endl;
 
+	/*Task 4 hours is a number of hours since midnight. Return the
+        hour as seen on a 24-hour clock.*/
+	assert(fabs(to_24_hour_clock(24)) < DBL_EPSILON);
+	assert(fabs(to_24_hour_clock(48)) < DBL_EPSILON);
+	assert(fabs(to_24_hour_clock(25) - 1.0) < DBL_EPSILON);
+	assert(fabs(to_24_hour_clock(4) - 4.0) < DBL_EPSILON);
+	assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
+	cout << "Task 4 Check Complete" << endl;
+
 	system("pause");
-	//Very Good Commiting
+	//Very Good Committing
 }
