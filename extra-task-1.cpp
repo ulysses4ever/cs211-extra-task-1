@@ -11,6 +11,7 @@ using namespace std;
 time_2 is than a time in seconds time_1.*/
 double seconds_difference(double time_1, double time_2)
 {
+	assert(time_1 >= 0 && time_2 >= 0);
 	return time_2 - time_1;
 }
 
