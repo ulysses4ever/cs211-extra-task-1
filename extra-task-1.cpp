@@ -1,7 +1,8 @@
+#include <cassert>
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
-    
+	return time_2 - time_1;
     /*    
         Return the number of seconds later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -166,4 +167,11 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+}
+int main()
+{
+	assert(seconds_difference(1800.0, 3600.0) == 1800.0);
+	assert(seconds_difference(3600.0, 1800.0) == -1800.0);
+	assert(seconds_difference(1800.0, 2160.0) == 360.0);
+	assert(seconds_difference(1800.0, 1800.0) == 0.0);
 }
