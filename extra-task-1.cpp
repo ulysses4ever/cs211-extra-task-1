@@ -2,23 +2,19 @@
 #include <cfloat>
 #include <cmath>
 
-double seconds_difference(double time_1, double time_2)
-{
+double seconds_difference(double time_1, double time_2) {
     return time_2 - time_1;
 }
 
-double hours_difference(double time_1, double time_2)
-{
+double hours_difference(double time_1, double time_2) {
     return (time_2 - time_1) / 3600.0;
 }
 
-double to_float_hours(int hours, int minutes, int seconds)
-{
+double to_float_hours(int hours, int minutes, int seconds) {
     return (hours * 3600 + minutes * 60 + seconds) / 3600.0;
 }
 
-double to_24_hour_clock(double hours)
-{
+double to_24_hour_clock(double hours) {
     assert(hours >= 0);
     auto h_part = (int)trunc(hours);
     auto m_part = hours - h_part;
@@ -40,36 +36,11 @@ double get_seconds(double seconds) {
     return seconds - get_hours(seconds) * 3600 - get_minutes(seconds) * 60;
 }
 
-double time_to_utc(int utc_offset, double time)
-{
-    /*
-        Return time at UTC+0, where utc_offset is the number of hours away from
-        UTC+0.
-        You may be interested in:
-        https://en.wikipedia.org/wiki/Coordinated_Universal_Time
-
-        >>> time_to_utc(+0, 12.0)
-        12.0
- 
-        >>> time_to_utc(+1, 12.0)
-        11.0
- 
-        >>> time_to_utc(-1, 12.0)
-        13.0
- 
-        >>> time_to_utc(-11, 18.0)
-        5.0
- 
-        >>> time_to_utc(-1, 0.0)
-        1.0
- 
-        >>> time_to_utc(-1, 23.0)
-        0.0
-    */
+double time_to_utc(int utc_offset, double time) {
+    return to_24_hour_clock(time - utc_offset);
 }
 
-double time_from_utc(int utc_offset, double time)
-{
+double time_from_utc(int utc_offset, double time) {
     /*
         Return UTC time in time zone utc_offset.
 
