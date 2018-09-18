@@ -1,4 +1,5 @@
 #include <cassert>
+#include <cmath>
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
@@ -65,6 +66,9 @@ double to_float_hours(int hours, int minutes, int seconds)
 }
 double to_24_hour_clock(double hours)
 {
+	assert(hours > 0);
+	int tr = trunc(hours);
+	return hours<24 ? hours : (int)(fabs(24 - tr)) % 24 + (hours - tr);
 	/*
 		hours is a number of hours since midnight. Return the
 		hour as seen on a 24-hour clock.
@@ -91,7 +95,6 @@ double to_24_hour_clock(double hours)
 
 	*/
 }
-
 /*
 	Implement three functions
 		* get_hours
@@ -172,6 +175,7 @@ double time_from_utc(int utc_offset, double time)
 	*/
 }
 
+
 int main()
 {
 	assert(seconds_difference(1800.0, 3600.0) == 1800.0);
@@ -188,4 +192,11 @@ int main()
 	assert(to_float_hours(2, 45, 9) == 2.7525);
 	assert(to_float_hours(1, 0, 36) == 1.01);
 
+
+	assert(to_24_hour_clock(24) == 0);
+	assert(to_24_hour_clock(48) == 0);
+	assert(to_24_hour_clock(25) == 1);
+	assert(to_24_hour_clock(4) == 4);
+	assert(to_24_hour_clock(28.5) == 4.5);
+	assert(to_24_hour_clock(48.5) == 0.5);
 }
