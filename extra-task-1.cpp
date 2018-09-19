@@ -64,7 +64,20 @@ double to_24_hour_clock(double hours)
     */
 }
 
+double get_hours(double second)
+{
+	return floor(second / 3600);
+}
+double get_minutes(double second) 
+{
+	return floor((second - get_hours(second) * 3600) / 60);
+}
+double get_seconds(double second)
+{
+	return second - get_minutes(second) * 60 - get_hours(second) * 3600;
+}
 /*
+
     Implement three functions
         * get_hours
         * get_minutes
@@ -87,7 +100,11 @@ double to_24_hour_clock(double hours)
 
 double time_to_utc(int utc_offset, double time)
 {
-	return 0;
+	assert(utc_offset >= -12 && utc_offset <= 14);
+	time += -utc_offset;
+	if (time >= 24)
+		time -= 24;
+	return time;
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -171,5 +188,15 @@ int main()
 	assert(fabs(to_24_hour_clock(4) - 4) < DBL_EPSILON);
 	assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
 	
-		 
+	assert(get_hours(3800) == 1);
+	assert(get_minutes(3800) == 3);
+	assert(get_seconds(3800) == 20);
+
+	assert(time_to_utc(+0, 12.0) == 12.0);
+	assert(time_to_utc(+1, 12.0) == 11.0);
+	assert(time_to_utc(-1, 12.0) == 13.0);
+	assert(time_to_utc(-11, 18.0) == 5.0);
+	assert(time_to_utc(-1, 0.0) == 1.0);
+	assert(time_to_utc(-1, 23.0) == 0.0);
+
 }
