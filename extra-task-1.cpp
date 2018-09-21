@@ -1,5 +1,6 @@
 double seconds_difference(double time_1, double time_2)
 {
+	
     // your implementation goes here...
     
     /*    
@@ -8,7 +9,7 @@ double seconds_difference(double time_1, double time_2)
             
         >>> seconds_difference(1800.0, 3600.0)
         1800.0
-
+qwerty
         >>> seconds_difference(3600.0, 1800.0)
         -1800.0
 
@@ -41,7 +42,7 @@ double hours_difference(double time_1, double time_2)
 }
 
 double to_float_hours(int hours, int minutes, int seconds)
-{
+{ 
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
@@ -53,7 +54,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 
         >>> to_float_hours(2, 45, 9)
         2.7525
-
+ 
         >>> to_float_hours(1, 0, 36)
         1.01
     */
