@@ -41,7 +41,7 @@ double seconds_difference(double time_1, double time_2)
 }
 
 double to_float_hours(int hours, int minutes, int seconds)
-{
+{ 
 	/*
 	Return the total number of hours in the specified number
 	of hours, minutes, and seconds.
@@ -57,6 +57,10 @@ double to_float_hours(int hours, int minutes, int seconds)
 	>>> to_float_hours(1, 0, 36)
 	1.01
 	*/
+	assert(minutes >= 0);
+	assert(minutes < 60);
+	assert(seconds >= 0);
+	assert(seconds < 60);
 	return (hours * 3600 + minutes * 60 + seconds) / 3600.0;
 }
 
@@ -117,7 +121,10 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
-	return hours - (hours / 24);
+	assert(hours >= 0);
+	double fractpart, intpart;
+	fractpart = modf(hours, &intpart);
+	return int(intpart) % 24 + fractpart;
 }
 
 
