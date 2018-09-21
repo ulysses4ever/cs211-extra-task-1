@@ -61,7 +61,7 @@ double to_float_hours(int hours, int minutes, int seconds)
         >>> to_float_hours(1, 0, 36)
         1.01
     */
-	//return (hours*3600 + minutes*60 + seconds) / 3600;
+	return (hours*3600 + minutes*60 + seconds) / 3600;
 }
 
 double to_24_hour_clock(double hours)
