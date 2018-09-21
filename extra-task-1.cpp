@@ -37,7 +37,7 @@ double get_seconds(double seconds) {
 }
 
 double time_to_utc(int utc_offset, double time) {
-    return to_24_hour_clock(time - utc_offset);
+    return to_24_hour_clock(time - utc_offset > 0 ? (time - utc_offset) : 24 + (time - utc_offset));
 }
 
 double time_from_utc(int utc_offset, double time) {
