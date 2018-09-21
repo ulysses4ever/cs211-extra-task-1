@@ -62,7 +62,7 @@ double to_float_hours(int hours, int minutes, int seconds)
         1.01
     */
 	assert(0 <= minutes & minutes < 60 & 0 <= seconds & seconds  < 60);
-	return (hours*3600 + minutes*60 + seconds) / 3600;
+	return (double)(hours*3600 + minutes*60 + seconds) / 3600;
 }
 
 double to_24_hour_clock(double hours)
@@ -93,7 +93,7 @@ double to_24_hour_clock(double hours)
         
     */
 	assert(hours >= 0);
-	return hours >= 24 ? hours - 24 : hours;
+	return hours >= 24 ? (int)hours % 24 == 0 ? 0 : hours - 24 : hours;
 }
 
 /*
@@ -130,7 +130,7 @@ int get_minutes(int seconds)
 
 int get_seconds(int seconds)
 {
-	(seconds % 3600) % 60;
+	return (seconds % 3600) % 60;
 }
   
 
@@ -165,7 +165,7 @@ double time_to_utc(int utc_offset, double time)
 	assert(utc_offset >= -12 & utc_offset <= 14);
 
 	auto utc_time = time - utc_offset;
-	return utc_time >= 24 ? utc_time - 24 : utc_time;
+	return utc_time <= 0 ? utc_time + 24 : utc_time >= 24 ? utc_time - 24 : utc_time;
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -202,5 +202,5 @@ double time_from_utc(int utc_offset, double time)
 	assert(utc_offset >= -12 & utc_offset <= 14);
 
 	auto utc_time = time + utc_offset;
-	return utc_time >= 24 ? utc_time - 24 : utc_time;
+	return utc_time <=0 ? utc_time + 24 : utc_time >= 24 ? utc_time - 24 : utc_time;
 }
