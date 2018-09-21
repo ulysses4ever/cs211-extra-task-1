@@ -61,6 +61,7 @@ double to_float_hours(int hours, int minutes, int seconds)
         >>> to_float_hours(1, 0, 36)
         1.01
     */
+	assert(0 <= minutes & minutes < 60 & 0 <= seconds & seconds  < 60);
 	return (hours*3600 + minutes*60 + seconds) / 3600;
 }
 
@@ -91,7 +92,8 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
-
+	assert(hours >= 0);
+	return hours >= 24 ? hours - 24 : hours;
 }
 
 /*
@@ -114,6 +116,21 @@ double to_24_hour_clock(double hours)
     In other words, if 3800 seconds have elapsed since midnight, 
     it is currently 01:03:20 (hh:mm:ss).
 */
+
+int get_hours(int seconds)
+{
+	return seconds / 3600;
+}
+
+int get_minutes(int seconds)
+{
+	return (seconds % 3600) / 60;
+}
+
+int get_seconds(int seconds)
+{
+	(seconds % 3600) % 60;
+}
 
 double time_to_utc(int utc_offset, double time)
 {
@@ -141,6 +158,12 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
+
+	assert(time < 24.0);
+	assert(utc_offset >= -12 & utc_offset <= 14);
+
+	auto utc_time = time - utc_offset;
+	return utc_time >= 24 ? utc_time - 24 : utc_time;
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -172,4 +195,9 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+	assert(time < 24.0);
+	assert(utc_offset >= -12 & utc_offset <= 14);
+
+	auto utc_time = time + utc_offset;
+	return utc_time >= 24 ? utc_time - 24 : utc_time;
 }
