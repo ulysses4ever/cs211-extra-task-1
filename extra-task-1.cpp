@@ -1,3 +1,22 @@
+#include <math.h>
+#include <float.h>
+#include <assert.h>
+
+int get_hours(double time)
+{
+	return (int)(trunc(time / 3600));
+}
+
+int get_minutes(double time)
+{
+	return (int)(trunc((time - get_hours(time) * 3600) / 60));
+}
+
+int get_seconds(double time)
+{
+	return (int)(time - get_hours(time) * 3600 - get_minutes(time) * 60);
+}
+
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
@@ -18,6 +37,27 @@ double seconds_difference(double time_1, double time_2)
         >>> seconds_difference(1800.0, 1800.0)
         0.0
     */
+	return time_2 - time_1;
+}
+
+double to_float_hours(int hours, int minutes, int seconds)
+{
+	/*
+	Return the total number of hours in the specified number
+	of hours, minutes, and seconds.
+
+	Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
+
+	>>> to_float_hours(0, 15, 0)
+	0.25
+
+	>>> to_float_hours(2, 45, 9)
+	2.7525
+
+	>>> to_float_hours(1, 0, 36)
+	1.01
+	*/
+	return (hours * 3600 + minutes * 60 + seconds) / 3600.0;
 }
 
 double hours_difference(double time_1, double time_2)
@@ -38,26 +78,17 @@ double hours_difference(double time_1, double time_2)
         >>> hours_difference(1800.0, 1800.0)
         0.0
     */
+	int h1 = get_hours(time_1);
+	int m1 = get_minutes(time_1);
+	int s1 = get_seconds(time_1);
+
+	int h2 = get_hours(time_2);
+	int m2 = get_minutes(time_2);
+	int s2 = get_seconds(time_2);
+
+	return to_float_hours(h2, m2, s2) - to_float_hours(h1, m1, s1);
 }
 
-double to_float_hours(int hours, int minutes, int seconds)
-{
-    /*
-        Return the total number of hours in the specified number
-        of hours, minutes, and seconds.
-
-        Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
-
-        >>> to_float_hours(0, 15, 0)
-        0.25
-
-        >>> to_float_hours(2, 45, 9)
-        2.7525
-
-        >>> to_float_hours(1, 0, 36)
-        1.01
-    */
-}
 
 double to_24_hour_clock(double hours)
 {
@@ -86,7 +117,9 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
+	return hours - (hours / 24);
 }
+
 
 /*
     Implement three functions
@@ -135,6 +168,7 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
+	return 0;
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -166,4 +200,5 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+	return 0;
 }
