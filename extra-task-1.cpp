@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <cmath>
 double seconds_difference(double time_1, double time_2)
 {
     
@@ -91,6 +92,8 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
+	assert(hours >= 0);
+	return fmod(hours, 24);
 }
 
 /*
