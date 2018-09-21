@@ -198,9 +198,9 @@ double time_from_utc(int utc_offset, double time)
         0.0
     */
 
-	//assert(time < 24.0);
-	//assert(utc_offset >= -12 & utc_offset <= 14);
+	assert(time < 24.0);
+	assert(utc_offset >= -12 & utc_offset <= 14);
 
-	//auto utc_time = time + utc_offset;
-	//return utc_time >= 24 ? utc_time - 24 : utc_time;
+	auto utc_time = time + utc_offset;
+	return utc_time >= 24 ? utc_time - 24 : utc_time;
 }
