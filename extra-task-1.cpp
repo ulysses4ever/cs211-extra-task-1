@@ -68,6 +68,21 @@ double to_24_hour_clock(double hours)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
+int get_hours(int time)
+{
+	return time / 3600 % 24;
+}
+
+int get_minutes(int time)
+{
+	return time / 60 % 60;
+}
+
+int get_seconds(int time)
+{
+	return time % 60;
+}
+
 double time_to_utc(int utc_offset, double time)
 {
     /*
@@ -150,4 +165,10 @@ int main()
 	assert(fabs(to_24_hour_clock(25) - 1) < DBL_EPSILON);
 	assert(fabs(to_24_hour_clock(4) - 4) < DBL_EPSILON);
 	assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
+	// get_hours
+	assert(fabs(get_hours(3800)) == 1);
+	// get_minutes
+	assert(fabs(get_minutes(3800)) == 3);
+	// get_seconds
+	assert(fabs(get_seconds(3800)) == 20);
 }
