@@ -60,7 +60,12 @@ double to_24_hour_clock(double hours)
     In other words, if 3800 seconds have elapsed since midnight, 
     it is currently 01:03:20 (hh:mm:ss).
 */
-
+///Return the hours part of a time in seconds
+int get_hours(int seconds)
+{
+	assert(seconds>=0);
+	return seconds/3600%24;
+}
 double time_to_utc(int utc_offset, double time)
 {
     /*
@@ -145,5 +150,8 @@ int main()
         assert(are_equals(to_24_hour_clock(4),  4));
         assert(are_equals(to_24_hour_clock(28.5), 4.5));
 
+	assert(get_hours(3800)==1);
+	assert(get_hours(3600*(5+24*2))==5);
+	assert(get_hours(3500)==0);
 	cout<<"Tests comleted"<<endl;	
 }
