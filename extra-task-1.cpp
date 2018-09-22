@@ -73,6 +73,13 @@ int get_minutes(int seconds)
 	assert(seconds>=0);
 	return seconds/60%60;
 }
+///Return the seconds part of a time in seconds
+int get_seconds(int seconds)
+{
+	assert(seconds>=0);
+	return seconds%60;
+}
+
 double time_to_utc(int utc_offset, double time)
 {
     /*
@@ -164,6 +171,10 @@ int main()
 	assert(get_minutes(3800)==3);
 	assert(get_minutes(3870)==4);
 	assert(get_minutes(3600)==0);
+
+	assert(get_seconds(3800)==20);
+	assert(get_seconds(3870)==30);
+	assert(get_seconds(3600)==0);
 
 	cout<<"Tests comleted"<<endl;	
 }
