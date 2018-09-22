@@ -109,7 +109,7 @@ double time_from_utc(int utc_offset, double time)
 		*/
 }
    
-}
+
 #include <cfloat>
 using namespace std;
 int main()
