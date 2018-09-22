@@ -66,6 +66,13 @@ int get_hours(int seconds)
 	assert(seconds>=0);
 	return seconds/3600%24;
 }
+
+///Return the minutes part of a time in seconds
+int get_minutes(int seconds)
+{
+	assert(seconds>=0);
+	return seconds/60%60;
+}
 double time_to_utc(int utc_offset, double time)
 {
     /*
@@ -153,5 +160,10 @@ int main()
 	assert(get_hours(3800)==1);
 	assert(get_hours(3600*(5+24*2))==5);
 	assert(get_hours(3500)==0);
+
+	assert(get_minutes(3800)==3);
+	assert(get_minutes(3870)==4);
+	assert(get_minutes(3600)==0);
+
 	cout<<"Tests comleted"<<endl;	
 }
