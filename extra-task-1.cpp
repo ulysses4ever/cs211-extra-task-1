@@ -4,7 +4,6 @@
 #include "float.h"
 using namespace std;
 
-
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
@@ -141,7 +140,7 @@ int get_seconds(int seconds)
 	assert(seconds >= 0);
 	return seconds % 60;
 }
-
+//
 double time_to_utc(int utc_offset, double time)
 {
 	return to_24_hour_clock((time - utc_offset) < 0 ? 24 + (time - utc_offset) : (time - utc_offset));
@@ -170,7 +169,7 @@ double time_to_utc(int utc_offset, double time)
         0.0
     */
 }
-
+//
 double time_from_utc(int utc_offset, double time)
 {
 	return to_24_hour_clock((time + utc_offset) < 0 ? 24 + (time + utc_offset) : (time + utc_offset));
@@ -202,7 +201,7 @@ double time_from_utc(int utc_offset, double time)
         0.0
     */
 }
-
+//main
 int main()
 {
 	//1 task
@@ -234,7 +233,6 @@ int main()
 	assert(fabs(to_float_hours(1, 0, 0) - 1.0) < DBL_EPSILON);
 
 	cout << "3.Tests passed!"<< endl;
-
 
 	//4 task
 	assert(fabs(to_24_hour_clock(24) - 0) < DBL_EPSILON);
