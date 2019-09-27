@@ -4,48 +4,26 @@
 double seconds_difference(double time_1, double time_2)
 {
 	return time_2 - time_1;
-    // your implementation goes here...
-    
+
     /*    
         Return the number of seconds later that a time in seconds
         time_2 is than a time in seconds time_1.
-            
-        >>> seconds_difference(1800.0, 3600.0)
-        1800.0
 
-        >>> seconds_difference(3600.0, 1800.0)
-        -1800.0
-
-        >>> seconds_difference(1800.0, 2160.0)
-        360.0
-
-        >>> seconds_difference(1800.0, 1800.0)
-        0.0
     */
 }
-/*
+
 double hours_difference(double time_1, double time_2)
 {
+	return (time_2 - time_1) / 3600;
     /*
         Return the number of hours later that a time in seconds
-        time_2 is than a time in seconds time_1.
-            
-        >>> hours_difference(1800.0, 3600.0)
-        0.5
-
-        >>> hours_difference(3600.0, 1800.0)
-        -0.5
-
-        >>> hours_difference(1800.0, 2160.0)
-        0.1
-
-        >>> hours_difference(1800.0, 1800.0)
-        0.0
-    
-} */
+        time_2 is than a time in seconds time_1. 
+	*/
+} 
 /*
 double to_float_hours(int hours, int minutes, int seconds)
 {
+		
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
@@ -183,6 +161,12 @@ int main()
 	assert(seconds_difference(3600.0, 1800.0) == -1800);
 	assert(seconds_difference(1800.0, 2160.0) == 360);
 	assert(seconds_difference(1800.0, 1800.0) == 0);
+
+	// #2
+	assert(hours_difference(1800.0, 3600.0) == 0.5);
+	assert(hours_difference(3600.0, 1800.0) == -0.5);
+	assert(hours_difference(1800.0, 2160.0) == 0.1);
+	assert(hours_difference(1800.0, 1800.0) == 0.0);
 
 	system("pause");
 }
