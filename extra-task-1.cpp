@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cassert>
 #include <cmath>
 
@@ -67,8 +68,6 @@ double time_from_utc(int utc_offset, double time)
 	else
 		return utc_offset + time;
 }
-
-const double DBL_EPSILON = 0.000001;
 
 int main()
 {
