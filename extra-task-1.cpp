@@ -30,16 +30,18 @@ double hours_difference(double time_1, double time_2)
             
         >>> hours_difference(1800.0, 3600.0)
         0.5
-
+	assert(hours_difference(1800.0, 3600.0)+0.5 < DBL_EPSILON);
         >>> hours_difference(3600.0, 1800.0)
         -0.5
-
+	assert(hours_difference(3600.0, 1800.0)-0.5 < DBL_EPSILON);
         >>> hours_difference(1800.0, 2160.0)
         0.1
-
+	assert(hours_difference(1800.0, 2160.0)-0.1 < DBL_EPSILON);
         >>> hours_difference(1800.0, 1800.0)
         0.0
+	assert(hours_difference(1800.0, 1800.0)-0.0) < DBL_EPSILON;
     */
+    return (time_2-time_1)/2;
 }
 
 double to_float_hours(int hours, int minutes, int seconds)
