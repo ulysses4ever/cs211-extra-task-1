@@ -74,42 +74,24 @@ double time_to_utc(int utc_offset, double time)
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
 	*/
-	double t = to_24_hour_clock(time - utc_offset);
-	return t;
+	double t = time - utc_offset;
+	if (t < 0)
+		t += 24;
+	return to_24_hour_clock(t);
  
 }
 
-	/*
+	
 double time_from_utc(int utc_offset, double time)
 {
+	double t = time + utc_offset;
+	if (t < 0)
+		t += 24;
+	return to_24_hour_clock(t);
     /*
         Return UTC time in time zone utc_offset.
-
-        >>> time_from_utc(+0, 12.0)
-        12.0
- 
-        >>> time_from_utc(+1, 12.0)
-        13.0
- 
-        >>> time_from_utc(-1, 12.0)
-        11.0
- 
-        >>> time_from_utc(+6, 6.0)
-        12.0
- 
-        >>> time_from_utc(-7, 6.0)
-        23.0
- 
-        >>> time_from_utc(-1, 0.0)
-        23.0
- 
-        >>> time_from_utc(-1, 23.0)
-        22.0
- 
-        >>> time_from_utc(+1, 23.0)
-        0.0
-    
-} */
+	*/
+} 
 
 
 int main()
@@ -148,6 +130,16 @@ int main()
 	assert(time_to_utc(-11, 18.0) == 5.0);
 	assert(time_to_utc(-1, 0.0) == 1.0);
 	assert(time_to_utc(-1, 23.0) == 0.0);
+
+	// #6 
+	assert(time_from_utc(+0, 12.0) == 12.0);
+	assert(time_from_utc(+1, 12.0) == 13.0);
+	assert(time_from_utc(-1, 12.0) == 11.0);
+	assert(time_from_utc(+6, 6.0) == 12.0);
+	assert(time_from_utc(-7, 6.0) == 23.0);
+	assert(time_from_utc(-1, 0.0) == 23.0);
+	assert(time_from_utc(-1, 23.0) == 22.0);
+	assert(time_from_utc(+1, 23.0) == 0.0);
 
 	system("pause");
 }
