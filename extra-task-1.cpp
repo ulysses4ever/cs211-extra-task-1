@@ -1,4 +1,4 @@
-
+#include <cmath>
 #include "extra-task-1.h"
 double seconds_difference(double time_1, double time_2)
 {
