@@ -1,0 +1,2 @@
+C:\Users\Anton\source\repos\cs211-extra-task-1\Project1\Debug\Project1.exe
+C:\Users\Anton\source\repos\cs211-extra-task-1\Project1\Debug\Project1.pdb
