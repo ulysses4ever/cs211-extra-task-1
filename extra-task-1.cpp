@@ -158,6 +158,7 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
+    return fmod(time - utc_offset, 24);
 }
 
 double time_from_utc(int utc_offset, double time)
