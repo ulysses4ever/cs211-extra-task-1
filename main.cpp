@@ -78,6 +78,19 @@ int main()
 
     cout << "all test for functions time_to_utc have been passed" << endl;
 
-    cout << "vfdvfdv";
+    /*
+     Return UTC time in time zone utc_offset.
+    */
+
+    assert(fabs(time_from_utc(+0, 12.0)-12.0)<DBL_EPSILON);
+    assert(fabs(time_from_utc(+1, 12.0)-13.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-1, 12.0)-11.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(+6, 6.0)-12.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-7, 6.0)-23.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-1, 0.0)-23.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-1, 23.0)-22.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(+1, 23.0)-0.0) < DBL_EPSILON);
+
+    cout << "all test for function time_from_utc have been passed" << endl;
 
 }
