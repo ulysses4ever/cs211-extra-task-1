@@ -31,4 +31,10 @@ double time_to_utc(int utc_offset, double time);
 /// Returns UTC time in time zone utc_offset.
 double time_from_utc(int utc_offset, double time);
 
+/// Epsilon constant.
+extern const double EPSILON_CONSTANT;
+
+/// Compares two double numbers for equality.
+bool are_equal(double first, double second);
+
 #endif /* extra_task_1_h */

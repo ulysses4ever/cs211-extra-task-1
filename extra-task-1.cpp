@@ -192,3 +192,10 @@ double time_from_utc(int utc_offset, double time)
     */
     return fmod(time + utc_offset + 24, 24);
 }
+
+const double EPSILON_CONSTANT = 1e-5;
+
+bool are_equal(double first, double second)
+{
+    return fabs(first - second) <= EPSILON_CONSTANT;
+}
