@@ -92,6 +92,8 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
+    assert(hours >= 0);
+    return (int)hours % 24 + hours - (int)hours;
 }
 
 /*
