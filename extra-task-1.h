@@ -3,6 +3,7 @@
 
 #include <cassert>
 #include <cmath>
+#include <cfloat>
 
 /// Returns the number of seconds later that a time in seconds time_2 is than a time in seconds time_1.
 double seconds_difference(double time_1, double time_2);
@@ -30,9 +31,6 @@ double time_to_utc(int utc_offset, double time);
 
 /// Returns UTC time in time zone utc_offset.
 double time_from_utc(int utc_offset, double time);
-
-/// Epsilon constant.
-extern const double EPSILON_CONSTANT;
 
 /// Compares two double numbers for equality.
 bool are_equal(double first, double second);
