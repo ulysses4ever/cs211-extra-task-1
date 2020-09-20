@@ -1,6 +1,7 @@
 #include "extra-task-1.h"
 
-int main(int argc, const char * argv[]) {
+int main(int argc, const char * argv[])
+{
     
     // MARK: - seconds_difference
     assert(are_equal(seconds_difference(1800.0, 3600.0), 1800.0));
