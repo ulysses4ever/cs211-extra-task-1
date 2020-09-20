@@ -51,6 +51,20 @@ int main()
 
     cout << "all test for function to_24_hour_clock have been passed" << endl;
 
+    /*
+    Implement three functions
+        * get_hours
+        * get_minutes
+        * get_seconds
+    They are used to determine the hours part, minutes part and seconds part
+    of a time in seconds. E.g.:
+    */
+    assert(get_hours(3800)==1);
+    assert(get_minutes(3800)==3);
+    assert(get_seconds(3800)==20);
+
+    cout << "all test for functions get-hours...get_seconds have been passed" << endl;
+
     cout << "vfdvfdv";
 
 }

@@ -10,5 +10,11 @@ double to_float_hours(int hours, int minutes, int seconds);
 
 double to_24_hour_clock(double hours);
 
+int get_hours(int seconds);
+
+int get_minutes(int seconds);
+
+int get_seconds(int seconds);
+
 #endif // !EXTRA_TASK_1_H
 

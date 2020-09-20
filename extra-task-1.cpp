@@ -34,12 +34,20 @@ double to_24_hour_clock(double hours)
 
 int get_hours(int seconds)
 {
+    assert(seconds>=0);
     return seconds / 3600;
 }
 
 int get_minutes(int seconds)
 {
+    assert(seconds >= 0);
     return (seconds % 3600)/60;
+}
+
+int get_seconds(int seconds)
+{
+    assert(seconds>=0);
+    return (seconds % 3600 ) % 60;
 }
 /*
     Implement three functions
