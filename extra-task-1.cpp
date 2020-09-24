@@ -27,40 +27,25 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
+    assert(0 <= minutes < 60);
+    assert(0 <= seconds < 60);
     return hours+minutes/60.0+seconds/3600.0;
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
     */
 }
-/*
+
 double to_24_hour_clock(double hours)
 {
-    return 0.0;
+    assert(hours >= 0);
+    while (hours >= 24)
+        hours -= 24;
+    return hours;
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
-
-        Precondition: hours >= 0
-
-        >>> to_24_hour_clock(24)
-        0
-        
-        >>> to_24_hour_clock(48)
-        0
-        
-        >>> to_24_hour_clock(25)
-        1
-        
-        >>> to_24_hour_clock(4)
-        4
-        
-        >>> to_24_hour_clock(28.5)
-        4.5
-        
-        You may wish to inspect various function in <cmath> to work
-        with integer and fractional part of a hours separately.
-        
+    */
     
 }
 
@@ -173,6 +158,16 @@ int main()
     assert(fabs(to_float_hours(0, 15, 0) - 0.25) < DBL_EPSILON);
     assert(fabs(to_float_hours(2, 45, 9) - 2.7525) < DBL_EPSILON);
     assert(fabs(to_float_hours(1, 0, 36) - 1.01) < DBL_EPSILON);
+    cout << "Tests passed" << endl;
+    cout << endl;
+
+    //4
+    cout << "Task 4:" << endl;
+    assert(fabs(to_24_hour_clock(24) - 0.0) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(48) - 0.0) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(25) - 1.0) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(4) - 4.0) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
     cout << "Tests passed" << endl;
     cout << endl;
 }
