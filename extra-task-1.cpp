@@ -38,10 +38,14 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
-    assert(hours >= 0);
-    while (hours >= 24)
-        hours -= 24;
+    if (hours >= 0)
+        while (hours >= 24)
+            hours -= 24;
+    else
+        while (hours < 0)
+            hours += 24;
     return hours;
+        
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -91,7 +95,7 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
-    return 0.0;
+    return to_24_hour_clock(time + utc_offset);
     /*
         Return UTC time in time zone utc_offset.
 
@@ -177,6 +181,18 @@ int main()
     assert(fabs(time_to_utc(-11, 18.0) - 5.0) < DBL_EPSILON);
     assert(fabs(time_to_utc(-1, 0.0) - 1.0) < DBL_EPSILON);
     assert(fabs(time_to_utc(-1, 23.0) - 0.0) < DBL_EPSILON);
+    cout << "Tests passed" << endl;
+    cout << endl;
+
+    //7
+    cout << "Task 7:" << endl;
+    assert(fabs(time_from_utc(0, 12.0) - 12.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(1, 12.0) - 13.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(6, 6.0) - 12.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-7, 6.0) - 23.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-1, 0.0) - 23.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-1, 23.0) - 22.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(1, 23.0) - 0.0) < DBL_EPSILON);
     cout << "Tests passed" << endl;
     cout << endl;
 }
