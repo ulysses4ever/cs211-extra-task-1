@@ -1,3 +1,5 @@
+#include <assert.h>
+
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
@@ -89,6 +91,13 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
+    assert(hours > 0);
+    double res = hours;
+    while (hours >= 24)
+    {
+        res -= 24;
+    }
+    return res;
 }
 
 /*
