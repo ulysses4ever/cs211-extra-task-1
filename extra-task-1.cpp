@@ -1,3 +1,5 @@
+#include <assert.h>
+
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
@@ -18,6 +20,7 @@ double seconds_difference(double time_1, double time_2)
         >>> seconds_difference(1800.0, 1800.0)
         0.0
     */
+    return time_2 - time_1;
 }
 
 double hours_difference(double time_1, double time_2)
@@ -38,6 +41,7 @@ double hours_difference(double time_1, double time_2)
         >>> hours_difference(1800.0, 1800.0)
         0.0
     */
+    return (time_2 - time_1)/3600.0;
 }
 
 double to_float_hours(int hours, int minutes, int seconds)
@@ -57,6 +61,7 @@ double to_float_hours(int hours, int minutes, int seconds)
         >>> to_float_hours(1, 0, 36)
         1.01
     */
+    return hours + minutes / 60 + seconds / 3600;
 }
 
 double to_24_hour_clock(double hours)
@@ -86,6 +91,13 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
+    assert(hours > 0);
+    double res = hours;
+    while (hours >= 24)
+    {
+        res -= 24;
+    }
+    return res;
 }
 
 /*
@@ -108,6 +120,18 @@ double to_24_hour_clock(double hours)
     In other words, if 3800 seconds have elapsed since midnight, 
     it is currently 01:03:20 (hh:mm:ss).
 */
+int get_hours(int second)
+{
+    return second / 3600;
+}
+int get_minutes(int second)
+{
+    return (second % 3600) / 60;
+}
+int get_seconds(int second)
+{
+    return (second % 3600) % 60);
+}
 
 double time_to_utc(int utc_offset, double time)
 {
@@ -135,6 +159,13 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
+    assert(time >= 0);
+
+    if (time - utc_offset >= 24.0)
+        return time = time - utc_offset - 24.0;
+    if (time - utc_offset <= 0)
+        return time = 24.0 - (utc_offset - time);
+    return time - utc_offset;
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -166,4 +197,11 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+    assert(time >= 0);
+
+    if (time + utc_offset >= 24.0)
+        return time = time + utc_offset - 24.0;
+    if (time + utc_offset <= 0)
+        return time = 24.0 + (utc_offset + time);
+    return time + utc_offset;
 }
