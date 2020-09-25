@@ -159,13 +159,13 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
-    assert(time > 0);
-    auto res = time;
-    if (res - utc_offset >= 24.0)
-        res = time - utc_offset - 24.0;
-    if (res - utc_offset <= 0)
-        res = 24.0 - (utc_offset - time);
-    return res;
+    assert(time >= 0);
+
+    if (time - utc_offset >= 24.0)
+        return time = time - utc_offset - 24.0;
+    if (time - utc_offset <= 0)
+        return time = 24.0 - (utc_offset - time);
+    return time - utc_offset;
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -197,4 +197,11 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+    assert(time >= 0);
+
+    if (time + utc_offset >= 24.0)
+        return time = time + utc_offset - 24.0;
+    if (time + utc_offset <= 0)
+        return time = 24.0 + (utc_offset + time);
+    return time + utc_offset;
 }
