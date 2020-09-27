@@ -29,26 +29,20 @@ double to_24_hour_clock(double hours)
     return intpart % 24 + fractP;
 }
 
-/*
-    Implement three functions
-        * get_hours
-        * get_minutes
-        * get_seconds
-    They are used to determine the hours part, minutes part and seconds part 
-    of a time in seconds. E.g.:
+double get_hours(double time_1)
+{
+    return (long)floor(time_1) / 3600;
+}
 
-    >>> get_hours(3800)
-    1
+double get_minutes(double time_1)
+{
+    return ((long)floor(time_1) % 3600) / 60;
+}
 
-    >>> get_minutes(3800)
-    3
-
-    >>> get_seconds(3800)
-    20
-
-    In other words, if 3800 seconds have elapsed since midnight, 
-    it is currently 01:03:20 (hh:mm:ss).
-*/
+double get_seconds(double time_1)
+{
+    return (long)floor(time_1) % 60;
+}
 
 double time_to_utc(int utc_offset, double time)
 {
@@ -132,11 +126,18 @@ int main()
     assert(fabs(to_float_hours(2, 45, 9) - 2.7525) < DBL_EPSILON);
     assert(fabs(to_float_hours(1, 0, 36) - 1.01) < DBL_EPSILON);
 
-    //to_24_hour_clock
+    //to_24_hour_clock tests
     assert(fabs(to_24_hour_clock(24)) < DBL_EPSILON);
     assert(fabs(to_24_hour_clock(48)) < DBL_EPSILON);
     assert(fabs(to_24_hour_clock(25) - 1.0) < DBL_EPSILON);
     assert(fabs(to_24_hour_clock(4) - 4.0) < DBL_EPSILON);
     assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
+
+    /*get_hours
+     * get_minutes
+     * get_seconds tests */
+    assert(fabs(get_hours(3800.0) - 1.0) < DBL_EPSILON);
+    assert(fabs(get_minutes(3800.0) - 3.0) < DBL_EPSILON);
+    assert(fabs(get_seconds(3800.0) - 20.0) < DBL_EPSILON);
     return 0;
 }
