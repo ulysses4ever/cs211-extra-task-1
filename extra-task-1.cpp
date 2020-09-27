@@ -147,9 +147,15 @@ int get_seconds(int seconds)
 //Return time at UTC+0, where utc_offset is the number of hours away from UTC + 0.
 double time_to_utc(int utc_offset, double time)
 {
+    double hours = 24 + (time - utc_offset);
+    if ((time - utc_offset) > 0) {
+        hours = time - utc_offset;
+    }
+    return to_24_hour_clock(hours);
+
+
     /*
-        Return time at UTC+0, where utc_offset is the number of hours away from
-        UTC+0.
+        
         You may be interested in:
         https://en.wikipedia.org/wiki/Coordinated_Universal_Time
 
