@@ -179,8 +179,14 @@ double time_to_utc(int utc_offset, double time)
     */
 }
 
+//Return UTC time in time zone utc_offset.
 double time_from_utc(int utc_offset, double time)
 {
+    double hours = 24 + (time + utc_offset);
+    if ((time + utc_offset) > 0) {
+        hours = time + utc_offset;
+    }
+    return to_24_hour_clock(hours);
     /*
         Return UTC time in time zone utc_offset.
 
