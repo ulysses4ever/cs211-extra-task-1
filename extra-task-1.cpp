@@ -1,5 +1,9 @@
-#include "extra-task-1.h"
+#include <cassert>
+#include <cmath>
+#include <cfloat>
 
+//Return the number of seconds later that a time in seconds
+//time_2 is than a time in seconds time_1.
 double seconds_difference(double time_1, double time_2)
 {
     return time_2 - time_1;
@@ -23,12 +27,14 @@ double seconds_difference(double time_1, double time_2)
     */
 }
 
+//Return the number of hours later that a time in seconds
+//time_2 is than a time in seconds time_1.
 double hours_difference(double time_1, double time_2)
 {
+    return (time_2 - time_1) / 3600;
 
     /*
-        Return the number of hours later that a time in seconds
-        time_2 is than a time in seconds time_1.
+       
 
         >>> hours_difference(1800.0, 3600.0)
         0.5
