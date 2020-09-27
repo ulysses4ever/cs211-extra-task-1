@@ -70,12 +70,18 @@ double to_float_hours(int hours, int minutes, int seconds)
     */
 }
 
+//hours is a number of hours since midnight. Return the
+//hour as seen on a 24 - hour clock.
 double to_24_hour_clock(double hours)
 {
-    /*
-        hours is a number of hours since midnight. Return the
-        hour as seen on a 24-hour clock.
+    assert(hours >= 0);
+    double i_p;
+    double f_p = modf(hours, &i_p);
+    auto i = (int)i_p % 24;
+    double res = i + f_p;
+    return res;
 
+    /*
         Precondition: hours >= 0
 
         >>> to_24_hour_clock(24)
