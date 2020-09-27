@@ -23,31 +23,10 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
-    /*
-        hours is a number of hours since midnight. Return the
-        hour as seen on a 24-hour clock.
-
-        Precondition: hours >= 0
-
-        >>> to_24_hour_clock(24)
-        0
-        
-        >>> to_24_hour_clock(48)
-        0
-        
-        >>> to_24_hour_clock(25)
-        1
-        
-        >>> to_24_hour_clock(4)
-        4
-        
-        >>> to_24_hour_clock(28.5)
-        4.5
-        
-        You may wish to inspect various function in <cmath> to work
-        with integer and fractional part of a hours separately.
-        
-    */
+    assert(hours >= 0);
+    double cur_hour;
+    double cur_min = modf(hours, &cur_hour);
+    return (int)cur_hour % 24 + cur_min;
 }
 
 /*
@@ -147,6 +126,14 @@ int main(){
     assert(fabs(to_float_hours(2, 45, 9) - 2.7525) < DBL_EPSILON);
     assert(fabs(to_float_hours(1, 0, 36) - 1.01) < DBL_EPSILON);
     std::cout << "Tests to_float_hours completed" << std::endl;
+    
+    assert(fabs(to_24_hour_clock(24) - 0) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(48) - 0) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(25) - 1) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(4) - 4) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
+    std::cout << "Tests to_24_hour_clock completed" << std::endl;
+
     
     return 0;
 }
