@@ -16,6 +16,7 @@ double hours_difference(double time_1, double time_2)
 //Return the total number of hours in the specified number of hours, minutes, and seconds.
 double to_float_hours(int hours, int minutes, int seconds)
 {
+    assert(0<=hours);
     assert(0<=minutes);
     assert(minutes<60);
     assert(0 <= seconds);
