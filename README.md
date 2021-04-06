@@ -1,5 +1,4 @@
 cs211-extra-task-1
 ==================
 
-Исходный код для первого дополнительного задания на курсе языков 
-программирования (Мехмат ЮФУ, ФИИТ, 2014).
+Original code of extra tasks for Information Technology Class (Southern Federal University, 2014).
