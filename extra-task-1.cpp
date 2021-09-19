@@ -1,4 +1,6 @@
 #include"header.h"
+#include<cmath>
+
 double seconds_difference(double time_1, double time_2)
 {
     return time_2 - time_1;
@@ -45,7 +47,8 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
-    return 0;
+    assert(hours >= 0);
+    return fmod(hours, 24);
 }
 
 /*
