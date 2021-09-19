@@ -25,4 +25,12 @@ int get_seconds(int);
 
 // Return time at UTC+0, where utc_offset is the number of hours away from UTC + 0.
 double time_to_utc(int , double);
+
+
+
+//Return UTC time in time zone utc_offset.
+
+double time_from_utc(int, double);
+
+
 #endif  /* header_ */
