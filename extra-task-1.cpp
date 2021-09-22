@@ -1,5 +1,11 @@
+#include "assert.h"
+
 double seconds_difference(double time_1, double time_2)
 {
+    assert(time_1 >= 0);
+    assert(time_2 >= 0);
+
+    return time_2 - time_1;
     // your implementation goes here...
     
     /*    
@@ -22,6 +28,10 @@ double seconds_difference(double time_1, double time_2)
 
 double hours_difference(double time_1, double time_2)
 {
+    assert(time_1 >= 0);
+    assert(time_2 >= 0);
+
+    return (time_2 - time_1) / 3600.0;
     /*
         Return the number of hours later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -42,6 +52,11 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
+    assert(seconds >= 0 && seconds <= 60);
+    assert(minutes >= 0 && minutes <= 60);
+    assert(hours >= 0 && hours <= 24);
+
+    return hours + minutes / 60.0 + seconds / 3600.0;
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
@@ -61,6 +76,10 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
+    assert(hours >= 0);
+
+    return hours % 24.0;
+
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -88,29 +107,17 @@ double to_24_hour_clock(double hours)
     */
 }
 
-/*
-    Implement three functions
-        * get_hours
-        * get_minutes
-        * get_seconds
-    They are used to determine the hours part, minutes part and seconds part 
-    of a time in seconds. E.g.:
-
-    >>> get_hours(3800)
-    1
-
-    >>> get_minutes(3800)
-    3
-
-    >>> get_seconds(3800)
-    20
-
-    In other words, if 3800 seconds have elapsed since midnight, 
-    it is currently 01:03:20 (hh:mm:ss).
-*/
-
 double time_to_utc(int utc_offset, double time)
 {
+    assert(time <= 24.0);
+
+    double result = time - utc_offset;
+
+    if (result > 24.0) {
+        result -= 24.0;
+    }
+
+    return result;
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -139,6 +146,15 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
+    assert(time <= 24.0);
+
+    double result = utc_offset + time;
+
+    if (result < 0) {
+        result += 24.0;
+    }
+
+    return result;
     /*
         Return UTC time in time zone utc_offset.
 
