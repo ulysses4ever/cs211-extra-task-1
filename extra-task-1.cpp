@@ -170,6 +170,7 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
+    return fabs(time + utc_offset) % 24;
     /*
         Return UTC time in time zone utc_offset.
 
