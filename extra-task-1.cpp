@@ -163,6 +163,8 @@ double time_to_utc(int utc_offset, double time)
 double time_from_utc(int utc_offset, double time)
 {
     int x = (int)trunc(time + utc_offset) % 24;
+    if (x < 0)
+        x += 24;
     return x + (time - trunc(time));
     /*
         Return UTC time in time zone utc_offset.
