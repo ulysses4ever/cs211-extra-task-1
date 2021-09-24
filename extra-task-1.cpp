@@ -122,6 +122,12 @@ int get_minutes(int sec)
 {
     return sec / 60 - get_hours(sec) * 60;
 }
+
+int get_seconds(int sec)
+{
+    return sec%60;
+}
+
 double time_to_utc(int utc_offset, double time)
 {
     /*
