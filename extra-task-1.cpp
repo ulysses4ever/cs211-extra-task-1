@@ -128,7 +128,16 @@ double get_minutes(double time)
 {
     while (time >= 3600)
         time -= 3600;
-    return float(time / 3600);
+    return float(time / 60);
+}
+
+double get_seconds(double time)
+{
+    while (time >= 3600)
+        time -= 3600;
+    while (time >= 60)
+        time -= 60;
+    return time;
 }
 
 double time_to_utc(int utc_offset, double time)
