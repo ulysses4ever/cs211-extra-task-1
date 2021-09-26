@@ -5,6 +5,7 @@ double seconds_difference(double time_1, double time_2)
 =======
 #include "extra-task-1.h"
 #include <assert.h>
+<<<<<<< HEAD
 double seconds_difference(double time_1, double time_2)
 {
 >>>>>>> dd59f1f (Сделаны задания 1-2)
@@ -15,34 +16,30 @@ double seconds_difference(double time_1, double time_2)
             
         >>> seconds_difference(1800.0, 3600.0)
         1800.0
+=======
+#include <cmath>
+>>>>>>> 5471b41 (Сделано задание 3 и удалены лишние комментарии)
 
-        >>> seconds_difference(3600.0, 1800.0)
-        -1800.0
 
-        >>> seconds_difference(1800.0, 2160.0)
-        360.0
+double seconds_difference(double time_1, double time_2)
+{
 
+<<<<<<< HEAD
         >>> seconds_difference(1800.0, 1800.0)
         0.0
     */
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> 5471b41 (Сделано задание 3 и удалены лишние комментарии)
     return time_2 - time_1;
 >>>>>>> dd59f1f (Сделаны задания 1-2)
 }
 
 double hours_difference(double time_1, double time_2)
 {
-    /*
-        Return the number of hours later that a time in seconds
-        time_2 is than a time in seconds time_1.
-            
-        >>> hours_difference(1800.0, 3600.0)
-        0.5
 
-        >>> hours_difference(3600.0, 1800.0)
-        -0.5
-
+<<<<<<< HEAD
         >>> hours_difference(1800.0, 2160.0)
         0.1
 
@@ -51,29 +48,23 @@ double hours_difference(double time_1, double time_2)
     */
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> 5471b41 (Сделано задание 3 и удалены лишние комментарии)
     return (time_2 - time_1) / 3600;
 >>>>>>> dd59f1f (Сделаны задания 1-2)
 }
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
-    /*
-        Return the total number of hours in the specified number
-        of hours, minutes, and seconds.
 
-        Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
-
-        >>> to_float_hours(0, 15, 0)
-        0.25
-
-        >>> to_float_hours(2, 45, 9)
-        2.7525
-
+<<<<<<< HEAD
         >>> to_float_hours(1, 0, 36)
         1.01
     */
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> 5471b41 (Сделано задание 3 и удалены лишние комментарии)
     assert(minutes >= 0);
     assert(minutes < 60);
     assert(seconds >= 0);
@@ -84,6 +75,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
+<<<<<<< HEAD
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -113,6 +105,15 @@ double to_24_hour_clock(double hours)
 =======
     return 0;
 >>>>>>> dd59f1f (Сделаны задания 1-2)
+=======
+
+    assert(hours >= 0);
+    double doublePart;
+    int intPart;
+    doublePart =hours-floor(hours);
+    intPart = floor(hours);
+    return intPart%24+doublePart;
+>>>>>>> 5471b41 (Сделано задание 3 и удалены лишние комментарии)
 }
 
 /*
