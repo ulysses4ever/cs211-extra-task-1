@@ -133,6 +133,7 @@ int get_seconds(int seconds) {
 }
 double time_to_utc(int utc_offset, double time)
 {
+<<<<<<< HEAD
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -161,6 +162,10 @@ double time_to_utc(int utc_offset, double time)
 =======
     return 0;
 >>>>>>> dd59f1f (Сделаны задания 1-2)
+=======
+    assert(abs(utc_offset) <= 12);
+    return to_24_hour_clock(time-utc_offset);
+>>>>>>> 075a144 (Сделано задание 5)
 }
 
 double time_from_utc(int utc_offset, double time)
