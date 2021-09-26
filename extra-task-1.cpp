@@ -164,15 +164,18 @@ double time_to_utc(int utc_offset, double time)
 >>>>>>> dd59f1f (Сделаны задания 1-2)
 =======
     assert(abs(utc_offset) <= 12);
+<<<<<<< HEAD
     return to_24_hour_clock(time-utc_offset);
 >>>>>>> 075a144 (Сделано задание 5)
+=======
+    return to_24_hour_clock((time - utc_offset) > 0 ? (time - utc_offset) : 24 - (time - utc_offset));
+>>>>>>> 853eafa (Сделано задание 6 и исправлено задание 5)
 }
 
 double time_from_utc(int utc_offset, double time)
 {
-    /*
-        Return UTC time in time zone utc_offset.
 
+<<<<<<< HEAD
         >>> time_from_utc(+0, 12.0)
         12.0
  
@@ -201,4 +204,8 @@ double time_from_utc(int utc_offset, double time)
 =======
     return 0;
 >>>>>>> dd59f1f (Сделаны задания 1-2)
+=======
+    assert(abs(utc_offset) <= 12);
+    return to_24_hour_clock((time + utc_offset) > 0 ? (time + utc_offset) : 24 + (time + utc_offset));
+>>>>>>> 853eafa (Сделано задание 6 и исправлено задание 5)
 }
