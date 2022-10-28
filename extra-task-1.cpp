@@ -75,6 +75,8 @@ double to_float_hours(int hours, int minutes, int seconds)
 //Возвращает 24-часовой формат часов
 double to_24_hour_clock(double hours)
 {
+    assert(hours >= 0);
+    return (int)trunc(hours) % 24 + fabs(hours - trunc(hours));
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
