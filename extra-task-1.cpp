@@ -1,7 +1,14 @@
+#include <cassert>
+#include <cmath>
+#include <cfloat>
+#include <iostream>
+using namespace std;
+
+//Возвращает разницу в секундах
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
-    
+    return time_2 - time_1;
     /*    
         Return the number of seconds later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -20,6 +27,7 @@ double seconds_difference(double time_1, double time_2)
     */
 }
 
+//Возвращает разницу в часах
 double hours_difference(double time_1, double time_2)
 {
     /*
@@ -40,6 +48,7 @@ double hours_difference(double time_1, double time_2)
     */
 }
 
+//Возвращает вещественное количество часов
 double to_float_hours(int hours, int minutes, int seconds)
 {
     /*
@@ -59,6 +68,7 @@ double to_float_hours(int hours, int minutes, int seconds)
     */
 }
 
+//Возвращает 24-часовой формат часов
 double to_24_hour_clock(double hours)
 {
     /*
@@ -84,7 +94,6 @@ double to_24_hour_clock(double hours)
         
         You may wish to inspect various function in <cmath> to work
         with integer and fractional part of a hours separately.
-        
     */
 }
 
@@ -109,6 +118,7 @@ double to_24_hour_clock(double hours)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
+//Переводит время в формат UTC
 double time_to_utc(int utc_offset, double time)
 {
     /*
@@ -137,6 +147,7 @@ double time_to_utc(int utc_offset, double time)
     */
 }
 
+//Переводит время из формата UTC
 double time_from_utc(int utc_offset, double time)
 {
     /*
