@@ -30,6 +30,7 @@ double seconds_difference(double time_1, double time_2)
 //Возвращает разницу в часах
 double hours_difference(double time_1, double time_2)
 {
+    return (time_2 - time_1) / 3600;
     /*
         Return the number of hours later that a time in seconds
         time_2 is than a time in seconds time_1.
