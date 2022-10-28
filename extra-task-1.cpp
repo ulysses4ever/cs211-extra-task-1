@@ -103,6 +103,12 @@ double to_24_hour_clock(double hours)
     */
 }
 
+//Возвращет целое количество часов
+int get_hours(int seconds)
+{
+    assert(seconds >= 0);
+    return seconds / 3600;
+}
 /*
     Implement three functions
         * get_hours
