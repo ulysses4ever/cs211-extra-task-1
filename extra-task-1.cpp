@@ -116,6 +116,13 @@ int get_minutes(int seconds)
     assert(seconds >= 0);
     return (seconds % 3600) / 60;
 }
+
+//¬озвращает целое количество секунд
+int get_seconds(int seconds)
+{
+    assert(seconds >= 0);
+    return ((seconds % 3600) % 60) % 60;
+}
 /*
     Implement three functions
         * get_hours
