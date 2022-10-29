@@ -75,7 +75,7 @@ inline double time_to_utc(int utc_offset, double time)
 {
 	assert(fabs(utc_offset) < 24 && time >= 0 && time < 24);
 	double raw_time{ time - utc_offset };
-	return ((int)(raw_time) % 24) + raw_time - floor(raw_time);
+	return ((int)(raw_time + 24) % 24) + raw_time - floor(raw_time);
 }
 
 /// <summary>
