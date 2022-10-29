@@ -40,6 +40,15 @@ inline double to_24_hour_clock(double hours)
 	return (int)hours % 24 + hours - floor(hours);
 }
 
+/// <summary>
+/// returns number of hours passed after the closest midnight
+/// </summary>
+inline int get_hours(int seconds)
+{
+	assert(seconds >= 0);
+	return seconds / 3600 % 24;
+}
+
 /*
 	Implement three functions
 		* get_hours
@@ -147,4 +156,10 @@ int main()
 	assert(fabs(to_24_hour_clock(25) - 1) < DBL_EPSILON);
 	assert(fabs(to_24_hour_clock(4) - 4) < DBL_EPSILON);
 	assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
+
+	// Тесты функции get_hours
+	assert(get_hours(3800) == 1);
+	assert(get_hours(7200) == 2);
+	assert(get_hours(90000) == 1);
+	assert(get_hours(0) == 0);
 }
