@@ -49,6 +49,15 @@ inline int get_hours(int seconds)
 	return seconds / 3600 % 24;
 }
 
+/// <summary>
+/// returns number of minutes passed after the closest integer number of hours
+/// </summary>
+inline int get_minutes(int seconds)
+{
+	assert(seconds >= 0);
+	return seconds / 60 % 60;
+}
+
 /*
 	Implement three functions
 		* get_hours
@@ -162,4 +171,10 @@ int main()
 	assert(get_hours(7200) == 2);
 	assert(get_hours(90000) == 1);
 	assert(get_hours(0) == 0);
+
+	// Тесты функции get_minutes
+	assert(get_minutes(3800) == 3);
+	assert(get_minutes(100) == 1);
+	assert(get_minutes(7200) == 0);
+	assert(get_minutes(19500) == 25);
 }
