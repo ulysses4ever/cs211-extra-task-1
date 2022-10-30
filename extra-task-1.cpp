@@ -48,33 +48,11 @@ int get_seconds(int seconds) {
     return seconds % 60;
 }
 
+//Return time at UTC + 0, where utc_offset is the number of hours away from
+//UTC + 0.
 double time_to_utc(int utc_offset, double time)
 {
-    /*
-        Return time at UTC+0, where utc_offset is the number of hours away from
-        UTC+0.
-        You may be interested in:
-        https://en.wikipedia.org/wiki/Coordinated_Universal_Time
-
-        >>> time_to_utc(+0, 12.0)
-        12.0
- 
-        >>> time_to_utc(+1, 12.0)
-        11.0
- 
-        >>> time_to_utc(-1, 12.0)
-        13.0
- 
-        >>> time_to_utc(-11, 18.0)
-        5.0
- 
-        >>> time_to_utc(-1, 0.0)
-        1.0
- 
-        >>> time_to_utc(-1, 23.0)
-        0.0
-    */
-    return 0;
+    return int(to_24_hour_clock(time) - utc_offset) % 24;
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -153,4 +131,12 @@ int main() {
     assert(get_seconds(7200) == 0);
     assert(get_seconds(19500) == 0);
     assert(get_seconds(90942) == 42);
+
+    //testing time_to_utc...
+    assert(fabs(time_to_utc(+0, 12.0) - 12.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(+1, 12.0) - 11.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-1, 12.0) - 13.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-11, 18.0) - 5.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-1, 0.0) - 1.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-1, 23.0) - 0.0) < DBL_EPSILON);
 }
