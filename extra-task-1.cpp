@@ -70,7 +70,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 double to_24_hour_clock(double hours)
 {
     assert(hours >= 0);
-    return std::fmod(hours, 24);
+    return std::fmod(std::fmod(hours, 24) + 24, 24);
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -164,6 +164,7 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
+    return to_24_hour_clock(time + utc_offset);
     /*
         Return UTC time in time zone utc_offset.
 
