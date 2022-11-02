@@ -29,7 +29,10 @@ int main()
     assert(fabs(to_24_hour_clock(4) - 4) < DBL_EPSILON);
     assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
 
-
+    //5
+    assert(fabs(get_hours(3800) - 1) < DBL_EPSILON);
+    assert(fabs(get_minutes(3800) - 3) < DBL_EPSILON);
+    assert(fabs(get_seconds(3800) - 20) < DBL_EPSILON);
 
     //6
     assert(fabs(time_to_utc(+0, 12.0) - 12.0) < DBL_EPSILON);
