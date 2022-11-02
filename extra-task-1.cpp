@@ -1,3 +1,5 @@
+#include<assert.h>
+
 double seconds_difference(double time_1, double time_2)
 {
 
@@ -23,7 +25,6 @@ double seconds_difference(double time_1, double time_2)
 
 double hours_difference(double time_1, double time_2)
 {
-
     return seconds_difference(time_1, time_2) / 3600;
     /*
         Return the number of hours later that a time in seconds
@@ -45,7 +46,9 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
-    return 0;
+    assert(0 <= minutes && minutes < 60);
+    assert(0 <= seconds && seconds < 60);
+    return hours + minutes / 60.0 + seconds / 3600.0;
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
