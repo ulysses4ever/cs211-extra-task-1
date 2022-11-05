@@ -1,5 +1,8 @@
 #include<iostream>
 #include<cassert>
+#include<float.h>
+using std::cout;
+using std::endl;
 double seconds_difference(double time_1, double time_2)
 {
     return time_2 - time_1;
@@ -13,23 +16,11 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
-    return 0.0;
-
-    /*
-        Return the total number of hours in the specified number
-        of hours, minutes, and seconds.
-
-        Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
-
-        >>> to_float_hours(0, 15, 0)
-        0.25
-
-        >>> to_float_hours(2, 45, 9)
-        2.7525
-
-        >>> to_float_hours(1, 0, 36)
-        1.01
-    */
+    assert(minutes >= 0 && minutes < 60);
+    assert(seconds >= 0 && seconds < 60);
+    auto temp = ((double)minutes * 60 + (double)seconds)/3600;
+    auto hours_res = (double)hours + temp;
+    return hours_res;
 }
 
 double to_24_hour_clock(double hours)
@@ -148,31 +139,36 @@ double time_from_utc(int utc_offset, double time)
 }
 
 int main() {
+
     //task - 1
-    assert(seconds_difference(1800.0, 3600.0) == 1800.0);
-    assert(seconds_difference(3600.0, 1800.0) == -1800.0);
-    assert(seconds_difference(1800.0, 2160.0) == 360.0);
-    assert(seconds_difference(1800.0, 1800.0) == 0.0);
-    //task - 2
-     /*
-        Return the number of hours later that a time in seconds
-        time_2 is than a time in seconds time_1.
+    assert(fabs(seconds_difference(1800.0, 3600.0) - 1800.0)  <= DBL_EPSILON);
+    assert(fabs(seconds_difference(3600.0, 1800.0) ) - 1800.0 <= DBL_EPSILON);
+    assert(fabs(seconds_difference(1800.0, 2160.0) - 360.0) <= DBL_EPSILON);
+    assert(fabs(seconds_difference(1800.0, 1800.0)) <= DBL_EPSILON);
+    
+    //task - 2 
+    assert(fabs(hours_difference(1800.0, 3600.0) - 0.5)  <= DBL_EPSILON);
+    assert(fabs(hours_difference(3600.0, 1800.0)) - 0.5 <= DBL_EPSILON);
+    assert(fabs(hours_difference(1800.0, 2160.0) - 0.1)  <= DBL_EPSILON);
+    assert(fabs(hours_difference(1800.0, 1800.0)) <= DBL_EPSILON);
 
-        >>> hours_difference(1800.0, 3600.0)
-        0.5
+    /*
+        Return the total number of hours in the specified number
+        of hours, minutes, and seconds.
 
-        >>> hours_difference(3600.0, 1800.0)
-        -0.5
+        Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
 
-        >>> hours_difference(1800.0, 2160.0)
-        0.1
+        >>> to_float_hours(0, 15, 0)
+        0.25
 
-        >>> hours_difference(1800.0, 1800.0)
-        0.0
+        >>> to_float_hours(2, 45, 9)
+        2.7525
+
+        >>> to_float_hours(1, 0, 36)
+        1.01
     */
-    assert(hours_difference(1800.0, 3600.0) == 0.5);
-    assert(hours_difference(3600.0, 1800.0) == -0.5);
-    assert(hours_difference(1800.0, 2160.0) == 0.1);
-    assert(hours_difference(1800.0, 1800.0) == 0.0);
+    assert(fabs(to_float_hours(0, 15, 0) - 0.25) < DBL_EPSILON);
+    assert(fabs(to_float_hours(2, 45, 9) - 2.7525) < DBL_EPSILON);
+    assert(fabs(to_float_hours(1, 0, 36) - 1.01) < DBL_EPSILON);
 
 }
