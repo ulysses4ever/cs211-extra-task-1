@@ -29,8 +29,11 @@ double to_float_hours(int hours, int minutes, int seconds)
     return hours + (minutes / 60.0) + (seconds / 3600.0);
 }
 
+// hours is a number of hours since midnight. Return the
+//hour as seen on a 24 - hour clock.
 double to_24_hour_clock(double hours)
 {
+    assert(hours >= 0);
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -56,7 +59,7 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
-    return 0;
+    return int(hours) % 24 + (hours - int(hours));
 }
 
 /*
