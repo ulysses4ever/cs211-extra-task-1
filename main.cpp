@@ -49,5 +49,4 @@ int main()
 	assert(fabs(time_from_utc(-1, 0.0)  - 23.0) <= DBL_EPSILON);
 	assert(fabs(time_from_utc(-1, 23.0) - 22.0) <= DBL_EPSILON);
 	assert(fabs(time_from_utc(+1, 23.0) - 0.0)  <= DBL_EPSILON);
-	std::cout << "end.";
 }
