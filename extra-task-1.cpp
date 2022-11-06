@@ -81,3 +81,14 @@ int get_seconds(double time)
     int minutes{ get_minutes(time) };
     return time - (hours * 3600) - (minutes * 60);
 }
+
+double time_to_utc(int utc_offset, double time)
+{
+    return ((int)(time)-utc_offset) % 24;
+    /*
+        Return time at UTC+0, where utc_offset is the number of hours away from
+        UTC+0.
+        You may be interested in:
+        https://en.wikipedia.org/wiki/Coordinated_Universal_Time
+    */
+}

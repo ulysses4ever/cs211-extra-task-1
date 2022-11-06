@@ -12,3 +12,5 @@ int get_hours(double);
 int get_minutes(double);
 
 int get_seconds(double);
+
+double time_to_utc(int, double);
