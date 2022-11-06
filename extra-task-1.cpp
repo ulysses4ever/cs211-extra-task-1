@@ -40,13 +40,13 @@ double to_24_hour_clock(double hours)
 int get_hours(int seconds)
 {
     assert(seconds >= 0);
-    return seconds % 3600;
+    return seconds / 3600;
 }
 //used to determine the minutes part of a time in seconds.
 int get_minutes(int seconds)
 {
     assert(seconds >= 0);
-    return (seconds - get_hours(seconds) * 3600) % 60;
+    return (seconds - get_hours(seconds) * 3600) / 60;
 }
 //used to determine the seconds part of a time in seconds.
 int get_seconds(int seconds)
