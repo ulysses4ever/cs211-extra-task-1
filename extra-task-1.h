@@ -18,3 +18,12 @@ double to_float_hours(int hours, int minutes, int seconds);
 // hours is a number of hours since midnight. Return the
 //hour as seen on a 24 - hour clock.
 double to_24_hour_clock(double hours);
+
+//used to determine the hours part of a time in seconds.
+int get_hours(int seconds);
+
+//used to determine the minutes part of a time in seconds.
+int get_minutes(int seconds);
+
+//used to determine the seconds part of a time in seconds.
+int get_seconds(int seconds);
