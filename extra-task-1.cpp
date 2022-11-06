@@ -42,3 +42,42 @@ double to_24_hour_clock(double hours)
         hour as seen on a 24-hour clock.
     */
 }
+
+/*
+    Implement three functions
+        * get_hours
+        * get_minutes
+        * get_seconds
+    They are used to determine the hours part, minutes part and seconds part
+    of a time in seconds. E.g.:
+
+    >>> get_hours(3800)
+    1
+
+    >>> get_minutes(3800)
+    3
+
+    >>> get_seconds(3800)
+    20
+
+    In other words, if 3800 seconds have elapsed since midnight,
+    it is currently 01:03:20 (hh:mm:ss).
+*/
+
+int get_hours(double time)
+{
+    return (int)time / 3600;
+}
+
+int get_minutes(double time)
+{
+    int hours{ get_hours(time) };
+    return (time - (hours * 3600)) / 60;
+}
+
+int get_seconds(double time)
+{
+    int hours{ get_hours(time) };
+    int minutes{ get_minutes(time) };
+    return time - (hours * 3600) - (minutes * 60);
+}
