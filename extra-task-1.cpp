@@ -73,7 +73,16 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
-    return 0;
+    if (hours < 24)
+        return hours;
+    else
+    {
+        while (hours >= 24)
+        {
+            hours -= 24;
+        }
+        return hours;
+    }
 
     /*
         hours is a number of hours since midnight. Return the
@@ -205,4 +214,11 @@ void main()
     assert(fabs(to_float_hours(2, 45, 9) - 2.7525) < eps);
     assert(fabs(to_float_hours(1, 0, 36) - 1.01) < eps);
 
+
+    // tests for to_24_hour_clock
+    assert(fabs(to_24_hour_clock(24) - 0.0) < eps);
+    assert(fabs(to_24_hour_clock(48) - 0.0) < eps);
+    assert(fabs(to_24_hour_clock(25) - 1.0) < eps);
+    assert(fabs(to_24_hour_clock(4) - 4.0) < eps);
+    assert(fabs(to_24_hour_clock(28.5) - 4.5) < eps);
 }
