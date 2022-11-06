@@ -1,6 +1,14 @@
+#include <assert.h>
+#include <cmath>
+#include <cfloat>
+
+using namespace std;
+
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
+
+    return time_2 - time_1;
     
     /*    
         Return the number of seconds later that a time in seconds
@@ -166,4 +174,12 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+}
+
+void main()
+{
+    assert(fabs(seconds_difference(1800.0, 3600.0) - 1800.0) < DBL_EPSILON);
+    assert(fabs(seconds_difference(3600.0, 1800.0) + 1800.0) < DBL_EPSILON);
+    assert(fabs(seconds_difference(1800.0, 2160.0) - 360.0) < DBL_EPSILON);
+    assert(fabs(seconds_difference(1800.0, 1800.0) - 0.0) < DBL_EPSILON);
 }
