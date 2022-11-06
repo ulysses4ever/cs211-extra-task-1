@@ -178,7 +178,8 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
-    return 0;
+    double md = fmod((time + utc_offset), 24);
+    return md >= 0? md: 24.0 + md;
 
     /*
         Return UTC time in time zone utc_offset.
@@ -253,4 +254,13 @@ void main()
     assert(fabs(time_to_utc(-1, 0.0) - 1.0) < eps);
     assert(fabs(time_to_utc(-1, 23.0) - 0.0) < eps);
 
+    // tests for time_from_utc
+    assert(fabs(time_from_utc(+0, 12.0) - 12.0) < eps);
+    assert(fabs(time_from_utc(+1, 12.0) - 13.0) < eps);
+    assert(fabs(time_from_utc(-1, 12.0) - 11.0) < eps);
+    assert(fabs(time_from_utc(+6, 6.0) - 12.0) < eps);
+    assert(fabs(time_from_utc(-7, 6.0) - 23.0) < eps);
+    assert(fabs(time_from_utc(-1, 0.0) - 23.0) < eps);
+    assert(fabs(time_from_utc(-1, 23.0) - 22.0) < eps);
+    assert(fabs(time_from_utc(+1, 23.0)- 0.0) < eps);
 }
