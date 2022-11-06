@@ -4,8 +4,6 @@
 //time_2 is than a time in seconds time_1.
 double seconds_difference(double time_1, double time_2)
 {
-    assert(time_1 >= 0);
-    assert(time_2 >= 0);
     return time_2 - time_1;
 }
 
@@ -13,8 +11,6 @@ double seconds_difference(double time_1, double time_2)
 //time_2 is than a time in seconds time_1.
 double hours_difference(double time_1, double time_2)
 {
-    assert(time_1 >= 0);
-    assert(time_2 >= 0);
     return seconds_difference(time_1, time_2) / 3600;
 }
 
@@ -33,7 +29,6 @@ double to_float_hours(int hours, int minutes, int seconds)
 //hour as seen on a 24 - hour clock.
 double to_24_hour_clock(double hours)
 {
-    assert(hours >= 0);
     return int(hours) % 24 + (hours - int(hours));
 }
 //used to determine the hours part of a time in seconds.
@@ -58,62 +53,19 @@ int get_seconds(int seconds)
 //Return time at UTC+0, where utc_offset is the number of hours away from UTC + 0.
 double time_to_utc(int utc_offset, double time)
 {
-    /*
-        Return time at UTC+0, where utc_offset is the number of hours away from
-        UTC+0.
-        You may be interested in:
-        https://en.wikipedia.org/wiki/Coordinated_Universal_Time
-
-        >>> time_to_utc(+0, 12.0)
-        12.0
- 
-        >>> time_to_utc(+1, 12.0)
-        11.0
- 
-        >>> time_to_utc(-1, 12.0)
-        13.0
- 
-        >>> time_to_utc(-11, 18.0)
-        5.0
- 
-        >>> time_to_utc(-1, 0.0)
-        1.0
- 
-        >>> time_to_utc(-1, 23.0)
-        0.0
-    */
-    double i = (-1 * utc_offset) + time;
-    return i - ( int(i)/24 * 24);
+    double t = (-1 * utc_offset) + time;
+    return t - (int(t) / 24 * 24);
 }
 
+//Return UTC time in time zone utc_offset.
 double time_from_utc(int utc_offset, double time)
 {
-    /*
-        Return UTC time in time zone utc_offset.
-
-        >>> time_from_utc(+0, 12.0)
-        12.0
- 
-        >>> time_from_utc(+1, 12.0)
-        13.0
- 
-        >>> time_from_utc(-1, 12.0)
-        11.0
- 
-        >>> time_from_utc(+6, 6.0)
-        12.0
- 
-        >>> time_from_utc(-7, 6.0)
-        23.0
- 
-        >>> time_from_utc(-1, 0.0)
-        23.0
- 
-        >>> time_from_utc(-1, 23.0)
-        22.0
- 
-        >>> time_from_utc(+1, 23.0)
-        0.0
-    */
-    return 0;
+    double t = time + utc_offset;
+    if (t < 0)
+    {
+        return 24 + t;
+    }
+    if (t >= 24)
+        return t - (int(t) / 24 * 24);
+    return t;
 }
