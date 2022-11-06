@@ -30,8 +30,7 @@ double seconds_difference(double time_1, double time_2)
 
 double hours_difference(double time_1, double time_2)
 {
-    return 0;
-    //return seconds_difference(time_1, time_2) / 3600;
+    return seconds_difference(time_1, time_2) / 3600;
 
     /*
         Return the number of hours later that a time in seconds
@@ -194,5 +193,11 @@ void main()
     assert(fabs(seconds_difference(3600.0, 1800.0) - (-1800.0)) < eps);
     assert(fabs(seconds_difference(1800.0, 2160.0) - 360.0) < eps);
     assert(fabs(seconds_difference(1800.0, 1800.0) - 0.0) < eps);
+
+    // tests for hours_difference
+    assert(fabs(hours_difference(1800.0, 3600.0) - 0.5) < eps);
+    assert(fabs(hours_difference(3600.0, 1800.0) - (-0.5)) < eps);
+    assert(fabs(hours_difference(1800.0, 2160.0) - 0.1) < eps);
+    assert(fabs(hours_difference(1800.0, 1800.0) - 0.0) < eps);
 
 }
