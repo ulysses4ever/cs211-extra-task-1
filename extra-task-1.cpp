@@ -23,6 +23,11 @@ double to_24_hour_clock(double hours)
     return int(floor(hours)) % 24 + hours - floor(hours);
 }
 
+int get_hours(int sec)
+{
+    return sec / 3600;
+}
+
 /*
     Implement three functions
         * get_hours
