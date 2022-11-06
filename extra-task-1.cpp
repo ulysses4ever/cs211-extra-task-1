@@ -28,6 +28,10 @@ int get_hours(int sec)
     return sec / 3600;
 }
 
+int get_minutes(int sec)
+{
+    return (sec - 3600*get_hours(sec))/60;
+}
 /*
     Implement three functions
         * get_hours
