@@ -92,3 +92,16 @@ double time_to_utc(int utc_offset, double time)
         https://en.wikipedia.org/wiki/Coordinated_Universal_Time
     */
 }
+
+double time_from_utc(int utc_offset, double time)
+{
+    double res{ time + utc_offset };
+    if (res < 0)
+        return 24 + res;
+    else if (res >= 24)
+        return res - 24;
+    return res;
+    /*
+        Return UTC time in time zone utc_offset.
+    */
+}
