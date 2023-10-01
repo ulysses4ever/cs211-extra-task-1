@@ -169,7 +169,15 @@ double time_to_utc(int utc_offset, double time)
         0.0
     */
 
-   return to_24_hour_clock(time - utc_offset);
+   double temp = time - utc_offset;
+   if (temp >= 0)
+   {
+        return to_24_hour_clock(temp);
+   }
+   else
+   {
+        return 24 + temp;
+   }
 }
 
 double time_from_utc(int utc_offset, double time)
