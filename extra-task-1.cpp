@@ -134,7 +134,12 @@ int get_hours(int seconds)
 
 int get_minutes(int seconds)
 {
-    return (seconds - get_hours(seconds)* 3600) / 60;
+    return (seconds - get_hours(seconds) * 3600) / 60;
+}
+
+int get_seconds(int seconds)
+{
+    return seconds - get_minutes(seconds) * 60 - get_hours(seconds) * 3600;
 }
 
 double time_to_utc(int utc_offset, double time)
@@ -237,6 +242,9 @@ int main()
 
     // get_minutes Test
     assert(3 == get_minutes(3800));
+
+    // get_seconds Test
+    assert(20 == get_seconds(3800));
 
     return 0;
 }
