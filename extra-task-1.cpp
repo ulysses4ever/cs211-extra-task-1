@@ -169,7 +169,7 @@ double time_to_utc(int utc_offset, double time)
         0.0
     */
 
-   return 0.0;
+   return to_24_hour_clock(time - utc_offset);
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -245,6 +245,14 @@ int main()
 
     // get_seconds Test
     assert(20 == get_seconds(3800));
+
+    // time_to_utc Tests
+    assert(abs(12.0 - time_to_utc(+0, 12.0)) < DBL_EPSILON);
+    assert(abs(11.0 - time_to_utc(+1, 12.0)) < DBL_EPSILON);
+    assert(abs(13.0 - time_to_utc(-1, 12.0)) < DBL_EPSILON);
+    assert(abs(5.0 - time_to_utc(-11, 18.0)) < DBL_EPSILON);
+    assert(abs(1.0 - time_to_utc(-1, 0.0)) < DBL_EPSILON);
+    assert(abs(0.0 - time_to_utc(-1, 23.0)) < DBL_EPSILON);
 
     return 0;
 }
