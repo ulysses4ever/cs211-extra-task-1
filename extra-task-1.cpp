@@ -201,8 +201,15 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
-
-   return 0.0;
+   double temp = time + utc_offset;
+   if (temp >= 0)
+   {
+        return to_24_hour_clock(temp);
+   }
+   else
+   {
+        return 24 + temp;
+   }
 }
 
 int main()
@@ -253,6 +260,16 @@ int main()
     assert(abs(5.0 - time_to_utc(-11, 18.0)) < DBL_EPSILON);
     assert(abs(1.0 - time_to_utc(-1, 0.0)) < DBL_EPSILON);
     assert(abs(0.0 - time_to_utc(-1, 23.0)) < DBL_EPSILON);
+
+    // time_from_utc Tests
+    assert(abs(12.0 - time_from_utc(+0, 12.0)) < DBL_EPSILON);
+    assert(abs(13.0 - time_from_utc(+1, 12.0)) < DBL_EPSILON);
+    assert(abs(11.0 - time_from_utc(-1, 12.0)) < DBL_EPSILON);
+    assert(abs(12.0 - time_from_utc(+6, 6.0)) < DBL_EPSILON);
+    assert(abs(23.0 - time_from_utc(-7, 6.0)) < DBL_EPSILON);
+    assert(abs(23.0 - time_from_utc(-1, 0.0)) < DBL_EPSILON);
+    assert(abs(22.0 - time_from_utc(-1, 23.0)) < DBL_EPSILON);
+    assert(abs(0.0 - time_from_utc(+1, 23.0)) < DBL_EPSILON);
 
     return 0;
 }
