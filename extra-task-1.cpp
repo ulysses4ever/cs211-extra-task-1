@@ -100,8 +100,10 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
-
-   return 0.0;
+   assert(hours >= 0);
+    double int_hours = 0;
+    double dbl_hours = modf(hours, &int_hours);
+   return (int)int_hours % 24 + dbl_hours;
 }
 
 /*
@@ -210,6 +212,14 @@ int main()
     assert(abs(0.25 - to_float_hours(0, 15, 0)) < DBL_EPSILON);
     assert(abs(2.7525 - to_float_hours(2, 45, 9)) < DBL_EPSILON);
     assert(abs(1.01 - to_float_hours(1, 0, 36)) < DBL_EPSILON);
+
+
+    // to_24_hour_clock Tests
+    assert(abs(0.0 - to_24_hour_clock(24)) < DBL_EPSILON);
+    assert(abs(0.0 - to_24_hour_clock(48)) < DBL_EPSILON);
+    assert(abs(1.0 - to_24_hour_clock(25)) < DBL_EPSILON);
+    assert(abs(4.0 - to_24_hour_clock(4)) < DBL_EPSILON);
+    assert(abs(4.5 - to_24_hour_clock(28.5)) < DBL_EPSILON);
 
     return 0;
 }
