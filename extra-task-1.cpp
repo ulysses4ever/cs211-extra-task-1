@@ -65,7 +65,12 @@ double to_float_hours(int hours, int minutes, int seconds)
         1.01
     */
 
-   return 0.0;
+    assert(0 <= minutes);
+    assert(minutes < 60);
+    assert(0 <= seconds);
+    assert(seconds < 60);
+
+   return hours + minutes / 60.0 + seconds / 3600.0;
 }
 
 double to_24_hour_clock(double hours)
@@ -199,6 +204,12 @@ int main()
     assert(abs(-0.5 - hours_difference(3600.0, 1800.0)) < DBL_EPSILON);
     assert(abs(0.1 - hours_difference(1800.0, 2160.0)) < DBL_EPSILON);
     assert(abs(0.0 - hours_difference(1800.0, 1800.0)) < DBL_EPSILON);
+
+
+    // to_float_hours Tests
+    assert(abs(0.25 - to_float_hours(0, 15, 0)) < DBL_EPSILON);
+    assert(abs(2.7525 - to_float_hours(2, 45, 9)) < DBL_EPSILON);
+    assert(abs(1.01 - to_float_hours(1, 0, 36)) < DBL_EPSILON);
 
     return 0;
 }
