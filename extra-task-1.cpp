@@ -1,3 +1,18 @@
+#include "extra-task-1.h"
+#include <cmath>
+
+/// <summary>
+/// checks if two double numbers are equal with 10^-7 accuracy
+/// </summary>
+/// <param name="d1"></param>
+/// <param name="d2"></param>
+/// <returns></returns>
+bool equal(double d1, double d2)
+{
+    double eps = 1e-7;
+    return fabs(d1 - d2) < eps;
+}
+
 /// <summary>
 /// Returns the number of seconds later that a time in seconds time_2 is than a time in seconds time_1.
 /// </summary>
