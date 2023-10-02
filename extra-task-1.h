@@ -8,3 +8,6 @@ double seconds_difference(double time_1, double time_2);
 
 // returns the difference in hours between two times given in seconds
 double hours_difference(double time_1, double time_2);
+
+// returns the number of hours in given hrs, min, sec in total
+double to_float_hours(int hours, int minutes, int seconds);

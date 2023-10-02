@@ -19,4 +19,12 @@ int main() {
 	assert(equal(hours_difference(1800.0, 2160.0), 0.1));
 	assert(equal(hours_difference(0.0, 3600.0), 1.0));
 	assert(equal(hours_difference(1800.0, 1800.0), 0.));
+
+	//task3
+
+	assert(equal(to_float_hours(0, 15, 0), 0.25));
+	assert(equal(to_float_hours(2, 45, 9), 2.7525));
+	assert(equal(to_float_hours(1, 0, 36), 1.01));
+	assert(equal(to_float_hours(0, 15, 0), 0.25));
+	assert(equal(to_float_hours(0, 15, 0), 0.25));
 }
