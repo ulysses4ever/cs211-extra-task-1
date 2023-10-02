@@ -24,18 +24,17 @@ double seconds_difference(double time_1, double time_2)
     return time_2 - time_1;
 }
 
+/// <summary>
+/// Return the number of hours later that a time in seconds
+/// time_2 is than a time in seconds time_1.
+/// </summary>
+/// <param name="time_1">time_1 in seconds</param>
+/// <param name="time_2">time_2 in seconds</param>
+/// <returns></returns>
 double hours_difference(double time_1, double time_2)
 {
-    return ((time_2 / 60) / 60) - ((time_1 / 60) / 60);
-    /*
-        Return the number of hours later that a time in seconds
-        time_2 is than a time in seconds time_1.
-            
-        >>> hours_difference(1800.0, 3600.0)
-        0.5
-
-        >>> hours_difference(3600.0, 1800.0)
-        -0.5
+    return (time_2 - time_1) / 3600;
+    /*            
 
         >>> hours_difference(1800.0, 2160.0)
         0.1
