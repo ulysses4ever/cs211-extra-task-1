@@ -35,4 +35,8 @@ int main() {
 	assert(equal(to_24_hour_clock(25), 1));
 	assert(equal(to_24_hour_clock(4), 4));
 	assert(equal(to_24_hour_clock(26.5), 2.5));
+
+	//task5
+
+	std::cout << get_hours(3800);
 }
