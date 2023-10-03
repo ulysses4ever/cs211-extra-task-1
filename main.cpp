@@ -38,5 +38,16 @@ int main() {
 
 	//task5
 
-	std::cout << time_to_utc(-11, 18);
+	assert(equal(get_hours(3800), 1));
+	assert(equal(get_minutes(3800), 3));
+	assert(equal(get_seconds(3800), 20));
+
+	//task6
+
+	assert(equal(time_to_utc(+0, 12), 12));
+	assert(equal(time_to_utc(+1, 12), 11));
+	assert(equal(time_to_utc(-1, 12), 13));
+	assert(equal(time_to_utc(-11, 18), 5));
+	assert(equal(time_to_utc(-1, 0), 1));
+	assert(equal(time_to_utc(-1, 23), 0));
 }
