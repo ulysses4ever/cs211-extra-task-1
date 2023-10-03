@@ -89,23 +89,33 @@ double to_24_hour_clock(double hours)
 */
 
 /// <summary>
-/// Returns the number of hours in given time in seconds
+/// Returns the hours part in given time in seconds
 /// </summary>
 /// <param name="time">Time in seconds</param>
 /// <returns></returns>
-double get_hours(double time)
+int get_hours(int time)
 {
-    return (int)time / 3600;
+    return time / 3600;
 }
 
 /// <summary>
-/// Returns the number of minutes in given time in seconds
+/// Returns the minutes part in given time in seconds
 /// </summary>
 /// <param name="time">Time in seconds</param>
 /// <returns></returns>
-double get_minutes(double time)
+int get_minutes(int time)
 {
-    return (int)time / 60 % 60;
+    return time / 60 % 60;
+}
+
+/// <summary>
+/// Returns the seconds part in given time in seconds
+/// </summary>
+/// <param name="time">Time in seconds</param>
+/// <returns></returns>
+int get_seconds(int time)
+{
+    return time % 3600 % 60;
 }
 //
 //double time_to_utc(int utc_offset, double time)

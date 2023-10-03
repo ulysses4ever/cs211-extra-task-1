@@ -38,5 +38,5 @@ int main() {
 
 	//task5
 
-	std::cout << get_hours(3800) << " " << get_minutes(62.5);
+	std::cout << get_hours(3800) << ":" << get_minutes(3800) << ":" << get_seconds(3800);
 }
