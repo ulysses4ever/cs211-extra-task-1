@@ -23,3 +23,6 @@ int get_minutes(int time);
 
 // returns the number of seconds in given time in seconds
 int get_seconds(int time);
+
+// converts given time to UTC+0
+double time_to_utc(int utc_offset, double time);

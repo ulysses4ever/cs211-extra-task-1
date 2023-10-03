@@ -38,5 +38,5 @@ int main() {
 
 	//task5
 
-	std::cout << get_hours(3800) << ":" << get_minutes(3800) << ":" << get_seconds(3800);
+	std::cout << time_to_utc(-11, 18);
 }
