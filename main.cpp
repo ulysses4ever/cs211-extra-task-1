@@ -27,4 +27,12 @@ int main() {
 	assert(equal(to_float_hours(1, 0, 36), 1.01));
 	assert(equal(to_float_hours(0, 15, 0), 0.25));
 	assert(equal(to_float_hours(0, 15, 0), 0.25));
+
+	//task4
+
+	assert(equal(to_24_hour_clock(24), 0));
+	assert(equal(to_24_hour_clock(48), 0));
+	assert(equal(to_24_hour_clock(25), 1));
+	assert(equal(to_24_hour_clock(4), 4));
+	assert(equal(to_24_hour_clock(26.5), 2.5));
 }

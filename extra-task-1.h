@@ -11,3 +11,15 @@ double hours_difference(double time_1, double time_2);
 
 // returns the number of hours in given hrs, min, sec in total
 double to_float_hours(int hours, int minutes, int seconds);
+
+// retuens the hour as on the clock by given number of hours since midnight
+double to_24_hour_clock(double hours);
+
+// returns the number of hours in given time in seconds
+double get_hours(double time);
+
+// returns the number of minutes in given time in seconds
+double get_minutes(double time);
+
+// returns the number of seconds in given time in seconds
+double get_seconds(double time);
