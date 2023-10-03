@@ -1,0 +1,63 @@
+#include "extra-task-1.h"
+#include <cassert>
+
+int main() {
+
+	//task1
+
+	assert(equal(seconds_difference(3600.0, 1800.0), -1800.0));
+	assert(equal(seconds_difference(1800.0, 1800.0), 0.0));
+	assert(equal(seconds_difference(1800.0, 3600.0), 1800.0));
+	assert(equal(seconds_difference(256.0, 0.0), -256.0));
+	assert(equal(seconds_difference(123, 832), 709));
+
+	//task2
+
+	assert(equal(hours_difference(1800.0, 3600.0), 0.5));
+	assert(equal(hours_difference(3600.0, 1800.0), -0.5));
+	assert(equal(hours_difference(1800.0, 2160.0), 0.1));
+	assert(equal(hours_difference(0.0, 3600.0), 1.0));
+	assert(equal(hours_difference(1800.0, 1800.0), 0.));
+
+	//task3
+
+	assert(equal(to_float_hours(0, 15, 0), 0.25));
+	assert(equal(to_float_hours(2, 45, 9), 2.7525));
+	assert(equal(to_float_hours(1, 0, 36), 1.01));
+	assert(equal(to_float_hours(0, 15, 0), 0.25));
+	assert(equal(to_float_hours(0, 15, 0), 0.25));
+
+	//task4
+
+	assert(equal(to_24_hour_clock(24), 0));
+	assert(equal(to_24_hour_clock(48), 0));
+	assert(equal(to_24_hour_clock(25), 1));
+	assert(equal(to_24_hour_clock(4), 4));
+	assert(equal(to_24_hour_clock(26.5), 2.5));
+
+	//task5
+
+	assert(equal(get_hours(3800), 1));
+	assert(equal(get_minutes(3800), 3));
+	assert(equal(get_seconds(3800), 20));
+
+	//task6
+
+	assert(equal(time_to_utc(+0, 12), 12));
+	assert(equal(time_to_utc(+1, 12), 11));
+	assert(equal(time_to_utc(-1, 12), 13));
+	assert(equal(time_to_utc(-11, 18), 5));
+	assert(equal(time_to_utc(-1, 0), 1));
+	assert(equal(time_to_utc(-1, 23), 0));
+
+	//task7
+
+	assert(equal(time_from_utc(+0, 12), 12));
+	assert(equal(time_from_utc(+1, 12), 13));
+	assert(equal(time_from_utc(-1, 12), 11));
+	assert(equal(time_from_utc(+6, 6), 12));
+	assert(equal(time_from_utc(-7, 6), 23));
+	assert(equal(time_from_utc(-1, 0), 23));
+	assert(equal(time_from_utc(-1, 23), 22));
+	assert(equal(time_from_utc(+1, 23), 0));
+}
