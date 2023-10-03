@@ -1,6 +1,7 @@
 #include "extra-task-1.h"
 #include <cmath>
 #include <cassert>
+#include <cfloat>
 
 /// <summary>
 /// checks if two double numbers are equal with 10^-7 accuracy
@@ -10,8 +11,7 @@
 /// <returns></returns>
 bool equal(double d1, double d2)
 {
-    double eps = 1e-7;
-    return fabs(d1 - d2) < eps;
+    return fabs(d1 - d2) < DBL_EPSILON;
 }
 
 /// <summary>

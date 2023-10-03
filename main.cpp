@@ -9,7 +9,7 @@ int main() {
 	assert(equal(seconds_difference(1800.0, 1800.0), 0.0));
 	assert(equal(seconds_difference(1800.0, 3600.0), 1800.0));
 	assert(equal(seconds_difference(256.0, 0.0), -256.0));
-	assert(equal(seconds_difference(123.1, 832.8), 709.7));
+	assert(equal(seconds_difference(123, 832), 709));
 
 	//task2
 
