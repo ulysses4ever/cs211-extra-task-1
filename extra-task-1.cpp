@@ -98,65 +98,34 @@ int get_seconds(int time)
     return time % 3600 % 60;
 }
 
+/// <summary>
+/// Converts given time to UTC+0 depends on the offset
+/// </summary>
+/// <param name="utc_offset">The offset</param>
+/// <param name="time">Time</param>
+/// <returns></returns>
 double time_to_utc(int utc_offset, double time)
 {
     double hour;
     double min_sec = modf(time, &hour);
 
     return ((int)hour - utc_offset) % 24 + min_sec;
-    /*
-        Return time at UTC+0, where utc_offset is the number of hours away from
-        UTC+0.
-        You may be interested in:
-        https://en.wikipedia.org/wiki/Coordinated_Universal_Time
-
-        >>> time_to_utc(+0, 12.0)
-        12.0
- 
-        >>> time_to_utc(+1, 12.0)
-        11.0
- 
-        >>> time_to_utc(-1, 12.0)
-        13.0
- 
-        >>> time_to_utc(-11, 18.0)
-        5.0
- 
-        >>> time_to_utc(-1, 0.0)
-        1.0
- 
-        >>> time_to_utc(-1, 23.0)
-        0.0
-    */
 }
 
-//double time_from_utc(int utc_offset, double time)
-//{
-//    /*
-//        Return UTC time in time zone utc_offset.
-//
-//        >>> time_from_utc(+0, 12.0)
-//        12.0
-// 
-//        >>> time_from_utc(+1, 12.0)
-//        13.0
-// 
-//        >>> time_from_utc(-1, 12.0)
-//        11.0
-// 
-//        >>> time_from_utc(+6, 6.0)
-//        12.0
-// 
-//        >>> time_from_utc(-7, 6.0)
-//        23.0
-// 
-//        >>> time_from_utc(-1, 0.0)
-//        23.0
-// 
-//        >>> time_from_utc(-1, 23.0)
-//        22.0
-// 
-//        >>> time_from_utc(+1, 23.0)
-//        0.0
-//    */
-//}
+/// <summary>
+/// COnverts time from UTC+0 to given offset
+/// </summary>
+/// <param name="utc_offset">Offset</param>
+/// <param name="time">Time in UTC+0</param>
+/// <returns></returns>
+double time_from_utc(int utc_offset, double time)
+{
+    double hour;
+    double min_sec = modf(time, &hour);
+
+    int res = ((int)hour + utc_offset) % 24;
+    
+    if (res < 0) res = 24 - abs(res);
+    
+    return res + min_sec;
+}

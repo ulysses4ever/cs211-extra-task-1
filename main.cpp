@@ -1,4 +1,3 @@
-#include <iostream>
 #include "extra-task-1.h"
 #include <cassert>
 
@@ -50,4 +49,15 @@ int main() {
 	assert(equal(time_to_utc(-11, 18), 5));
 	assert(equal(time_to_utc(-1, 0), 1));
 	assert(equal(time_to_utc(-1, 23), 0));
+
+	//task7
+
+	assert(equal(time_from_utc(+0, 12), 12));
+	assert(equal(time_from_utc(+1, 12), 13));
+	assert(equal(time_from_utc(-1, 12), 11));
+	assert(equal(time_from_utc(+6, 6), 12));
+	assert(equal(time_from_utc(-7, 6), 23));
+	assert(equal(time_from_utc(-1, 0), 23));
+	assert(equal(time_from_utc(-1, 23), 22));
+	assert(equal(time_from_utc(+1, 23), 0));
 }

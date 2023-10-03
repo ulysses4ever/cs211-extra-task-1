@@ -26,3 +26,6 @@ int get_seconds(int time);
 
 // converts given time to UTC+0
 double time_to_utc(int utc_offset, double time);
+
+// converts given time to UTC+offset
+double time_from_utc(int utc_offset, double time);
