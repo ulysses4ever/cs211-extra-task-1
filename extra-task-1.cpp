@@ -97,6 +97,16 @@ double get_hours(double time)
 {
     return (int)time / 3600;
 }
+
+/// <summary>
+/// Returns the number of minutes in given time in seconds
+/// </summary>
+/// <param name="time">Time in seconds</param>
+/// <returns></returns>
+double get_minutes(double time)
+{
+    return (int)time / 60 % 60;
+}
 //
 //double time_to_utc(int utc_offset, double time)
 //{
