@@ -21,7 +21,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c107bac-499e-4aed-98de-b57b64a0a6fe" name="Changes" comment="made others functions">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cs211_extra_task_1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cs211_extra_task_1.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extra-task-1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/extra-task-1.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +110,7 @@
       <workItem from="1696278037333" duration="303000" />
       <workItem from="1696355312796" duration="3659000" />
       <workItem from="1696423363968" duration="23000" />
-      <workItem from="1696442738204" duration="947000" />
+      <workItem from="1696442738204" duration="4032000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
