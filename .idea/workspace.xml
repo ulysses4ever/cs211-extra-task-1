@@ -20,12 +20,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c107bac-499e-4aed-98de-b57b64a0a6fe" name="Changes" comment="made others functions">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cs211_extra_task_1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cs211_extra_task_1.exe" afterDir="false" />
+    <list default="true" id="5c107bac-499e-4aed-98de-b57b64a0a6fe" name="Changes" comment="made asserts">
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cs211_extra_task_1.dir/extra-task-1.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cs211_extra_task_1.dir/extra-task-1.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/extra-task-1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/extra-task-1.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,7 +106,7 @@
       <workItem from="1696278037333" duration="303000" />
       <workItem from="1696355312796" duration="3659000" />
       <workItem from="1696423363968" duration="23000" />
-      <workItem from="1696442738204" duration="4032000" />
+      <workItem from="1696442738204" duration="4342000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -168,7 +164,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696359259248</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="made asserts">
+      <option name="closed" value="true" />
+      <created>1696447178302</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1696447178303</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,6 +201,7 @@
     <MESSAGE value="made func to_float_difference" />
     <MESSAGE value="made func hours_difference" />
     <MESSAGE value="made others functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="made others functions" />
+    <MESSAGE value="made asserts" />
+    <option name="LAST_COMMIT_MESSAGE" value="made asserts" />
   </component>
 </project>

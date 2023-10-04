@@ -13,7 +13,9 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
-    assert(0 <= minutes < 60 && 0<= seconds<60);
+    assert(minutes >= 0);
+    assert(minutes < 60);
+    assert(seconds >= 0 && seconds < 60);
     return hours + minutes / 60.0 + seconds / 3600.0;
 }
 
