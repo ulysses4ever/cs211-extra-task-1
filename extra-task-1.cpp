@@ -1,6 +1,7 @@
-#include <assert>
+#include <iostream>
 #include <cmath>
 #include <cfloat>
+#include <assert.h>
 //Return the number of seconds later that a time in seconds time_2 is than a time in seconds time_1.
 double seconds_difference(double time_1, double time_2)
 {
@@ -21,6 +22,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 //hours is a number of hours since midnight. Return the hour as seen on a 24 - hour clock.
 double to_24_hour_clock(double hours)
 {
+    double int_part = 0.0;
     assert(hours >= 0);
     double frac_part=modf(hours, &int_part);
     return static_cast<int>(hours) % 24 + frac_part;
@@ -43,31 +45,32 @@ int Get_Seconds(int seconds)
 // Return time at UTC+0, where utc_offset is the number of hours away from UTC + 0.
 double time_to_utc(int utc_offset, double time)
 {
-    return (utc_offset > 0) ? (time - utc_offset) % 24 : (time + utc_offset) % 24;
-    
+    double int_part;
+    double frac_part = modf(time, &int_part);
+    return static_cast<double>((static_cast<int>(int_part) - utc_offset) % 24) + frac_part;
 }
 
 double time_from_utc(int utc_offset, double time)
 {
-    return (utc_offset > 0) ? (time + utc_offset) % 24 : (time - utc_offset) % 24;
-   
+   // return (utc_offset > 0) ? (time + utc_offset) % 24 : (time - utc_offset) % 24;
+    return 0;
 }
 int main()
 {
     //seconds_difference
-    assert(fabs(seconds_difference(1800.0, 3600.0) - 1800.0) < DBL_EPSILON);
-    assert(fabs(seconds_difference(3600.0, 1800.0) + 1800.0)) < DBL_EPSILON);
+    assert((fabs(seconds_difference(1800.0, 3600.0) - 1800.0) < DBL_EPSILON));
+    assert(fabs(seconds_difference(3600.0, 1800.0) + 1800.0) < DBL_EPSILON);
     assert(fabs(seconds_difference(1800.0, 2160.0) - 360.0) < DBL_EPSILON);
     assert(fabs(seconds_difference(1800.0, 1800.0) - 0.0) < DBL_EPSILON);
 
     //hours_difference 
     assert(fabs(hours_difference(1800.0, 3600.0) - 0.5) < DBL_EPSILON);
-    assert(fabs(hours_difference(3600.0, 1800.0) + 0.5)) < DBL_EPSILON);
+    assert(fabs(hours_difference(3600.0, 1800.0) + 0.5) < DBL_EPSILON);
     assert(fabs(hours_difference(1800.0, 2160.0) - 0.1) < DBL_EPSILON);
     assert(fabs(hours_difference(1800.0, 1800.0) - 0.0) < DBL_EPSILON);
+    //to_float_hours0) 
 
-    //to_float_hours
-    assert(fabs(to_float_hours(0,15,0)-0.25)< DBL_EPSILON);
+    assert(fabs(to_float_hours(0, 15, 0) - 0.25) < DBL_EPSILON);
     assert(fabs(to_float_hours(2, 45, 9) - 2.7525) < DBL_EPSILON);
     assert(fabs(to_float_hours(1, 0, 36) - 1.01) < DBL_EPSILON);
 
@@ -79,11 +82,11 @@ int main()
     assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
 
     //get_hours tests
-    assert(get_hours(3800) == 1);
+    assert(Get_Hours(3800) == 1);
     //get_minutes tests
-    assert(get_minutes(3800) == 3);
+    assert(Get_Minutes(3800) == 3);
     //get_seconds tests
-    assert(get_seconds(3800) == 20);
+    assert(Get_Seconds(3800) == 20);
 
     //time_to_utc
     assert(fabs(time_to_utc(+0, 12.0) - 12.0) < DBL_EPSILON);
