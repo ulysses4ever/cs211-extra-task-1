@@ -1,4 +1,5 @@
 #include <assert>
+#include <cmath>
 //Return the number of seconds later that a time in seconds time_2 is than a time in seconds time_1.
 double seconds_difference(double time_1, double time_2)
 {
@@ -20,31 +21,24 @@ double to_float_hours(int hours, int minutes, int seconds)
 double to_24_hour_clock(double hours)
 {
     assert(hours >= 0);
-    return hours % 24;
+    double frac_part=modf(hours, &int_part);
+    return static_cast<int>(hours) % 24 + frac_part;
 
-        Precondition: hours >= 0
 
-        >>> to_24_hour_clock(24)
-        0
-        
-        >>> to_24_hour_clock(48)
-        0
-        
-        >>> to_24_hour_clock(25)
-        1
-        
-        >>> to_24_hour_clock(4)
-        4
-        
-        >>> to_24_hour_clock(28.5)
-        4.5
-        
-        You may wish to inspect various function in <cmath> to work
-        with integer and fractional part of a hours separately.
-        
-    */
+      
 }
-
+int Get_Hours(int seconds)
+{
+    return (seconds / 3600);
+}
+int Get_Minutes(int seconds)
+{
+    return (seconds % 3600) / 60;
+}
+int Get_Seconds(int seconds)
+{
+    return ((seconds % 3600) % 60) % 60;
+}
 /*
     Implement three functions
         * get_hours
