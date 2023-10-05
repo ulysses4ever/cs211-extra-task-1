@@ -28,17 +28,17 @@ double to_24_hour_clock(double hours)
     return static_cast<int>(hours) % 24 + frac_part;
 }
 //Returns the hours part of a time in seconds.
-int Get_Hours(int seconds)
+int get_hours(int seconds)
 {
     return (seconds / 3600);
 }
 //Returns the minutes part of a time in seconds.
-int Get_Minutes(int seconds)
+int get_minutes(int seconds)
 {
     return (seconds % 3600) / 60;
 }
 //Returns the seconds part of a time in seconds.
-int Get_Seconds(int seconds)
+int get_seconds(int seconds)
 {
     return (seconds % 3600) % 60;
 }
@@ -80,11 +80,11 @@ int main()
     assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
 
     //get_hours tests
-    assert(Get_Hours(3800) == 1);
+    assert(get_hours(3800) == 1);
     //get_minutes tests
-    assert(Get_Minutes(3800) == 3);
+    assert(get_minutes(3800) == 3);
     //get_seconds tests
-    assert(Get_Seconds(3800) == 20);
+    assert(get_seconds(3800) == 20);
 
     //time_to_utc
     assert(fabs(time_to_utc(+0, 12.0) - 12.0) < DBL_EPSILON);
