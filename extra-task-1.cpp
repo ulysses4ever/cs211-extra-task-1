@@ -23,45 +23,26 @@ double to_24_hour_clock(double hours)
     assert(hours >= 0);
     double frac_part=modf(hours, &int_part);
     return static_cast<int>(hours) % 24 + frac_part;
-
-
-      
 }
+//Returns the hours part of a time in seconds.
 int Get_Hours(int seconds)
 {
     return (seconds / 3600);
 }
+//Returns the minutes part of a time in seconds.
 int Get_Minutes(int seconds)
 {
     return (seconds % 3600) / 60;
 }
+//Returns the seconds part of a time in seconds.
 int Get_Seconds(int seconds)
 {
     return ((seconds % 3600) % 60) % 60;
 }
-/*
-    Implement three functions
-        * get_hours
-        * get_minutes
-        * get_seconds
-    They are used to determine the hours part, minutes part and seconds part 
-    of a time in seconds. E.g.:
-
-    >>> get_hours(3800)
-    1
-
-    >>> get_minutes(3800)
-    3
-
-    >>> get_seconds(3800)
-    20
-
-    In other words, if 3800 seconds have elapsed since midnight, 
-    it is currently 01:03:20 (hh:mm:ss).
-*/
-
+// Return time at UTC+0, where utc_offset is the number of hours away from UTC + 0.
 double time_to_utc(int utc_offset, double time)
 {
+    return (utc_offset > 0) ? (time - utc_offset) % 24 : (time + utc_offset) % 24;
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -90,6 +71,7 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
+    return (utc_offset > 0) ? (time + utc_offset) % 24 : (time - utc_offset) % 24;
     /*
         Return UTC time in time zone utc_offset.
 
