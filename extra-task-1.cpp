@@ -16,12 +16,11 @@ double to_float_hours(int hours, int minutes, int seconds)
     assert(0 <= minutes < 60 and 0 <= seconds < 60);
     return hours + (minutes / 60.0) + (seconds / 3600.0);
 }
-
+//hours is a number of hours since midnight. Return the hour as seen on a 24 - hour clock.
 double to_24_hour_clock(double hours)
 {
-    /*
-        hours is a number of hours since midnight. Return the
-        hour as seen on a 24-hour clock.
+    assert(hours >= 0);
+    return hours % 24;
 
         Precondition: hours >= 0
 
