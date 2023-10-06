@@ -121,6 +121,9 @@ double to_24_hour_clock(double hours)
 int get_hours(int seconds) {
     return seconds / 3600;
 }
+int get_minutes(int seconds) {
+    return (seconds / 60) % 60;
+}
 
 double time_to_utc(int utc_offset, double time)
 {
@@ -182,5 +185,5 @@ double time_from_utc(int utc_offset, double time)
 }
 
 int main() {
-    std::cout << to_24_hour_clock(23.5);
+    std::cout << get_minutes(4180);
 }
