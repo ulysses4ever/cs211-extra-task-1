@@ -1,4 +1,5 @@
 #include <cassert>
+#include <cmath>
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
@@ -92,6 +93,8 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
+    return (int)hours % 24 + hours - (int)hours;
+
 }
 
 /*
