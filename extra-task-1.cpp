@@ -25,6 +25,7 @@ double seconds_difference(double time_1, double time_2)
 
 double hours_difference(double time_1, double time_2)
 {
+    return time_1 - time_2 / 3600.0;
     /*
         Return the number of hours later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -180,4 +181,4 @@ double time_from_utc(int utc_offset, double time)
         0.0
     */
 }
-//git push;
+git push;
