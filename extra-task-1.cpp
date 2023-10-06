@@ -89,7 +89,7 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
-    return hours % 24;
+    return hours % 24.0;
 }
 
 /*
@@ -150,6 +150,7 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
+    return (time + utc_offset) % 24.0;
 }
 
 double time_from_utc(int utc_offset, double time)
