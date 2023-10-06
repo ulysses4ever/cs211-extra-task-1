@@ -91,9 +91,9 @@ double to_24_hour_clock(double hours)
         >>> to_24_hour_clock(28.5)
         4.5
         
-        You may wish to inspect various function in <cmath> to work
+        - You may wish to inspect various function in <cmath> to work
         with integer and fractional part of a hours separately.
-        
+        - No
     */
 }
 
@@ -117,6 +117,10 @@ double to_24_hour_clock(double hours)
     In other words, if 3800 seconds have elapsed since midnight, 
     it is currently 01:03:20 (hh:mm:ss).
 */
+
+int get_hours(int seconds) {
+    return seconds / 3600;
+}
 
 double time_to_utc(int utc_offset, double time)
 {
