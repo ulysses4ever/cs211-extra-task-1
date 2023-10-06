@@ -125,6 +125,10 @@ int get_minutes(int seconds) {
     return (seconds / 60) % 60;
 }
 
+int get_seconds(int seconds) {
+    return seconds % 60;
+}
+
 double time_to_utc(int utc_offset, double time)
 {
     /*
@@ -185,5 +189,5 @@ double time_from_utc(int utc_offset, double time)
 }
 
 int main() {
-    std::cout << get_minutes(4180);
+    std::cout << get_seconds(3779);
 }
