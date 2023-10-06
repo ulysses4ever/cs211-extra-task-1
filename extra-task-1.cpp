@@ -1,3 +1,4 @@
+#include <cassert>
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
@@ -59,6 +60,9 @@ double to_float_hours(int hours, int minutes, int seconds)
         >>> to_float_hours(1, 0, 36)
         1.01
     */
+    assert(minutes >= 0 && minutes < 60);
+    assert(seconds >= 0 && seconds < 60);
+    return hours + (minutes / 60.0) + (seconds / 3600.0);
 }
 
 double to_24_hour_clock(double hours)
