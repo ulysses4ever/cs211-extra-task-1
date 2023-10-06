@@ -98,6 +98,10 @@ double to_24_hour_clock(double hours)
     */
 }
 
+int get_hours(int sec)
+{
+    return sec / 3600;
+}
 /*
     Implement three functions
         * get_hours
@@ -202,4 +206,8 @@ int main()
     assert(fabs(to_24_hour_clock(25) - 1) < DBL_EPSILON);
     assert(fabs(to_24_hour_clock(4) - 4) < DBL_EPSILON);
     assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
+
+    assert(get_hours(3800) == 1);
+    assert(get_hours(2000) == 0);
+    assert(get_hours(8000) == 2);
 }
