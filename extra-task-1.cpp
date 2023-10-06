@@ -18,6 +18,7 @@ double seconds_difference(double time_1, double time_2)
         >>> seconds_difference(1800.0, 1800.0)
         0.0
     */
+    return time_2 - time_1;
 }
 
 double hours_difference(double time_1, double time_2)
