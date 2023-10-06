@@ -85,33 +85,10 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
-    /*
-        Return UTC time in time zone utc_offset.
-
-        >>> time_from_utc(+0, 12.0)
-        12.0
- 
-        >>> time_from_utc(+1, 12.0)
-        13.0
- 
-        >>> time_from_utc(-1, 12.0)
-        11.0
- 
-        >>> time_from_utc(+6, 6.0)
-        12.0
- 
-        >>> time_from_utc(-7, 6.0)
-        23.0
- 
-        >>> time_from_utc(-1, 0.0)
-        23.0
- 
-        >>> time_from_utc(-1, 23.0)
-        22.0
- 
-        >>> time_from_utc(+1, 23.0)
-        0.0
-    */
+	double int_part_double;
+    double float_part = modf(time, &int_part_double);
+    int int_part = static_cast<int>(int_part_double);
+    return (static_cast<double>((24 + int_part + utc_offset) % 24) + float_part);
 }
 
 int main()
@@ -153,7 +130,15 @@ int main()
 	assert(fabs(time_to_utc(-1, 0.) - 1.) < DBL_EPSILON);
 	assert(fabs(time_to_utc(-1, 23.0) - 0.) < DBL_EPSILON);
 	
-
+	// task 7
+	assert(fabs(time_from_utc(+0, 12.0) - 12.) < DBL_EPSILON);
+	assert(fabs(time_from_utc(+1, 12.0) - 13.) < DBL_EPSILON);
+	assert(fabs(time_from_utc(-1, 12.0) - 11.) < DBL_EPSILON);
+	assert(fabs(time_from_utc(+6, 6.0) - 12.) < DBL_EPSILON);
+	assert(fabs(time_from_utc(-7, 6.0) - 23.) < DBL_EPSILON);
+	assert(fabs(time_from_utc(-1, .0) - 23.) < DBL_EPSILON);
+	assert(fabs(time_from_utc(-1, 23.0) - 22.) < DBL_EPSILON);
+	assert(fabs(time_from_utc(+1, 23.0) - 0.) < DBL_EPSILON);
 	
 	return 0;
 }
