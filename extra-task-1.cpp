@@ -189,4 +189,7 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+    double res = time + utc_offset;
+    return res > 0 ? (int)res % 24 + res - (int)res : 24 - ((int)(-res) % 24) + res - (int)res;
 }
+
