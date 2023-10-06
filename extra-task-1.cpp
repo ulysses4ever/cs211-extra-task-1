@@ -89,7 +89,7 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
-    
+    return hours % 24;
 }
 
 /*
