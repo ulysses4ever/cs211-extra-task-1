@@ -28,5 +28,13 @@ int main() {
     assert(abs(to_float_hours(1, 0, 36) - 1.01) < eps);
     cout << "Тесты task3 прошли" << endl;
 
+    //Task4
+    assert(to_24_hour_clock(24) == 0);
+    assert(to_24_hour_clock(48) == 0);
+    assert(to_24_hour_clock(25) == 1);
+    assert(to_24_hour_clock(4) == 4);
+    assert(abs(to_24_hour_clock(28.5) - 4.5) < eps);
+    cout << "Тесты task4 прошли" << endl;
+
 	system("pause");
 }

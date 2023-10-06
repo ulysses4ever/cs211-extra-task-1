@@ -7,3 +7,6 @@ double hours_difference(double, double);
 
 //Return the total number of hours in the specified number of hours, minutes, and seconds.
 double to_float_hours(int hours, int minutes, int seconds);
+
+//Return the hour as seen on a 24 - hour clock.
+double to_24_hour_clock(double);
