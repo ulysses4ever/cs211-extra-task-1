@@ -14,7 +14,10 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
-    return 1;
+    assert(minutes >= 0 && minutes <= 60);
+    assert(seconds >= 0 && seconds <= 60);
+
+    return hours + minutes / 60.0 + seconds / 3600.0;
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
@@ -146,20 +149,19 @@ double time_from_utc(int utc_offset, double time)
 
 
 /*
-        Return the number of hours later that a time in seconds
-        time_2 is than a time in seconds time_1.
+        Return the total number of hours in the specified number
+        of hours, minutes, and seconds.
 
-        >>> hours_difference(1800.0, 3600.0)
-        0.5
+        Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
 
-        >>> hours_difference(3600.0, 1800.0)
-        -0.5
+        >>> to_float_hours(0, 15, 0)
+        0.25
 
-        >>> hours_difference(1800.0, 2160.0)
-        0.1
+        >>> to_float_hours(2, 45, 9)
+        2.7525
 
-        >>> hours_difference(1800.0, 1800.0)
-        0.0
+        >>> to_float_hours(1, 0, 36)
+        1.01
     */
 
 void main() {
@@ -173,5 +175,9 @@ void main() {
     assert(abs(hours_difference(3600.0, 1800.0) - -0.5) < DBL_EPSILON);
     assert(abs(hours_difference(1800.0, 2160.0) - 0.1) < DBL_EPSILON);
     assert(abs(hours_difference(1800.0, 1800.0)) < DBL_EPSILON);
+
+    assert(abs(to_float_hours(0, 15, 0) - 0.25) < DBL_EPSILON);
+    assert(abs(to_float_hours(2,45,9) - 2.7525) < DBL_EPSILON);
+    assert(abs(to_float_hours(1, 0, 36) - 1.01) < DBL_EPSILON);
 
 }
