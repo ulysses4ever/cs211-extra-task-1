@@ -1,6 +1,9 @@
+//git clone https://github.com/SebasTheOnlyOne/cs211-extra-task-1.git
+
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
+    return time_1 - time_2;
     
     /*    
         Return the number of seconds later that a time in seconds
@@ -22,6 +25,7 @@ double seconds_difference(double time_1, double time_2)
 
 double hours_difference(double time_1, double time_2)
 {
+    return time_1 - time_2 / 3600.0;
     /*
         Return the number of hours later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -42,6 +46,7 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
+    return (hours + minutes / 60.0 + seconds / 3600.0) / 1.0;
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
@@ -61,6 +66,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
+    return hours / 24.0 - cmath::floor(hours / 24.0)
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -109,8 +115,27 @@ double to_24_hour_clock(double hours)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
+int get_hours(int seconds)
+{
+    return seconds / 3600;
+}
+
+int get_minutes(int seconds)
+{
+    return (seconds - get_hours(seconds) * 3600) / 60;
+}
+
+int get_seconds(int seconds)
+{
+    return seconds - get_minutes(seconds) * 60 - get_hours(seconds) * 3600;
+}
+
 double time_to_utc(int utc_offset, double time)
 {
+    double temp = -1 * utc_offset + time;
+    if (temp < 0)
+        temp += 24.0;
+    return to_24_hour_clock(temp);
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -139,6 +164,10 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
+    double temp = utc_offset + time;
+    if (temp < 0)
+        temp += 24.0;
+    return to_24_hour_clock(temp);
     /*
         Return UTC time in time zone utc_offset.
 
@@ -166,4 +195,67 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+}
+
+
+int main()
+{
+    const double DBL_EPSILON = 0.000000001;
+
+    // seconds_difference Tests
+    assert(abs(1800.0 - seconds_difference(1800.0, 3600.0)) < DBL_EPSILON);
+    assert(abs(-1800.0 - seconds_difference(3600.0, 1800.0)) < DBL_EPSILON);
+    assert(abs(360.0 - seconds_difference(1800.0, 2160.0)) < DBL_EPSILON);
+    assert(abs(0.0 - seconds_difference(1800.0, 1800.0)) < DBL_EPSILON);
+
+
+    // hours_difference Tests
+    assert(abs(0.5 - hours_difference(1800.0, 3600.0)) < DBL_EPSILON);
+    assert(abs(-0.5 - hours_difference(3600.0, 1800.0)) < DBL_EPSILON);
+    assert(abs(0.1 - hours_difference(1800.0, 2160.0)) < DBL_EPSILON);
+    assert(abs(0.0 - hours_difference(1800.0, 1800.0)) < DBL_EPSILON);
+
+
+    // to_float_hours Tests
+    assert(abs(0.25 - to_float_hours(0, 15, 0)) < DBL_EPSILON);
+    assert(abs(2.7525 - to_float_hours(2, 45, 9)) < DBL_EPSILON);
+    assert(abs(1.01 - to_float_hours(1, 0, 36)) < DBL_EPSILON);
+
+
+    // to_24_hour_clock Tests
+    assert(abs(0.0 - to_24_hour_clock(24)) < DBL_EPSILON);
+    assert(abs(0.0 - to_24_hour_clock(48)) < DBL_EPSILON);
+    assert(abs(1.0 - to_24_hour_clock(25)) < DBL_EPSILON);
+    assert(abs(4.0 - to_24_hour_clock(4)) < DBL_EPSILON);
+    assert(abs(4.5 - to_24_hour_clock(28.5)) < DBL_EPSILON);
+
+
+    // get_hours Test
+    assert(1 == get_hours(3800));
+
+    // get_minutes Test
+    assert(3 == get_minutes(3800));
+
+    // get_seconds Test
+    assert(20 == get_seconds(3800));
+
+    // time_to_utc Tests
+    assert(abs(12.0 - time_to_utc(+0, 12.0)) < DBL_EPSILON);
+    assert(abs(11.0 - time_to_utc(+1, 12.0)) < DBL_EPSILON);
+    assert(abs(13.0 - time_to_utc(-1, 12.0)) < DBL_EPSILON);
+    assert(abs(5.0 - time_to_utc(-11, 18.0)) < DBL_EPSILON);
+    assert(abs(1.0 - time_to_utc(-1, 0.0)) < DBL_EPSILON);
+    assert(abs(0.0 - time_to_utc(-1, 23.0)) < DBL_EPSILON);
+
+    // time_from_utc Tests
+    assert(abs(12.0 - time_from_utc(+0, 12.0)) < DBL_EPSILON);
+    assert(abs(13.0 - time_from_utc(+1, 12.0)) < DBL_EPSILON);
+    assert(abs(11.0 - time_from_utc(-1, 12.0)) < DBL_EPSILON);
+    assert(abs(12.0 - time_from_utc(+6, 6.0)) < DBL_EPSILON);
+    assert(abs(23.0 - time_from_utc(-7, 6.0)) < DBL_EPSILON);
+    assert(abs(23.0 - time_from_utc(-1, 0.0)) < DBL_EPSILON);
+    assert(abs(22.0 - time_from_utc(-1, 23.0)) < DBL_EPSILON);
+    assert(abs(0.0 - time_from_utc(+1, 23.0)) < DBL_EPSILON);
+
+    return 0;
 }
