@@ -49,6 +49,32 @@ double to_24_hour_clock(double hours)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
+double get_hours(double seconds)
+{
+	double int_part_double;
+	modf(seconds, &int_part_double);
+	int int_part = static_cast<int>(int_part_double);
+	return (static_cast<double>(int_part / 3600));
+}
+
+double get_minutes(double seconds)
+{
+	double int_part_double;
+	modf(seconds, &int_part_double);
+	int int_part = static_cast<int>(int_part_double);
+	int_part -= 3600 * get_hours(seconds);
+	return (static_cast<double>(int_part / 60));
+}
+
+double get_seconds(double seconds)
+{
+	double int_part_double;
+	modf(seconds, &int_part_double);
+	int int_part = static_cast<int>(int_part_double);
+	int_part -= (3600 * get_hours(seconds) + 60 * get_minutes(seconds));
+	return (static_cast<double>(int_part));
+}
+
 double time_to_utc(int utc_offset, double time)
 {
     /*
@@ -129,6 +155,12 @@ int main()
 	assert(fabs(to_24_hour_clock(25) - 1.) < DBL_EPSILON);
 	assert(fabs(to_24_hour_clock(4) - 4.) < DBL_EPSILON);
 	assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
+	
+	assert(fabs(get_hours(3800) - 1.) < DBL_EPSILON);
+	
+	assert(fabs(get_minutes(3800) - 3.) < DBL_EPSILON);
+	
+	assert(fabs(get_seconds(3800) - 20.) < DBL_EPSILON);
 	
 	return 0;
 }
