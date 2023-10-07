@@ -1,3 +1,5 @@
+#include "extra-task-1.h";
+
 double seconds_difference(double time_1, double time_2)
 {
     return time_2 - time_1;
@@ -42,7 +44,7 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
-    return hours + minutes / 60 + seconds / 3600;
+    return hours + (double)minutes / 60 + (double)seconds / 3600;
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
@@ -128,7 +130,7 @@ double get_seconds(double time)
 
 double time_to_utc(int utc_offset, double time)
 {
-    return time - utc_offset;
+    return to_24_hour_clock(24 + time - utc_offset);
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -157,7 +159,7 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
-    return time + utc_offset;
+    return to_24_hour_clock(24 + time + utc_offset);
     /*
         Return UTC time in time zone utc_offset.
 
