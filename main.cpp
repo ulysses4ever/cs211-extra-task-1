@@ -27,5 +27,10 @@ int main() {
 	assert(fabs(to_float_hours(1, 0, 36) - 1.01) < DBL_EPSILON);
 
 
+	//to_24_hour_clock tests
+	assert(fabs(to_24_hour_clock(24)) < DBL_EPSILON);
+	assert(fabs(to_24_hour_clock(48)) < DBL_EPSILON);
+	assert(fabs(to_24_hour_clock(4) - 4) < DBL_EPSILON);
+	assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
 }
 
