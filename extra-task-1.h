@@ -19,3 +19,6 @@ int get_minutes(int);
 
 //determine the seconds part
 int get_seconds(int);
+
+
+double time_to_utc(int, double);
