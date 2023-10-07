@@ -51,33 +51,14 @@ double time_to_utc(int utc_offset, double time)
 	return utc_time;
 }
 
-//double time_from_utc(int utc_offset, double time)
-//{
-	/*
-		Return UTC time in time zone utc_offset.
-
-		>>> time_from_utc(+0, 12.0)
-		12.0
-
-		>>> time_from_utc(+1, 12.0)
-		13.0
-
-		>>> time_from_utc(-1, 12.0)
-		11.0
-
-		>>> time_from_utc(+6, 6.0)
-		12.0
-
-		>>> time_from_utc(-7, 6.0)
-		23.0
-
-		>>> time_from_utc(-1, 0.0)
-		23.0
-
-		>>> time_from_utc(-1, 23.0)
-		22.0
-
-		>>> time_from_utc(+1, 23.0)
-		0.0
-	*/
-	//}
+double time_from_utc(int utc_offset, double time)
+{
+	double local_time = time + utc_offset;
+	while (local_time < 0) {
+		local_time += 24;
+	}
+	while (local_time >= 24) {
+		local_time -= 24;
+	}
+	return local_time;
+}

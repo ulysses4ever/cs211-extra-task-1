@@ -17,4 +17,6 @@ int get_seconds(int seconds);
 
 double time_to_utc(int utc_offset, double time);
 
+double time_from_utc(int utc_offset, double time);
+
 #endif
