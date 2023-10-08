@@ -1,0 +1,5 @@
+﻿  extra-task-1.cpp
+  main.cpp
+C:\Code\23-24\cs211-extra-task-1\Bonus-task1\main.cpp(4,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+  Создание кода...
+  Bonus-task1.vcxproj -> C:\Code\23-24\cs211-extra-task-1\Bonus-task1\x64\Debug\Bonus-task1.exe
