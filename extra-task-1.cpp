@@ -66,6 +66,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
+    return std::fmod(std::fmod(hours, 24) + 24, 24);
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
