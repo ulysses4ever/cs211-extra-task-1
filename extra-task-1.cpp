@@ -4,9 +4,8 @@
 
 #include "extra-task-1.h"
 
-double seconds_difference(double time_1, double time_2)
-{
-    assert(time_1 >=0 && time_2>=0);
+double seconds_difference(double time_1, double time_2) {
+    assert(time_1 >= 0 && time_2 >= 0);
     return time_2 - time_1;
     /*
         Return the number of seconds later that a time in seconds
@@ -26,10 +25,9 @@ double seconds_difference(double time_1, double time_2)
     */
 }
 
-double hours_difference(double time_1, double time_2)
-{
-    return 0;
-
+double hours_difference(double time_1, double time_2) {
+    assert(time_1 >= 0 && time_2 >= 0);
+    return (time_2 - time_1) / 3600;
     /*
         Return the number of hours later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -48,8 +46,7 @@ double hours_difference(double time_1, double time_2)
     */
 }
 
-double to_float_hours(int hours, int minutes, int seconds)
-{
+double to_float_hours(int hours, int minutes, int seconds) {
 
     return 0;
     /*
@@ -69,8 +66,7 @@ double to_float_hours(int hours, int minutes, int seconds)
     */
 }
 
-double to_24_hour_clock(double hours)
-{
+double to_24_hour_clock(double hours) {
 
     return 0;
     /*
@@ -121,8 +117,7 @@ double to_24_hour_clock(double hours)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
-double time_to_utc(int utc_offset, double time)
-{
+double time_to_utc(int utc_offset, double time) {
 
     return 0;
     /*
@@ -151,8 +146,7 @@ double time_to_utc(int utc_offset, double time)
     */
 }
 
-double time_from_utc(int utc_offset, double time)
-{
+double time_from_utc(int utc_offset, double time) {
 
     return 0;
     /*
