@@ -47,6 +47,7 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
+    assert((minutes < 60 && minutes >= 0) && (seconds >= 0 && seconds < 60) && hours >= 0);
     return (double)hours + ((double)minutes / 60.0) + ((double)seconds / 3600.0);
     /*
         Return the total number of hours in the specified number
@@ -67,6 +68,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
+    assert(hours >= 0);
     return hours - (int)hours + (int)hours % 24;
     /*
         hours is a number of hours since midnight. Return the
@@ -130,6 +132,8 @@ int get_seconds(int seconds) {
 
 double time_to_utc(int utc_offset, double time)
 {
+    assert((utc_offset >= -12 && utc_offset <= 12) && time >= 0 && time < 24);
+
     double shifted = time - utc_offset;
     if(shifted < 0)
         shifted = 24 + shifted;
