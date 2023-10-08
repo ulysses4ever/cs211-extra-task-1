@@ -128,6 +128,7 @@ double to_24_hour_clock(double hours)
 
 double time_to_utc(int utc_offset, double time)
 {
+    return to_24_hour_clock((time - utc_offset) > 0 ? (time - utc_offset) : 24 + (time - utc_offset));
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -201,5 +202,9 @@ int main()
     assert(to_24_hour_clock(24) == 0);
     assert(to_24_hour_clock(28) == 4);
     assert(to_24_hour_clock(48) == 0);
+
+    assert(time_to_utc(+1, 12.0) == 11.0); 
+    assert(time_to_utc(-1, 23.0) == 0.0);
+    assert(time_to_utc(-11, 18.0) == 5.0);
 
 }
