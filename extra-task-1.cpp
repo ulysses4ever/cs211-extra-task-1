@@ -1,5 +1,6 @@
 #include <cassert>
 #include <iostream>
+#include <cmath>
 
 double seconds_difference(double time_1, double time_2)
 {
@@ -22,31 +23,10 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
-    /*
-        hours is a number of hours since midnight. Return the
-        hour as seen on a 24-hour clock.
-
-        Precondition: hours >= 0
-
-        >>> to_24_hour_clock(24)
-        0
-        
-        >>> to_24_hour_clock(48)
-        0
-        
-        >>> to_24_hour_clock(25)
-        1
-        
-        >>> to_24_hour_clock(4)
-        4
-        
-        >>> to_24_hour_clock(28.5)
-        4.5
-        
-        You may wish to inspect various function in <cmath> to work
-        with integer and fractional part of a hours separately.
-        
-    */
+    assert(hours >= 0);
+    double intPart = 0;
+    double doublePart = std::modf(hours, &intPart);
+    return static_cast<int>(intPart) % 24 + doublePart;
 }
 
 /*
@@ -151,4 +131,10 @@ int main()
     assert(std::fabs(to_float_hours(1, 0, 36) - 1.01) < DBL_EPSILON);
     assert(std::fabs(hours_difference(1800.0, 1800.0)) < DBL_EPSILON);
 
+    // test to_24_hour_clock
+    assert(std::fabs(to_24_hour_clock(24)) < DBL_EPSILON);
+    assert(std::fabs(to_24_hour_clock(48)) < DBL_EPSILON);
+    assert(std::fabs(to_24_hour_clock(25) - 1) < DBL_EPSILON);
+    assert(std::fabs(to_24_hour_clock(4) - 4) < DBL_EPSILON);
+    assert(std::fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
 }
