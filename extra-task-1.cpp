@@ -1,3 +1,4 @@
+
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
@@ -88,9 +89,13 @@ double to_24_hour_clock(double hours)
         You may wish to inspect various function in <cmath> to work
         with integer and fractional part of a hours separately.
     */
-    while (hours > 24)
+    while (hours >= 24)
     {  // because i can o~O
         hours -= 24;
+    }
+    while (hours < -1e-6)  // while < 0
+    {
+        hours += 24;
     }
     return hours;
 }
