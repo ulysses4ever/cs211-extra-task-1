@@ -164,6 +164,7 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
+    return time_to_utc(-utc_offset, time);
     /*
         Return UTC time in time zone utc_offset.
 
@@ -227,5 +228,13 @@ int main() {
     assert(abs(time_to_utc(-1, 0) - 1) < eps);
     assert(abs(time_to_utc(-1, 23) - 0) < eps);
 
-    
+    //utc offset from test:
+    assert(abs(time_from_utc(0, 12) - 12) < eps);
+    assert(abs(time_from_utc(1, 12) - 13) < eps);
+    assert(abs(time_from_utc(-1, 12) - 11) < eps);
+    assert(abs(time_from_utc(6, 6) - 12) < eps);
+    assert(abs(time_from_utc(-7, 6) - 23) < eps);
+    assert(abs(time_from_utc(-1, 0) - 23) < eps);
+    assert(abs(time_from_utc(1, 23) - 0) < eps);
+    assert(abs(time_from_utc(-1, 23) - 22) < eps);
 }
