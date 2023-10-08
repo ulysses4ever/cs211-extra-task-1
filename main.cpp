@@ -25,9 +25,14 @@ int main()
 
     //Test to_24_hour_clock
     assert(fabs(to_24_hour_clock(24) - 0) < DBL_EPSILON);
-    assert(fabs(to_24_hour_clock(48) + 0) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(48) - 0) < DBL_EPSILON);
     assert(fabs(to_24_hour_clock(25) - 1) < DBL_EPSILON);
     assert(fabs(to_24_hour_clock(4) - 4) < DBL_EPSILON);
     assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
     assert(fabs(to_24_hour_clock(49.5) - 1.5) < DBL_EPSILON);
+
+    //Test get_hours, get_minutes, get_seconds
+    assert(fabs(get_hours(3800) - 1) < DBL_EPSILON);
+    assert(fabs(get_minutes(3800) - 3) < DBL_EPSILON);
+    assert(fabs(get_seconds(3800) - 20) < DBL_EPSILON);
 }
