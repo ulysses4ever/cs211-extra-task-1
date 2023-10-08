@@ -27,6 +27,12 @@ int get_hours(int seconds)
 {
     return seconds / 3600;
 }
+
+///Returns the minutes part of a time in seconds.
+int get_minutes(int seconds)
+{
+    return (seconds % 3600) / 60;
+}
 /*
     Implement three functions
         * get_hours
