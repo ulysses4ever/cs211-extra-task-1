@@ -20,3 +20,6 @@ int get_minutes(int seconds);
 
 //Метод возвращающий секундную часть времени 
 int get_seconds(int seconds);
+
+//Возвращает время в UTC+0, где utc_offset - количество часов, оставшихся до UTC + 0
+double time_to_utc(int utc_offset, double time);
