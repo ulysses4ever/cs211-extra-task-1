@@ -1,7 +1,11 @@
+#include <cassert>
+#include <cmath>
+
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
-    
+    return time_2 - time_1;
+
     /*    
         Return the number of seconds later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -170,5 +174,13 @@ double time_from_utc(int utc_offset, double time)
 
 
 int main() {
+    const double eps = 0.001;
+
+    //sec diff test:
+    assert(abs(seconds_difference(1800, 3600) - 1800.0) < eps);
+
+    assert(abs(seconds_difference(1800, 900) + 900.0) < eps);
+
+    assert(abs(seconds_difference(1800, 1800) - .0) < eps);
     
 }
