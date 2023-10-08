@@ -94,6 +94,21 @@ double to_24_hour_clock(double hours)
     */
 }
 
+double get_hours(double seconds)
+{
+    return std::floor(seconds / 3600);
+}
+
+double get_minutes(double seconds)
+{
+    return std::floor((seconds - get_hours(seconds) * 3600) / 60);
+}
+
+double get_seconds(double seconds)
+{
+    return seconds - get_hours(seconds) * 3600 - get_minutes(seconds) * 60;
+}
+
 /*
     Implement three functions
         * get_hours
