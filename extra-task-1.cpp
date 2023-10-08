@@ -74,7 +74,7 @@ double to_24_hour_clock(double hours)
     { 
     double i_part;
     double f_part = modf(hours, &i_part);
-    return  f_part(int)+ i_part % 24;
+    return f_part + (int)i_part % 24;
     }
    
 
@@ -188,9 +188,9 @@ double time_from_utc(int utc_offset, double time)
 }
 int main()
 {
-    assert(seconds_difference(2, 8) == 6);
-    assert(seconds_difference(1.5, 4.6) == 3.1);
-    assert(seconds_difference(1.1, 6.3) == 4.2);
+    assert(seconds_difference(2.2, 8.4) - 6.2 < DBL_EPSILON);
+    assert(seconds_difference(1, 4.2) - 3.2 < DBL_EPSILON);
+    assert(seconds_difference(1.1, 6.3) - 5.2 < DBL_EPSILON);
 
     assert(hours_difference(1800.0, 3600.0) == 0.5);
     assert(hours_difference(0.0, 3600.0) == 1);
