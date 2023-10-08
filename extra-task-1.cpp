@@ -131,7 +131,9 @@ double get_seconds(double time) {
 }
 
 double time_to_utc(int utc_offset, double time) {
-    return static_cast<int>(time - utc_offset) % 24 + time - static_cast<int>(time);
+    double result = time - utc_offset;
+    return result > 0 ? static_cast<int>(result) % 24 + time - static_cast<int>(time) :
+           (24 - (static_cast<int>(-result) % 24)) % 24 + result - static_cast<int>(result);
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -159,7 +161,9 @@ double time_to_utc(int utc_offset, double time) {
 }
 
 double time_from_utc(int utc_offset, double time) {
-    return 0;
+    double result = time + utc_offset;
+    return result > 0 ? static_cast<int>(result) % 24 + time - static_cast<int>(time) :
+           (24 - (static_cast<int>(-result) % 24)) % 24 + result - static_cast<int>(result);
     /*
         Return UTC time in time zone utc_offset.
 
