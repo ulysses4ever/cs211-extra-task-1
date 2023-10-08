@@ -7,3 +7,5 @@ double seconds_difference(double, double);
 double hours_difference(double, double);
 //Возвращает время в часах
 double to_float_hours(int, int, int);
+//Возвращает часы на 24 часовых часах
+double to_24_hour_clock(double);
