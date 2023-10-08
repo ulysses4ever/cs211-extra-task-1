@@ -32,5 +32,10 @@ void main()
 	assert(fabs(to_24_hour_clock(25) - 1) <= DBL_EPSILON);
 	assert(fabs(to_24_hour_clock(4) - 4) <= DBL_EPSILON);
 	assert(fabs(to_24_hour_clock(28.5) - 4.5) <= DBL_EPSILON);
+
+	//get_hours
+	assert(get_hours(3800) == 1);
+	assert(get_hours(1) == 0);
+	assert(get_hours(9000) == 2);
 	std::cout << "to_24_hour_clock works!" << std::endl;
 }

@@ -16,8 +16,13 @@ double to_float_hours(int, int, int);
 //hour as seen on a 24 - hour clock.
 double to_24_hour_clock(double);
 
+///Returns the hours part of a time in seconds.
+int get_hours(int seconds);
+
 //Return time at UTC+0, where utc_offset is the number of hours away from UTC + 0.
 double time_to_utc(int, double);
 
 //Return UTC time in time zone utc_offset.
 double time_from_utc(int, double);
+
+
