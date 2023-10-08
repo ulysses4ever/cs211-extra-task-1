@@ -46,4 +46,11 @@ void main()
 	assert(get_minutes(5000) == 23);
 	assert(get_minutes(1) == 0);
 	std::cout << "get_minutes works!" << std::endl;
+
+	//get_seconds
+	assert(get_seconds(3800) == 20);
+	assert(get_seconds(1) == 1);
+	assert(get_seconds(5500) == 40);
+	std::cout << "get_seconds works!" << std::endl;
+	
 }
