@@ -1,7 +1,12 @@
+#include "extra-task-1.h"
+#include <cmath>
+#include <iostream>
+
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
     
+    return time_2 - time_1;
     /*    
         Return the number of seconds later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -22,6 +27,7 @@ double seconds_difference(double time_1, double time_2)
 
 double hours_difference(double time_1, double time_2)
 {
+    return seconds_difference(time_1, time_2) / 3600;
     /*
         Return the number of hours later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -42,6 +48,7 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
+    return hours + minutes / 60.0 + seconds / 3600.0;
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
@@ -61,6 +68,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
+    return (int)trunc(hours) % 24 + hours - trunc(hours);
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -69,7 +77,7 @@ double to_24_hour_clock(double hours)
 
         >>> to_24_hour_clock(24)
         0
-        
+            
         >>> to_24_hour_clock(48)
         0
         
@@ -87,7 +95,15 @@ double to_24_hour_clock(double hours)
         
     */
 }
-
+int get_hours(int sec) {
+    return (sec / 3600) % 24;
+}
+int get_minutes(int sec) {
+    return (sec / 60) % 60;
+}
+int get_seconds(int sec) {
+    return sec % 60;
+}
 /*
     Implement three functions
         * get_hours
@@ -111,6 +127,7 @@ double to_24_hour_clock(double hours)
 
 double time_to_utc(int utc_offset, double time)
 {
+    return (((int)trunc(time) - utc_offset) % 24) / 1.0;
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -139,6 +156,7 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
+    return (((int)trunc(time) + utc_offset + 24) % 24) / 1.0;
     /*
         Return UTC time in time zone utc_offset.
 
