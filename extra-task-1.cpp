@@ -116,10 +116,24 @@ double to_24_hour_clock(double hours)
     In other words, if 3800 seconds have elapsed since midnight,
     it is currently 01:03:20 (hh:mm:ss).
 */
+double get_hours(double t) {
+    return static_cast<int>(t) / 3600;
+}
+
+double get_minutes(double t) {
+    return  static_cast<int>(t) % 3600 / 60;
+}
+
+double get_seconds(double t) {
+    return static_cast<int>(t) % 3600 % 60;
+}
 
 double time_to_utc(int utc_offset, double time)
 {
-    return 0;
+    double res = (time - utc_offset);
+    if (res >= 0)
+        return to_24_hour_clock(res);
+    return  24 - (static_cast<int>(-res) % 24) + res - static_cast<int>(res);
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.

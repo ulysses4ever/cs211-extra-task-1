@@ -30,6 +30,17 @@ int main()
 	assert(abs(to_24_hour_clock(4) - 4) < DBL_EPSILON);
 	assert(abs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
 
+	//task5
+	assert(abs(time_to_utc(+0, 12.0) - 12.0) < DBL_EPSILON);
+	assert(abs(time_to_utc(+1, 12.0) - 11.0) < DBL_EPSILON);
+	assert(abs(time_to_utc(-1, 12.0) - 13.0) < DBL_EPSILON);
+	assert(abs(time_to_utc(-11, 18.0) - 5.0) < DBL_EPSILON);
+	assert(abs(time_to_utc(-1, 0.0) - 1.0) < DBL_EPSILON);
+	assert(abs(time_to_utc(-1, 23.0) - 0.0) < DBL_EPSILON);
+	assert(abs(time_to_utc(1, 0.0) - 23.0) < DBL_EPSILON);
+
+	//task6
+
 
 
 
