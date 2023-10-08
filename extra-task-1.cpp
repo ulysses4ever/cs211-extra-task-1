@@ -162,7 +162,11 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
-    return 0;
+
+    double res = (time + utc_offset);
+    if (res >= 0)
+        return to_24_hour_clock(res);
+    return  24 - (static_cast<int>(-res) % 24) + res - static_cast<int>(res);
     /*
         Return UTC time in time zone utc_offset.
 
@@ -191,3 +195,4 @@ double time_from_utc(int utc_offset, double time)
         0.0
     */
 }
+s

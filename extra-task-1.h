@@ -9,3 +9,5 @@ double to_float_hours(int hours, int minutes, int seconds);
 double to_24_hour_clock(double hours);
 // Return time at UTC+0, where utc_offset is the number of hours away from UTC + 0.
 double time_to_utc(int utc_offset, double time);
+// Return UTC time in time zone utc_offset.
+double time_from_utc(int utc_offset, double time);
