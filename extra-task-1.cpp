@@ -116,6 +116,20 @@ double to_24_hour_clock(double hours)
     In other words, if 3800 seconds have elapsed since midnight, 
     it is currently 01:03:20 (hh:mm:ss).
 */
+int get_hours(int seconds)
+{
+    return seconds / 3600;
+}
+
+int get_minutes(int seconds)
+{
+    return (seconds % 3600) / 60;
+}
+
+int get_seconds(int seconds)
+{
+    return (seconds % 3600) % 60;
+}
 
 double time_to_utc(int utc_offset, double time)
 {
@@ -201,4 +215,14 @@ int main()
     assert(fabs(to_24_hour_clock(25) - 1) < DBL_EPSILON);
     assert(fabs(to_24_hour_clock(4) - 4) < DBL_EPSILON);
     assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
+
+    /*Implement three functions
+        * get_hours
+        * get_minutes
+        * get_seconds
+    They are used to determine the hours part, minutes part and seconds part
+    of a time in seconds. E.g.:*/
+    assert(get_hours(3800) == 1);
+    assert(get_minutes(3800) == 3);
+    assert(get_seconds(3800) == 20);
 }
