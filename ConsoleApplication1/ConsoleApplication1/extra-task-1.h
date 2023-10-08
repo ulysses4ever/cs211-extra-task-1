@@ -15,3 +15,5 @@ int get_hours(int);
 int get_minutes(int);
 //Возвращает секундую часть
 int get_seconds(int);
+////Возвращает время в UTC
+double time_to_utc(int, double);
