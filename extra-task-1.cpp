@@ -23,6 +23,7 @@ double seconds_difference(double time_1, double time_2)
 
 double hours_difference(double time_1, double time_2)
 {
+    return (time_2 - time_1) / 3600;
     /*
         Return the number of hours later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -43,7 +44,10 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
-    /*
+    
+    /* if(0 <= minutes && minutes < 60 && 0 <= seconds && seconds < 60);
+
+    return hours + (minutes / 60.0) + (seconds / 3600.0);
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
 
@@ -173,4 +177,11 @@ int main()
     assert(seconds_difference(2, 8) == 6);
     assert(seconds_difference(1.5, 4.6) == 3.1);
     assert(seconds_difference(1.1, 6.3) == 4.2);
+
+    assert(hours_difference(1800.0, 3600.0) == 0.5);
+    assert(hours_difference(0.0, 3600.0) == 1);
+    assert(hours_difference(1800.0, 9000.0) == 2);
+
+
+
 }
