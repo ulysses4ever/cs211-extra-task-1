@@ -1,3 +1,5 @@
+#include <cmath>
+#include <cfloat>
 #include <cassert>
 double seconds_difference(double time_1, double time_2)
 {
@@ -44,7 +46,7 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
-    if (0 <= minutes && minutes < 60 && 0 <= seconds && seconds < 60);
+    if (0 <= minutes && minutes < 60 && 0 <= seconds && seconds < 60)
 
     return hours + (minutes / 60.0) + (seconds / 3600.0);
     
@@ -67,6 +69,15 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
+
+    if (hours >= 0) 
+    { 
+    double i_part;
+    double f_part = modf(hours, &i_part);
+    return  f_part(int)+ i_part % 24;
+    }
+   
+
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -186,5 +197,9 @@ int main()
     assert(to_float_hours(0, 15, 0) == 0.25);
     assert(to_float_hours(2, 45, 9) == 2.7525);
     assert(to_float_hours(3, 30, 0) == 3.5);
+
+    assert(to_24_hour_clock(24) == 0);
+    assert(to_24_hour_clock(28) == 4);
+    assert(to_24_hour_clock(48) == 0);
 
 }
