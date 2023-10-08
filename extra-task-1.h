@@ -4,11 +4,14 @@
 
 #include <iostream>
 #include <cmath>
+#include <cassert>
 
 #ifndef EXTRA_TASK_EXTRA_TASK_1_H
 #define EXTRA_TASK_EXTRA_TASK_1_H
 
 #endif //EXTRA_TASK_EXTRA_TASK_1_H
+
+const double DBL_EPSILON = 0.000000001;
 
 
 double seconds_difference(double time_1, double time_2);
