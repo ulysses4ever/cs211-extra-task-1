@@ -130,6 +130,12 @@ int get_seconds(int seconds) {
 
 double time_to_utc(int utc_offset, double time)
 {
+    double shifted = time - utc_offset;
+    if(shifted < 0)
+        shifted = 24 + shifted;
+    if(shifted >= 24)
+        shifted = shifted - 24;
+    return shifted;
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -212,4 +218,14 @@ int main() {
     assert(abs(to_24_hour_clock(25) - 1) < eps);
     assert(abs(to_24_hour_clock(4) - 4) < eps);
     assert(abs(to_24_hour_clock(28.5) - 4.5) < eps);
+
+    //utc offset test:
+    assert(abs(time_to_utc(0, 12) - 12) < eps);
+    assert(abs(time_to_utc(1, 12) - 11) < eps);
+    assert(abs(time_to_utc(-1, 12) - 13) < eps);
+    assert(abs(time_to_utc(-11, 18) - 5) < eps);
+    assert(abs(time_to_utc(-1, 0) - 1) < eps);
+    assert(abs(time_to_utc(-1, 23) - 0) < eps);
+
+    
 }
