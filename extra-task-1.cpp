@@ -130,6 +130,12 @@ int get_seconds(int seconds)
 
 double time_to_utc(int utc_offset, double time)
 {
+    double utc_time = time - utc_offset;
+    if (utc_time < 0)
+        utc_time += 24;
+    else if (utc_time >= 24)
+        utc_time -= 24;
+    return utc_time;
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
