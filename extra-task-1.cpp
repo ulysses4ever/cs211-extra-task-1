@@ -67,8 +67,8 @@ double to_float_hours(int hours, int minutes, int seconds) {
 }
 
 double to_24_hour_clock(double hours) {
-
-    return 0;
+    assert(hours >= 0);
+    return static_cast<int>(hours) % 24 + hours - static_cast<int>(hours);
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
