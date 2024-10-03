@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Projects\\C\u002B\u002B\\Bonus1\\cs211-extra-task-1\\Extra-task-1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4741EEB5-6AA8-42D3-B29B-A6736E811AA4}|Extra-task-1\\Extra-task-1.vcxproj|C:\\Projects\\C\u002B\u002B\\Bonus1\\cs211-extra-task-1\\Extra-task-1\\Extra-task-1\\extra-task-1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4741EEB5-6AA8-42D3-B29B-A6736E811AA4}|Extra-task-1\\Extra-task-1.vcxproj|solutionrelative:Extra-task-1\\extra-task-1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4741EEB5-6AA8-42D3-B29B-A6736E811AA4}|Extra-task-1\\Extra-task-1.vcxproj|C:\\Projects\\C\u002B\u002B\\Bonus1\\cs211-extra-task-1\\Extra-task-1\\Extra-task-1\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4741EEB5-6AA8-42D3-B29B-A6736E811AA4}|Extra-task-1\\Extra-task-1.vcxproj|solutionrelative:Extra-task-1\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4741EEB5-6AA8-42D3-B29B-A6736E811AA4}|Extra-task-1\\Extra-task-1.vcxproj|C:\\Projects\\C\u002B\u002B\\Bonus1\\cs211-extra-task-1\\Extra-task-1\\Extra-task-1\\extra-task-1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4741EEB5-6AA8-42D3-B29B-A6736E811AA4}|Extra-task-1\\Extra-task-1.vcxproj|solutionrelative:Extra-task-1\\extra-task-1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "extra-task-1.h",
+              "DocumentMoniker": "C:\\Projects\\C\u002B\u002B\\Bonus1\\cs211-extra-task-1\\Extra-task-1\\Extra-task-1\\extra-task-1.h",
+              "RelativeDocumentMoniker": "Extra-task-1\\extra-task-1.h",
+              "ToolTip": "C:\\Projects\\C\u002B\u002B\\Bonus1\\cs211-extra-task-1\\Extra-task-1\\Extra-task-1\\extra-task-1.h",
+              "RelativeToolTip": "Extra-task-1\\extra-task-1.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-10-03T05:08:13.859Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "extra-task-1.cpp",
+              "DocumentMoniker": "C:\\Projects\\C\u002B\u002B\\Bonus1\\cs211-extra-task-1\\Extra-task-1\\Extra-task-1\\extra-task-1.cpp",
+              "RelativeDocumentMoniker": "Extra-task-1\\extra-task-1.cpp",
+              "ToolTip": "C:\\Projects\\C\u002B\u002B\\Bonus1\\cs211-extra-task-1\\Extra-task-1\\Extra-task-1\\extra-task-1.cpp",
+              "RelativeToolTip": "Extra-task-1\\extra-task-1.cpp",
+              "ViewState": "AQIAAJ0AAAAAAAAAAAAIwKMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-03T05:08:20.127Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Projects\\C\u002B\u002B\\Bonus1\\cs211-extra-task-1\\Extra-task-1\\Extra-task-1\\main.cpp",
+              "RelativeDocumentMoniker": "Extra-task-1\\main.cpp",
+              "ToolTip": "C:\\Projects\\C\u002B\u002B\\Bonus1\\cs211-extra-task-1\\Extra-task-1\\Extra-task-1\\main.cpp",
+              "RelativeToolTip": "Extra-task-1\\main.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-03T05:07:39.857Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
