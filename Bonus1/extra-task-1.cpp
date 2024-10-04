@@ -1,7 +1,11 @@
+#include "extra-task-1.h"
+#include <assert.h>
+#include <math.h>
+
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
-    
+    return time_2 - time_1;
     /*    
         Return the number of seconds later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -18,6 +22,7 @@ double seconds_difference(double time_1, double time_2)
         >>> seconds_difference(1800.0, 1800.0)
         0.0
     */
+
 }
 
 double hours_difference(double time_1, double time_2)
@@ -38,6 +43,8 @@ double hours_difference(double time_1, double time_2)
         >>> hours_difference(1800.0, 1800.0)
         0.0
     */
+    return seconds_difference(time_1,time_2)/3600;
+
 }
 
 double to_float_hours(int hours, int minutes, int seconds)
@@ -57,6 +64,10 @@ double to_float_hours(int hours, int minutes, int seconds)
         >>> to_float_hours(1, 0, 36)
         1.01
     */
+    assert(minutes >= 0 && minutes < 60);
+    assert(seconds >= 0 && seconds < 60);
+    return hours + (static_cast<double>(minutes)/60) + (static_cast<double>(seconds) / 3600);
+
 }
 
 double to_24_hour_clock(double hours)
@@ -86,6 +97,9 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
+    assert(hours >= 0);
+    return hours >= 24 ? hours - (floor(hours/24)*24) : hours;
+
 }
 
 /*
@@ -98,7 +112,7 @@ double to_24_hour_clock(double hours)
 
     >>> get_hours(3800)
     1
-
+    
     >>> get_minutes(3800)
     3
 
@@ -108,6 +122,23 @@ double to_24_hour_clock(double hours)
     In other words, if 3800 seconds have elapsed since midnight, 
     it is currently 01:03:20 (hh:mm:ss).
 */
+
+double get_hours(double seconds)
+{
+    double hours = floor(seconds / 3600);
+    return hours >= 24? hours - floor(hours / 24) * 24 : hours;
+}
+
+double get_minutes(double seconds)
+{
+    double minutes = floor(seconds / 60);
+    return minutes >= 60? minutes - floor(minutes / 60)*60 : minutes;
+}
+
+double get_seconds(double seconds)
+{
+    return seconds >= 60 ? seconds - floor(seconds / 60) * 60 : seconds;
+}
 
 double time_to_utc(int utc_offset, double time)
 {
@@ -135,6 +166,19 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
+    assert(time >= 0 && time < 24);
+    assert(utc_offset >= -12 && utc_offset <= 14);
+    double hours = time - utc_offset;
+    if (hours >= 24)
+    {
+        hours = hours - floor(hours / 24) * 24;
+    }
+    else if (hours < 0)
+    {
+        hours = 24 + hours;
+    }
+    return hours;
+
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -166,4 +210,6 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+    return time_from_utc(utc_offset*-1,time);
+
 }
