@@ -1,0 +1,7 @@
+# Игнорировать vs/
+.vs/
+x64/
+*.sln
+*.vcxproj
+*.filters
+*.user
