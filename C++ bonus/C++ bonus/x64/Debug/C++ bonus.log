@@ -1,0 +1,3 @@
+﻿  extra-task-1.cpp
+B:\С++ bonus\cs211-extra-task-1\C++ bonus\C++ bonus\extra-task-1.cpp(45,13): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+  C++ bonus.vcxproj -> B:\С++ bonus\cs211-extra-task-1\C++ bonus\x64\Debug\C++ bonus.exe
