@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Unik\\Proga\\Dop1\\cs211-extra-task-1\\extra-task\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F1E21F2B-04A0-4740-94CB-47674EAAF3E6}|extra-task\\extra-task.vcxproj|D:\\Unik\\Proga\\Dop1\\cs211-extra-task-1\\extra-task-1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "extra-task-1.cpp",
+              "DocumentMoniker": "D:\\Unik\\Proga\\Dop1\\cs211-extra-task-1\\extra-task-1.cpp",
+              "RelativeDocumentMoniker": "..\\extra-task-1.cpp",
+              "ToolTip": "D:\\Unik\\Proga\\Dop1\\cs211-extra-task-1\\extra-task-1.cpp",
+              "RelativeToolTip": "..\\extra-task-1.cpp",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAgwBoBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-05T19:50:43.48Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+﻿  extra-task-1.cpp
+D:\Unik\Proga\Dop1\cs211-extra-task-1\extra-task-1.cpp(224,6): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+  extra-task.vcxproj -> D:\Unik\Proga\Dop1\cs211-extra-task-1\extra-task\x64\Debug\extra-task.exe
