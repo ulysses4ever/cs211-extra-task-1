@@ -1,0 +1,5 @@
+﻿  extra-task-1.cpp
+C:\Users\Amethyst\Desktop\HW\cs211-extra-task-1\HomeWork\HomeWork\extra-task-1.cpp(129,16): warning C4244: return: преобразование "double" в "int", возможна потеря данных
+C:\Users\Amethyst\Desktop\HW\cs211-extra-task-1\HomeWork\HomeWork\extra-task-1.cpp(133,32): warning C4244: return: преобразование "double" в "int", возможна потеря данных
+C:\Users\Amethyst\Desktop\HW\cs211-extra-task-1\HomeWork\HomeWork\extra-task-1.cpp(137,20): warning C4244: return: преобразование "double" в "int", возможна потеря данных
+  HomeWork.vcxproj -> C:\Users\Amethyst\Desktop\HW\cs211-extra-task-1\HomeWork\x64\Debug\HomeWork.exe

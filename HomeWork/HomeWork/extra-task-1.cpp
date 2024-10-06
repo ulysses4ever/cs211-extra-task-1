@@ -1,5 +1,12 @@
+#include <cassert>
+#include <cmath>
+#include "extra-task-1.h"
+
+//Return the number of seconds later that a time in seconds time_2 is than a time in seconds time_1.
 double seconds_difference(double time_1, double time_2)
 {
+    return time_2 - time_1;
+
     // your implementation goes here...
     
     /*    
@@ -19,9 +26,10 @@ double seconds_difference(double time_1, double time_2)
         0.0
     */
 }
-
+//Return the number of hours later that a time in seconds time_2 is than a time in seconds time_1.
 double hours_difference(double time_1, double time_2)
 {
+    return seconds_difference(time_1, time_2) / 3600;
     /*
         Return the number of hours later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -39,9 +47,14 @@ double hours_difference(double time_1, double time_2)
         0.0
     */
 }
-
+//Return the total number of hours in the specified number of hours, minutes, and seconds.
 double to_float_hours(int hours, int minutes, int seconds)
 {
+    assert(hours >= 0);
+    assert(minutes >= 0 && minutes < 60);
+    assert(seconds >= 0 && seconds < 60);
+    
+    return hours + (double)minutes / 60 + (double)seconds / 3600;
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
@@ -58,9 +71,10 @@ double to_float_hours(int hours, int minutes, int seconds)
         1.01
     */
 }
-
+//Return the hour as seen on a 24 - hour clock.
 double to_24_hour_clock(double hours)
 {
+    return fmod(hours, 24);
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -88,6 +102,7 @@ double to_24_hour_clock(double hours)
     */
 }
 
+
 /*
     Implement three functions
         * get_hours
@@ -109,8 +124,23 @@ double to_24_hour_clock(double hours)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
+//¬озврачает количество секунд в seconds с полуночи
+int get_seconds(double seconds) {
+    return fmod(seconds, 60);
+}
+//¬озврачает количество минут в seconds с полуночи
+int get_minutes(double seconds) {
+    return fmod(seconds, 3600) / 60;
+}
+//¬озврачает количество часов в seconds с полуночи
+int get_hours(double seconds) {
+    return seconds / 3600;
+}
+//Return time at UTC + 0, where utc_offset is the number of hours away from UTC + 0.
 double time_to_utc(int utc_offset, double time)
 {
+    auto res = to_24_hour_clock(time - utc_offset);
+    return res >= 0 ? res : 24 + res;
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -136,9 +166,11 @@ double time_to_utc(int utc_offset, double time)
         0.0
     */
 }
-
+//Return UTC time in time zone utc_offset.
 double time_from_utc(int utc_offset, double time)
 {
+    auto res = to_24_hour_clock(time + utc_offset);
+    return res >= 0 ? res : 24 + res;
     /*
         Return UTC time in time zone utc_offset.
 
