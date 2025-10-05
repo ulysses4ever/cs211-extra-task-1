@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\aleks\\Desktop\\hm2\\test1\\cs211-extra-task-1\\extra-task1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{72B49363-06F8-4D2B-A927-AD9B1DCF67AC}|Project1\\Project1.vcxproj|C:\\Users\\aleks\\Desktop\\hm2\\test1\\cs211-extra-task-1\\extra-task-1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 141,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "extra-task-1.cpp",
+              "DocumentMoniker": "C:\\Users\\aleks\\Desktop\\hm2\\test1\\cs211-extra-task-1\\extra-task-1.cpp",
+              "RelativeDocumentMoniker": "..\\extra-task-1.cpp",
+              "ToolTip": "C:\\Users\\aleks\\Desktop\\hm2\\test1\\cs211-extra-task-1\\extra-task-1.cpp",
+              "RelativeToolTip": "..\\extra-task-1.cpp",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAAAI4AAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-05T16:13:01.341Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
