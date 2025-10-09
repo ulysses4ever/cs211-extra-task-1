@@ -8,3 +8,6 @@ double hours_difference(double time_1, double time_2);
 
 // task 3 Функция, возвращающая общее количество часов в заданном количестве часов, минут и секунд
 double to_float_hours(int hours, int minutes, int seconds);
+
+// task 4 Функция, возвращающая значение времени, показанное на 24 - часовых часах
+double to_24_hour_clock(double hours);
