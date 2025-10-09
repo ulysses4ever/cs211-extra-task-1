@@ -40,8 +40,15 @@ int main()
 
 	cout << "Тесты для третьего задания прошли успешно!" << endl << endl;
 
+	//Задание 4. hours is a number of hours since midnight. Return thehour as seen on a 24 - hour clock.
+	cout << "//Задание 4. hours is a number of hours since midnight. Return thehour as seen on a 24 - hour clock." << endl << endl;
+	assert(fabs(to_24_hour_clock(24) - 0) <= DBL_EPSILON);
+	assert(fabs(to_24_hour_clock(48) - 0) <= DBL_EPSILON);
+	assert(fabs(to_24_hour_clock(25) - 1) <= DBL_EPSILON);
+	assert(fabs(to_24_hour_clock(4) - 4) <= DBL_EPSILON);
+	assert(fabs(to_24_hour_clock(28.5) - 4.5) <= DBL_EPSILON);
 
-
+	cout << "Тесты для четвёртого задания прошли успешно!" << endl << endl;
 
 
 	system("pause");
