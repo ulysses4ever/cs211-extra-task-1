@@ -41,5 +41,13 @@ void main()
     assert(get_seconds(7300) == 40);
     assert(get_seconds(158234) == 14);
 
+    // Тесты для time_to_utc
+    assert(fabs(time_to_utc(0, 12.0) - 12.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(1, 12.0) - 11.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-1, 12.0) - 13.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-11, 18.0) - 5.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-1, 0.0) - 1.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-1, 23.0) - 0.0) < DBL_EPSILON);
+
 	system("pause");
 }
