@@ -32,7 +32,13 @@ int main()
 
 
 
-	
+	//Задание 3. Return the total number of hours in the specified numberof hours, minutes, and seconds.
+	cout << "//Задание 3. Return the total number of hours in the specified numberof hours, minutes, and seconds." << endl << endl;
+	assert(fabs(to_float_hours(0, 15, 0) - 0.25) <= DBL_EPSILON);
+	assert(fabs(to_float_hours(2, 45, 9) - 2.7525) <= DBL_EPSILON);
+	assert(fabs(to_float_hours(1, 0, 36) - 1.01) <= DBL_EPSILON);
+
+	cout << "Тесты для третьего задания прошли успешно!" << endl << endl;
 
 
 
