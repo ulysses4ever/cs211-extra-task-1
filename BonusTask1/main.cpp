@@ -4,8 +4,6 @@
 
 void main()
 {
-	setlocale(LC_ALL, "Russian");
-
     // Тесты для seconds_difference
     assert(fabs(seconds_difference(1800.0, 3600.0) - 1800.0) < DBL_EPSILON);
     assert(fabs(seconds_difference(3600.0, 1800.0) - (-1800.0)) < DBL_EPSILON);
@@ -49,5 +47,15 @@ void main()
     assert(fabs(time_to_utc(-1, 0.0) - 1.0) < DBL_EPSILON);
     assert(fabs(time_to_utc(-1, 23.0) - 0.0) < DBL_EPSILON);
 
-	system("pause");
+    // Тесты для time_from_utc
+    assert(fabs(time_from_utc(0, 12.0) - 12.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(1, 12.0) - 13.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-1, 12.0) - 11.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(6, 6.0) - 12.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-7, 6.0) - 23.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-1, 0.0) - 23.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-1, 23.0) - 22.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(1, 23.0) - 0.0) < DBL_EPSILON);
+
+    system("pause");
 }
