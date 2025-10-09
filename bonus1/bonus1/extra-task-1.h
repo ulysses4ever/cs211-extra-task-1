@@ -11,3 +11,12 @@ double to_float_hours(int hours, int minutes, int seconds);
 
 // task 4 Функция, возвращающая значение времени, показанное на 24 - часовых часах
 double to_24_hour_clock(double hours);
+
+// task 5.1 Часы на циферблате
+int get_hours(int seconds);
+
+// task 5.2 Минуты на циферблате
+int get_minutes(int seconds);
+
+// task 5.3 Секундны на циферблате
+int get_seconds(int seconds);

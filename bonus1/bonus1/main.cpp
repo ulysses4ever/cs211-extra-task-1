@@ -38,4 +38,30 @@ int main()
 	assert(fabs(to_24_hour_clock(4) - 4.0) <= DBL_EPSILON);
 	assert(fabs(to_24_hour_clock(28.5) - 4.5) <= DBL_EPSILON);
 	std::cout << "Тесты пройдены!" << std::endl << std::endl;
+
+	// task 5.1 Часы на циферблате
+	std::cout << "task 5.1 Часы на циферблате" << std::endl;
+	assert(get_hours(3800) == 1);
+	assert(get_hours(7300) == 2);
+	assert(get_hours(3600*24) == 0);
+	std::cout << "Тесты пройдены!" << std::endl << std::endl;
+
+	// task 5.2 Минуты на циферблате
+	std::cout << "task 5.2 Минуты на циферблате" << std::endl;
+	assert(get_minutes(3800) == 3);
+	assert(get_minutes(9500) == 38);
+	assert(get_minutes(3600) == 0);
+	std::cout << "Тесты пройдены!" << std::endl << std::endl;
+
+	// task 5.3 Секундны на циферблате
+	std::cout << "task 5.3 Секундны на циферблате" << std::endl;
+	assert(get_seconds(3800) == 20);
+	assert(get_seconds(3601) == 1);
+	assert(get_seconds(3600) == 0);
+	std::cout << "Тесты пройдены!" << std::endl << std::endl;
+
+
+
+
+
 }

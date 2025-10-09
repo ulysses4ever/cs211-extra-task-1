@@ -2,6 +2,7 @@
 #include <cassert>
 #include <cfloat>
 #include <cmath>
+
 // task 1 Функция, возвращающая количество секунд, на которые отстаёт time_1 от time_2
 double seconds_difference(double time_1, double time_2)
 {
@@ -23,7 +24,9 @@ double to_float_hours(int hours, int minutes, int seconds)
 {
     assert(hours >= 0);
     assert(minutes >= 0);
+    assert(minutes <= 60);
     assert(seconds >= 0);
+    assert(seconds <= 60);
     return hours + minutes / 60.0 + seconds / 3600.0;
 }
 
@@ -58,6 +61,38 @@ double to_24_hour_clock(double hours)
     In other words, if 3800 seconds have elapsed since midnight, 
     it is currently 01:03:20 (hh:mm:ss).
 */
+
+// task 5.1 Часы на циферблате
+int get_hours(int seconds)
+{
+    assert(seconds >= 0);
+    while (seconds / 3600 > 23)
+    {
+        seconds -= 3600 * 24;
+    }
+    return seconds / 3600;
+}
+
+// task 5.2 Минуты на циферблате
+int get_minutes(int seconds)
+{
+    assert(seconds >= 0);
+    while ((seconds % 3600) / 60 > 59)
+    {
+        seconds -= 3600 * 60 * 59;
+    }
+    return (seconds % 3600) / 60;
+}
+
+// task 5.3 Секундны на циферблате
+int get_seconds(int seconds)
+{
+    while (seconds % 3600 > 59)
+    {
+        seconds -= 60;
+    }
+    return seconds % 3600;
+}
 
 double time_to_utc(int utc_offset, double time)
 {
