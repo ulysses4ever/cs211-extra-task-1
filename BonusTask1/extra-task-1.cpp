@@ -45,6 +45,11 @@ int get_minutes(int seconds)
 {
     return (seconds % 3600) / 60;
 }
+// Determine the seconds part of a time in seconds
+int get_seconds(int seconds)
+{
+    return seconds % 60;
+}
 
 //double time_to_utc(int utc_offset, double time)
 //{
