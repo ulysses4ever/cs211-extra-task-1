@@ -5,3 +5,6 @@ double seconds_difference(double time_1, double time_2);
 
 // task 2 Функция, возвращающая разницу в часах между секундами time_1 и time_2
 double hours_difference(double time_1, double time_2);
+
+// task 3 Функция, возвращающая общее количество часов в заданном количестве часов, минут и секунд
+double to_float_hours(int hours, int minutes, int seconds);
