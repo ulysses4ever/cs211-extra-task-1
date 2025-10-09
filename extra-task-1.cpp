@@ -2,6 +2,7 @@
 #include <cmath>
 #include <cfloat>
 #include <iostream>
+#include <clocale>
     // 1) Разница во времени в секундах
     double seconds_difference(double time_1, double time_2) {
         return time_2 - time_1;
@@ -51,6 +52,7 @@
 
 
     int main() {
+        setlocale(LC_ALL, "Russian");
         // --- seconds_difference ---
         assert(fabs(seconds_difference(1800.0, 3600.0) - 1800.0) < DBL_EPSILON);
         assert(fabs(seconds_difference(3600.0, 1800.0) + 1800.0) < DBL_EPSILON);
