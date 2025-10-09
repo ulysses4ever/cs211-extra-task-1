@@ -19,7 +19,8 @@ double to_24_hour_clock(double hours);
 
 // Determine the hours part of a time in seconds
 int get_hours(int seconds);
-//int get_minutes(int seconds);
+// Determine the minutes part of a time in seconds
+int get_minutes(int seconds);
 //int get_seconds(int seconds);
 //
 //double time_to_utc(int utc_offset, double time);

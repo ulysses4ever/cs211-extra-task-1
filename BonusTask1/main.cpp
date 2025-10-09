@@ -30,10 +30,13 @@ void main()
     assert(fabs(to_24_hour_clock(4) - 4) < DBL_EPSILON);
     assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
 
-    // Тесты для get_hours
+    // Тесты для get_hours, get_minutes
     assert(get_hours(3800) == 1);
     assert(get_hours(7300) == 2);
     assert(get_hours(158234) == 43);
+    assert(get_minutes(3800) == 3);
+    assert(get_minutes(7300) == 1);
+    assert(get_minutes(158234) == 57);
 
 	system("pause");
 }
