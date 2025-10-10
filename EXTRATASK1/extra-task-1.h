@@ -7,3 +7,4 @@ int get_hours(int);
 int get_minutes(int);
 int get_seconds(int);
 double time_to_utc(int, double);
+double time_from_utc(int, double);
