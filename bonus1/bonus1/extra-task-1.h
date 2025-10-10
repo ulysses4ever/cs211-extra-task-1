@@ -15,3 +15,15 @@ double to_float_hours(int , int , int );
 
 //Задание 4. hours is a number of hours since midnight. Return thehour as seen on a 24 - hour clock.
 double to_24_hour_clock(double);
+
+//Задание 5 
+
+//Перевод из секунд в часовую часть
+int get_hours(int);
+
+//Перевод из секунд в минутную часть
+int get_minutes(int);
+
+//Перевод из секунд в секундную часть
+int get_seconds(int);
+

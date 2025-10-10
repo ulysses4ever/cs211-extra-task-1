@@ -133,6 +133,43 @@ double to_24_hour_clock(double hours)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
+//Задание 5 
+
+//Перевод из секунд в часовую часть
+int get_hours(int seconds)
+{
+    assert(seconds >= 0);
+    while (seconds / 3600 > 23)
+    {
+        seconds -= 3600 * 24;
+    }
+    return seconds / 3600;
+}
+
+//Перевод из секунд в минутную часть
+int get_minutes(int seconds)
+{
+    assert(seconds >= 0);
+    while ((seconds %3600)/ 60 > 59)
+    {
+        seconds -= 3600 * 60 * 60;
+    }
+    return (seconds % 3600) / 60;
+}
+
+//Перевод из секунд в секундную часть
+int get_seconds(int seconds)
+{
+    assert(seconds >= 0);
+    while (seconds % 3600 > 59)
+    {
+        seconds -= 60;
+    }
+    return seconds % 3600;
+}
+
+
+
 double time_to_utc(int utc_offset, double time)
 {
     /*
