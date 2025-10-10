@@ -27,6 +27,10 @@ double to_24_hour_clock(double hours)
     }
     return res;
 }
+int get_hours(double seconds)
+{
+    return seconds / 60 / 60;
+}
 #if 0
 /*
     Implement three functions
