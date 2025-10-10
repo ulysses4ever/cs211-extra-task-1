@@ -35,6 +35,10 @@ int get_minutes(double seconds)
 {
     return fmod(seconds, 60 * 60) / 60;
 }
+int get_seconds(double seconds)
+{
+    return fmod(fmod(seconds, 60 * 60), 60);
+}
 #if 0
 /*
     Implement three functions
