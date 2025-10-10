@@ -1,12 +1,71 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\SoulOfMantis\\Desktop\\ProgrammingHomework\\cs211-extra-task-1\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7C3BB85C-1438-443B-8A9F-8CB2C949F0DA}|cs211-extra-task-1.vcxproj|C:\\Users\\SoulOfMantis\\Desktop\\ProgrammingHomework\\cs211-extra-task-1\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7C3BB85C-1438-443B-8A9F-8CB2C949F0DA}|cs211-extra-task-1.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C3BB85C-1438-443B-8A9F-8CB2C949F0DA}|cs211-extra-task-1.vcxproj|C:\\Users\\SoulOfMantis\\Desktop\\ProgrammingHomework\\cs211-extra-task-1\\extra-task-1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7C3BB85C-1438-443B-8A9F-8CB2C949F0DA}|cs211-extra-task-1.vcxproj|solutionrelative:extra-task-1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C3BB85C-1438-443B-8A9F-8CB2C949F0DA}|cs211-extra-task-1.vcxproj|C:\\Users\\SoulOfMantis\\Desktop\\ProgrammingHomework\\cs211-extra-task-1\\extra-task-1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7C3BB85C-1438-443B-8A9F-8CB2C949F0DA}|cs211-extra-task-1.vcxproj|solutionrelative:extra-task-1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "extra-task-1.h",
+              "DocumentMoniker": "C:\\Users\\SoulOfMantis\\Desktop\\ProgrammingHomework\\cs211-extra-task-1\\extra-task-1.h",
+              "RelativeDocumentMoniker": "extra-task-1.h",
+              "ToolTip": "C:\\Users\\SoulOfMantis\\Desktop\\ProgrammingHomework\\cs211-extra-task-1\\extra-task-1.h",
+              "RelativeToolTip": "extra-task-1.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-10-10T17:16:45.692Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "extra-task-1.cpp",
+              "DocumentMoniker": "C:\\Users\\SoulOfMantis\\Desktop\\ProgrammingHomework\\cs211-extra-task-1\\extra-task-1.cpp",
+              "RelativeDocumentMoniker": "extra-task-1.cpp",
+              "ToolTip": "C:\\Users\\SoulOfMantis\\Desktop\\ProgrammingHomework\\cs211-extra-task-1\\extra-task-1.cpp",
+              "RelativeToolTip": "extra-task-1.cpp",
+              "ViewState": "AgIAALEAAAAAAAAAAAAiwJoAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-10T17:16:27.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\SoulOfMantis\\Desktop\\ProgrammingHomework\\cs211-extra-task-1\\main.cpp",
+              "RelativeDocumentMoniker": "main.cpp",
+              "ToolTip": "C:\\Users\\SoulOfMantis\\Desktop\\ProgrammingHomework\\cs211-extra-task-1\\main.cpp",
+              "RelativeToolTip": "main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-10T17:16:26.071Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

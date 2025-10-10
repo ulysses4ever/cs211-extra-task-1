@@ -72,6 +72,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
+    return 0;
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -122,6 +123,7 @@ double to_24_hour_clock(double hours)
 
 double time_to_utc(int utc_offset, double time)
 {
+    return 0;
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -150,6 +152,7 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
+    return 0;
     /*
         Return UTC time in time zone utc_offset.
 
