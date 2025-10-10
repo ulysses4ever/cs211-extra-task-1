@@ -206,7 +206,7 @@ double time_from_utc(int utc_offset, double time)
 {
     assert(utc_offset > -24 && utc_offset < 24);
     assert(time > -24 && time < 24);
-    return  0;
+    return  (time + utc_offset < 0 ? time + utc_offset + 24 : (time + utc_offset >= 24 ? time + utc_offset - 24 : time + utc_offset));
     /*
         Return UTC time in time zone utc_offset.
 

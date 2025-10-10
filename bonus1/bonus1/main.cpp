@@ -92,6 +92,18 @@ int main()
 
 	cout << "Тесты для шестого задания прошли успешно!" << endl << endl;
 
+	//Задание 7.  Return UTC time in time zone utc_offset.
+	cout << "//Задание 7.  Return UTC time in time zone utc_offset." << endl << endl;
+	assert(fabs(time_from_utc(+0, 12.0) - 12.0) < DBL_EPSILON);
+	assert(fabs(time_from_utc(+3, 12.0) - 15.0) < DBL_EPSILON);
+	assert(fabs(time_from_utc(+12, 12.0) - 0.0) < DBL_EPSILON);
+	assert(fabs(time_from_utc(+5, 23.0) - 4.0) < DBL_EPSILON);
+	assert(fabs(time_from_utc(-2, 10.0) - 8.0) < DBL_EPSILON);
+	assert(fabs(time_from_utc(-11, 10.0) - 23.0) < DBL_EPSILON);
+	assert(fabs(time_from_utc(-2, 0.0) - 22.0) < DBL_EPSILON);
+
+	cout << "Тесты для седьмого задания прошли успешно!" << endl << endl;
+
 
 
 
