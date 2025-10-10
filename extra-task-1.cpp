@@ -17,36 +17,17 @@ double to_float_hours(int hours, int minutes, int seconds)
     assert(0 <= minutes < 60 && 0 <= seconds < 60);
     return hours + (minutes / 60.0) + (seconds / 60.0 / 60.0);
 }
-#if 0
+
 double to_24_hour_clock(double hours)
 {
-    /*
-        hours is a number of hours since midnight. Return the
-        hour as seen on a 24-hour clock.
-
-        Precondition: hours >= 0
-
-        >>> to_24_hour_clock(24)
-        0
-        
-        >>> to_24_hour_clock(48)
-        0
-        
-        >>> to_24_hour_clock(25)
-        1
-        
-        >>> to_24_hour_clock(4)
-        4
-        
-        >>> to_24_hour_clock(28.5)
-        4.5
-        
-        You may wish to inspect various function in <cmath> to work
-        with integer and fractional part of a hours separately.
-        
-    */
+    double res = fmod(hours, 24);
+    if (res < 0)
+    {
+        res += 24;
+    }
+    return res;
 }
-
+#if 0
 /*
     Implement three functions
         * get_hours
