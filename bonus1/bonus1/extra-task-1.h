@@ -23,3 +23,6 @@ int get_seconds(int seconds);
 
 // task 6 ‘ункци€, возвращающа€ врем€ в UTC+0, где utc_offset - это количество часов, отдел€ющих от UTC+0
 double time_to_utc(int utc_offset, double time);
+
+// task 7 ‘ункци€, возвращающа€ врем€ из UTC в часовой по€се utc_offset.
+double time_from_utc(int utc_offset, double time);

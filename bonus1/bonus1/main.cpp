@@ -68,9 +68,46 @@ int main()
 	assert(fabs(time_to_utc(-11, 18.0) - 5.0) < DBL_EPSILON);
 	assert(fabs(time_to_utc(-1, 0.0) - 1.0) < DBL_EPSILON);
 	assert(fabs(time_to_utc(-1, 23.0) - 0.0) < DBL_EPSILON);
+	std::cout << "Тесты пройдены!" << std::endl << std::endl;
 
-
-
-
-
+	// task 7 Функция, возвращающая время из UTC в часовой поясе utc_offset
+	std::cout << "task 7 Функция, возвращающая время из UTC в часовой поясе utc_offset" << std::endl;
+	assert(fabs(time_from_utc(+0, 12.0) - 12.0) < DBL_EPSILON);
+	assert(fabs(time_from_utc(+1, 12.0) - 13.0) < DBL_EPSILON);
+	assert(fabs(time_from_utc(-1, 12.0) - 11.0) < DBL_EPSILON);
+	assert(fabs(time_from_utc(+6, 6.0) - 12.0) < DBL_EPSILON);
+	assert(fabs(time_from_utc(-7, 6.0) - 23.0) < DBL_EPSILON);
+	assert(fabs(time_from_utc(-1, 0.0) - 23.0) < DBL_EPSILON);
+	assert(fabs(time_from_utc(-1, 23.0) - 22.0) < DBL_EPSILON);
+	assert(fabs(time_from_utc(+1, 23.0) - 0.0) < DBL_EPSILON);
+	std::cout << "Тесты пройдены!" << std::endl << std::endl;
 }
+
+/*
+task 1 Функция, возвращающая количество секунд, на которые отстаёт time_1 от time_2
+Тесты пройдены!
+
+task 2 Функция, возвращающая разницу в часах между секундами time_1 и time_2
+Тесты пройдены!
+
+task 3 Функция, возвращающая общее количество часов в заданном количестве часов, минут и секунд
+Тесты пройдены!
+
+task 4 Функция, возвращающая значение времени, показанное на 24 - часовых часах.
+Тесты пройдены!
+
+task 5.1 Часы на циферблате
+Тесты пройдены!
+
+task 5.2 Минуты на циферблате
+Тесты пройдены!
+
+task 5.3 Секундны на циферблате
+Тесты пройдены!
+
+task 6 Функция, возвращающая время в UTC+0, где utc_offset - это количество часов, отделяющих от UTC+0
+Тесты пройдены!
+
+task 7 Функция, возвращающая время из UTC в часовой поясе utc_offset
+Тесты пройдены!
+*/

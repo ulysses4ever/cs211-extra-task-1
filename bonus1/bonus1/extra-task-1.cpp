@@ -87,6 +87,7 @@ int get_minutes(int seconds)
 // task 5.3 Секундны на циферблате
 int get_seconds(int seconds)
 {
+    assert(seconds >= 0);
     while (seconds % 3600 > 59)
     {
         seconds -= 60;
@@ -97,62 +98,19 @@ int get_seconds(int seconds)
 // task 6 Функция, возвращающая время в UTC+0, где utc_offset - это количество часов, отделяющих от UTC+0
 double time_to_utc(int utc_offset, double time)
 {
+    assert(utc_offset > -24);
+    assert(utc_offset < 24);
+    assert(time > -24);
+    assert(time < 24);
     return (time - utc_offset > 0 ? (time - utc_offset >= 24? time - utc_offset - 24: time - utc_offset) : time - utc_offset + 24);
-    /*
-        Return time at UTC+0, where utc_offset is the number of hours away from
-        UTC+0.
-        You may be interested in:
-        https://en.wikipedia.org/wiki/Coordinated_Universal_Time
-
-        >>> time_to_utc(+0, 12.0)
-        12.0
- 
-        >>> time_to_utc(+1, 12.0)
-        11.0
- 
-        >>> time_to_utc(-1, 12.0)
-        13.0
- 
-        >>> time_to_utc(-11, 18.0)
-        5.0
- 
-        >>> time_to_utc(-1, 0.0)
-        1.0
- 
-        >>> time_to_utc(-1, 23.0)
-        0.0
-    */
 }
 
+// task 7 Функция, возвращающая время из UTC в часовой поясе utc_offset.
 double time_from_utc(int utc_offset, double time)
 {
-    /*
-        Return UTC time in time zone utc_offset.
-
-        >>> time_from_utc(+0, 12.0)
-        12.0
- 
-        >>> time_from_utc(+1, 12.0)
-        13.0
- 
-        >>> time_from_utc(-1, 12.0)
-        11.0
- 
-        >>> time_from_utc(+6, 6.0)
-        12.0
- 
-        >>> time_from_utc(-7, 6.0)
-        23.0
- 
-        >>> time_from_utc(-1, 0.0)
-        23.0
- 
-        >>> time_from_utc(-1, 23.0)
-        22.0
- 
-        >>> time_from_utc(+1, 23.0)
-        0.0
-    */
-    return 1;
-
+    assert(utc_offset > -24);
+    assert(utc_offset < 24);
+    assert(time > -24);
+    assert(time < 24);
+    return (time + utc_offset < 0? time + utc_offset + 24: (time + utc_offset >= 24? time + utc_offset - 24: time + utc_offset));
 }
