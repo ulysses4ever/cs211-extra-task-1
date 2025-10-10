@@ -94,8 +94,10 @@ int get_seconds(int seconds)
     return seconds % 3600;
 }
 
+// task 6 ‘ункци€, возвращающа€ врем€ в UTC+0, где utc_offset - это количество часов, отдел€ющих от UTC+0
 double time_to_utc(int utc_offset, double time)
 {
+    return (time - utc_offset > 0 ? (time - utc_offset >= 24? time - utc_offset - 24: time - utc_offset) : time - utc_offset + 24);
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -120,8 +122,6 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
-    return 1;
-
 }
 
 double time_from_utc(int utc_offset, double time)

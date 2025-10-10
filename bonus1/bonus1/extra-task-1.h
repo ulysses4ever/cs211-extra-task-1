@@ -20,3 +20,6 @@ int get_minutes(int seconds);
 
 // task 5.3 Секундны на циферблате
 int get_seconds(int seconds);
+
+// task 6 Функция, возвращающая время в UTC+0, где utc_offset - это количество часов, отделяющих от UTC+0
+double time_to_utc(int utc_offset, double time);

@@ -60,6 +60,15 @@ int main()
 	assert(get_seconds(3600) == 0);
 	std::cout << "“есты пройдены!" << std::endl << std::endl;
 
+	// task 6 ‘ункци€, возвращающа€ врем€ в UTC+0, где utc_offset - это количество часов, отдел€ющих от UTC+0
+	std::cout << "task 6 ‘ункци€, возвращающа€ врем€ в UTC+0, где utc_offset - это количество часов, отдел€ющих от UTC+0" << std::endl;
+	assert(fabs(time_to_utc(+0, 12.0) - 12.0) < DBL_EPSILON);
+	assert(fabs(time_to_utc(+1, 12.0) - 11.0) < DBL_EPSILON);
+	assert(fabs(time_to_utc(-1, 12.0) - 13.0) < DBL_EPSILON);
+	assert(fabs(time_to_utc(-11, 18.0) - 5.0) < DBL_EPSILON);
+	assert(fabs(time_to_utc(-1, 0.0) - 1.0) < DBL_EPSILON);
+	assert(fabs(time_to_utc(-1, 23.0) - 0.0) < DBL_EPSILON);
+
 
 
 
