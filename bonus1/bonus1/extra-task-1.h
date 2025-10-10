@@ -27,3 +27,8 @@ int get_minutes(int);
 //Перевод из секунд в секундную часть
 int get_seconds(int);
 
+//Задание 6. Return time at UTC+0, where utc_offset is the number of hours away from UTC + 0.
+double time_to_utc(int , double );
+
+//Задание 7.  Return UTC time in time zone utc_offset.
+double time_from_utc(int , double );

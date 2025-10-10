@@ -50,7 +50,7 @@ double hours_difference(double time_1, double time_2)
         >>> hours_difference(1800.0, 1800.0)
         0.0
     */
-    return 0;
+    
 }
 
 //Задание 3. Return the total number of hours in the specified numberof hours, minutes, and seconds.
@@ -73,7 +73,7 @@ double to_float_hours(int hours, int minutes, int seconds)
         >>> to_float_hours(1, 0, 36)
         1.01
     */
-    return 0;
+   
 }
 
 //Задание 4. hours is a number of hours since midnight. Return thehour as seen on a 24 - hour clock.
@@ -109,7 +109,7 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
-    return 0;
+    
 }
 
 /*
@@ -169,13 +169,15 @@ int get_seconds(int seconds)
 }
 
 
-
+//Задание 6. Return time at UTC+0, where utc_offset is the number of hours away from UTC + 0.
 double time_to_utc(int utc_offset, double time)
 {
+    assert(utc_offset > -24 && utc_offset < 24);
+    assert(time > -24 && time < 24);
+    return (time - utc_offset < 0) ? time - utc_offset + 24 : (time - utc_offset >= 24 ? time - utc_offset - 24 : time - utc_offset);
+
+
     /*
-        Return time at UTC+0, where utc_offset is the number of hours away from
-        UTC+0.
-        You may be interested in:
         https://en.wikipedia.org/wiki/Coordinated_Universal_Time
 
         >>> time_to_utc(+0, 12.0)
@@ -196,11 +198,15 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
-    return 0;
+    
 }
 
+//Задание 7.  Return UTC time in time zone utc_offset.
 double time_from_utc(int utc_offset, double time)
 {
+    assert(utc_offset > -24 && utc_offset < 24);
+    assert(time > -24 && time < 24);
+    return  0;
     /*
         Return UTC time in time zone utc_offset.
 
@@ -228,5 +234,5 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
-    return 0;
+   
 }
