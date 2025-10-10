@@ -1,6 +1,16 @@
+#include "extra-task-1.h"
+
+using namespace std;
+
+//Задание 1.  Return the number of seconds later that a time in seconds time_2 is than a time in seconds time_1.
 double seconds_difference(double time_1, double time_2)
 {
-    // your implementation goes here...
+   
+    assert(time_1 >= 0);
+    assert(time_2 >= 0);
+    return time_2 - time_1;
+
+
     
     /*    
         Return the number of seconds later that a time in seconds
@@ -19,13 +29,15 @@ double seconds_difference(double time_1, double time_2)
         0.0
     */
 }
-
+ 
+//Задание 2. Return the number of hours later that a time in seconds time_2 is than a time in seconds time_1.
 double hours_difference(double time_1, double time_2)
 {
+    assert(time_1 >= 0);
+    assert(time_2 >= 0);
+    return (time_2 - time_1) / 3600;
     /*
-        Return the number of hours later that a time in seconds
-        time_2 is than a time in seconds time_1.
-            
+        
         >>> hours_difference(1800.0, 3600.0)
         0.5
 
@@ -38,14 +50,18 @@ double hours_difference(double time_1, double time_2)
         >>> hours_difference(1800.0, 1800.0)
         0.0
     */
+    
 }
 
+//Задание 3. Return the total number of hours in the specified numberof hours, minutes, and seconds.
 double to_float_hours(int hours, int minutes, int seconds)
 {
-    /*
-        Return the total number of hours in the specified number
-        of hours, minutes, and seconds.
+    assert(hours >= 0);
+    assert(minutes >= 0 && minutes <60);
+    assert(seconds >= 0 && seconds <60);
+    return hours + minutes / 60.0 + seconds / 3600.0;
 
+    /*
         Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
 
         >>> to_float_hours(0, 15, 0)
@@ -57,14 +73,21 @@ double to_float_hours(int hours, int minutes, int seconds)
         >>> to_float_hours(1, 0, 36)
         1.01
     */
+   
 }
 
+//Задание 4. hours is a number of hours since midnight. Return thehour as seen on a 24 - hour clock.
 double to_24_hour_clock(double hours)
 {
-    /*
-        hours is a number of hours since midnight. Return the
-        hour as seen on a 24-hour clock.
 
+    assert(hours >= 0);
+    while (hours >= 24.0)
+    {
+        hours -= 24.0;
+    }
+    return hours;
+    /*
+       
         Precondition: hours >= 0
 
         >>> to_24_hour_clock(24)
@@ -86,6 +109,7 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
+    
 }
 
 /*
@@ -109,12 +133,51 @@ double to_24_hour_clock(double hours)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
+//Задание 5 
+
+//Перевод из секунд в часовую часть
+int get_hours(int seconds)
+{
+    assert(seconds >= 0);
+    while (seconds / 3600 > 23)
+    {
+        seconds -= 3600 * 24;
+    }
+    return seconds / 3600;
+}
+
+//Перевод из секунд в минутную часть
+int get_minutes(int seconds)
+{
+    assert(seconds >= 0);
+    while ((seconds %3600)/ 60 > 59)
+    {
+        seconds -= 3600 * 60 * 60;
+    }
+    return (seconds % 3600) / 60;
+}
+
+//Перевод из секунд в секундную часть
+int get_seconds(int seconds)
+{
+    assert(seconds >= 0);
+    while (seconds % 3600 > 59)
+    {
+        seconds -= 60;
+    }
+    return seconds % 3600;
+}
+
+
+//Задание 6. Return time at UTC+0, where utc_offset is the number of hours away from UTC + 0.
 double time_to_utc(int utc_offset, double time)
 {
+    assert(utc_offset > -24 && utc_offset < 24);
+    assert(time > -24 && time < 24);
+    return (time - utc_offset < 0) ? time - utc_offset + 24 : (time - utc_offset >= 24 ? time - utc_offset - 24 : time - utc_offset);
+
+
     /*
-        Return time at UTC+0, where utc_offset is the number of hours away from
-        UTC+0.
-        You may be interested in:
         https://en.wikipedia.org/wiki/Coordinated_Universal_Time
 
         >>> time_to_utc(+0, 12.0)
@@ -135,10 +198,15 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
+    
 }
 
+//Задание 7.  Return UTC time in time zone utc_offset.
 double time_from_utc(int utc_offset, double time)
 {
+    assert(utc_offset > -24 && utc_offset < 24);
+    assert(time > -24 && time < 24);
+    return  (time + utc_offset < 0 ? time + utc_offset + 24 : (time + utc_offset >= 24 ? time + utc_offset - 24 : time + utc_offset));
     /*
         Return UTC time in time zone utc_offset.
 
@@ -166,4 +234,5 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+   
 }
