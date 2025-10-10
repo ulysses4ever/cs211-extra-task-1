@@ -3,8 +3,6 @@
 #include <cmath>
 #include "extra-task-1.h"
 
-const double EPS = 1e-6;
-
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
@@ -68,7 +66,7 @@ double time_to_utc(int utc_offset, double time)
 
     auto time2 = time - utc_offset;
 
-    return time2 >= 24.0 ? time - 24.0 : time2 < 0.0 ? time2 + 24.0 : time2;
+    return time2 >= 24.0 ? time2 - 24.0 : time2 < 0.0 ? time2 + 24.0 : time2;
 }
 
 double time_from_utc(int utc_offset, double time)
