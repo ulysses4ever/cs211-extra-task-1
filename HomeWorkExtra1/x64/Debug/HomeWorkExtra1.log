@@ -1,5 +1,2 @@
 ﻿  HomeWorkExtra1.cpp
-  extra-task-1.cpp
-  Создание кода...
-C:\Users\Константин\Desktop\cs211-extra-task-1\HomeWorkExtra1\extra-task-1.cpp(18,2): warning C4804: <: небезопасное использование типа "bool" в операции
   HomeWorkExtra1.vcxproj -> C:\Users\Константин\Desktop\cs211-extra-task-1\x64\Debug\HomeWorkExtra1.exe
