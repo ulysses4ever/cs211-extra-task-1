@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include "extra-task-1.h"
+
 using namespace std;
 
 
@@ -28,5 +29,14 @@ int main()
 		assert(abs(to_float_hours(0, 15, 0) - 0.25) < eps);
 		assert(abs(to_float_hours(2, 45, 9) - 2.7525) < eps);
 		assert(abs(to_float_hours(1, 0, 36) - 1.01) < eps);
+	}
+
+	//Ассерты для  to_24_hour_clock
+	{
+		assert(to_24_hour_clock(24) - 0 < eps);
+		assert(to_24_hour_clock(48) - 0 < eps);
+		assert(to_24_hour_clock(49) - 1 < eps);
+		assert(to_24_hour_clock(4) - 4 < eps);
+		assert(to_24_hour_clock(28.5) - 4.5 < eps);
 	}
 }

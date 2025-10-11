@@ -1,5 +1,7 @@
 #pragma once
 #include <cassert>
+#include "extra-task-1.h"
+#include <cmath>
 const double eps = 1e-7;
 
 /// <summary>///Верните количество секунд, на которое время в секундах time_2 отстаёт от времени в секундах time_1.
@@ -13,3 +15,7 @@ double hours_difference(double time_1, double time_2);
 
 /// <summary>///Переводит всё в суммарные часы /// </summary>/// <param name="hours"></param>/// <param name="minutes"></param>/// <param name="seconds"></param>/// <returns></returns>
 double to_float_hours(int hours, int minutes, int seconds);
+
+/// <summary>/// возвращает  часы в формате 24 
+/// </summary>/// <param name="hours"></param>/// <returns></returns>
+double to_24_hour_clock(double hours);
