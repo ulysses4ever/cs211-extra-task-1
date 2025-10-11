@@ -1,0 +1,79 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\\u041A\u043E\u043D\u0441\u0442\u0430\u043D\u0442\u0438\u043D\\Desktop\\cs211-extra-task-1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CC34A624-363A-49B7-8C22-81BBE6BBB4A7}|HomeWorkExtra1\\HomeWorkExtra1.vcxproj|C:\\Users\\\u041A\u043E\u043D\u0441\u0442\u0430\u043D\u0442\u0438\u043D\\Desktop\\cs211-extra-task-1\\HomeWorkExtra1\\HomeWorkExtra1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CC34A624-363A-49B7-8C22-81BBE6BBB4A7}|HomeWorkExtra1\\HomeWorkExtra1.vcxproj|solutionrelative:HomeWorkExtra1\\HomeWorkExtra1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC34A624-363A-49B7-8C22-81BBE6BBB4A7}|HomeWorkExtra1\\HomeWorkExtra1.vcxproj|C:\\Users\\\u041A\u043E\u043D\u0441\u0442\u0430\u043D\u0442\u0438\u043D\\Desktop\\cs211-extra-task-1\\HomeWorkExtra1\\extra-task-1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CC34A624-363A-49B7-8C22-81BBE6BBB4A7}|HomeWorkExtra1\\HomeWorkExtra1.vcxproj|solutionrelative:HomeWorkExtra1\\extra-task-1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC34A624-363A-49B7-8C22-81BBE6BBB4A7}|HomeWorkExtra1\\HomeWorkExtra1.vcxproj|C:\\Users\\\u041A\u043E\u043D\u0441\u0442\u0430\u043D\u0442\u0438\u043D\\Desktop\\cs211-extra-task-1\\HomeWorkExtra1\\extra-task-1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CC34A624-363A-49B7-8C22-81BBE6BBB4A7}|HomeWorkExtra1\\HomeWorkExtra1.vcxproj|solutionrelative:HomeWorkExtra1\\extra-task-1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HomeWorkExtra1.cpp",
+              "DocumentMoniker": "C:\\Users\\\u041A\u043E\u043D\u0441\u0442\u0430\u043D\u0442\u0438\u043D\\Desktop\\cs211-extra-task-1\\HomeWorkExtra1\\HomeWorkExtra1.cpp",
+              "RelativeDocumentMoniker": "HomeWorkExtra1\\HomeWorkExtra1.cpp",
+              "ToolTip": "C:\\Users\\\u041A\u043E\u043D\u0441\u0442\u0430\u043D\u0442\u0438\u043D\\Desktop\\cs211-extra-task-1\\HomeWorkExtra1\\HomeWorkExtra1.cpp",
+              "RelativeToolTip": "HomeWorkExtra1\\HomeWorkExtra1.cpp",
+              "ViewState": "AgIAACgAAAAAAAAAAAAqwDwAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-11T12:03:50.968Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "extra-task-1.h",
+              "DocumentMoniker": "C:\\Users\\\u041A\u043E\u043D\u0441\u0442\u0430\u043D\u0442\u0438\u043D\\Desktop\\cs211-extra-task-1\\HomeWorkExtra1\\extra-task-1.h",
+              "RelativeDocumentMoniker": "HomeWorkExtra1\\extra-task-1.h",
+              "ToolTip": "C:\\Users\\\u041A\u043E\u043D\u0441\u0442\u0430\u043D\u0442\u0438\u043D\\Desktop\\cs211-extra-task-1\\HomeWorkExtra1\\extra-task-1.h",
+              "RelativeToolTip": "HomeWorkExtra1\\extra-task-1.h",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABkAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-10-11T12:06:51.927Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "extra-task-1.cpp",
+              "DocumentMoniker": "C:\\Users\\\u041A\u043E\u043D\u0441\u0442\u0430\u043D\u0442\u0438\u043D\\Desktop\\cs211-extra-task-1\\HomeWorkExtra1\\extra-task-1.cpp",
+              "RelativeDocumentMoniker": "HomeWorkExtra1\\extra-task-1.cpp",
+              "ToolTip": "C:\\Users\\\u041A\u043E\u043D\u0441\u0442\u0430\u043D\u0442\u0438\u043D\\Desktop\\cs211-extra-task-1\\HomeWorkExtra1\\extra-task-1.cpp",
+              "RelativeToolTip": "HomeWorkExtra1\\extra-task-1.cpp",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-11T12:03:52.895Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
