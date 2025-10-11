@@ -28,4 +28,9 @@ int main()
     assert(to_24_hour_clock(4) == 4);
     assert(to_24_hour_clock(28.5) == 4.5);
     cout << "Тесты задания №4 прошли успешно!\n\n";
+
+    assert(get_hours(3800) == 1);
+    assert(get_minutes(3800) == 3);
+    assert(get_seconds(3800) == 20);
+    cout << "Тесты микро-функций прошли успешно!\n";
 }

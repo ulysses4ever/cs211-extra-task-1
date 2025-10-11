@@ -102,27 +102,82 @@ double to_24_hour_clock(double hours)
     */
 }
 
-///*
-//    Implement three functions
-//        * get_hours
-//        * get_minutes
-//        * get_seconds
-//    They are used to determine the hours part, minutes part and seconds part 
-//    of a time in seconds. E.g.:
-//
-//    >>> get_hours(3800)
-//    1
-//
-//    >>> get_minutes(3800)
-//    3
-//
-//    >>> get_seconds(3800)
-//    20
-//
-//    In other words, if 3800 seconds have elapsed since midnight, 
-//    it is currently 01:03:20 (hh:mm:ss).
-//*/
-//
+/*
+    Implement three functions
+        * get_hours
+        * get_minutes
+        * get_seconds
+    They are used to determine the hours part, minutes part and seconds part 
+    of a time in seconds. E.g.:
+
+    >>> get_hours(3800)
+    1
+
+    >>> get_minutes(3800)
+    3
+
+    >>> get_seconds(3800)
+    20
+
+    In other words, if 3800 seconds have elapsed since midnight, 
+    it is currently 01:03:20 (hh:mm:ss).
+*/
+
+//Функция возвращающая кол-во прошедших часов
+int get_hours(int seconds)
+{
+    assert(0 <= seconds < 60);
+
+    int hours{ 0 };
+
+    while (seconds >= 3600)
+    {
+        seconds -= 3600;
+        hours++;
+    }
+
+    return hours;
+}
+
+//Функция возвращающая кол-во прошедших минут
+int get_minutes(int seconds)
+{
+    assert(0 <= seconds < 60);
+
+    int minutes{ 0 };
+
+    while (seconds >= 3600)
+    {
+        seconds -= 3600;
+    }
+
+    while (seconds >= 60)
+    {
+        seconds -= 60;
+        minutes++;
+    }
+
+    return minutes;
+}
+
+//Функция возвращающая кол-во прошедших секунд
+int get_seconds(int seconds)
+{
+    assert(0 <= seconds < 60);
+
+    while (seconds >= 3600)
+    {
+        seconds -= 3600;
+    }
+
+    while (seconds >= 60)
+    {
+        seconds -= 60;
+    }
+
+    return seconds;
+}
+
 //double time_to_utc(int utc_offset, double time)
 //{
 //    /*
