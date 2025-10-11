@@ -20,7 +20,7 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
-    assert(0 <= minutes < 60  &&  0 <= seconds < 60);
+    assert(0 <= minutes && minutes < 60 && 0 <= seconds && seconds < 60);
 
     const double comparing = 0.0;
     double time = hours*3600 + minutes*60 + seconds;
@@ -31,8 +31,11 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
-    assert(hours >= 0.0);
-    return std::fmod(hours,24.0);
+    double res = std::fmod(hours, 24.0);
+    if (res < 0) {
+        res += 24.0;
+    }
+    return res;
 }
 
 int get_hours(int time) {
@@ -53,11 +56,11 @@ int get_seconds(int time) {
 double time_to_utc(int utc_offset, double time)
 {
     assert(time >= 0 && time <= 24);
-    return -1*utc_offset+time > 0? to_24_hour_clock(-1*utc_offset+time): 24.0 - to_24_hour_clock(fabs(-1*utc_offset+time));
+    return to_24_hour_clock(-1*utc_offset+time);
 }
 
 double time_from_utc(int utc_offset, double time)
 {
     assert(time >= 0 && time <= 24);
-    return utc_offset+time > 0? to_24_hour_clock(utc_offset+time): 24.0 - to_24_hour_clock(fabs(utc_offset+time));
+    return to_24_hour_clock(utc_offset+time);
 }
