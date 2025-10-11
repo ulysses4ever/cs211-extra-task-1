@@ -1,6 +1,8 @@
+#include "extra_task_1.h"
+#include <cassert>
 double seconds_difference(double time_1, double time_2)
 {
-    // your implementation goes here...
+    return time_2 - time_1;
     
     /*    
         Return the number of seconds later that a time in seconds
@@ -22,6 +24,7 @@ double seconds_difference(double time_1, double time_2)
 
 double hours_difference(double time_1, double time_2)
 {
+    return (time_2 - time_1) / 3600.0;
     /*
         Return the number of hours later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -42,6 +45,9 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
+    assert(0 <= minutes < 60 && 0 <= seconds < 60);
+
+    return hours + (minutes / 60.0) + (seconds / 3600.0);
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
@@ -61,6 +67,14 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
+    assert(hours > 0);
+
+    while (hours >= 24.0)
+    {
+        hours -= 24.0;
+    }
+
+    return hours;
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -109,8 +123,71 @@ double to_24_hour_clock(double hours)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
+//Функция возвращающая кол-во прошедших часов
+int get_hours(int seconds)
+{
+    assert(0 <= seconds < 60);
+
+    int hours{ 0 };
+
+    while (seconds >= 3600)
+    {
+        seconds -= 3600;
+        hours++;
+    }
+
+    return hours;
+}
+
+//Функция возвращающая кол-во прошедших минут
+int get_minutes(int seconds)
+{
+    assert(0 <= seconds < 60);
+
+    int minutes{ 0 };
+
+    while (seconds >= 3600)
+    {
+        seconds -= 3600;
+    }
+
+    while (seconds >= 60)
+    {
+        seconds -= 60;
+        minutes++;
+    }
+
+    return minutes;
+}
+
+//Функция возвращающая кол-во прошедших секунд
+int get_seconds(int seconds)
+{
+    assert(0 <= seconds < 60);
+
+    while (seconds >= 3600)
+    {
+        seconds -= 3600;
+    }
+
+    while (seconds >= 60)
+    {
+        seconds -= 60;
+    }
+
+    return seconds;
+}
+
 double time_to_utc(int utc_offset, double time)
 {
+    double current = time - utc_offset;
+
+    while (current >= 24.0)
+    {
+        current -= 24.0;
+    }
+
+    return current;
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -139,6 +216,19 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
+    double current = time + utc_offset;
+
+    if (current < 0.0)
+    {
+        return 24.0 + current;
+    }
+
+    while (current >= 24.0)
+    {
+        current -= 24.0;
+    }
+
+    return current;
     /*
         Return UTC time in time zone utc_offset.
 
