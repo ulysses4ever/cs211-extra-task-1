@@ -9,3 +9,7 @@ double seconds_difference(double time_1, double time_2);
 
 /// <summary>///Верните количество часов, на которое время (в секундах) time_2 больше времени (в секундах) time_1. /// </summary>/// <param name="time_1"></param>/// <param name="time_2"></param>/// <returns></returns>
 double hours_difference(double time_1, double time_2);
+
+
+/// <summary>///Переводит всё в суммарные часы /// </summary>/// <param name="hours"></param>/// <param name="minutes"></param>/// <param name="seconds"></param>/// <returns></returns>
+double to_float_hours(int hours, int minutes, int seconds);

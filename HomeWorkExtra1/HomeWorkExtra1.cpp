@@ -22,4 +22,11 @@ int main()
 		assert(abs(hours_difference(1800.0, 2160.0) - 0.1) < eps);
 		assert(abs(hours_difference(1800.0, 1800.0) - 0) < eps);
 	}
+
+	//Ассерты для to_float_hours
+	{
+		assert(abs(to_float_hours(0, 15, 0) - 0.25) < eps);
+		assert(abs(to_float_hours(2, 45, 9) - 2.7525) < eps);
+		assert(abs(to_float_hours(1, 0, 36) - 1.01) < eps);
+	}
 }
