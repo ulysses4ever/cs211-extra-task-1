@@ -2,10 +2,15 @@
 #define EXTRA_TASK_1_H
 #include <iostream>
 #include <assert.h>
+#include <float.h>
+
+/// Returns are double numbers equal or not
+bool CompareDoubles2 (double A, double B);
 
 ///Return the number of seconds later that a time in seconds time_2 is than a time in seconds time_1.
 double seconds_difference(double time_1, double time_2);
 
+///Return the number of hours later that a time in seconds time_2 is than a time in seconds time_1.
 double hours_difference(double time_1, double time_2);
 
 double to_float_hours(int hours, int minutes, int seconds);
