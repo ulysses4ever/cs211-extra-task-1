@@ -30,4 +30,9 @@ int main()
 	assert(abs(to_24_hour_clock(48) - 0) < DBL_EPSILON);
 	assert(abs(to_24_hour_clock(25) - 1) < DBL_EPSILON);
 	assert(abs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
+
+	// Задание 5
+	assert(abs(get_hours(3800) - 1) < DBL_EPSILON);
+	assert(abs(get_minutes(3800) - 3) < DBL_EPSILON);
+	assert(abs(get_seconds(3800) - 20) < DBL_EPSILON);
 }
