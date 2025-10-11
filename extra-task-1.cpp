@@ -19,22 +19,14 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
-    /*
-        Return the total number of hours in the specified number
-        of hours, minutes, and seconds.
+    assert(0 <= minutes < 60  &&  0 <= seconds < 60);
 
-        Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
+    const double comparing = 0.0;
+    double time = hours*3600 + minutes*60 + seconds;
 
-        >>> to_float_hours(0, 15, 0)
-        0.25
-
-        >>> to_float_hours(2, 45, 9)
-        2.7525
-
-        >>> to_float_hours(1, 0, 36)
-        1.01
-    */
+    return hours_difference(comparing,time);
 }
+
 
 double to_24_hour_clock(double hours)
 {
