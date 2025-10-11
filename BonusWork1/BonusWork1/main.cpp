@@ -15,5 +15,10 @@ int main()
     assert(hours_difference(3600.0, 1800.0) == -0.5);
     assert(hours_difference(1800.0, 2160) == 0.1);
     assert(hours_difference(1800.0, 1800.0) == 0.0);
-    cout << "Тесты задания №2 прошли успешно!\n";
+    cout << "Тесты задания №2 прошли успешно!\n\n";
+
+    assert(to_float_hours(0, 15, 0) == 0.25);
+    assert(to_float_hours(2, 45, 9) == 2.7525);
+    assert(to_float_hours(1, 0, 36) == 1.01);
+    cout << "Тесты задания №3 прошли успешно!\n\n";
 }
