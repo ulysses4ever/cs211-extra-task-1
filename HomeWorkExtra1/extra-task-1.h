@@ -19,3 +19,6 @@ double to_float_hours(int hours, int minutes, int seconds);
 /// <summary>/// возвращает  часы в формате 24 
 /// </summary>/// <param name="hours"></param>/// <returns></returns>
 double to_24_hour_clock(double hours);
+
+
+double time_to_utc(int utc_offset, double time);

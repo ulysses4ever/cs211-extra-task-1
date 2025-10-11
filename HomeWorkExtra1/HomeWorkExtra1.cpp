@@ -39,4 +39,14 @@ int main()
 		assert(to_24_hour_clock(4) - 4 < eps);
 		assert(to_24_hour_clock(28.5) - 4.5 < eps);
 	}
+
+	//Ассерты для time_to_utc
+	{
+		assert(time_to_utc(+0, 12.0) - 12.0 < eps);
+		assert(time_to_utc(+0, 12.0) - 12.0 < eps);
+		assert(time_to_utc(+0, 12.0) - 12.0 < eps);
+		assert(time_to_utc(+0, 12.0) - 12.0 < eps);
+		assert(time_to_utc(+0, 12.0) - 1.0 < eps);
+		assert(time_to_utc(+0, 12.0) - 0.0 < eps);
+	}
 }
