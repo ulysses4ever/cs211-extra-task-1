@@ -29,4 +29,7 @@ int get_minutes(int time);
 ///Return the seconds part from time in seconds
 int get_seconds(int time);
 
+///Return time at UTC+0, where utc_offset is the number of hours away from UTC+0.
+double time_to_utc(int utc_offset, double time);
+
 #endif //EXTRA_TASK_1_H
