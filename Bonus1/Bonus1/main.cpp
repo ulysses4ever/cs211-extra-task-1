@@ -1,5 +1,4 @@
 #include "extra-task-1.h"
-#include <cassert>
 #include <cmath>
 #include <float.h>
 
@@ -18,4 +17,10 @@ int main() {
 	assert(fabs((hours_difference(1800.0, 1800.0)) - 0.0) < DBL_EPSILON);
 	assert(fabs((hours_difference(2161.1, 4321.1)) - 0.6) < DBL_EPSILON);
 	assert(fabs((hours_difference(5321.5, 2621.5)) + 0.75) < DBL_EPSILON);
+	// to float hours
+	assert((to_float_hours(0, 15, 0) - 0.25) < DBL_EPSILON);
+	assert((to_float_hours(2, 45, 9) - 2.7525) < DBL_EPSILON);
+	assert((to_float_hours(1, 0, 36) - 1.01) < DBL_EPSILON);
+	assert((to_float_hours(3, 30, 18) - 3.505) < DBL_EPSILON);
+	assert((to_float_hours(5, 27, 27) - 5.7575) < DBL_EPSILON);
 }

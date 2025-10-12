@@ -5,3 +5,5 @@
 double seconds_difference(double, double);
 // ¬ычисл€ет разницу в часах
 double hours_difference(double, double);
+// ¬ычисл€ет количество часов по данным часам, минутам и секундам
+double to_float_hours(int, int, int);
