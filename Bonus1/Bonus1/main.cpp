@@ -1,5 +1,4 @@
 #include "extra-task-1.h"
-#include <cmath>
 #include <float.h>
 
 int main() {
@@ -58,4 +57,15 @@ int main() {
 	assert(time_to_utc(+1, 0.0) == 23.0);
 	assert(time_to_utc(+12, 6.5) == 18.5);
 	assert(time_to_utc(-10, 20.5) == 6.5);
+	// time from utc
+	assert(time_from_utc(+0, 12.0) == 12.0);
+	assert(time_from_utc(+1, 12.0) == 13.0);
+	assert(time_from_utc(-1, 12.0) == 11.0);
+	assert(time_from_utc(+6, 6.0) == 12.0);
+	assert(time_from_utc(-7, 6.0) == 23.0);
+	assert(time_from_utc(-1, 0.0) == 23.0);
+	assert(time_from_utc(-1, 23.0) == 22.0);
+	assert(time_from_utc(+1, 23.0) == 0.0);
+	assert(time_from_utc(+10, 18.5) == 4.5);
+	assert(time_from_utc(-10, 4.5) == 18.5);
 }

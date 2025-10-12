@@ -1,5 +1,6 @@
 #pragma once
 #include <cassert>
+#include <cmath>
 
 // Вычисляет разницу в секундах
 double seconds_difference(double, double);
@@ -17,3 +18,5 @@ int get_minutes(int);
 int get_seconds(int);
 // Перевод времени в формат UTC+0
 double time_to_utc(int, double);
+// Перевод времени из формата UTC
+double time_from_utc(int, double);
