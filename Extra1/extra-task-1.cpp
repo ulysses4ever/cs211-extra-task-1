@@ -43,19 +43,19 @@ double to_24_hour_clock(double hours)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
-double get_hours(int seconds)
+int get_hours(int seconds)
 {
     assert(seconds >= 0);
     return to_24_hour_clock(seconds / 3600);
 }
 
-double get_minutes(int seconds)
+int get_minutes(int seconds)
 {
     assert(seconds >= 0);
     return (seconds % 3600) / 60;
 }
 
-double get_seconds(int seconds)
+int get_seconds(int seconds)
 {
     assert(seconds >= 0);
     return seconds % 60;
