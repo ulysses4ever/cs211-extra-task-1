@@ -1,11 +1,11 @@
 #include <iostream>
 #include "extra-task-1.h"
-// ¬ычисл€ет разницу в секундах между дву€ метками
+// Calculates the difference in seconds between two timestamps
 double seconds_difference(double time_1, double time_2)
 {
     return time_2 - time_1;
 }
-// ¬ычисл€ет разницу во времени в часах между двум€ метками
+// Calculates the time difference in hours between two timestamps
 double hours_difference(double time_1, double time_2)
 {
     return seconds_difference(time_1, time_2) / 3600.0;
