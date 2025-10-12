@@ -3,11 +3,15 @@
   "WorkspaceRootPath": "C:\\Projects\\cs211-extra-task-1\\ExtraTask1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8B697774-AD55-49E4-A656-2ECDF8D5650B}|ExtraTask1\\ExtraTask1.vcxproj|C:\\Projects\\cs211-extra-task-1\\ExtraTask1\\ExtraTask1\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8B697774-AD55-49E4-A656-2ECDF8D5650B}|ExtraTask1\\ExtraTask1.vcxproj|solutionrelative:ExtraTask1\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8B697774-AD55-49E4-A656-2ECDF8D5650B}|ExtraTask1\\ExtraTask1.vcxproj|C:\\Projects\\cs211-extra-task-1\\extra-task-1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B697774-AD55-49E4-A656-2ECDF8D5650B}|ExtraTask1\\ExtraTask1.vcxproj|C:\\Projects\\cs211-extra-task-1\\ExtraTask1\\ExtraTask1\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{8B697774-AD55-49E4-A656-2ECDF8D5650B}|ExtraTask1\\ExtraTask1.vcxproj|solutionrelative:ExtraTask1\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{8B697774-AD55-49E4-A656-2ECDF8D5650B}|ExtraTask1\\ExtraTask1.vcxproj|C:\\Projects\\cs211-extra-task-1\\ExtraTask1\\ExtraTask1\\extra-task-1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8B697774-AD55-49E4-A656-2ECDF8D5650B}|ExtraTask1\\ExtraTask1.vcxproj|solutionrelative:ExtraTask1\\extra-task-1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -17,7 +21,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -33,26 +37,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "extra-task-1.h",
+              "DocumentMoniker": "C:\\Projects\\cs211-extra-task-1\\ExtraTask1\\ExtraTask1\\extra-task-1.h",
+              "RelativeDocumentMoniker": "ExtraTask1\\extra-task-1.h",
+              "ToolTip": "C:\\Projects\\cs211-extra-task-1\\ExtraTask1\\ExtraTask1\\extra-task-1.h",
+              "RelativeToolTip": "ExtraTask1\\extra-task-1.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-10-12T14:23:59.168Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "extra-task-1.cpp",
               "DocumentMoniker": "C:\\Projects\\cs211-extra-task-1\\extra-task-1.cpp",
               "RelativeDocumentMoniker": "..\\extra-task-1.cpp",
               "ToolTip": "C:\\Projects\\cs211-extra-task-1\\extra-task-1.cpp",
               "RelativeToolTip": "..\\extra-task-1.cpp",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAAAIMAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-10-12T14:17:48.546Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Projects\\cs211-extra-task-1\\ExtraTask1\\ExtraTask1\\main.cpp",
               "RelativeDocumentMoniker": "ExtraTask1\\main.cpp",
               "ToolTip": "C:\\Projects\\cs211-extra-task-1\\ExtraTask1\\ExtraTask1\\main.cpp",
               "RelativeToolTip": "ExtraTask1\\main.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-10-12T13:51:37.843Z",
               "EditorCaption": ""
