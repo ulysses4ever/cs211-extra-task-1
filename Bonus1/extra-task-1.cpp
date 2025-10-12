@@ -1,6 +1,7 @@
+#include "extra-task-1.h"
 double seconds_difference(double time_1, double time_2)
 {
-    // your implementation goes here...
+    return time_2 - time_1;
     
     /*    
         Return the number of seconds later that a time in seconds
@@ -18,6 +19,7 @@ double seconds_difference(double time_1, double time_2)
         >>> seconds_difference(1800.0, 1800.0)
         0.0
     */
+    return 0;
 }
 
 double hours_difference(double time_1, double time_2)
@@ -38,6 +40,7 @@ double hours_difference(double time_1, double time_2)
         >>> hours_difference(1800.0, 1800.0)
         0.0
     */
+    return 0;
 }
 
 double to_float_hours(int hours, int minutes, int seconds)
@@ -56,7 +59,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 
         >>> to_float_hours(1, 0, 36)
         1.01
-    */
+    */return 0;
 }
 
 double to_24_hour_clock(double hours)
@@ -85,7 +88,7 @@ double to_24_hour_clock(double hours)
         You may wish to inspect various function in <cmath> to work
         with integer and fractional part of a hours separately.
         
-    */
+    */return 0;
 }
 
 /*
@@ -134,7 +137,7 @@ double time_to_utc(int utc_offset, double time)
  
         >>> time_to_utc(-1, 23.0)
         0.0
-    */
+    */return 0;
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -165,5 +168,5 @@ double time_from_utc(int utc_offset, double time)
  
         >>> time_from_utc(+1, 23.0)
         0.0
-    */
+    */return 0;
 }
