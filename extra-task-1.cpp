@@ -329,4 +329,18 @@ int main()
     assert(fabs(time_to_utc(3, 15.0) - 12.0) < DBL_EPSILON);
     assert(fabs(time_to_utc(-5, 20.0) - 1.0) < DBL_EPSILON);
     assert(fabs(time_to_utc(8, 4.0) - 20.0) < DBL_EPSILON);
+
+    // tests for time_from_utc
+    assert(fabs(time_from_utc(0, 12.0) - 12.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(1, 12.0) - 13.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-1, 12.0) - 11.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(6, 6.0) - 12.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-7, 6.0) - 23.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-1, 0.0) - 23.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-1, 23.0) - 22.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(1, 23.0) - 0.0) < DBL_EPSILON);
+
+    assert(fabs(time_from_utc(3, 9.0) - 12.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-4, 3.0) - 23.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(10, 14.0) - 0.0) < DBL_EPSILON);
 }
