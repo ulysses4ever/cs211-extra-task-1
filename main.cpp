@@ -58,12 +58,26 @@ void test_time_from_utc()
     assert(fabs(0 - time_from_utc(+1,23)) < DBL_EPSILON);
 }
 
+void test_get_hours_minutes_seconds()
+{
+    assert(get_hours(3212) == 0);
+    assert(get_hours(7277) == 2);
+    assert(get_hours(6712) == 1);
+    assert(get_minutes(7511) == 5);
+    assert(get_minutes(3655) == 0);
+    assert(get_minutes(3094) == 51);
+    assert(get_seconds(1972) == 52);
+    assert(get_seconds(5064) == 24);
+    assert(get_seconds(7765) == 25);
+}
+
 int main()
 {
     test_seconds_difference();
     test_hours_difference();
     test_to_float_hours();
     test_to_24_hour_clock();
+    test_get_hours_minutes_seconds();
     test_time_to_utc();
     test_time_from_utc();
 }
