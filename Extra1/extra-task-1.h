@@ -22,3 +22,6 @@ int get_minutes(int);
 
 // Return the seconds part of a time in seconds.
 int get_seconds(int);
+
+// Return time at UTC+0, where utc_offset is the number of hours away from UTC+0.
+double time_to_utc(int, double);
