@@ -149,11 +149,10 @@ double to_24_hour_clock(double hours)
 /// </summary>
 /// <param name="seconds"></param>
 /// <returns></returns>
-int get_hours(double seconds)
+int get_hours(int seconds)
 {
     return seconds / 3600;
 }
-
 
 
 double time_to_utc(int utc_offset, double time)
