@@ -290,4 +290,14 @@ int main()
     assert(fabs(to_float_hours(0, 0, 0) - 0.0) < DBL_EPSILON);
     assert(fabs(to_float_hours(3, 30, 0) - 3.5) < DBL_EPSILON);
     
+    // tests for to_24_hour_clock
+    assert(fabs(to_24_hour_clock(24) - 0) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(48) - 0) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(25) - 1) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(4) - 4) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
+
+    assert(fabs(to_24_hour_clock(72) - 0) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(12.75) - 12.75) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(36.25) - 12.25) < DBL_EPSILON);
 }
