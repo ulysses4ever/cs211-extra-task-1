@@ -1,3 +1,15 @@
+#include <cmath>
+#include <assert.h>
+#include <float.h>
+
+
+/// <summary>
+/// seconds_difference(double time_1, double time_2) - returns the number of seconds later that a time in seconds
+/// time_2 is than a time in seconds time_1.
+/// </summary>
+/// <param name="time_1"></param>
+/// <param name="time_2"></param>
+/// <returns></returns>
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
@@ -18,8 +30,16 @@ double seconds_difference(double time_1, double time_2)
         >>> seconds_difference(1800.0, 1800.0)
         0.0
     */
+    return time_2 - time_1;
 }
 
+/// <summary>
+/// hours_difference(double time_1, double time_2) - returns the number of hours later that a time in seconds
+/// time_2 is than a time in seconds time_1.
+/// </summary>
+/// <param name="time_1"></param>
+/// <param name="time_2"></param>
+/// <returns></returns>
 double hours_difference(double time_1, double time_2)
 {
     /*
@@ -38,8 +58,17 @@ double hours_difference(double time_1, double time_2)
         >>> hours_difference(1800.0, 1800.0)
         0.0
     */
+    return (time_2 - time_1) / 3600.0;
 }
 
+/// <summary>
+/// to_float_hours(int hours, int minutes, int seconds) - returns the total number of hours in the specified number
+/// of hours, minutes, and seconds.
+/// </summary>
+/// <param name="hours"></param>
+/// <param name="minutes"></param>
+/// <param name="seconds"></param>
+/// <returns></returns>
 double to_float_hours(int hours, int minutes, int seconds)
 {
     /*
@@ -57,8 +86,16 @@ double to_float_hours(int hours, int minutes, int seconds)
         >>> to_float_hours(1, 0, 36)
         1.01
     */
+
+    return hours + minutes / 60.0 + seconds / 3600.0;
 }
 
+/// <summary>
+/// to_24_hour_clock(double hours) - (hours is a number of hours since midnight) returns the
+/// hour as seen on a 24 - hour clock.
+/// </summary>
+/// <param name="hours"></param>
+/// <returns></returns>
 double to_24_hour_clock(double hours)
 {
     /*
@@ -86,6 +123,7 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
+    return fmod(hours, 24.0);
 }
 
 /*
@@ -109,6 +147,43 @@ double to_24_hour_clock(double hours)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
+/// <summary>
+/// get_hours(double seconds) - determines the hours part of a time.
+/// </summary>
+/// <param name="seconds"></param>
+/// <returns></returns>
+int get_hours(int seconds)
+{
+    return seconds / 3600;
+}
+
+/// <summary>
+/// get_minutes(int seconds) - determines the minutes part of a time.
+/// </summary>
+/// <param name="seconds"></param>
+/// <returns></returns>
+int get_minutes(int seconds)
+{
+    return (seconds % 3600) / 60;
+}
+
+/// <summary>
+/// get_seconds(int seconds) - determines the seconds part of a time.
+/// </summary>
+/// <param name="seconds"></param>
+/// <returns></returns>
+int get_seconds(int seconds)
+{
+    return seconds % 60;
+}
+
+/// <summary>
+/// time_to_utc(int utc_offset, double time) - returns time at UTC+0, where utc_offset is the number of hours away from
+/// UTC + 0.
+/// </summary>
+/// <param name="utc_offset"></param>
+/// <param name="time"></param>
+/// <returns></returns>
 double time_to_utc(int utc_offset, double time)
 {
     /*
@@ -129,14 +204,25 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-11, 18.0)
         5.0
  
-        >>> time_to_utc(-1, 0.0)
+        >>> time_to_utc(-1, 0.0)    
         1.0
  
         >>> time_to_utc(-1, 23.0)
         0.0
     */
+    if (time - utc_offset < 0)
+    {
+        return fmod((time - utc_offset + 24.0), 24.0);
+    }
+    return fmod((time - utc_offset), 24.0);
 }
 
+/// <summary>
+/// time_from_utc(int utc_offset, double time) - returns UTC time in time zone utc_offset.
+/// </summary>
+/// <param name="utc_offset"></param>
+/// <param name="time"></param>
+/// <returns></returns>
 double time_from_utc(int utc_offset, double time)
 {
     /*
@@ -166,4 +252,95 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+    if (time + utc_offset < 0)
+    {
+        return fmod((time + utc_offset + 24.0), 24.0);
+    }
+    return fmod((time + utc_offset), 24.0);
+}
+
+
+int main()
+{   
+    // tests for seconds_difference
+    assert(fabs(seconds_difference(1800.0, 3600.0) - 1800.0) < DBL_EPSILON);
+    assert(fabs(seconds_difference(3600.0, 1800.0) - (-1800.0)) < DBL_EPSILON);
+    assert(fabs(seconds_difference(1800.0, 2160.0) - 360.0) < DBL_EPSILON);
+    assert(fabs(seconds_difference(1800.0, 1800.0) - 0.0) < DBL_EPSILON);
+    
+    assert(fabs(seconds_difference(2200.0, 1300.0) - (-900.0)) < DBL_EPSILON);
+    assert(fabs(seconds_difference(1500.0, 1800.0) - 300.0) < DBL_EPSILON);
+    assert(fabs(seconds_difference(3454.0, 3454.0) - 0.0) < DBL_EPSILON);
+
+    // tests for hours_difference
+    assert(fabs(hours_difference(1800.0, 3600.0) - 0.5) < DBL_EPSILON);
+    assert(fabs(hours_difference(3600.0, 1800.0) - (-0.5)) < DBL_EPSILON);
+    assert(fabs(hours_difference(1800.0, 2160.0) - 0.1) < DBL_EPSILON);
+    assert(fabs(hours_difference(1800.0, 1800.0) - 0.0) < DBL_EPSILON);
+
+    assert(fabs(hours_difference(4500.0, 9000.0) - 1.25) < DBL_EPSILON);
+    assert(fabs(hours_difference(0.0, 7200.0) - 2.0) < DBL_EPSILON);
+    assert(fabs(hours_difference(10800.0, 3600.0) - (-2.0)) < DBL_EPSILON);
+
+    // tests for to_float_hours
+    assert(fabs(to_float_hours(0, 15, 0) - 0.25) < DBL_EPSILON);
+    assert(fabs(to_float_hours(2, 45, 9) - 2.7525) < DBL_EPSILON);
+    assert(fabs(to_float_hours(1, 0, 36) - 1.01) < DBL_EPSILON);
+
+    assert(fabs(to_float_hours(0, 0, 0) - 0.0) < DBL_EPSILON);
+    assert(fabs(to_float_hours(3, 30, 0) - 3.5) < DBL_EPSILON);
+    
+    // tests for to_24_hour_clock
+    assert(fabs(to_24_hour_clock(24) - 0) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(48) - 0) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(25) - 1) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(4) - 4) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
+
+    assert(fabs(to_24_hour_clock(72) - 0) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(12.75) - 12.75) < DBL_EPSILON);
+    assert(fabs(to_24_hour_clock(36.25) - 12.25) < DBL_EPSILON);
+
+    // tests for get_hours, get_minutes, get_seconds
+    assert(get_hours(3800) == 1);
+    assert(get_minutes(3800) == 3);
+    assert(get_seconds(3800) == 20);
+
+    assert(get_hours(0) == 0);
+    assert(get_hours(7200) == 2);
+    assert(get_hours(3661) == 1);
+
+    assert(get_minutes(0) == 0);
+    assert(get_minutes(3661) == 1);
+    assert(get_minutes(7261) == 1);
+
+    assert(get_seconds(0) == 0);
+    assert(get_seconds(3661) == 1);
+    assert(get_seconds(59) == 59);
+
+    // tests for time_to_utc
+    assert(fabs(time_to_utc(0, 12.0) - 12.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(1, 12.0) - 11.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-1, 12.0) - 13.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-11, 18.0) - 5.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-1, 0.0) - 1.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-1, 23.0) - 0.0) < DBL_EPSILON);
+
+    assert(fabs(time_to_utc(3, 15.0) - 12.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-5, 20.0) - 1.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(8, 4.0) - 20.0) < DBL_EPSILON);
+
+    // tests for time_from_utc
+    assert(fabs(time_from_utc(0, 12.0) - 12.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(1, 12.0) - 13.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-1, 12.0) - 11.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(6, 6.0) - 12.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-7, 6.0) - 23.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-1, 0.0) - 23.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-1, 23.0) - 22.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(1, 23.0) - 0.0) < DBL_EPSILON);
+
+    assert(fabs(time_from_utc(3, 9.0) - 12.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(-4, 3.0) - 23.0) < DBL_EPSILON);
+    assert(fabs(time_from_utc(10, 14.0) - 0.0) < DBL_EPSILON);
 }
