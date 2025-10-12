@@ -180,7 +180,15 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
-    return 0;
+    double res = time + utc_offset;
+    if (res < 0) {
+        res += 24.0;
+    }
+    else if (res >= 24.0) {
+        res -= 24.0;
+    }
+    return res;
+
     /*
         Return UTC time in time zone utc_offset.
 
