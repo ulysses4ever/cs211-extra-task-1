@@ -15,5 +15,7 @@ int get_hours(int sec);
 int get_minutes(int sec);
 //Секунды после полуночи
 int get_seconds(int sec);
+//Приведение времени от Гринвического меридиана
+double time_to_utc(int utc_offset, double time);
 
 
