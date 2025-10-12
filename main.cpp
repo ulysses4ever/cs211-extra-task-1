@@ -46,6 +46,18 @@ void test_time_to_utc()
     assert(fabs(23 - time_to_utc(+1, 0.0)) < DBL_EPSILON);
 }
 
+void test_time_from_utc()
+{
+    assert(fabs(12 - time_from_utc(+0,12)) < DBL_EPSILON);
+    assert(fabs(13 - time_from_utc(+1,12)) < DBL_EPSILON);
+    assert(fabs(11 - time_from_utc(-1,12)) < DBL_EPSILON);
+    assert(fabs(12 - time_from_utc(+6,6)) < DBL_EPSILON);
+    assert(fabs(23 - time_from_utc(-7,6)) < DBL_EPSILON);
+    assert(fabs(23 - time_from_utc(-1,0)) < DBL_EPSILON);
+    assert(fabs(22 - time_from_utc(-1,23)) < DBL_EPSILON);
+    assert(fabs(0 - time_from_utc(+1,23)) < DBL_EPSILON);
+}
+
 int main()
 {
     test_seconds_difference();
@@ -53,4 +65,5 @@ int main()
     test_to_float_hours();
     test_to_24_hour_clock();
     test_time_to_utc();
+    test_time_from_utc();
 }
