@@ -2,9 +2,9 @@
 #include <iostream>
 #include "cassert"
 using namespace std;
-// Функция, которая вычисляет разницу между двумя временными метками
+// Функция, которая вычисляет разницу в секундах между двумя временными метками
 double seconds_difference(double, double);
-//
+// Функция, которая вычисляет разницу в часах между двумя временными метками
 double hours_difference(double, double);
 //
 double to_float_hours(int , int, int);
