@@ -147,8 +147,11 @@ int get_seconds(int seconds)
 }
 
 
-//double time_to_utc(int utc_offset, double time)
-//{
+double time_to_utc(int utc_offset, double time)
+{
+   
+        return to_24_hour_clock(time - utc_offset);
+    
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -171,39 +174,41 @@ int get_seconds(int seconds)
         1.0
  
         >>> time_to_utc(-1, 23.0)
-        0.0
+        0.0*/
     
 }
 
 double time_from_utc(int utc_offset, double time)
 {
+    return to_24_hour_clock(time + utc_offset);
     /*
         Return UTC time in time zone utc_offset.
 
         >>> time_from_utc(+0, 12.0)
         12.0
- 
+
         >>> time_from_utc(+1, 12.0)
         13.0
- 
+
         >>> time_from_utc(-1, 12.0)
         11.0
- 
+
         >>> time_from_utc(+6, 6.0)
         12.0
- 
+
         >>> time_from_utc(-7, 6.0)
         23.0
- 
+
         >>> time_from_utc(-1, 0.0)
         23.0
- 
+
         >>> time_from_utc(-1, 23.0)
         22.0
- 
+
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+}
 
     int main()
     {
@@ -235,5 +240,22 @@ double time_from_utc(int utc_offset, double time)
         assert(get_minutes(3800) == 3);
         assert(get_seconds(3800) == 20);
 
+        //тесты для time_to_utc
+        assert(fabs(time_to_utc(+0, 12.0) - 12.0) < DBL_EPSILON);
+        assert(fabs(time_to_utc(+1, 12.0) - 11.0) < DBL_EPSILON);
+        assert(fabs(time_to_utc(-1, 12.0) - 13.0) < DBL_EPSILON);
+        assert(fabs(time_to_utc(-11, 18.0) - 5.0) < DBL_EPSILON);
+        assert(fabs(time_to_utc(-1, 0.0) - 1.0) < DBL_EPSILON);
+        assert(fabs(time_to_utc(-1, 23.0) - 0.0) < DBL_EPSILON);
+
+        // Тесты для time_from_utc
+        assert(fabs(time_from_utc(+0, 12.0) - 12.0) < DBL_EPSILON);
+        assert(fabs(time_from_utc(+1, 12.0) - 13.0) < DBL_EPSILON);
+        assert(fabs(time_from_utc(-1, 12.0) - 11.0) < DBL_EPSILON);
+        assert(fabs(time_from_utc(+6, 6.0) - 12.0) < DBL_EPSILON);
+        assert(fabs(time_from_utc(-7, 6.0) - 23.0) < DBL_EPSILON);
+        assert(fabs(time_from_utc(-1, 0.0) - 23.0) < DBL_EPSILON);
+        assert(fabs(time_from_utc(-1, 23.0) - 22.0) < DBL_EPSILON);
+        assert(fabs(time_from_utc(+1, 23.0) - 0.0) < DBL_EPSILON);
     }
 
