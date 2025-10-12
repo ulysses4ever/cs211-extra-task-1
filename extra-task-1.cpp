@@ -64,7 +64,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
-    while (hours > 24) hours -= 24;
+    while (hours >= 24) hours -= 24;
     return hours;
     /*
         hours is a number of hours since midnight. Return the
@@ -124,7 +124,10 @@ int get_seconds(int seconds) {
 }
 double time_to_utc(int utc_offset, double time)
 {
-    return time - utc_offset;
+    double a = time - utc_offset;
+    while (a >= 24) a -= 24;
+    while (a <= 0) a += 24;
+    return a;
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -153,7 +156,10 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
-    return time + utc_offset;
+    double a = time + utc_offset;
+    while (a >= 24) a -= 24;
+    while (a <= 0) a += 24;
+    return a;
 
     /*
         Return UTC time in time zone utc_offset.
