@@ -1,0 +1,51 @@
+#include "extra-task-1.h"
+
+int main() {
+    // seconds_difference tests
+    assert(seconds_difference(1800.0, 3600.0) == 1800.0);
+    assert(seconds_difference(3600.0, 1800.0) == -1800.0);
+    assert(seconds_difference(1800.0, 1800.0) == 0.0);
+
+    // hours_difference tests
+    assert(fabs(hours_difference(1800.0, 3600.0) - 0.5) < 1e-9);
+    assert(fabs(hours_difference(3600.0, 1800.0) + 0.5) < 1e-9);
+    assert(fabs(hours_difference(1800.0, 2160.0) - 0.1) < 1e-9);
+
+    // to_float_hours tests
+    assert(fabs(to_float_hours(0, 15, 0) - 0.25) < 1e-9);
+    assert(fabs(to_float_hours(2, 45, 9) - 2.7525) < 1e-9);
+    assert(fabs(to_float_hours(1, 0, 36) - 1.01) < 1e-9);
+
+    // to_24_hour_clock tests
+    assert(fabs(to_24_hour_clock(24) - 0.0) < 1e-9);
+    assert(fabs(to_24_hour_clock(25) - 1.0) < 1e-9);
+    assert(fabs(to_24_hour_clock(28.5) - 4.5) < 1e-9);
+
+    // get_hours tests
+    assert(get_hours(3800) == 1);
+    assert(get_hours(7200) == 2);
+    assert(get_hours(59) == 0);
+
+    // get_minutes tests
+    assert(get_minutes(3800) == 3);
+    assert(get_minutes(3661) == 1);
+    assert(get_minutes(59) == 0);
+
+    // get_seconds tests
+    assert(get_seconds(3800) == 20);
+    assert(get_seconds(3661) == 1);
+    assert(get_seconds(59) == 59);
+
+    // time_to_utc tests
+    assert(fabs(time_to_utc(+0, 12.0) - 12.0) < 1e-9);
+    assert(fabs(time_to_utc(+1, 12.0) - 11.0) < 1e-9);
+    assert(fabs(time_to_utc(-1, 12.0) - 13.0) < 1e-9);
+
+    // time_from_utc tests
+    assert(fabs(time_from_utc(+0, 12.0) - 12.0) < 1e-9);
+    assert(fabs(time_from_utc(+1, 12.0) - 13.0) < 1e-9);
+    assert(fabs(time_from_utc(-1, 12.0) - 11.0) < 1e-9);
+
+    cout << "All tests passed successfully!" << endl;
+    return 0;
+}
