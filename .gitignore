@@ -1,0 +1,9 @@
+*.bin
+# Visual Studio files
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+*.vsidx
+*.vssidx
