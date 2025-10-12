@@ -19,7 +19,7 @@ double seconds_difference(double time_1, double time_2)
         >>> seconds_difference(1800.0, 1800.0)
         0.0
     */
-    return 0;
+    
 }
 
 double hours_difference(double time_1, double time_2)
@@ -40,7 +40,7 @@ double hours_difference(double time_1, double time_2)
         >>> hours_difference(1800.0, 1800.0)
         0.0
     */
-    return 0;
+    return static_cast<double>((time_2 - time_1) / 3600);
 }
 
 double to_float_hours(int hours, int minutes, int seconds)
