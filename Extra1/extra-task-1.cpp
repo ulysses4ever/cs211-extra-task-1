@@ -43,7 +43,11 @@ int get_seconds(int seconds)
 double time_to_utc(int utc_offset, double time)
 {
 	assert(0.0 <= time && time < 24.0);
-	return to_24_hour_clock(time - utc_offset);
+	double result = time - utc_offset;
+    result = fmod(result, 24.0);
+    if (result < 0)
+        result += 24.0;
+	return result;
 }
 
 double time_from_utc(int utc_offset, double time)
