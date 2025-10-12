@@ -19,6 +19,9 @@ int get_hours(int);
 // Determine the minutes part of a time in seconds
 int get_minutes(int);
 
+// Determine the seconds part of a time in seconds
+int get_seconds(int);
+
 /* EXTRA_TASK_1_H: */
 #endif 
 

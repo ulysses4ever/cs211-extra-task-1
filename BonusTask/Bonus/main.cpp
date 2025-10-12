@@ -38,4 +38,9 @@ int main()
 	assert(get_minutes(3800) == 3);
 	assert(get_minutes(3600) == 0);
 	assert(get_minutes(8000) == 13);
+
+	// Task 7
+	assert(get_seconds(3800) == 20);
+	assert(get_seconds(3600) == 0);
+	assert(get_seconds(8000) == 20);
 }
