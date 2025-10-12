@@ -57,6 +57,15 @@ int get_minutes(int seconds) {
     return seconds / 60;
 }
 
+int get_seconds(int seconds) {
+    assert(seconds >= 0);
+    while (seconds >= 3600)
+        seconds -= 3600;
+    while (seconds >= 60)
+        seconds -= 60;
+    return seconds;
+}
+
 //double time_to_utc(int utc_offset, double time)
 //{
 //    /*
