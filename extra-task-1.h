@@ -6,7 +6,7 @@ using namespace std;
 double seconds_difference(double, double);
 // A function that calculates the difference in hours between two time stamps
 double hours_difference(double, double);
-//
+// A function that returns the total amount of time in hours
 double to_float_hours(int , int, int);
 //
 double to_24_hour_clock(double);
