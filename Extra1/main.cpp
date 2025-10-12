@@ -48,4 +48,6 @@ void main()
     assert_double_equal(time_from_utc(-1, 0.0), 23.0);
     assert_double_equal(time_from_utc(-1, 23.0), 22.0);
     assert_double_equal(time_from_utc(+1, 23.0), 0.0);
+
+	cout << "All tests passed!" << endl;
 }
