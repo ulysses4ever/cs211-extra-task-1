@@ -20,5 +20,5 @@ double get_hours(int);
 // Return the minutes part of a time in seconds.
 double get_minutes(int);
 
-//// Return the seconds part of a time in seconds.
-//double get_seconds(int);
+// Return the seconds part of a time in seconds.
+double get_seconds(int);

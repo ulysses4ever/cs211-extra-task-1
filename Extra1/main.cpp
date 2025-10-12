@@ -31,5 +31,6 @@ void main()
 
 	assert_double_equal(get_hours(3800), 1);
 	assert_double_equal(get_minutes(3800), 3);
+	assert_double_equal(get_seconds(3800), 20);
 
 }

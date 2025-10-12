@@ -55,6 +55,12 @@ double get_minutes(int seconds)
     return (seconds % 3600) / 60;
 }
 
+double get_seconds(int seconds)
+{
+    assert(seconds >= 0);
+    return seconds % 60;
+}
+
 //double time_to_utc(int utc_offset, double time)
 //{
 //    /*
