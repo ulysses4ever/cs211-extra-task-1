@@ -11,3 +11,5 @@ double to_float_hours(int, int, int);
 double to_24_hour_clock(double);
 // Возвращает количество часов по заданному количеству секунд
 int get_hours(int);
+// Возвращает количество минут по заданному количеству секунд (0 <= res < 60)
+int get_minutes(int);

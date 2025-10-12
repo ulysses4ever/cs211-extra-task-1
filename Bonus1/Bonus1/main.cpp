@@ -36,4 +36,9 @@ int main() {
 	assert(get_hours(1500) == 0);
 	assert(get_hours(8000) == 2);
 	assert(get_hours(5000) == 1);
+	// get minutes
+	assert(get_minutes(3800) == 3);
+	assert(get_minutes(1920) == 32);
+	assert(get_minutes(5432) == 30);
+	assert(get_minutes(8412) == 20);
 }
