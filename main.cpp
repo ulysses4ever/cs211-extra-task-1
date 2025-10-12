@@ -35,10 +35,22 @@ void test_to_24_hour_clock()
     assert(fabs(4.5 - to_24_hour_clock(28.5)) < DBL_EPSILON);
 }
 
+void test_time_to_utc()
+{
+    assert(fabs(12 - time_to_utc(+0, 12.0)) < DBL_EPSILON);
+    assert(fabs(11 - time_to_utc(+1, 12.0)) < DBL_EPSILON);
+    assert(fabs(13 - time_to_utc(-1, 12.0)) < DBL_EPSILON);
+    assert(fabs(5 - time_to_utc(-11, 18.0)) < DBL_EPSILON);
+    assert(fabs(1 - time_to_utc(-1, 0.0)) < DBL_EPSILON);
+    assert(fabs(0 - time_to_utc(-1, 23.0)) < DBL_EPSILON);
+    assert(fabs(23 - time_to_utc(+1, 0.0)) < DBL_EPSILON);
+}
+
 int main()
 {
     test_seconds_difference();
     test_hours_difference();
     test_to_float_hours();
     test_to_24_hour_clock();
+    test_time_to_utc();
 }
