@@ -46,26 +46,26 @@ double to_24_hour_clock(double hours)
 */
 int get_hours(int seconds)
 {
-  return seconds / 3600;
+    return seconds / 3600;
 }
 
 int get_minutes(int seconds)
 {
-  return seconds / 60 % 60;
+    return seconds / 60 % 60;
 }
 
 int get_seconds(int seconds)
 {
-  return seconds % 60;
+    return seconds % 60;
 }
 
 double time_to_utc(int utc_offset, double time)
 {
-  assert(utc_offset >= -12 && utc_offset <= 14);
-  double t = time - (double)utc_offset;
-  while (t < 0) t += 24;
-  while (t >= 24) t -= 24;
-  return t;
+    assert(utc_offset >= -12 && utc_offset <= 14);
+    double t = time - (double)utc_offset;
+    while (t < 0) t += 24;
+    while (t >= 24) t -= 24;
+    return t;
 }
 
 double time_from_utc(int utc_offset, double time)
