@@ -55,8 +55,15 @@ double hours_difference(double time_1, double time_2)
     */
     return (time_2 - time_1) 3600.0;
 }
-}
 
+/// <summary>
+/// to_float_hours(int hours, int minutes, int seconds) returns the total number of hours in the specified number
+/// of hours, minutes, and seconds.
+/// </summary>
+/// <param name="hours"></param>
+/// <param name="minutes"></param>
+/// <param name="seconds"></param>
+/// <returns></returns>
 double to_float_hours(int hours, int minutes, int seconds)
 {
     /*
@@ -74,6 +81,8 @@ double to_float_hours(int hours, int minutes, int seconds)
         >>> to_float_hours(1, 0, 36)
         1.01
     */
+
+    return hours + minutes / 60.0 + seconds / 3600.0;
 }
 
 double to_24_hour_clock(double hours)
