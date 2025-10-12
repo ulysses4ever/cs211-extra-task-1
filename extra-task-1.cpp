@@ -22,53 +22,22 @@ double to_24_hour_clock(double hours)
     return  (int)hours % 24 + hours - (int)hours;
 }
 
-/*
-    Implement three functions
-        * get_hours
-        * get_minutes
-        * get_seconds
-    They are used to determine the hours part, minutes part and seconds part 
-    of a time in seconds. E.g.:
+int get_hours(int seconds) {
+    return seconds / 3600;
+}
 
-    >>> get_hours(3800)
-    1
+int get_minutes(int seconds) {
+    return seconds % 3600 / 60;
+}
 
-    >>> get_minutes(3800)
-    3
-
-    >>> get_seconds(3800)
-    20
-
-    In other words, if 3800 seconds have elapsed since midnight, 
-    it is currently 01:03:20 (hh:mm:ss).
-*/
+int get_seconds(int seconds) {
+    return seconds % 60;
+}
 
 double time_to_utc(int utc_offset, double time)
 {
-    /*
-        Return time at UTC+0, where utc_offset is the number of hours away from
-        UTC+0.
-        You may be interested in:
-        https://en.wikipedia.org/wiki/Coordinated_Universal_Time
-
-        >>> time_to_utc(+0, 12.0)
-        12.0
- 
-        >>> time_to_utc(+1, 12.0)
-        11.0
- 
-        >>> time_to_utc(-1, 12.0)
-        13.0
- 
-        >>> time_to_utc(-11, 18.0)
-        5.0
- 
-        >>> time_to_utc(-1, 0.0)
-        1.0
- 
-        >>> time_to_utc(-1, 23.0)
-        0.0
-    */
+    double res = time - utc_offset;
+    return res < 24 ? res : res - 24;
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -136,5 +105,25 @@ int main() {
     assert(fabs(to_24_hour_clock(28.5) - 4.5) < eps);
     std::cout << "to_24_hour_clock tests passed!";
     std::cout << "функция seconds_difference прошла тесты!\n";
+
+    // Тесты для get_hours, get_minutes, get_seconds
+    std::cout << "\nTesting get_hours, get_minutes, get_seconds...";
+    assert(get_hours(3800) == 1);
+    assert(get_minutes(3800) == 3);
+    assert(get_seconds(3800) == 20);
+    std::cout << "get_hours/get_minutes/get_seconds tests passed!";
+    std::cout << "функция seconds_difference прошла тесты!\n";
+    
+    // Тесты для time_to_utc
+    std::cout << "\nTesting time_to_utc...";
+    assert(fabs(time_to_utc(0, 12.0) - 12.0) < eps);
+    assert(fabs(time_to_utc(1, 12.0) - 11.0) < eps);
+    assert(fabs(time_to_utc(-1, 12.0) - 13.0) < eps);
+    assert(fabs(time_to_utc(-11, 18.0) - 5.0) < eps);
+    assert(fabs(time_to_utc(-1, 0.0) - 1.0) < eps);
+    assert(fabs(time_to_utc(-1, 23.0) - 0.0) < eps);
+    std::cout << "time_to_utc tests passed!";
+    std::cout << "функция seconds_difference прошла тесты!\n";
+
 
 }
