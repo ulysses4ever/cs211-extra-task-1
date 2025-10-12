@@ -9,5 +9,11 @@ double hours_difference(double time_1, double time_2);
 double to_float_hours(int hours, int minutes, int seconds);
 //Приведение к 24ч типу
 double to_24_hour_clock(double hours);
+//Часы после полуночи
+int get_hours(int sec);
+//Минуты после полуночи
+int get_minutes(int sec);
+//Секунды после полуночи
+int get_seconds(int sec);
 
 
