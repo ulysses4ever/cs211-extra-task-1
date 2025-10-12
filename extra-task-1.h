@@ -11,6 +11,12 @@ double hours_difference(double, double);
 double to_float_hours(int , int, int);
 // A function that converts "time from midnight" to "time on the clock"
 double to_24_hour_clock(double);
+// A function that receives a whole number of hours
+int get_hours(int);
+// A function that gets an integer number of minutes
+int get_minutes(int);
+// A function that gets an integer number of seconds
+int get_seconds(int);
 //
 double time_to_utc(int, double);
 //
