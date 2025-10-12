@@ -272,5 +272,13 @@ int main()
     assert(fabs(seconds_difference(1500.0, 1800.0) - 300.0) < DBL_EPSILON);
     assert(fabs(seconds_difference(3454.0, 3454.0) - 0.0) < DBL_EPSILON);
 
+    // tests for hours_difference
+    assert(fabs(hours_difference(1800.0, 3600.0) - 0.5) < DBL_EPSILON);
+    assert(fabs(hours_difference(3600.0, 1800.0) - (-0.5)) < DBL_EPSILON);
+    assert(fabs(hours_difference(1800.0, 2160.0) - 0.1) < DBL_EPSILON);
+    assert(fabs(hours_difference(1800.0, 1800.0) - 0.0) < DBL_EPSILON);
 
+    assert(fabs(hours_difference(4500.0, 9000.0) - 1.25) < DBL_EPSILON);
+    assert(fabs(hours_difference(0.0, 7200.0) - 2.0) < DBL_EPSILON);
+    assert(fabs(hours_difference(10800.0, 3600.0) - (-2.0)) < DBL_EPSILON);
 }
