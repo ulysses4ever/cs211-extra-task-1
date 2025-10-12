@@ -13,3 +13,12 @@ double to_float_hours(int, int, int);
 
 // Convert a number of hours since midnight to a 24-hour clock format.
 double to_24_hour_clock(double);
+
+// Return the hours part of a time in seconds.
+double get_hours(int);
+
+//// Return the minutes part of a time in seconds.
+//double get_minutes(int);
+//
+//// Return the seconds part of a time in seconds.
+//double get_seconds(int);

@@ -29,5 +29,6 @@ void main()
     assert_double_equal(to_24_hour_clock(4), 4);
     assert_double_equal(to_24_hour_clock(28.5), 4.5);
 
+	assert_double_equal(get_hours(3800), 1);
 
 }
