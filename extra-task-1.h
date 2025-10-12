@@ -19,8 +19,8 @@ int get_minutes(int);
 int get_seconds(int);
 // A function that convents time
 double time_to_utc(int, double);
-// 
+// A function that converts time from UTC+0
 double time_from_utc(int, double);
-// Approximate double comparison function
+// A function approximate double comparison
 bool are_equal(double, double);
 
