@@ -300,4 +300,21 @@ int main()
     assert(fabs(to_24_hour_clock(72) - 0) < DBL_EPSILON);
     assert(fabs(to_24_hour_clock(12.75) - 12.75) < DBL_EPSILON);
     assert(fabs(to_24_hour_clock(36.25) - 12.25) < DBL_EPSILON);
+
+    // tests for get_hours, get_minutes, get_seconds
+    assert(get_hours(3800) == 1);
+    assert(get_minutes(3800) == 3);
+    assert(get_seconds(3800) == 20);
+
+    assert(get_hours(0) == 0);
+    assert(get_hours(7200) == 2);
+    assert(get_hours(3661) == 1);
+
+    assert(get_minutes(0) == 0);
+    assert(get_minutes(3661) == 1);
+    assert(get_minutes(7261) == 1);
+
+    assert(get_seconds(0) == 0);
+    assert(get_seconds(3661) == 1);
+    assert(get_seconds(59) == 59);
 }
