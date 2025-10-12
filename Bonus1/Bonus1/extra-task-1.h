@@ -15,3 +15,5 @@ int get_hours(int);
 int get_minutes(int);
 // ¬озвращает количество секунд по заданному количеству секунд (0 <= res < 60)
 int get_seconds(int);
+// ѕеревод времени в формат UTC+0
+double time_to_utc(int, double);

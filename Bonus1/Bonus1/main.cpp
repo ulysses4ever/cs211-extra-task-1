@@ -48,4 +48,14 @@ int main() {
 	assert(get_seconds(6832) == 52);
 	assert(get_seconds(8014) == 34);
 	assert(get_seconds(2121) == 21);
+	// time to utc
+	assert(time_to_utc(+0, 12.0) == 12.0);
+	assert(time_to_utc(+1, 12.0) == 11.0);
+	assert(time_to_utc(-1, 12.0) == 13.0);
+	assert(time_to_utc(-11, 18.0) == 5.0);
+	assert(time_to_utc(-1, 0.0) == 1.0);
+	assert(time_to_utc(-1, 23.0) == 0.0);
+	assert(time_to_utc(+1, 0.0) == 23.0);
+	assert(time_to_utc(+12, 6.5) == 18.5);
+	assert(time_to_utc(-10, 20.5) == 6.5);
 }
