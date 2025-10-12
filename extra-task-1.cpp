@@ -1,4 +1,7 @@
 #include <cmath>
+#include <assert.h>
+#include <float.h>
+
 
 /// <summary>
 /// seconds_difference(double time_1, double time_2) - returns the number of seconds later that a time in seconds
@@ -254,4 +257,20 @@ double time_from_utc(int utc_offset, double time)
         return fmod((time + utc_offset + 24.0), 24.0);
     }
     return fmod((time + utc_offset), 24.0);
+}
+
+
+int main()
+{   
+    // tests for seconds_difference
+    assert(fabs(seconds_difference(1800.0, 3600.0) - 1800.0) < DBL_EPSILON);
+    assert(fabs(seconds_difference(3600.0, 1800.0) - (-1800.0)) < DBL_EPSILON);
+    assert(fabs(seconds_difference(1800.0, 2160.0) - 360.0) < DBL_EPSILON);
+    assert(fabs(seconds_difference(1800.0, 1800.0) - 0.0) < DBL_EPSILON);
+    
+    assert(fabs(seconds_difference(2200.0, 1300.0) - (-900.0)) < DBL_EPSILON);
+    assert(fabs(seconds_difference(1500.0, 1800.0) - 300.0) < DBL_EPSILON);
+    assert(fabs(seconds_difference(3454.0, 3454.0) - 0.0) < DBL_EPSILON);
+
+
 }
