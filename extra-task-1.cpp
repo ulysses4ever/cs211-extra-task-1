@@ -1,3 +1,10 @@
+/// <summary>
+/// seconds_difference(double time_1, double time_2) - Return the number of seconds later that a time in seconds
+/// time_2 is than a time in seconds time_1.
+/// </summary>
+/// <param name="time_1"></param>
+/// <param name="time_2"></param>
+/// <returns></returns>
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
@@ -18,6 +25,7 @@ double seconds_difference(double time_1, double time_2)
         >>> seconds_difference(1800.0, 1800.0)
         0.0
     */
+    return time_2 - time_1;
 }
 
 double hours_difference(double time_1, double time_2)
