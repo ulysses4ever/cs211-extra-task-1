@@ -169,6 +169,15 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
+    double local_time = time + utc_offset;
+    if (local_time < 0) {
+        local_time += 24;
+    }
+    else if (local_time >= 24) {
+        local_time -= 24;
+    }
+    return local_time;
+
     /*
         Return UTC time in time zone utc_offset.
 
