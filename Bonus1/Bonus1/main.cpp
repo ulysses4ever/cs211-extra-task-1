@@ -23,4 +23,12 @@ int main() {
 	assert((to_float_hours(1, 0, 36) - 1.01) < DBL_EPSILON);
 	assert((to_float_hours(3, 30, 18) - 3.505) < DBL_EPSILON);
 	assert((to_float_hours(5, 27, 27) - 5.7575) < DBL_EPSILON);
+	// to 24 hour clock
+	assert(to_24_hour_clock(24) == 0);
+	assert(to_24_hour_clock(48) == 0);
+	assert(to_24_hour_clock(25) == 1);
+	assert(to_24_hour_clock(4) == 4);
+	assert(to_24_hour_clock(28.5) == 4.5);
+	assert(to_24_hour_clock(55.5) == 7.5);
+	assert(to_24_hour_clock(7.7) == 7.7);
 }
