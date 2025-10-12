@@ -9,23 +9,7 @@ double hours_difference(double time_1, double time_2)
 
 double hours_difference(double time_1, double time_2)
 {
-
-    /*
-        Return the number of hours later that a time in seconds
-        time_2 is than a time in seconds time_1.
-            
-        >>> hours_difference(1800.0, 3600.0)
-        0.5
-
-        >>> hours_difference(3600.0, 1800.0)
-        -0.5
-
-        >>> hours_difference(1800.0, 2160.0)
-        0.1
-
-        >>> hours_difference(1800.0, 1800.0)
-        0.0
-    */
+    return hours + minutes / 60 + seconds / 3600;
 }
 
 double to_float_hours(int hours, int minutes, int seconds)
@@ -163,4 +147,14 @@ int main() {
     assert(fabs(seconds_difference(1800.0, 2160.0) - 360.0) < eps);
     assert(fabs(seconds_difference(1800.0, 1800.0) - 0.0) < eps);
     std::cout << "функция seconds_difference прошла тесты!\n";
+
+    // Тесты для hours_difference
+    std::cout << "\nTesting hours_difference...";
+    assert(fabs(hours_difference(1800.0, 3600.0) - 0.5) < eps);
+    assert(fabs(hours_difference(3600.0, 1800.0) + 0.5) < eps);
+    assert(fabs(hours_difference(1800.0, 2160.0) - 0.1) < eps);
+    assert(fabs(hours_difference(1800.0, 1800.0) - 0.0) < eps);
+    std::cout << "hours_difference tests passed!";
+    std::cout << "функция seconds_difference прошла тесты!\n";
+
 }
