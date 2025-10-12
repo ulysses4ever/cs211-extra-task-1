@@ -2,38 +2,45 @@
 #include <cfloat>
 #include <cassert>
 
+//функция, которая считает разницу во времени
 double seconds_difference(double time_1, double time_2)
 {
     return time_2 - time_1;
 }
 
+//функция, которая считает разницу в часах
 double hours_difference(double time_1, double time_2)
 {
     return (time_1 - time_2) / 3600.0;
 }
 
+//функция, которая переводит время в часы
 double to_float_hours(int hours, int minutes, int seconds)
 {
     return hours + minutes / 60.0 + seconds / 3600.0;
 }
 
+//функция, которая переводит часы в 24-формат
 double to_24_hour_clock(double hours)
 { 
     return  floor(hours) % 24 + (hours - floor(hours));
 }
-
+//функция, которая из времени вернет челую часть часов
 int get_hours(int seconds) {
     return seconds / 3600;
 }
 
+//функция, которая из времени вернет челую часть минут
 int get_minutes(int seconds) {
     return seconds % 3600 / 60;
 }
 
+//функция, которая из времени вернет секунды
 int get_seconds(int seconds) {
     return seconds % 60;
 }
 
+//перевод в UTC
 double time_to_utc(int utc_offset, double time)
 {
     double res = time - utc_offset;
@@ -46,6 +53,7 @@ double time_to_utc(int utc_offset, double time)
     return res;
 }
 
+//перевод из UTC
 double time_from_utc(int utc_offset, double time)
 {
     double res = time + utc_offset;
@@ -57,6 +65,8 @@ double time_from_utc(int utc_offset, double time)
     }
     return res;
 }
+
+//тесты
 int main() {
     double const eps = DBL_EPSILON;
     // Тесты для seconds_difference
