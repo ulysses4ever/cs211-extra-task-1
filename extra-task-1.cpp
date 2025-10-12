@@ -1,3 +1,5 @@
+#include <cmath>
+
 /// <summary>
 /// seconds_difference(double time_1, double time_2) - returns the number of seconds later that a time in seconds
 /// time_2 is than a time in seconds time_1.
@@ -29,7 +31,7 @@ double seconds_difference(double time_1, double time_2)
 }
 
 /// <summary>
-/// hours_difference(double time_1, double time_2)  returns the number of hours later that a time in seconds
+/// hours_difference(double time_1, double time_2) - returns the number of hours later that a time in seconds
 /// time_2 is than a time in seconds time_1.
 /// </summary>
 /// <param name="time_1"></param>
@@ -57,7 +59,7 @@ double hours_difference(double time_1, double time_2)
 }
 
 /// <summary>
-/// to_float_hours(int hours, int minutes, int seconds) returns the total number of hours in the specified number
+/// to_float_hours(int hours, int minutes, int seconds) - returns the total number of hours in the specified number
 /// of hours, minutes, and seconds.
 /// </summary>
 /// <param name="hours"></param>
@@ -85,6 +87,12 @@ double to_float_hours(int hours, int minutes, int seconds)
     return hours + minutes / 60.0 + seconds / 3600.0;
 }
 
+/// <summary>
+/// to_24_hour_clock(double hours) - (hours is a number of hours since midnight) returns the
+/// hour as seen on a 24 - hour clock.
+/// </summary>
+/// <param name="hours"></param>
+/// <returns></returns>
 double to_24_hour_clock(double hours)
 {
     /*
@@ -112,6 +120,7 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
+    return fmod(hours, 24.0);
 }
 
 /*
