@@ -2,24 +2,24 @@
 #include <cfloat>
 #include <cassert>
 
-double hours_difference(double time_1, double time_2)
+double seconds_difference(double time_1, double time_2)
 {
-    return (time_1 - time_2) / 3600;
+    return time_2 - time_1;
 }
 
 double hours_difference(double time_1, double time_2)
 {
-    return hours + minutes / 60 + seconds / 3600;
+    return (time_1 - time_2) / 3600.0;
 }
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
-    return hours + minutes / 60 + seconds / 3600;
+    return hours + minutes / 60.0 + seconds / 3600.0;
 }
 
 double to_24_hour_clock(double hours)
 { 
-    return  (int)hours % 24 + hours - (int)hours;
+    return  floor(hours) % 24 + (hours - floor(hours));
 }
 
 int get_hours(int seconds) {
@@ -37,13 +37,25 @@ int get_seconds(int seconds) {
 double time_to_utc(int utc_offset, double time)
 {
     double res = time - utc_offset;
-    return res < 24 ? res : res - 24;
+    if (res < 0) {
+        res += 24;
+    }
+    else if (res >= 24) {
+        res -= 24;
+    }
+    return res;
 }
 
 double time_from_utc(int utc_offset, double time)
 {
     double res = time + utc_offset;
-    return res < 24 ? res : res - 24;
+    if (res < 0) {
+        res += 24;
+    }
+    else if (res >= 24) {
+        res -= 24;
+    }
+    return res;
 }
 int main() {
     double const eps = DBL_EPSILON;
