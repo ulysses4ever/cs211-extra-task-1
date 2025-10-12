@@ -214,6 +214,12 @@ double time_to_utc(int utc_offset, double time)
     return fmod((time - utc_offset), 24.0);
 }
 
+/// <summary>
+/// time_from_utc(int utc_offset, double time) - returns UTC time in time zone utc_offset.
+/// </summary>
+/// <param name="utc_offset"></param>
+/// <param name="time"></param>
+/// <returns></returns>
 double time_from_utc(int utc_offset, double time)
 {
     /*
@@ -243,4 +249,9 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+    if (time + utc_offset < 0)
+    {
+        return fmod((time + utc_offset + 24.0), 24.0);
+    }
+    return fmod((time + utc_offset), 24.0);
 }
