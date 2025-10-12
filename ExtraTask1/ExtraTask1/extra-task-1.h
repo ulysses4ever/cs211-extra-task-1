@@ -2,6 +2,10 @@
 #ifndef EXTRA_TASK_H
 #define EXTRA_TASK_H
 
+#include <assert.h>
+
+bool double_equals(double a, double b);
+
 double seconds_difference(double time_1, double time_2);
 
 double hours_difference(double time_1, double time_2);
@@ -13,6 +17,7 @@ double to_24_hour_clock(double hours);
 double time_to_utc(int utc_offset, double time);
 
 double time_from_utc(int utc_offset, double time);
+
 
 
 #endif // !EXTRA_TASK_H
