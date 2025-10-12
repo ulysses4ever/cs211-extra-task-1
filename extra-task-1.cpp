@@ -317,4 +317,16 @@ int main()
     assert(get_seconds(0) == 0);
     assert(get_seconds(3661) == 1);
     assert(get_seconds(59) == 59);
+
+    // tests for time_to_utc
+    assert(fabs(time_to_utc(0, 12.0) - 12.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(1, 12.0) - 11.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-1, 12.0) - 13.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-11, 18.0) - 5.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-1, 0.0) - 1.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-1, 23.0) - 0.0) < DBL_EPSILON);
+
+    assert(fabs(time_to_utc(3, 15.0) - 12.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(-5, 20.0) - 1.0) < DBL_EPSILON);
+    assert(fabs(time_to_utc(8, 4.0) - 20.0) < DBL_EPSILON);
 }
