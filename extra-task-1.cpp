@@ -281,4 +281,13 @@ int main()
     assert(fabs(hours_difference(4500.0, 9000.0) - 1.25) < DBL_EPSILON);
     assert(fabs(hours_difference(0.0, 7200.0) - 2.0) < DBL_EPSILON);
     assert(fabs(hours_difference(10800.0, 3600.0) - (-2.0)) < DBL_EPSILON);
+
+    // tests for to_float_hours
+    assert(fabs(to_float_hours(0, 15, 0) - 0.25) < DBL_EPSILON);
+    assert(fabs(to_float_hours(2, 45, 9) - 2.7525) < DBL_EPSILON);
+    assert(fabs(to_float_hours(1, 0, 36) - 1.01) < DBL_EPSILON);
+
+    assert(fabs(to_float_hours(0, 0, 0) - 0.0) < DBL_EPSILON);
+    assert(fabs(to_float_hours(3, 30, 0) - 3.5) < DBL_EPSILON);
+    
 }
