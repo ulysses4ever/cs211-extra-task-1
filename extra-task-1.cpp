@@ -1,3 +1,7 @@
+#include <cmath>
+#include "extra-task-1.h"
+
+
 double seconds_difference(double time_1, double time_2)
 {
     return time_2 - time_1;
@@ -44,7 +48,7 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
-    return hours + minets / 60 + seconds / 3600;
+    return (double)hours + (double)minutes / 60 + (double)seconds / 3600;
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
@@ -64,7 +68,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
-    return hours % 24;
+    return std::fmod(hours, 24);
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -126,7 +130,7 @@ int get_seconds(int seconds) {
 
 double time_to_utc(int utc_offset, double time)
 {
-    return (time - utc_offset) % 24;
+    return std::fmod(time - utc_offset,24);
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -155,7 +159,7 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
-    return (time + utc_offset) % 24;
+    return std::fmod(time + utc_offset, 24);
     /*
         Return UTC time in time zone utc_offset.
 
