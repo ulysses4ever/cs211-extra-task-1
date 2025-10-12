@@ -49,6 +49,12 @@ double get_hours(int seconds)
     return to_24_hour_clock(seconds / 3600);
 }
 
+double get_minutes(int seconds)
+{
+    assert(seconds >= 0);
+    return (seconds % 3600) / 60;
+}
+
 //double time_to_utc(int utc_offset, double time)
 //{
 //    /*
