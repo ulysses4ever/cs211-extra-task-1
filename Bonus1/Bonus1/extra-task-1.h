@@ -9,3 +9,5 @@ double hours_difference(double, double);
 double to_float_hours(int, int, int);
 // Преобразует указанное количество часов в 24-х часовой формат
 double to_24_hour_clock(double);
+// Возвращает количество часов по заданному количеству секунд
+int get_hours(int);

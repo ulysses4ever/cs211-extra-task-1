@@ -31,4 +31,9 @@ int main() {
 	assert(to_24_hour_clock(28.5) == 4.5);
 	assert(to_24_hour_clock(55.5) == 7.5);
 	assert(to_24_hour_clock(7.7) == 7.7);
+	// get hours
+	assert(get_hours(3800) == 1);
+	assert(get_hours(1500) == 0);
+	assert(get_hours(8000) == 2);
+	assert(get_hours(5000) == 1);
 }
