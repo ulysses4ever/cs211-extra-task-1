@@ -1,0 +1,75 @@
+# Visual Studio files and directories
+.vs/
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+*.suo
+*.sdf
+*.opensdf
+*.db
+*.tlog
+*.log
+*.idb
+*.pdb
+*.ipch
+*.pch
+*.ilk
+*.exp
+*.obj
+*.res
+*.manifest
+*.cachefile
+
+# Build directories
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Bb]uild/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+bld/
+
+# Visual Studio user settings
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio code analysis results
+*.sarif
+
+# VS Code (optional)
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Compiled executables
+*.exe
+*.dll
+*.lib
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Backup files
+*.bak
+*.tmp
+*.temp
+
+# Project specific (adjust as needed)
+/ExtraTask1/x64/
+/ExtraTask1/x86/
+/ExtraTask1/Debug/
+/ExtraTask1/Release/
