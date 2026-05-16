@@ -1,7 +1,8 @@
+#include <cassert>
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
-    
+
     /*    
         Return the number of seconds later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -18,12 +19,13 @@ double seconds_difference(double time_1, double time_2)
         >>> seconds_difference(1800.0, 1800.0)
         0.0
     */
+    return time_2 - time_1;
 }
 
 double hours_difference(double time_1, double time_2)
 {
     /*
-        Return the number of hours later that a time in seconds
+        Return the number of hours later that a time in seconds 
         time_2 is than a time in seconds time_1.
             
         >>> hours_difference(1800.0, 3600.0)
@@ -38,6 +40,7 @@ double hours_difference(double time_1, double time_2)
         >>> hours_difference(1800.0, 1800.0)
         0.0
     */
+    return (time_2 - time_1) / 3600;
 }
 
 double to_float_hours(int hours, int minutes, int seconds)
@@ -57,6 +60,7 @@ double to_float_hours(int hours, int minutes, int seconds)
         >>> to_float_hours(1, 0, 36)
         1.01
     */
+    return hours + (minutes / 60.0) + (seconds / 3600.0);
 }
 
 double to_24_hour_clock(double hours)
@@ -86,6 +90,7 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
+    return hours - (24.0 * (int)(hours / 24));
 }
 
 /*
@@ -108,6 +113,19 @@ double to_24_hour_clock(double hours)
     In other words, if 3800 seconds have elapsed since midnight, 
     it is currently 01:03:20 (hh:mm:ss).
 */
+int get_hours(double time) {
+    return time / 3600;
+}
+
+int get_minutes(double time) {
+    return (time - (3600 * (int)(time / 3600))) / 60;
+}
+
+int get_seconds(double time) {
+    int hours = 3600 * (int)(time / 3600);
+    int minutes = 60 * (int)((time - (3600 * (int)(time / 3600))) / 60);
+    return time - (minutes + hours);
+}
 
 double time_to_utc(int utc_offset, double time)
 {
@@ -135,6 +153,11 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
+    double endTime = (- 1 * utc_offset) + time;
+    if (endTime > 24) endTime -= 24 * (int)(endTime / 24);
+    if (endTime < 0) endTime += 24;
+    if (endTime == 24) endTime = 0;
+    return endTime;
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -166,4 +189,11 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+    double endTime = utc_offset + time;
+    if (endTime > 24) endTime -= 24 * (int)(endTime / 24);
+    if (endTime < 0) endTime += 24;
+    if (endTime == 24) endTime = 0;
+    return endTime;
+    //or just 
+    //return time_to_utc(utc_offset * -1, time);
 }
