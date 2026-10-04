@@ -26,3 +26,24 @@ void test_to_24_hour_clock()
     assert(to_24_hour_clock(25) == 1);
     assert(to_24_hour_clock(28.5) == 4.5);
 }
+
+void test_get_hours()
+{
+    assert(get_hours(3800) == 1);
+    assert(get_hours(0) == 0);
+    assert(get_hours(7200) == 2);
+}
+
+void test_get_minutes()
+{
+    assert(get_minutes(3800) == 3);
+    assert(get_minutes(3599) == 59);
+    assert(get_minutes(3600) == 0);
+}
+
+void test_get_seconds()
+{
+    assert(get_seconds(3800) == 20);
+    assert(get_seconds(59) == 59);
+    assert(get_seconds(60) == 0);
+}
