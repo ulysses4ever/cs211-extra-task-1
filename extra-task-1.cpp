@@ -131,8 +131,8 @@ int get_seconds(int seconds)
     return seconds % 60;
 }
 
-//double time_to_utc(int utc_offset, double time)
-//{
+double time_to_utc(int utc_offset, double time)
+{
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -157,7 +157,16 @@ int get_seconds(int seconds)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
-//}
+
+    double hours = fmod(time - utc_offset, 24.0);
+
+    if (hours < 0)
+    {
+        hours += 24.0;
+    }
+
+    return hours;
+}
 
 //double time_from_utc(int utc_offset, double time)
 //{

@@ -14,3 +14,6 @@ int get_seconds(int seconds);
 void test_get_hours();
 void test_get_minutes();
 void test_get_seconds();
+
+double time_to_utc(int utc_offset, double time);
+void test_time_to_utc();

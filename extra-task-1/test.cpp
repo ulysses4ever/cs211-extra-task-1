@@ -47,3 +47,9 @@ void test_get_seconds()
     assert(get_seconds(59) == 59);
     assert(get_seconds(60) == 0);
 }
+void test_time_to_utc()
+{
+    assert(time_to_utc(+1, 12.0) == 11.0);
+    assert(time_to_utc(-11, 18.0) == 5.0);
+    assert(time_to_utc(-1, 23.0) == 0.0);
+}

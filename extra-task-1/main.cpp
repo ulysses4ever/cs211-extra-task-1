@@ -10,5 +10,6 @@ int main()
     test_get_hours();
     test_get_minutes();
     test_get_seconds();
+    test_time_to_utc();
     return 0;
 }
