@@ -168,8 +168,8 @@ double time_to_utc(int utc_offset, double time)
     return hours;
 }
 
-//double time_from_utc(int utc_offset, double time)
-//{
+double time_from_utc(int utc_offset, double time)
+{
     /*
         Return UTC time in time zone utc_offset.
 
@@ -197,4 +197,13 @@ double time_to_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
-//}
+
+    double hours = std::fmod(time + utc_offset, 24.0);
+
+    if (hours < 0)
+    {
+        hours += 24.0;
+    }
+
+    return hours;
+}

@@ -53,3 +53,10 @@ void test_time_to_utc()
     assert(time_to_utc(-11, 18.0) == 5.0);
     assert(time_to_utc(-1, 23.0) == 0.0);
 }
+
+void test_time_from_utc()
+{
+    assert(time_from_utc(+1, 12.0) == 13.0);
+    assert(time_from_utc(-7, 6.0) == 23.0);
+    assert(time_from_utc(+1, 23.0) == 0.0);
+}
