@@ -1,3 +1,6 @@
+#include <cmath>
+using namespace std;
+
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
@@ -18,6 +21,7 @@ double seconds_difference(double time_1, double time_2)
         >>> seconds_difference(1800.0, 1800.0)
         0.0
     */
+    return time_2 - time_1;
 }
 
 double hours_difference(double time_1, double time_2)
@@ -38,6 +42,7 @@ double hours_difference(double time_1, double time_2)
         >>> hours_difference(1800.0, 1800.0)
         0.0
     */
+    return seconds_difference(time_1, time_2) / 3600.0;
 }
 
 double to_float_hours(int hours, int minutes, int seconds)
@@ -57,6 +62,7 @@ double to_float_hours(int hours, int minutes, int seconds)
         >>> to_float_hours(1, 0, 36)
         1.01
     */
+    return hours + minutes / 60.0 + seconds / 3600.0;
 }
 
 double to_24_hour_clock(double hours)
@@ -86,6 +92,7 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
+    return fmod(hours, 24.0);
 }
 
 /*
@@ -108,6 +115,21 @@ double to_24_hour_clock(double hours)
     In other words, if 3800 seconds have elapsed since midnight, 
     it is currently 01:03:20 (hh:mm:ss).
 */
+
+int get_hours(int seconds)
+{
+    return seconds / 3600;
+}
+
+int get_minutes(int seconds)
+{
+    return (seconds / 60) % 60;
+}
+
+int get_seconds(int seconds)
+{
+    return seconds % 60;
+}
 
 double time_to_utc(int utc_offset, double time)
 {
@@ -135,6 +157,15 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
+
+    double hours = fmod(time - utc_offset, 24.0);
+
+    if (hours < 0)
+    {
+        hours += 24.0;
+    }
+
+    return hours;
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -166,4 +197,13 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+
+    double hours = std::fmod(time + utc_offset, 24.0);
+
+    if (hours < 0)
+    {
+        hours += 24.0;
+    }
+
+    return hours;
 }
