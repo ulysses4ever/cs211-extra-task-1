@@ -7,6 +7,8 @@ int main()
     test_to_float_hours();
     test_to_24_hour_clock();
 
-
+    test_get_hours();
+    test_get_minutes();
+    test_get_seconds();
     return 0;
 }
