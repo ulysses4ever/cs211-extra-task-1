@@ -1,3 +1,5 @@
+#include "assert.h"
+
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
@@ -18,6 +20,7 @@ double seconds_difference(double time_1, double time_2)
         >>> seconds_difference(1800.0, 1800.0)
         0.0
     */
+    return time_2 - time_1;
 }
 
 double hours_difference(double time_1, double time_2)
@@ -38,6 +41,7 @@ double hours_difference(double time_1, double time_2)
         >>> hours_difference(1800.0, 1800.0)
         0.0
     */
+    return seconds_difference(time_1, time_2) / 3600;
 }
 
 double to_float_hours(int hours, int minutes, int seconds)
@@ -57,6 +61,8 @@ double to_float_hours(int hours, int minutes, int seconds)
         >>> to_float_hours(1, 0, 36)
         1.01
     */
+    assert(0 <= minutes < 60 && 0 <= seconds < 60 && hours >= 0);
+    return hours + minutes / 60.0 + seconds / 3600.0;
 }
 
 double to_24_hour_clock(double hours)
@@ -86,6 +92,10 @@ double to_24_hour_clock(double hours)
         with integer and fractional part of a hours separately.
         
     */
+    assert(hours >= 0);
+    while (hours >= 24)
+        hours -= 24;
+    return hours;
 }
 
 /*
@@ -108,6 +118,24 @@ double to_24_hour_clock(double hours)
     In other words, if 3800 seconds have elapsed since midnight, 
     it is currently 01:03:20 (hh:mm:ss).
 */
+
+// Return the hours part of a time in seconds
+int get_hours(int seconds)
+{
+	return seconds / 3600;
+}
+
+// Return the minutes part of a time in seconds
+int get_minutes(int seconds)
+{
+    return (seconds % 3600) / 60;
+}
+
+// Return the seconds part of a time in seconds
+int get_seconds(int seconds)
+{
+    return seconds % 60;
+}
 
 double time_to_utc(int utc_offset, double time)
 {
@@ -135,6 +163,7 @@ double time_to_utc(int utc_offset, double time)
         >>> time_to_utc(-1, 23.0)
         0.0
     */
+	return to_24_hour_clock(time - utc_offset);
 }
 
 double time_from_utc(int utc_offset, double time)
@@ -166,4 +195,10 @@ double time_from_utc(int utc_offset, double time)
         >>> time_from_utc(+1, 23.0)
         0.0
     */
+    double result = time + utc_offset;
+
+    while (result < 0)
+		result += 24;
+
+    return to_24_hour_clock(result);
 }
