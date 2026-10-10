@@ -196,7 +196,7 @@ bool is_equal(double a, double b)
 {
     return std::fabs(a - b) < DBL_EPSILON;
 }
-int main
+int main()
 {
     assert(is_equal(seconds_difference(1800.0, 3600.0), 1800.0));
     assert(is_equal(seconds_difference(3600.0, 1800.0), -1800.0));
