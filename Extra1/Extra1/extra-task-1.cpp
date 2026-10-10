@@ -50,7 +50,7 @@ double to_float_hours(int hours, int minutes, int seconds)
     assert(seconds < 60);
     assert(seconds >= 0);
 
-    return hours + minutes / 60 + seconds / 3600;
+    return hours + minutes / 60.0 + seconds / 3600.0;
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
