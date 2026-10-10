@@ -1,7 +1,11 @@
+#include <cmath>
+#include <cassert>
+#include <cfloat>
+#include <iostream>
 double seconds_difference(double time_1, double time_2)
 {
     // your implementation goes here...
-    
+    return time_2 - time_1;
     /*    
         Return the number of seconds later that a time in seconds
         time_2 is than a time in seconds time_1.
