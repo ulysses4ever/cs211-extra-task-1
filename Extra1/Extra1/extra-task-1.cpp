@@ -73,6 +73,7 @@ double to_float_hours(int hours, int minutes, int seconds)
 double to_24_hour_clock(double hours)
 {
     assert(hours >= 0);
+
     int fullHours{ static_cast<int>(floor(hours)) };
     double remainder{ hours - fullHours };
     fullHours %= 24;
@@ -125,6 +126,21 @@ double to_24_hour_clock(double hours)
     In other words, if 3800 seconds have elapsed since midnight, 
     it is currently 01:03:20 (hh:mm:ss).
 */
+
+int get_hours(int time)
+{
+    return time / 3600;
+}
+
+int get_minutes(int time)
+{
+    return time % 3600 / 60;
+}
+
+int get_seconds(int time)
+{
+    return time % 3600 % 60;
+}
 
 double time_to_utc(int utc_offset, double time)
 {
