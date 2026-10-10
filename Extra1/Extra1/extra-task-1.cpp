@@ -144,7 +144,7 @@ int get_seconds(int time)
 
 double time_to_utc(int utc_offset, double time)
 {
-    return to_24_hour_clock(time - utc_offset);
+    return to_24_hour_clock(time - utc_offset + 24); //добавляем 24, чтобы не ломалось при отрицательных значениях
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -173,7 +173,7 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
-    return 0;
+    return to_24_hour_clock(time + utc_offset + 24); //добавляем 24, чтобы не ломалось при отрицательных значениях
     /*
         Return UTC time in time zone utc_offset.
 

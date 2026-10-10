@@ -24,4 +24,5 @@ int get_seconds(int time);
 //Переводит время в UTC
 double time_to_utc(int utc_offset, double time);
 
+//Переводит время из UTC
 double time_from_utc(int utc_offset, double time);
