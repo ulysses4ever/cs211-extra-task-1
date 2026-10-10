@@ -1,3 +1,5 @@
+#include "extra-task-1.h"
+
 double seconds_difference(double time_1, double time_2)
 {
     return time_2 - time_1;
@@ -43,7 +45,12 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
-    return 0;
+    assert(minutes < 60);
+    assert(minutes >= 0);
+    assert(seconds < 60);
+    assert(seconds >= 0);
+
+    return hours + minutes / 60 + seconds / 3600;
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
