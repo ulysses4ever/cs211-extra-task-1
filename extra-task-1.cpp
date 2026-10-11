@@ -104,5 +104,15 @@ int main()
         assert(fabs(to_float_hours(1, 0, 36) - 1.01) < DBL_EPSILON);
     }
 
+    // Проверка 4 задания:
+
+    {
+        assert(fabs(to_24_hour_clock(24.0) - 0.0) < DBL_EPSILON);
+        assert(fabs(to_24_hour_clock(48.0) - 0.0) < DBL_EPSILON);
+        assert(fabs(to_24_hour_clock(25.0) - 1.0) < DBL_EPSILON);
+        assert(fabs(to_24_hour_clock(4.0) - 4.0) < DBL_EPSILON);
+        assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
+    }
+
     return 0;
 }
