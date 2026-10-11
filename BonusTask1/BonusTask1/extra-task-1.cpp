@@ -1,6 +1,17 @@
+#include <iostream>
+#include <cmath>
+#include <cfloat>
+#include <cassert>
+
+// Additional function for safe double comparison
+bool is_close(double a, double b)
+{
+    return std::fabs(a - b) < DBL_EPSILON;
+}
+
 double seconds_difference(double time_1, double time_2)
 {
-    // your implementation goes here...
+    return time_2 - time_1;
     
     /*    
         Return the number of seconds later that a time in seconds
@@ -22,6 +33,7 @@ double seconds_difference(double time_1, double time_2)
 
 double hours_difference(double time_1, double time_2)
 {
+    return (time_2 - time_1) / 3600.0;
     /*
         Return the number of hours later that a time in seconds
         time_2 is than a time in seconds time_1.
@@ -42,6 +54,9 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
+    assert(minutes >= 0 && minutes < 60);
+    assert(seconds >= 0 && seconds < 60);
+    return hours + (minutes / 60.0) + (seconds / 3600.0);
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.
@@ -61,6 +76,8 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
+    assert(hours >= 0);
+    return std::fmod(hours, 24);
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
@@ -109,8 +126,27 @@ double to_24_hour_clock(double hours)
     it is currently 01:03:20 (hh:mm:ss).
 */
 
+// Returns the number of whole hours in seconds.
+int get_hours(int seconds)
+{
+    return seconds / 3600;
+}
+
+// Returns the number of whole minutes in seconds.
+int get_minutes(int seconds)
+{
+    return (seconds % 3600) / 60;
+}
+
+// Returns the number of remaining seconds.
+int get_seconds(int seconds)
+{
+    return seconds % 60;
+}
+
 double time_to_utc(int utc_offset, double time)
 {
+    return to_24_hour_clock(time - utc_offset + 24.0);
     /*
         Return time at UTC+0, where utc_offset is the number of hours away from
         UTC+0.
@@ -139,6 +175,7 @@ double time_to_utc(int utc_offset, double time)
 
 double time_from_utc(int utc_offset, double time)
 {
+    return to_24_hour_clock(time + utc_offset + 24.0);
     /*
         Return UTC time in time zone utc_offset.
 
