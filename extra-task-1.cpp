@@ -12,6 +12,11 @@ double hours_difference(double time_1, double time_2)
     return (time_2 - time_1) / 3600.0;
 }
 
+double to_float_hours(int hours, int minutes, int seconds)
+{
+    return hours + minutes / 60.0 + seconds / 3600.0;
+}
+
 int main()
 {
     assert(fabs(seconds_difference(1800.0, 3600.0) - 1800.0) < DBL_EPSILON);
@@ -23,6 +28,10 @@ int main()
     assert(fabs(hours_difference(3600.0, 1800.0) - (-0.5)) < DBL_EPSILON);
     assert(fabs(hours_difference(1800.0, 2160.0) - 0.1) < DBL_EPSILON);
     assert(fabs(hours_difference(1800.0, 1800.0) - 0.0) < DBL_EPSILON);
+
+    assert(fabs(to_float_hours(0, 15, 0) - 0.25) < DBL_EPSILON);
+    assert(fabs(to_float_hours(2, 45, 9) - 2.7525) < DBL_EPSILON);
+    assert(fabs(to_float_hours(1, 0, 36) - 1.01) < DBL_EPSILON);
 
     return 0;
 }
