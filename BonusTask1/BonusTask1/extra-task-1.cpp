@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <cfloat>
+#include <cassert>
 
 // Additional function for safe double comparison
 bool is_close(double a, double b)
@@ -53,7 +54,9 @@ double hours_difference(double time_1, double time_2)
 
 double to_float_hours(int hours, int minutes, int seconds)
 {
-    return 0;
+    assert(minutes >= 0 && minutes < 60);
+    assert(seconds >= 0 && seconds < 60);
+    return hours + (minutes / 60.0) + (seconds / 3600.0);
     /*
         Return the total number of hours in the specified number
         of hours, minutes, and seconds.

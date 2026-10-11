@@ -15,4 +15,9 @@ int main()
     assert(is_close(hours_difference(3600.0, 1800.0), -0.5));
     assert(is_close(hours_difference(1800.0, 2160.0), 0.1));
     assert(is_close(hours_difference(1800.0, 1800.0), 0.0));
+
+    // tests for to_float_hours
+    assert(is_close(to_float_hours(0, 15, 0), 0.25));
+    assert(is_close(to_float_hours(2, 45, 9), 2.7525));
+    assert(is_close(to_float_hours(1, 0, 36), 1.01));
 }
