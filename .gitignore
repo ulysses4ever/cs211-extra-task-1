@@ -1,0 +1,17 @@
+# Visual Studio
+.vs/
+*.vsidx
+*.vcxproj.user
+
+# Build output
+Debug/
+Release/
+x64/
+*.obj
+*.exe
+*.pdb
+*.ilk
+
+# OS / editor
+Thumbs.db
+.DS_Store
