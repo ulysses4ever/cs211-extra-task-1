@@ -40,4 +40,16 @@ int main()
     assert(time_to_utc(-11, 18.0) == 5.0);
     assert(time_to_utc(-1, 0.0) == 1.0);
     assert(time_to_utc(-1, 23.0) == 0.0);
+
+    // tests for time_from_utc
+    assert(time_from_utc(+0, 12.0) == 12.0);
+    assert(time_from_utc(+1, 12.0) == 13.0);
+    assert(time_from_utc(-1, 12.0) == 11.0);
+    assert(time_from_utc(+6, 6.0) == 12.0);
+    assert(time_from_utc(-7, 6.0) == 23.0);
+    assert(time_from_utc(-1, 0.0) == 23.0);
+    assert(time_from_utc(-1, 23.0) == 22.0);
+    assert(time_from_utc(+1, 23.0) == 0.0);
+
+    std::cout << "All tests passed!" << std::endl;
 }
