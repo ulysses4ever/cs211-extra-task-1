@@ -32,6 +32,11 @@ int get_hours(int seconds)
     return seconds / 3600;
 }
 
+int get_minutes(int seconds)
+{
+    return (seconds % 3600) / 60;
+}
+
 int main()
 {
     assert(fabs(seconds_difference(1800.0, 3600.0) - 1800.0) < DBL_EPSILON);
@@ -55,6 +60,8 @@ int main()
     assert(fabs(to_24_hour_clock(28.5) - 4.5) < DBL_EPSILON);
 
     assert(get_hours(3800) == 1);
+
+    assert(get_minutes(3800) == 3);
 
     return 0;
 }
