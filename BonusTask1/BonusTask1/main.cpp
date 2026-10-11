@@ -9,4 +9,10 @@ int main()
     assert(is_close(seconds_difference(3600.0, 1800.0), -1800.0));
     assert(is_close(seconds_difference(1800.0, 2160.0), 360.0));
     assert(is_close(seconds_difference(1800.0, 1800.0), 0.0));
+
+    // tests for hours_difference
+    assert(is_close(hours_difference(1800.0, 3600.0), 0.5));
+    assert(is_close(hours_difference(3600.0, 1800.0), -0.5));
+    assert(is_close(hours_difference(1800.0, 2160.0), 0.1));
+    assert(is_close(hours_difference(1800.0, 1800.0), 0.0));
 }
